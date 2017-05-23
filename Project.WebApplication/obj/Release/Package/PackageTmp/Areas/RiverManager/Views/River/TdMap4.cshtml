@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>天地图－地图API－范例－自定义信息窗口</title>
+    <script type="text/javascript" src="http://api.tianditu.com/js/maps.js"></script>
+    <script>
+
+     var map,zoom=12,marker;
+     var customerWinInfo=null;
+     function onLoad()
+	 {
+		//初始化地图对象
+	   	map=new TMap("mapDiv");
+	   	//设置显示地图的中心点和级别
+		map.centerAndZoom(new TLngLat(116.40969,39.94940),zoom);
+		//允许鼠标双击放大地图
+		map.enableHandleMouseScroll();
+
+		//创建标注对象
+		marker = new TMarker(new TLngLat(116.40969,39.94940));
+		//向上地图上添加标注
+		map.addOverLay(marker);
+		//注册标注的点击事件
+		TEvent.addListener(marker,"click",onClick);
+     }
+
+     function onClose(){
+         map.removeOverLay(customerWinInfo);
+     }
+
+     function onClick(){
+         var html=[];
+         html.push('<div style="background:#CCCC99;height:20px;color:#000;width:135px;">');
+         html.push('     <span style="width:100px;float:left;margin-left:2px;background:">自定义信息窗口</span><span  style="width:30px;float:right;margin-right:2px;" onclick="onClose();">关闭</span>');
+         html.push('</div>');
+         html.push('<div id="deliver-legend-ctrl" style="background:#fff;border:1px solid #C0C0C0;">');
+         html.push(' <table cellspacing="0" cellspadding="0" style="width:130px;border:1px solid #ff0000;">');
+         html.push('     <tr align="center" style="height:10px;">');
+         html.push('         <td></td>');
+         html.push('         <td><a herf="javascript:void(0);"></a></td>');
+         html.push('     </tr>');
+         html.push('     <tr align="center">');
+         html.push('         <td>经度:</td>');
+         html.push('         <td>'+marker.getLngLat().getLng()+'</td>');
+         html.push('     </tr>');
+         html.push('     <tr align="center">');
+         html.push('         <td>纬度:</td>');
+         html.push('         <td>'+marker.getLngLat().getLat()+'</td>');
+         html.push('     </tr>');
+         html.push('     <tr style="height:10px;">');
+         html.push('         <td></td>');
+         html.push('         <td><a herf="javascript:void(0);"></a></td>');
+         html.push('     </tr>');
+         html.push(' </table>');
+         html.push('</div>');
+
+         var config = {
+			offset:new TPixel(0,0),
+			position:marker.getLngLat()
+		 };
+         customerWinInfo=new TLabel(config);
+         customerWinInfo.setTitle('');
+         customerWinInfo.setLabel(html.join(''));
+         customerWinInfo.getObject().style.zIndex = 10000;
+         map.addOverLay(customerWinInfo);
+         var obj = customerWinInfo.getObject();
+         var width = parseInt(obj.offsetWidth);
+         var height = parseInt(obj.offsetHeight);
+         var icon = this.getIcon();
+         var anchor_icon = icon.getAnchor();
+         var pixel = new TPixel(width/-2,height/-2-anchor_icon[1]);
+         customerWinInfo.setOffset(pixel);
+     }
+    </script>
+</head>
+<body onLoad="onLoad()">
+    <div id="mapDiv" style="position:absolute;"></div>
+    <div style="position:absolute;left:620px;">
+        <ul>
+            <li>本示例演示如何在地图上显示一个自定义信息浮窗。</li>
+            <p><a href="http://lbs.tianditu.com/api-new/examples.html">返回所有范例列表</a></p>
+        </ul>
+    </div>
+</body>
+</html>

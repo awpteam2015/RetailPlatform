@@ -1,0 +1,53 @@
+﻿
+
+
+
+
+
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_LayoutList.cshtml";
+}
+
+@section JavaScript{
+    <script src="/Areas/RiverManager/Scripts/RiverAttach/List.js?JsParamter=@SiteConfig.GetConfig().JsParamter" type="text/javascript"></script>
+}
+
+<div title="河流水质水纹管理" style="padding:1px;">
+    <table id="datagrid" style="height:auto;" iconcls=".icon-save" singleselect="true" toolbar="#tb" fit="true"></table>
+    <div id="tb" style="padding:5px;height:auto">
+        <div style="margin-bottom: 5px">
+
+            <a id="btnRefresh" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-reload',plain:true">刷新</a>
+
+        </div>
+
+        <div id="divSearch">
+            <form>
+
+                <table class="mtable">
+
+                    <tr>
+
+                        <td style="width: 100px">
+                            记录月份:
+                        </td>
+                        <td style="width: 100px">
+                      
+                            <input id="RecordTime" name="RecordTime" type="text" onclick="WdatePicker({dateFmt:'yyyy-MM'});" />
+                        </td>
+
+                        <td>
+                            <a href="#" class="easyui-linkbutton" iconcls="icon-search" id="btnSearch">搜索</a>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+

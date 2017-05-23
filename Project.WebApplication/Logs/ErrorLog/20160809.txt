@@ -1,0 +1,16 @@
+2016-08-09 20:26:21,650 [33] ERROR ErrorLogger [(null)] - deleted object would be re-saved by cascade (remove deleted object from associations)[Project.Model.RiverManager.RiverOwerEntity#26]
+2016-08-09 20:45:21,619 [41] ERROR ErrorLogger [(null)] - deleted object would be re-saved by cascade (remove deleted object from associations)[Project.Model.RiverManager.RiverOwerEntity#30]
+2016-08-09 20:47:42,318 [7] ERROR ErrorLogger [(null)] - deleted object would be re-saved by cascade (remove deleted object from associations)[Project.Model.RiverManager.RiverOwerEntity#30]
+2016-08-09 20:49:52,138 [16] ERROR ErrorLogger [(null)] - deleted object would be re-saved by cascade (remove deleted object from associations)[Project.Model.RiverManager.RiverOwerEntity#30]
+2016-08-09 20:59:34,338 [16] ERROR ErrorLogger [(null)] - deleted object would be re-saved by cascade (remove deleted object from associations)[Project.Model.RiverManager.RiverOwerEntity#30]
+2016-08-09 21:00:51,051 [10] ERROR ErrorLogger [(null)] - deleted object would be re-saved by cascade (remove deleted object from associations)[Project.Model.RiverManager.RiverOwerEntity#30]
+2016-08-09 21:01:51,719 [10] ERROR ErrorLogger [(null)] - deleted object would be re-saved by cascade (remove deleted object from associations)[Project.Model.RiverManager.RiverOwerEntity#30]
+2016-08-09 21:03:03,472 [8] ERROR ErrorLogger [(null)] - deleted object would be re-saved by cascade (remove deleted object from associations)[Project.Model.RiverManager.RiverOwerEntity#30]
+2016-08-09 21:03:21,659 [8] ERROR ErrorLogger [(null)] - Initializing[Project.Model.PermissionManager.UserInfoEntity#admin4]-failed to lazily initialize a collection of role: Project.Model.PermissionManager.UserInfoEntity.RiverOwerList, no session or session was closed
+2016-08-09 21:06:05,432 [8] ERROR ErrorLogger [(null)] - Initializing[Project.Model.PermissionManager.UserInfoEntity#admin4]-failed to lazily initialize a collection of role: Project.Model.PermissionManager.UserInfoEntity.RiverOwerList, no session or session was closed
+2016-08-09 21:07:16,121 [9] ERROR ErrorLogger [(null)] - 未将对象引用设置到对象的实例。
+2016-08-09 21:08:00,328 [54] ERROR ErrorLogger [(null)] - 未将对象引用设置到对象的实例。
+2016-08-09 21:08:11,901 [20] ERROR ErrorLogger [(null)] - 未将对象引用设置到对象的实例。
+2016-08-09 21:12:20,553 [43] ERROR ErrorLogger [(null)] - object is an unsaved transient instance - save the transient instance before merging: Project.Model.RiverManager.RiverOwerEntity
+2016-08-09 21:13:14,501 [8] ERROR ErrorLogger [(null)] - object is an unsaved transient instance - save the transient instance before merging: Project.Model.RiverManager.RiverOwerEntity
+2016-08-09 21:15:43,210 [43] ERROR ErrorLogger [(null)] - object is an unsaved transient instance - save the transient instance before merging: Project.Model.RiverManager.RiverOwerEntity

@@ -1,0 +1,58 @@
+2016-07-30 08:44:33,282 [6] ERROR ErrorLogger [(null)] - Error getting value from 'Att_UserName' on 'Project.Model.RiverManager.RiverEntity'.
+2016-07-30 08:44:56,551 [5] ERROR ErrorLogger [(null)] - Error getting value from 'Att_UserName' on 'Project.Model.RiverManager.RiverEntity'.
+2016-07-30 08:53:03,077 [31] ERROR ErrorLogger [(null)] - Error getting value from 'Att_UserName' on 'Project.Model.RiverManager.RiverEntity'.
+2016-07-30 08:58:03,304 [31] ERROR ErrorLogger [(null)] - While preparing select cast(count(*) as INT) as col_0_0_ from RM_River riverentit0_ where @p0=1 and riverentit0_.RiverRank=@p1 an error occurred
+2016-07-30 10:11:26,323 [19] ERROR ErrorLogger [(null)] - could not insert: [Project.Model.RiverManager.MsgNoticeEntity][SQL: INSERT INTO RM_MsgNotice (Title, Des) VALUES (?, ?); select SCOPE_IDENTITY()]
+2016-07-30 10:25:26,024 [15] ERROR ErrorLogger [(null)] - “Project.Infrastructure.FrameworkCore.DataNhibernate.SessionFactoryManager”的类型初始值设定项引发异常。
+2016-07-30 10:25:51,866 [14] ERROR ErrorLogger [(null)] - “Project.Infrastructure.FrameworkCore.DataNhibernate.SessionFactoryManager”的类型初始值设定项引发异常。
+2016-07-30 10:26:34,134 [14] ERROR ErrorLogger [(null)] - “Project.Infrastructure.FrameworkCore.DataNhibernate.SessionFactoryManager”的类型初始值设定项引发异常。
+2016-07-30 12:33:59,886 [42] ERROR ErrorLogger [(null)] - 值不能为 null。
+参数名: source
+2016-07-30 12:34:56,379 [7] ERROR ErrorLogger [(null)] - 值不能为 null。
+参数名: source
+2016-07-30 12:54:12,805 [24] ERROR ErrorLogger [(null)] - 值不能为 null。
+参数名: source
+2016-07-30 12:55:23,675 [24] ERROR ErrorLogger [(null)] - 值不能为 null。
+参数名: source
+2016-07-30 12:55:32,918 [26] ERROR ErrorLogger [(null)] - 值不能为 null。
+参数名: source
+2016-07-30 12:56:44,156 [26] ERROR ErrorLogger [(null)] - 值不能为 null。
+参数名: source
+2016-07-30 12:56:52,145 [15] ERROR ErrorLogger [(null)] - 值不能为 null。
+参数名: source
+2016-07-30 12:58:49,842 [17] ERROR ErrorLogger [(null)] - 值不能为 null。
+参数名: source
+2016-07-30 13:08:48,337 [33] ERROR ErrorLogger [(null)] - 值不能为 null。
+参数名: source
+2016-07-30 13:08:53,685 [31] ERROR ErrorLogger [(null)] - 值不能为 null。
+参数名: source
+2016-07-30 13:09:37,787 [23] ERROR ErrorLogger [(null)] - 值不能为 null。
+参数名: source
+2016-07-30 13:09:43,069 [8] ERROR ErrorLogger [(null)] - 值不能为 null。
+参数名: source
+2016-07-30 13:09:58,567 [33] ERROR ErrorLogger [(null)] - 值不能为 null。
+参数名: source
+2016-07-30 13:10:18,005 [37] ERROR ErrorLogger [(null)] - 值不能为 null。
+参数名: source
+2016-07-30 13:11:02,234 [37] ERROR ErrorLogger [(null)] - 值不能为 null。
+参数名: source
+2016-07-30 13:11:55,576 [36] ERROR ErrorLogger [(null)] - 值不能为 null。
+参数名: source
+2016-07-30 13:13:08,709 [23] ERROR ErrorLogger [(null)] - 值不能为 null。
+参数名: source
+2016-07-30 14:52:54,368 [45] ERROR ErrorLogger [(null)] - Error getting value from 'Att_UserName' on 'Project.Model.RiverManager.RiverEntity'.
+2016-07-30 14:52:59,560 [36] ERROR ErrorLogger [(null)] - Error getting value from 'Att_UserName' on 'Project.Model.RiverManager.RiverEntity'.
+2016-07-30 14:53:11,989 [48] ERROR ErrorLogger [(null)] - Error getting value from 'Att_UserName' on 'Project.Model.RiverManager.RiverEntity'.
+2016-07-30 14:54:28,911 [20] ERROR ErrorLogger [(null)] - Error getting value from 'Att_UserName' on 'Project.Model.RiverManager.RiverEntity'.
+2016-07-30 17:00:29,328 [12] ERROR ErrorLogger [(null)] - 未能找到路径“G:\云端备份\我设计的框架\River\Project.WebApplication\TemplateFile\Template\RiverAttach.xlsx”的一部分。
+2016-07-30 17:01:24,169 [8] ERROR ErrorLogger [(null)] - 未能找到路径“G:\云端备份\我设计的框架\River\Project.WebApplication\TemplateFile\Template\RiverAttach.xlsx”的一部分。
+2016-07-30 17:01:45,628 [13] ERROR ErrorLogger [(null)] - 文件“G:\云端备份\我设计的框架\River\Project.WebApplication\TemplateFile\RiverAttach.xlsx”正由另一进程使用，因此该进程无法访问此文件。
+2016-07-30 20:25:27,629 [7] ERROR ErrorLogger [(null)] - 未将对象引用设置到对象的实例。
+2016-07-30 20:26:56,392 [9] ERROR ErrorLogger [(null)] - 未将对象引用设置到对象的实例。
+2016-07-30 20:28:05,773 [29] ERROR ErrorLogger [(null)] - 未将对象引用设置到对象的实例。
+2016-07-30 20:30:07,676 [29] ERROR ErrorLogger [(null)] - 未将对象引用设置到对象的实例。
+2016-07-30 20:31:17,692 [29] ERROR ErrorLogger [(null)] - 未将对象引用设置到对象的实例。
+2016-07-30 20:31:21,033 [27] ERROR ErrorLogger [(null)] - 未将对象引用设置到对象的实例。
+2016-07-30 20:47:43,877 [23] ERROR ErrorLogger [(null)] - Not a numeric value in Cell Sheet1!B2
+2016-07-30 20:48:53,073 [15] ERROR ErrorLogger [(null)] - Not a numeric value in Cell Sheet1!B2
+2016-07-30 20:49:38,711 [23] ERROR ErrorLogger [(null)] - Not a numeric value in Cell Sheet1!B2

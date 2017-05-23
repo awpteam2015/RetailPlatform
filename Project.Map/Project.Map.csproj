@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{21E524E2-CAFE-4CBB-8141-E21DBA15FC1F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Project.Map</RootNamespace>
+    <AssemblyName>Project.Map</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FluentNHibernate, Version=2.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentNHibernate.2.0.3.0\lib\net40\FluentNHibernate.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Iesi.Collections, Version=4.0.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Iesi.Collections.4.0.0.4000\lib\net40\Iesi.Collections.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NHibernate, Version=4.0.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\packages\NHibernate.4.0.4.4000\lib\net40\NHibernate.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="HRManager\AttendanceMap.cs" />
+    <Compile Include="HRManager\AttendanceUploadRecordMap.cs" />
+    <Compile Include="HRManager\ContinEducationMap.cs" />
+    <Compile Include="HRManager\ContractMap.cs" />
+    <Compile Include="HRManager\DictionaryMap.cs" />
+    <Compile Include="HRManager\EmployeeChildrenMap.cs" />
+    <Compile Include="HRManager\EmployeeFileMap.cs" />
+    <Compile Include="HRManager\EmployeeInfoHisMap.cs" />
+    <Compile Include="HRManager\EmployeeInfoMap.cs" />
+    <Compile Include="HRManager\EmployeeRotateMap.cs" />
+    <Compile Include="HRManager\EmployeeYearDetailMap.cs" />
+    <Compile Include="HRManager\EmployeeYearMainMap.cs" />
+    <Compile Include="HRManager\GoAbroadMap.cs" />
+    <Compile Include="HRManager\GroupEmployeeHisMap.cs" />
+    <Compile Include="HRManager\GroupEmployeeMap.cs" />
+    <Compile Include="HRManager\GroupMap.cs" />
+    <Compile Include="HRManager\LearningExperiencesMap.cs" />
+    <Compile Include="HRManager\MessageInfoMap.cs" />
+    <Compile Include="HRManager\ProfessionMap.cs" />
+    <Compile Include="HRManager\SanctionMap.cs" />
+    <Compile Include="HRManager\YearAssessmentMap.cs" />
+    <Compile Include="HRManager\TechnicalMap.cs" />
+    <Compile Include="HRManager\WorkExperienceMap.cs" />
+    <Compile Include="HRManager\YearHolidayDefinitionMap.cs" />
+    <Compile Include="HRManager\YGWageMap.cs" />
+    <Compile Include="PermissionManager\DepartmentMap.cs" />
+    <Compile Include="PermissionManager\FunctionDetailMap.cs" />
+    <Compile Include="PermissionManager\FunctionMap.cs" />
+    <Compile Include="PermissionManager\ModuleMap.cs" />
+    <Compile Include="PermissionManager\RoleDepartmentMap.cs" />
+    <Compile Include="PermissionManager\RoleFunctionDetailMap.cs" />
+    <Compile Include="PermissionManager\RoleMap.cs" />
+    <Compile Include="PermissionManager\UserDepartmentMap.cs" />
+    <Compile Include="PermissionManager\UserFunctionDetailMap.cs" />
+    <Compile Include="PermissionManager\UserInfoMap.cs" />
+    <Compile Include="PermissionManager\UserRoleMap.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RiverManager\MessageTagMap.cs" />
+    <Compile Include="RiverManager\MsgNoticeMap.cs" />
+    <Compile Include="RiverManager\RiverAttachMap.cs" />
+    <Compile Include="RiverManager\RiverCheckMap.cs" />
+    <Compile Include="RiverManager\RiverMap.cs" />
+    <Compile Include="RiverManager\RiverOwerMap.cs" />
+    <Compile Include="RiverManager\RiverProblemApplyMap.cs" />
+    <Compile Include="RiverManager\RiverProblemDbMap.cs" />
+    <Compile Include="SystemSetManager\HolidayDetailMap.cs" />
+    <Compile Include="SystemSetManager\IndexPageSetMap.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Project.Infrastructure.FrameworkCore\Project.Infrastructure.FrameworkCore.csproj">
+      <Project>{1c2392ad-a0f8-4378-9c54-3dcd1fb5d1db}</Project>
+      <Name>Project.Infrastructure.FrameworkCore</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Project.Model\Project.Model.csproj">
+      <Project>{3D26782A-3308-430B-B58F-5F8ABA1A50B3}</Project>
+      <Name>Project.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="SampleManager\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

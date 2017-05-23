@@ -1,0 +1,178 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>天地图－地图API－范例－测面工具</title>
+    <script src="/Scripts/jquery-1.10.2.js"></script>
+    <script src="/Scripts/jqueryPlugins/jquery_json/Json.js"></script>
+    @*<script type="text/javascript" src="http://api.tianditu.com/js/maps.js"></script>*@
+    <script src="/Scripts/maps.js"></script>
+    <script src="/Scripts/pro/commonKit.js"></script>
+
+    <script>
+        var map, zoom = 13, polygonTool, marker;
+
+        function clear2() {
+            //alert(11);
+            //polygonTool.clear();
+            //  map.clearOverLays();
+            parent.$("#Coords").val("");
+        }
+
+        function start() {
+            //alert(11);
+            //polygonTool.clear();
+            //map.clearOverLays();
+            //parent.$("#Coords").val("");
+            var config = {
+                strokeColor: "blue", //折线颜色
+                fillColor: "#FFFFFF", //填充颜色。当参数为空时，折线覆盖物将没有填充效果
+                strokeWeight: "3px", //折线的宽度，以像素为单位
+                strokeOpacity: 0.5, //折线的透明度，取值范围0 - 1
+                fillOpacity: 0.5 //填充的透明度，取值范围0 - 1
+            };
+            //创建测面工具对象
+            polygonTool = new TPolygonTool(map, config);
+            //注册测面工具绘制完成后的事件
+            TEvent.addListener(polygonTool, "draw", onDrawPolygon);
+            polygonTool.open();
+
+
+        }
+
+
+        function onLoad() {
+            //初始化地图对象
+            map = new TMap("mapDiv");
+            //设置显示地图的中心点和级别
+            map.centerAndZoom(new TLngLat(120.560518, 30.637757), zoom);
+            //允许鼠标滚轮放大地图
+            map.enableHandleMouseScroll();
+
+            var control = new TMapTypeControl();
+            //将地图类型控件添加到地图上
+            map.addControl(control);
+
+            var command = pro.commonKit.getUrlParam("command");
+            var PkId = pro.commonKit.getUrlParam("PkId");
+
+            if ($("#RiverList").val() != "") {
+                var riverJson = JSON.parse($("#RiverList").val());
+                $.each(riverJson, function (i, item) {
+
+                    var points = [];
+                    if (item.Coords != "" && item.Coords != "[]") {
+                        // alert(Coords[i]);
+                        var pointsJson = JSON.parse(item.Coords);
+                        $.each(pointsJson, function (i, item) {
+                            points.push(new TLngLat(item.lngNTU / 100000, item.latNTU / 100000));
+                        });
+                        map.centerAndZoom(new TLngLat(points[0].lngNTU / 100000, points[0].latNTU / 100000), zoom);
+                    }
+                    // alert(points.length);
+                    if (points.length > 0) {
+                        var polygon = new TPolygon(points, { strokeColor: "green", strokeWeight: 6, strokeOpacity: 0.5, fillOpacity: 0.5 });
+                        //alert(polygon);
+                        //向地图上添加面
+                        map.addOverLay(polygon);
+
+
+                        TEvent.addListener(polygon, "click", function (p) {
+                            var lnglat = map.fromContainerPixelToLngLat(p);
+                            var mark = new TMarker(lnglat);
+                            var html = [];
+
+                            var pic = "";
+                            if (item.WaterQualityChange == "2") {
+                                pic = '<img src="/Resources/ng.png">';
+                            } else {
+                                pic = '<img src="/Resources/gx.png">';
+                            }
+
+
+                            html.push(' <table cellspacing="0" cellspadding="0" style="width:230px;border:1px solid ;text-align: left;">');
+                            html.push('     <tr >');
+                            html.push('         <td style="width:100px">河道名称:</td>');
+                            html.push('         <td>' + item.RiverName + '</td>');
+                            html.push('     </tr>');
+                            html.push('     <tr >');
+                            html.push('         <td>归属部门:</td>');
+                            html.push('         <td>' + item.DepartmentName + '</td>');
+                            html.push('     </tr>');
+                            html.push('     <tr >');
+                            html.push('         <td>河道等级:</td>');
+                            html.push('         <td>' + item.RiverRank + '</td>');
+                            html.push('     </tr>');
+                            html.push('     <tr >');
+                            html.push('         <td>起点:</td>');
+                            html.push('         <td>' + item.RiverStart + '</td>');
+                            html.push('     </tr>');
+                            html.push('     <tr >');
+                            html.push('         <td>终点:</td>');
+                            html.push('         <td>' + item.RiverEnd + '</td>');
+                            html.push('     </tr>');
+                            html.push('     <tr >');
+                            html.push('         <td>长度:</td>');
+                            html.push('         <td>' + item.RiverLength + '</td>');
+                            html.push('     </tr>');
+                            html.push('     <tr >');
+                            html.push('         <td>流经乡镇:</td>');
+                            html.push('         <td>' + item.RiverCrossArea + '</td>');
+                            html.push('     </tr>');
+
+                            html.push('     <tr >');
+                            html.push('         <td>水质类别:</td>');
+                            html.push('         <td>' + item.WaterQualityRank + '</td>');
+                            html.push('     </tr>');
+
+                            html.push('     <tr >');
+                            html.push('         <td>水质变化:</td>');
+                            html.push('         <td>' + (item.WaterQualityRank == "" ? "" : pic) + '</td>');
+                            html.push('     </tr>');
+
+                            html.push(' </table>');
+
+
+                            var config = {
+                                offset: new TPixel(0, 0),
+                                position: mark.getLngLat()
+                            };
+
+                            var infoWin = new TInfoWindow(lnglat, new TPixel([0, -34]));
+                            //设置信息窗口要显示的内容
+
+                            infoWin.setLabel(html.join(''));
+
+
+                            //向地图上添加信息窗口
+
+                            map.addOverLay(infoWin);
+
+                        });
+
+
+                    }
+
+                });
+            }
+
+        }
+
+
+
+    </script>
+</head>
+<body onLoad="onLoad()">
+    @*<textarea id="CoordsList" style="display: ">@ViewBag.CoordsList</textarea>*@
+    <textarea id="RiverList" style="display: none">@ViewBag.RiverList</textarea>
+    @*<input type="button" value="清空坐标" onclick="clear2()" id="btn1" />
+        <input type="button" value="开始标注" onclick="start()" id="btn2" />*@
+
+    <div id="mapDiv" style="position: absolute; width:100%; height:100%"></div>
+</body>
+</html>

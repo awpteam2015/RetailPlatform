@@ -1,0 +1,11 @@
+2016-09-01 18:02:45,988 [25] ERROR ErrorLogger [(null)] - a different object with the same identifier value was already associated with the session: 62, of entity: Project.Model.PermissionManager.UserDepartmentEntity
+2016-09-01 18:04:12,542 [25] ERROR ErrorLogger [(null)] - a different object with the same identifier value was already associated with the session: 62, of entity: Project.Model.PermissionManager.UserDepartmentEntity
+2016-09-01 18:05:46,683 [31] ERROR ErrorLogger [(null)] - a different object with the same identifier value was already associated with the session: 62, of entity: Project.Model.PermissionManager.UserDepartmentEntity
+2016-09-01 18:07:02,564 [33] ERROR ErrorLogger [(null)] - a different object with the same identifier value was already associated with the session: 62, of entity: Project.Model.PermissionManager.UserDepartmentEntity
+2016-09-01 18:08:49,256 [34] ERROR ErrorLogger [(null)] - a different object with the same identifier value was already associated with the session: 62, of entity: Project.Model.PermissionManager.UserDepartmentEntity
+2016-09-01 18:10:46,043 [31] ERROR ErrorLogger [(null)] - 未将对象引用设置到对象的实例。
+2016-09-01 18:11:03,391 [22] ERROR ErrorLogger [(null)] - 未将对象引用设置到对象的实例。
+2016-09-01 18:12:11,898 [15] ERROR ErrorLogger [(null)] - 未将对象引用设置到对象的实例。
+2016-09-01 18:13:33,641 [9] ERROR ErrorLogger [(null)] - 未将对象引用设置到对象的实例。
+2016-09-01 18:14:25,112 [25] ERROR ErrorLogger [(null)] - 未将对象引用设置到对象的实例。
+2016-09-01 18:15:06,443 [25] ERROR ErrorLogger [(null)] - 序列不包含任何匹配元素

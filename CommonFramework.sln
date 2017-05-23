@@ -1,0 +1,83 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project.WebApplication", "Project.WebApplication\Project.WebApplication.csproj", "{0492E1A5-4AC6-4BEC-9BD4-18A0F1154099}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project.Model", "Project.Model\Project.Model.csproj", "{3D26782A-3308-430B-B58F-5F8ABA1A50B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project.Map", "Project.Map\Project.Map.csproj", "{21E524E2-CAFE-4CBB-8141-E21DBA15FC1F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project.Service", "Project.Service\Project.Service.csproj", "{CC818705-0142-46D9-A858-1575069C0ABE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project.Repository", "Project.Repository\Project.Repository.csproj", "{AB16EA24-3296-4DAC-A2D8-203158EEAB6F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lib", "Lib", "{9123F07D-16C6-44DA-A42B-DE99A9DC80DD}"
+	ProjectSection(SolutionItems) = preProject
+		Lib\Aspose.Cells.dll = Lib\Aspose.Cells.dll
+		Lib\Aspose.Words.dll = Lib\Aspose.Words.dll
+		Lib\HibernatingRhinos.Profiler.Appender.v4.0.dll = Lib\HibernatingRhinos.Profiler.Appender.v4.0.dll
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tool", "Tool", "{452812AE-9B15-47E7-8F05-6F3A559E16FA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{1F3E81CC-6777-4BD3-B05A-60BD3485749F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project.Config", "Project.Config\Project.Config.csproj", "{7E5CD828-D4FF-445E-9F1D-068102151681}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DB", "DB", "{BAFEF88F-042B-429A-81ED-2E49ECCCF8FF}"
+	ProjectSection(SolutionItems) = preProject
+		DB\海盐卫生局.PDM = DB\海盐卫生局.PDM
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project.Infrastructure.FrameworkCore", "Project.Infrastructure.FrameworkCore\Project.Infrastructure.FrameworkCore.csproj", "{1C2392AD-A0F8-4378-9C54-3DCD1FB5D1DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project.WebSite", "Project.WebSite\Project.WebSite.csproj", "{EE695498-C589-425B-B411-5227D1767185}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0492E1A5-4AC6-4BEC-9BD4-18A0F1154099}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0492E1A5-4AC6-4BEC-9BD4-18A0F1154099}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0492E1A5-4AC6-4BEC-9BD4-18A0F1154099}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0492E1A5-4AC6-4BEC-9BD4-18A0F1154099}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D26782A-3308-430B-B58F-5F8ABA1A50B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D26782A-3308-430B-B58F-5F8ABA1A50B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D26782A-3308-430B-B58F-5F8ABA1A50B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D26782A-3308-430B-B58F-5F8ABA1A50B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21E524E2-CAFE-4CBB-8141-E21DBA15FC1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21E524E2-CAFE-4CBB-8141-E21DBA15FC1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21E524E2-CAFE-4CBB-8141-E21DBA15FC1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21E524E2-CAFE-4CBB-8141-E21DBA15FC1F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC818705-0142-46D9-A858-1575069C0ABE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC818705-0142-46D9-A858-1575069C0ABE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC818705-0142-46D9-A858-1575069C0ABE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC818705-0142-46D9-A858-1575069C0ABE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB16EA24-3296-4DAC-A2D8-203158EEAB6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB16EA24-3296-4DAC-A2D8-203158EEAB6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB16EA24-3296-4DAC-A2D8-203158EEAB6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB16EA24-3296-4DAC-A2D8-203158EEAB6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E5CD828-D4FF-445E-9F1D-068102151681}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E5CD828-D4FF-445E-9F1D-068102151681}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E5CD828-D4FF-445E-9F1D-068102151681}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E5CD828-D4FF-445E-9F1D-068102151681}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C2392AD-A0F8-4378-9C54-3DCD1FB5D1DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C2392AD-A0F8-4378-9C54-3DCD1FB5D1DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C2392AD-A0F8-4378-9C54-3DCD1FB5D1DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C2392AD-A0F8-4378-9C54-3DCD1FB5D1DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE695498-C589-425B-B411-5227D1767185}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE695498-C589-425B-B411-5227D1767185}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE695498-C589-425B-B411-5227D1767185}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE695498-C589-425B-B411-5227D1767185}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BAFEF88F-042B-429A-81ED-2E49ECCCF8FF} = {1F3E81CC-6777-4BD3-B05A-60BD3485749F}
+	EndGlobalSection
+EndGlobal

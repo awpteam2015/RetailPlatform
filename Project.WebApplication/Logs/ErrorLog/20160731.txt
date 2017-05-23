@@ -1,0 +1,34 @@
+2016-07-31 14:16:15,612 [43] ERROR ErrorLogger [(null)] - 未找到视图“ViewList”或其母版视图，或没有视图引擎支持搜索的位置。搜索了以下位置: 
+~/Areas/RiverManager/Views/RiverCheck/ViewList.aspx
+~/Areas/RiverManager/Views/RiverCheck/ViewList.ascx
+~/Areas/RiverManager/Views/Shared/ViewList.aspx
+~/Areas/RiverManager/Views/Shared/ViewList.ascx
+~/Views/RiverCheck/ViewList.aspx
+~/Views/RiverCheck/ViewList.ascx
+~/Views/Shared/ViewList.aspx
+~/Views/Shared/ViewList.ascx
+~/Areas/RiverManager/Views/RiverCheck/ViewList.cshtml
+~/Areas/RiverManager/Views/RiverCheck/ViewList.vbhtml
+~/Areas/RiverManager/Views/Shared/ViewList.cshtml
+~/Areas/RiverManager/Views/Shared/ViewList.vbhtml
+~/Views/RiverCheck/ViewList.cshtml
+~/Views/RiverCheck/ViewList.vbhtml
+~/Views/Shared/ViewList.cshtml
+~/Views/Shared/ViewList.vbhtml
+2016-07-31 14:16:55,633 [37] ERROR ErrorLogger [(null)] - 未找到视图“ViewList”或其母版视图，或没有视图引擎支持搜索的位置。搜索了以下位置: 
+~/Areas/RiverManager/Views/RiverCheck/ViewList.aspx
+~/Areas/RiverManager/Views/RiverCheck/ViewList.ascx
+~/Areas/RiverManager/Views/Shared/ViewList.aspx
+~/Areas/RiverManager/Views/Shared/ViewList.ascx
+~/Views/RiverCheck/ViewList.aspx
+~/Views/RiverCheck/ViewList.ascx
+~/Views/Shared/ViewList.aspx
+~/Views/Shared/ViewList.ascx
+~/Areas/RiverManager/Views/RiverCheck/ViewList.cshtml
+~/Areas/RiverManager/Views/RiverCheck/ViewList.vbhtml
+~/Areas/RiverManager/Views/Shared/ViewList.cshtml
+~/Areas/RiverManager/Views/Shared/ViewList.vbhtml
+~/Views/RiverCheck/ViewList.cshtml
+~/Views/RiverCheck/ViewList.vbhtml
+~/Views/Shared/ViewList.cshtml
+~/Views/Shared/ViewList.vbhtml

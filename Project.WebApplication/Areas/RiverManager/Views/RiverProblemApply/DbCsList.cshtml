@@ -1,0 +1,78 @@
+﻿
+
+
+
+
+
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_LayoutList.cshtml";
+}
+
+@section JavaScript{
+    <script src="/Areas/RiverManager/Scripts/RiverProblemApply/List.js?JsParamter=@SiteConfig.GetConfig().JsParamter" type="text/javascript"></script>
+}
+
+<div title="河道问题督办列表" style="padding: 1px;">
+    <table id="datagrid" style="height: auto;" iconcls=".icon-save" singleselect="true" toolbar="#tb" fit="true"></table>
+    <div id="tb" style="padding: 5px; height: auto">
+        <div style="margin-bottom: 5px">
+            <a id="btnViewDetail" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true">查看</a>
+            @*<a id="btnDb" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true">督办</a>*@
+
+            <a id="btnRefresh" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-reload',plain:true">刷新</a>
+            <input type="hidden" id="Command" value="dbcs" />
+        </div>
+
+        <div id="divSearch">
+            <form>
+                <table class="mtable">
+                    @Html.Partial("_Search")
+                    <tr>
+                        <td>
+                            是否督办 :
+                        </td>
+                        <td>
+                            <select id="IsUrgent" name="IsUrgent">
+                                <option value="2">请选择</option>
+                                <option value="0">否</option>
+                                <option value="1">是</option>
+                            </select>
+                        </td>
+
+                        <td>
+                            是否发送短信 :
+                        </td>
+                        <td>
+                            <select id="IsSendMessage" name="IsSendMessage">
+                                <option value="2">请选择</option>
+                                <option value="0">否</option>
+                                <option value="1">是</option>
+                            </select>
+                        </td>
+                        <td>
+                            督办状态：
+                        </td>
+                        <td>
+
+                            <select id="DbState" name="DbState">
+                                <option value="0">请选择</option>
+                                <option value="2">已回退</option>
+                                <option value="1">已完结</option>
+                            </select>
+                        </td>
+                        <td>
+                            <a href="#" class="easyui-linkbutton" iconcls="icon-search" id="btnSearch">搜索</a>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+

@@ -1,0 +1,41 @@
+2016-07-26 12:42:10,811 [19] ERROR ErrorLogger [(null)] - 未将对象引用设置到对象的实例。
+2016-07-26 12:42:10,811 [27] ERROR ErrorLogger [(null)] - 未将对象引用设置到对象的实例。
+2016-07-26 12:42:10,811 [35] ERROR ErrorLogger [(null)] - 未将对象引用设置到对象的实例。
+2016-07-26 13:49:34,685 [5] ERROR ErrorLogger [(null)] - 未找到视图“TdMap2”或其母版视图，或没有视图引擎支持搜索的位置。搜索了以下位置: 
+~/Views/river/TdMap2.aspx
+~/Views/river/TdMap2.ascx
+~/Views/Shared/TdMap2.aspx
+~/Views/Shared/TdMap2.ascx
+~/Views/river/TdMap2.cshtml
+~/Views/river/TdMap2.vbhtml
+~/Views/Shared/TdMap2.cshtml
+~/Views/Shared/TdMap2.vbhtml
+2016-07-26 14:17:53,159 [42] ERROR ErrorLogger [(null)] - 未将对象引用设置到对象的实例。
+2016-07-26 15:14:28,993 [13] ERROR ErrorLogger [(null)] - 未将对象引用设置到对象的实例。
+2016-07-26 15:14:29,006 [14] ERROR ErrorLogger [(null)] - 未将对象引用设置到对象的实例。
+2016-07-26 15:14:29,006 [21] ERROR ErrorLogger [(null)] - 未将对象引用设置到对象的实例。
+2016-07-26 15:42:57,428 [8] ERROR ErrorLogger [(null)] - 未将对象引用设置到对象的实例。
+2016-07-26 15:42:57,433 [10] ERROR ErrorLogger [(null)] - 未将对象引用设置到对象的实例。
+2016-07-26 15:42:57,433 [9] ERROR ErrorLogger [(null)] - 未将对象引用设置到对象的实例。
+2016-07-26 16:29:17,893 [8] ERROR ErrorLogger [(null)] - “Project.Infrastructure.FrameworkCore.DataNhibernate.SessionFactoryManager”的类型初始值设定项引发异常。
+2016-07-26 16:29:18,403 [6] ERROR ErrorLogger [(null)] - “Project.Infrastructure.FrameworkCore.DataNhibernate.SessionFactoryManager”的类型初始值设定项引发异常。
+2016-07-26 16:30:00,661 [8] ERROR ErrorLogger [(null)] - “Project.Infrastructure.FrameworkCore.DataNhibernate.SessionFactoryManager”的类型初始值设定项引发异常。
+2016-07-26 16:30:15,829 [9] ERROR ErrorLogger [(null)] - “Project.Infrastructure.FrameworkCore.DataNhibernate.SessionFactoryManager”的类型初始值设定项引发异常。
+2016-07-26 16:30:18,186 [12] ERROR ErrorLogger [(null)] - “Project.Infrastructure.FrameworkCore.DataNhibernate.SessionFactoryManager”的类型初始值设定项引发异常。
+2016-07-26 21:10:01,728 [13] ERROR ErrorLogger [(null)] - 未找到视图“DeleteList”或其母版视图，或没有视图引擎支持搜索的位置。搜索了以下位置: 
+~/Areas/RiverManager/Views/RiverProblemApply/DeleteList.aspx
+~/Areas/RiverManager/Views/RiverProblemApply/DeleteList.ascx
+~/Areas/RiverManager/Views/Shared/DeleteList.aspx
+~/Areas/RiverManager/Views/Shared/DeleteList.ascx
+~/Views/RiverProblemApply/DeleteList.aspx
+~/Views/RiverProblemApply/DeleteList.ascx
+~/Views/Shared/DeleteList.aspx
+~/Views/Shared/DeleteList.ascx
+~/Areas/RiverManager/Views/RiverProblemApply/DeleteList.cshtml
+~/Areas/RiverManager/Views/RiverProblemApply/DeleteList.vbhtml
+~/Areas/RiverManager/Views/Shared/DeleteList.cshtml
+~/Areas/RiverManager/Views/Shared/DeleteList.vbhtml
+~/Views/RiverProblemApply/DeleteList.cshtml
+~/Views/RiverProblemApply/DeleteList.vbhtml
+~/Views/Shared/DeleteList.cshtml
+~/Views/Shared/DeleteList.vbhtml

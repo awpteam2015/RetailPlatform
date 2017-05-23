@@ -1,0 +1,253 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1C2392AD-A0F8-4378-9C54-3DCD1FB5D1DB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Project.Infrastructure.FrameworkCore</RootNamespace>
+    <AssemblyName>Project.Infrastructure.FrameworkCore</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Aspose.Cells, Version=8.6.3.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\Aspose.Cells.dll</HintPath>
+    </Reference>
+    <Reference Include="Aspose.Words">
+      <HintPath>..\Lib\Aspose.Words.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper, Version=4.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.4.1.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FluentNHibernate, Version=2.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentNHibernate.2.0.3.0\lib\net40\FluentNHibernate.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="HibernatingRhinos.Profiler.Appender.v4.0">
+      <HintPath>..\Lib\HibernatingRhinos.Profiler.Appender.v4.0.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections, Version=4.0.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Iesi.Collections.4.0.0.4000\lib\net40\Iesi.Collections.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NHibernate, Version=4.0.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\packages\NHibernate.4.0.4.4000\lib\net40\NHibernate.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AutoMapper\AutoMapperExtend.cs" />
+    <Compile Include="DataNhibernate\EntityMappings\FullMap.cs" />
+    <Compile Include="DataNhibernate\EntityMappings\ViewBaseMap.cs" />
+    <Compile Include="DataNhibernate\Helpers\CustomDialectSql.cs" />
+    <Compile Include="DataNhibernate\Helpers\CustomDialectOracle.cs" />
+    <Compile Include="DataNhibernate\Helpers\HqlGeneratorForMethodExtend.cs" />
+    <Compile Include="DataNhibernate\Helpers\NhExpansion.cs" />
+    <Compile Include="DataNhibernate\Helpers\NHibernateContractResolver.cs" />
+    <Compile Include="DataNhibernate\Helpers\PredicateBuilder.cs" />
+    <Compile Include="DataNhibernate\SessionFactoryManager.cs" />
+    <Compile Include="DataNhibernate\SessionStorage\HttpSessionContainer.cs" />
+    <Compile Include="DataNhibernate\SessionStorage\ISessionStorageContainer.cs" />
+    <Compile Include="DataNhibernate\SessionStorage\SessionStorageFactory.cs" />
+    <Compile Include="DataNhibernate\SessionStorage\ThreadSessionStorageContainer.cs" />
+    <Compile Include="DataNhibernate\TransactionHelper.cs" />
+    <Compile Include="Domain\Class1.cs" />
+    <Compile Include="Domain\Entities\Auditing\Abstract\AuditedEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\Entities\Auditing\Abstract\CreationAuditedEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\Entities\Auditing\Abstract\FullAuditedEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\Entities\Auditing\Abstract\ModificationAuditedEntity.cs" />
+    <Compile Include="Domain\Entities\Auditing\Interface\IFullAudited.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\Entities\Component\IHasCreationTime.cs" />
+    <Compile Include="Domain\Entities\Component\IHasRemark.cs" />
+    <Compile Include="Domain\Entities\Component\IMustHaveSiteCode.cs" />
+    <Compile Include="Domain\Entities\AuditedEntity.cs" />
+    <Compile Include="Domain\Entities\FullAuditedEntity.cs" />
+    <Compile Include="Domain\Entities\CreationAuditedEntity.cs" />
+    <Compile Include="Domain\Entities\Auditing\Interface\IAudited.cs" />
+    <Compile Include="Domain\Entities\Auditing\Interface\ICreationAudited.cs" />
+    <Compile Include="Domain\Entities\Auditing\Interface\IDeletionAudited.cs" />
+    <Compile Include="Domain\Entities\Auditing\Interface\IModificationAudited.cs" />
+    <Compile Include="Domain\Entities\Component\ISoftDelete.cs" />
+    <Compile Include="Domain\Entities\HttpContextUserInfo.cs" />
+    <Compile Include="Domain\Entities\ModificationAuditedEntity.cs" />
+    <Compile Include="DataNhibernate\EntityMappings\BaseMap.cs" />
+    <Compile Include="Domain\Entities\Entity.cs" />
+    <Compile Include="DataNhibernate\EntityMappings\NhMappingExtensions.cs" />
+    <Compile Include="Domain\Repositories\Interface\IReadOnlyRepositoryBase.cs" />
+    <Compile Include="Domain\Repositories\Interface\IRepositoryBase.cs" />
+    <Compile Include="Domain\Repositories\Interface\IRepositoryBaseExtendOracle.cs" />
+    <Compile Include="Domain\Repositories\Interface\IRepositoryBaseExtendSql.cs" />
+    <Compile Include="Domain\Repositories\ReadOnlyRepositoryBase.cs" />
+    <Compile Include="Domain\Repositories\RepositoryBase.cs" />
+    <Compile Include="Domain\Repositories\RepositoryBaseOracle.cs" />
+    <Compile Include="Domain\Repositories\RepositoryBaseSql.cs" />
+    <Compile Include="Domain\Services\IService.cs" />
+    <Compile Include="Logging\CustomLayout\MyPatternLayout.cs" />
+    <Compile Include="Logging\CustomLayout\MyPatternLayoutConverter.cs" />
+    <Compile Include="Logging\LoggerHelper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sc\Class1.cs" />
+    <Compile Include="ToolKit\AsposeCellsHelper.cs" />
+    <Compile Include="ToolKit\AsposeWordsHelper.cs" />
+    <Compile Include="ToolKit\Base64Helper.cs" />
+    <Compile Include="ToolKit\CacheHelper.cs" />
+    <Compile Include="ToolKit\ConfigHelper.cs" />
+    <Compile Include="ToolKit\ConvertHelper.cs" />
+    <Compile Include="ToolKit\CookieHelper.cs" />
+    <Compile Include="ToolKit\DataSetHelper.cs" />
+    <Compile Include="ToolKit\DateTimeExtend.cs" />
+    <Compile Include="ToolKit\DateTimeHelper.cs" />
+    <Compile Include="ToolKit\Encrypt.cs" />
+    <Compile Include="ToolKit\EntityHelper.cs" />
+    <Compile Include="ToolKit\EnumHelper.cs" />
+    <Compile Include="ToolKit\ExtensionMethods..cs" />
+    <Compile Include="ToolKit\Extensions\DataTableExtensions.cs" />
+    <Compile Include="ToolKit\Extensions\DictionaryExtessions.cs" />
+    <Compile Include="ToolKit\Extensions\PinYinExtessions.cs" />
+    <Compile Include="ToolKit\FileHandler\FileHelper.cs" />
+    <Compile Include="ToolKit\FileHandler\FileUpload.cs" />
+    <Compile Include="ToolKit\HttpHelper.cs" />
+    <Compile Include="ToolKit\ImageHandler\ImageHelper.cs" />
+    <Compile Include="ToolKit\ImageHandler\ImageUtil.cs" />
+    <Compile Include="ToolKit\ImageHandler\VerificationImage.cs" />
+    <Compile Include="ToolKit\IPHelper.cs" />
+    <Compile Include="ToolKit\JsonHandler\JsonHelper.cs" />
+    <Compile Include="ToolKit\LinqExpansion\DynamicQuery.cs" />
+    <Compile Include="ToolKit\LinqExpansion\Expansion.cs" />
+    <Compile Include="ToolKit\LinqExpansion\KeyEqualityComparer.cs" />
+    <Compile Include="ToolKit\MathHandler.cs" />
+    <Compile Include="ToolKit\MessageBox.cs" />
+    <Compile Include="ToolKit\NetWorkHandler\AppDomainUtil.cs" />
+    <Compile Include="ToolKit\NetWorkHandler\DomainsUtil.cs" />
+    <Compile Include="ToolKit\PageHtmlHelper.cs" />
+    <Compile Include="ToolKit\PointHelper.cs" />
+    <Compile Include="ToolKit\RequestHelper.cs" />
+    <Compile Include="ToolKit\SendMail.cs" />
+    <Compile Include="ToolKit\StringHandler\HtmlHelper.cs" />
+    <Compile Include="ToolKit\StringHandler\SqlStrHelper.cs" />
+    <Compile Include="ToolKit\StringHandler\StringArrayHelper.cs" />
+    <Compile Include="ToolKit\StringHandler\StringExtensions.cs" />
+    <Compile Include="ToolKit\StringHandler\StringHelper.cs" />
+    <Compile Include="ToolKit\StringHandler\TypeParse.cs" />
+    <Compile Include="ToolKit\UrlHandler\UrlBuilder.cs" />
+    <Compile Include="ToolKit\UrlHandler\UrlHelper.cs" />
+    <Compile Include="ToolKit\ValidateHandler\Regexdefine.cs" />
+    <Compile Include="ToolKit\ValidateHandler\ValidateHelper.cs" />
+    <Compile Include="ToolKit\ValidateHandler\ValidateRegExp.cs" />
+    <Compile Include="ToolKit\XmlHelper.cs" />
+    <Compile Include="WebMvc\Authorization\PermissionAuthorizeAttribute.cs" />
+    <Compile Include="WebMvc\Controllers\Results\AbpJsonResult.cs">
+      <SubType>
+      </SubType>
+    </Compile>
+    <Compile Include="WebMvc\Models\AjaxRequest.cs" />
+    <Compile Include="WebMvc\Models\AjaxResponse.cs">
+      <SubType>
+      </SubType>
+    </Compile>
+    <Compile Include="WebMvc\Models\DataGridResponse.cs" />
+    <Compile Include="WebMvc\Models\ErrorInfo.cs">
+      <SubType>
+      </SubType>
+    </Compile>
+    <Compile Include="WebMvc\Models\ExtendUi\TreeInvalidCodeEnum.cs" />
+    <Compile Include="WebMvc\Models\ExtendUi\ITree.cs" />
+    <Compile Include="WebMvc\Models\PermissionFunctionInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Logging\Config\log4net.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="WebApi\Controllers\Results\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

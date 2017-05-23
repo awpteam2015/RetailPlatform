@@ -1,0 +1,69 @@
+﻿
+
+
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_LayoutList.cshtml";
+}
+
+@section JavaScript{
+    <script src="/Areas/RiverManager/Scripts/River/CheckStateList.js?JsParamter=@SiteConfig.GetConfig().JsParamter" type="text/javascript"></script>
+}
+
+<div title="河长巡河的情况分析" style="padding:1px;">
+    <table id="datagrid" style="height:auto;" iconcls=".icon-save" singleselect="true" toolbar="#tb" fit="true"></table>
+    <div id="tb" style="padding:5px;height:auto">
+        @*<div style="margin-bottom: 5px">
+            <a id="btnView" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true">查询</a>
+
+            <a id="btnRefresh" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-reload',plain:true">导出</a>
+
+        </div>*@
+
+        <div id="divSearch">
+            <form>
+
+                <table class="mtable">
+                    <tr>
+                        <td style="width: 100px">
+                            河长姓名:
+                        </td>
+                        <td style="width: 100px">
+                            <input id="UserName" name="UserName" type="text"/>
+                        </td>
+                        <td style="width: 100px">
+                            开始月份:
+                        </td>
+                        <td style="width: 100px">
+                            <input id="BeginDate" name="BeginDate" type="text" onclick="WdatePicker()" />
+                        </td>
+                        <td style="width: 100px">
+                            结束月份:
+                        </td>
+                        <td style="width: 100px">
+                            <input id="EndDate" name="EndDate" type="text" onclick="WdatePicker()" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 100px">
+                            河道名称:
+                        </td>
+                        <td style="width: 100px">
+                            <input id="RiverName" name="RiverName" type="text" />
+                        </td>
+
+                        <td>
+                            <a href="#" class="easyui-linkbutton" iconcls="icon-search" id="btnSearch">搜索</a>
+                            <a href="#" class="easyui-linkbutton" iconcls="icon-search" id="btnExport">导出</a>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+

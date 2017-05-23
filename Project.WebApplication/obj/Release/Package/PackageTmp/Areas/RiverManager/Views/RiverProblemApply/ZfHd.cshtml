@@ -1,0 +1,62 @@
+﻿
+
+
+
+
+@{
+    ViewBag.Title = "Hd";
+    Layout = "~/Views/Shared/_LayoutHandler.cshtml";
+}
+
+@section JavaScript{
+    <script src="/Areas/RiverManager/Scripts/RiverProblemApply/RiverProblemHd.js?JsParamter=@SiteConfig.GetConfig().JsParamter"></script>
+}
+<div style="display: none">
+    <input id="BindEntity" type="text" value="@ViewBag.BindEntity" />
+    <input id="Command" type="hidden" />
+</div>
+<div class="mtable_div">
+    <form id="form1">
+        <table class="mtable">
+            @Html.Partial("_RiverDetail")
+            <tr>
+                <td>
+                    转发接收人:
+                </td>
+                <td colspan="5">
+                    <input id="UserCode" name="UserCode" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    转发抄送人:
+                </td>
+                <td colspan="5">
+                    <input id="ZfCsUserCode" name="ZfCsUserCode" />
+                </td>
+            <tr>
+                <td>
+                    转发备注<span style="color: Red">*</span>:
+                </td>
+                <td colspan="5">
+                    <textarea id="DepartmentRemark" name="DepartmentRemark" style="width: 500px; height: 100px"></textarea>
+                </td>
+            </tr>
+        </table>
+        <script type="text/javascript">
+
+
+            $(function () {
+                $("#UserCode").removeAttr("disabled");
+                $("#State").val(2);
+            });
+        </script>
+    </form>
+</div>
+<div style="padding: 10px 10px 0 10px; text-align: center;">
+    <a id="btnEdit" class="easyui-linkbutton" iconcls="icon-ok" href="javascript:void(0)">转发</a>
+    <a id="btnClose" class="easyui-linkbutton" iconcls="icon-cancel" href="javascript:void(0)">关闭</a>
+</div>
+
+
+

@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3D26782A-3308-430B-B58F-5F8ABA1A50B3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Project.Model</RootNamespace>
+    <AssemblyName>Project.Model</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Enum\HRManager\ContractIsActiveEnum.cs" />
+    <Compile Include="Enum\HRManager\ContractStateEnum.cs" />
+    <Compile Include="HRManager\AttendanceEntity.cs" />
+    <Compile Include="HRManager\AttendanceUploadRecordEntity.cs" />
+    <Compile Include="HRManager\ContinEducationEntity.cs" />
+    <Compile Include="HRManager\ContractEntity.cs" />
+    <Compile Include="HRManager\DictionaryEntity.cs" />
+    <Compile Include="HRManager\EmployeeChildrenEntity.cs" />
+    <Compile Include="HRManager\EmployeeFileEntity.cs" />
+    <Compile Include="HRManager\EmployeeInfoEntity.cs" />
+    <Compile Include="HRManager\EmployeeInfoHisEntity.cs" />
+    <Compile Include="HRManager\EmployeeRotateEntity.cs" />
+    <Compile Include="HRManager\EmployeeYearDetailEntity.cs" />
+    <Compile Include="HRManager\EmployeeYearMainEntity.cs" />
+    <Compile Include="HRManager\GoAbroadEntity.cs" />
+    <Compile Include="HRManager\GroupEmployeeEntity.cs" />
+    <Compile Include="HRManager\GroupEmployeeHisEntity.cs" />
+    <Compile Include="HRManager\GroupEntity.cs" />
+    <Compile Include="HRManager\YearAssessmentEntity.cs" />
+    <Compile Include="HRManager\LearningExperiencesEntity.cs" />
+    <Compile Include="HRManager\MessageInfoEntity.cs" />
+    <Compile Include="HRManager\ProfessionEntity.cs" />
+    <Compile Include="HRManager\SanctionEntity.cs" />
+    <Compile Include="HRManager\TechnicalEntity.cs" />
+    <Compile Include="HRManager\WorkExperienceEntity.cs" />
+    <Compile Include="HRManager\YearHolidayDefinitionEntity.cs" />
+    <Compile Include="HRManager\YGWageEntity.cs" />
+    <Compile Include="Other\ExcelData.cs" />
+    <Compile Include="Other\FileInfoDTO.cs" />
+    <Compile Include="Other\UploadEntity.cs" />
+    <Compile Include="PermissionManager\DepartmentExtEntity.cs" />
+    <Compile Include="PermissionManager\DepartmentEntity.cs" />
+    <Compile Include="PermissionManager\FunctionDetailModel.cs" />
+    <Compile Include="PermissionManager\FunctionModel.cs" />
+    <Compile Include="PermissionManager\ModuleModel.cs" />
+    <Compile Include="PermissionManager\RoleDepartmentEntity.cs" />
+    <Compile Include="PermissionManager\RoleFunctionDetailModel.cs" />
+    <Compile Include="PermissionManager\RoleModel.cs" />
+    <Compile Include="PermissionManager\UserDepartmentLoginModel.cs" />
+    <Compile Include="PermissionManager\UserDepartmentModel.cs" />
+    <Compile Include="PermissionManager\UserFunctionDetailModel.cs" />
+    <Compile Include="PermissionManager\UserInfoEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="PermissionManager\UserRoleModel.cs" />
+    <Compile Include="ReportManager\AttendanceViewEntity2.cs" />
+    <Compile Include="ReportManager\AttendanceViewEntity.cs" />
+    <Compile Include="ReportManager\EmployeeInOutEntity.cs" />
+    <Compile Include="ReportManager\EmployeeRsEntity.cs" />
+    <Compile Include="ReportManager\HREmployeeViewEntity.cs" />
+    <Compile Include="ReportManager\UserInfoViewEntity.cs" />
+    <Compile Include="RiverManager\MessageTagEntity.cs" />
+    <Compile Include="RiverManager\MsgNoticeEntity.cs" />
+    <Compile Include="RiverManager\RiverAttachEntity.cs" />
+    <Compile Include="RiverManager\RiverCheckEntity.cs" />
+    <Compile Include="RiverManager\RiverEntity.cs" />
+    <Compile Include="RiverManager\RiverOwerEntity.cs" />
+    <Compile Include="RiverManager\RiverProblemApplyEntity.cs" />
+    <Compile Include="RiverManager\RiverProblemDbEntity.cs" />
+    <Compile Include="SystemSetManager\HolidayDetailEntity.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SystemSetManager\IndexPageSetEntity.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Enum\PermissionManager\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Project.Infrastructure.FrameworkCore\Project.Infrastructure.FrameworkCore.csproj">
+      <Project>{1c2392ad-a0f8-4378-9c54-3dcd1fb5d1db}</Project>
+      <Name>Project.Infrastructure.FrameworkCore</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,31 @@
+@charset "utf-8";
+/* CSS Document */
+body{background:#38b5ff}
+.login{background:#FFF; position:absolute; top:50%; left:50%; width:400px; height:520px; margin-left:-200px; margin-top:-260px; box-shadow:0px 5px 30px 0px rgba(0,0,0,.1); border-radius:10px;}
+.login h1{background:url(../images/logo.png) no-repeat; width:160px; height:40px; margin:20px auto;}
+.login .form{padding:10px 50px;}
+.inputbox{margin-bottom:10px; height:60px; position:relative;}
+.inputbox input{border:none; height:60px; line-height:60px; text-indent:1em; width:100%;}
+.inputbox .line{position:absolute; bottom:0; left:0; width:100%; height:1px; background:#eee;}
+.inputbox .bg-blue{background:#38b5ff;}
+.inputbox button{display:block; height:56px; font:500 20px/56px "Microsoft yahei",Arial; text-align:center; width:100%; border:none; background:#eee; color:#ccc; border-radius:3px;}
+.inputbox .loginbtn{cursor:pointer; background:#38b5ff; color:#FFF}
+.inputbox .loginbtn:hover{background:#38c9ff;}
+.input-blank,.input-tips{height:30px;}
+.input-tips{height:28px; line-height:28px; padding-left:10px; padding-top:0; color:#999;  border-radius:3px; border:1px solid #F00; background:#fcf4f4; font-size:12px;}
+.input-tips span i{display:inline-block; width:16px; height:16px; vertical-align:text-top; margin-right:6px; background:url(../images/tipsicon.png) no-repeat;} 
+.input-tips span .i-error-tips{background-position:0 0;}
+.login .wavebg{position:absolute; bottom:0; left:0; width:100%; background:url(../images/wave.png) center 0 no-repeat; height:100px;}
+
+@-webkit-keyframes topmove
+{
+0%    {opacity:0; top:-50px;}
+100%  {opacity:1;top:50%;}
+}
+@-webkit-keyframes width
+{
+0%    {transform:scaleX(.1)}
+100%  {transform:scaleX(1)}
+}
+.login{-webkit-animation:topmove .3s linear;}
+.inputbox .bg-blue{-webkit-animation:width .3s linear;}

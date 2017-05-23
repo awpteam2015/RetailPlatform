@@ -1,0 +1,66 @@
+﻿
+
+
+
+
+@{
+    ViewBag.Title = "Hd";
+    Layout = "~/Views/Shared/_LayoutHandler.cshtml";
+}
+
+@section JavaScript{
+    <script src="/Areas/RiverManager/Scripts/River/Hd.js?JsParamter=@SiteConfig.GetConfig().JsParamter"></script>
+
+
+}
+<div style="display: none">
+    <input id="BindEntity" type="text" value="@ViewBag.BindEntity" />
+    <textarea id="UserList">@ViewBag.UserList</textarea>
+    <input id="Command" type="hidden" />
+</div>
+<div class="mtable_div">
+    <form id="form1">
+
+
+        <table class="mtable">
+            <tr>
+                <td style="width: 500px">
+                    <div id="divSearch">
+                        河长姓名:<input id="UserName" name="UserName" type="text"/>
+                        河长手机:<input id="UserCode" name="UserCode" type="text"/>
+                    </div>
+                </td>
+
+
+                <td >
+                    <a href="#" class="easyui-linkbutton" iconcls="icon-search" id="btnSearch">搜索</a>
+                </td>
+            </tr>
+        </table>
+        <table class="mtable">
+            <tr>
+                <td>选中河长：</td>
+                <td style="text-align: left">
+                    <div id="div_riverSelect" style="float: left;width: 500px"></div>
+                </td>
+            </tr>
+        </table>
+
+        <div id="div_datagrid" style="height: 400px; width: 600px">
+            <table id="datagrid" style="height: auto;" fit="true"></table>
+        </div>
+
+
+
+    </form>
+</div>
+<div style="padding: 10px 10px 0 10px; text-align: center;">
+    <a id="btnSave" class="easyui-linkbutton" iconcls="icon-ok" href="javascript:void(0)">保存</a>
+
+    <a id="btnClose" class="easyui-linkbutton" iconcls="icon-cancel" href="javascript:void(0)">关闭</a>
+</div>
+
+
+
+
+
