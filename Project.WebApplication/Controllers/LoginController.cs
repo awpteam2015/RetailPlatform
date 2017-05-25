@@ -204,6 +204,8 @@ namespace Project.WebApplication.Controllers
             cookie.HttpOnly = true;
             Response.Cookies.Add(cookie);
 
+          //  FormsAuthentication.SetAuthCookie(FormsAuthentication.FormsCookieName,false);
+
             LoggerHelper.Info("登陆结束：");
             return new AbpJsonResult
             {
