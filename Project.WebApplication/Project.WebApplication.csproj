@@ -417,6 +417,16 @@
     <Content Include="Areas\RiverManager\Views\RiverProblemApply\DbReturnHd.cshtml" />
     <Content Include="Areas\RiverManager\Views\River\CheckStateList.cshtml" />
     <Content Include="Areas\ProductManager\Views\web.config" />
+    <Content Include="Areas\ProductManager\Views\Product\Hd.cshtml" />
+    <Content Include="Areas\ProductManager\Views\Product\List.cshtml" />
+    <Content Include="Areas\ProductManager\Views\Brand\Hd.cshtml" />
+    <Content Include="Areas\ProductManager\Views\Brand\List.cshtml" />
+    <Content Include="Areas\ProductManager\Views\Goods\Hd.cshtml" />
+    <Content Include="Areas\ProductManager\Views\Goods\List.cshtml" />
+    <Content Include="Areas\ProductManager\Views\ProductCategory\Hd.cshtml" />
+    <Content Include="Areas\ProductManager\Views\ProductCategory\List.cshtml" />
+    <Content Include="Areas\ProductManager\Views\Spec\Hd.cshtml" />
+    <Content Include="Areas\ProductManager\Views\Spec\List.cshtml" />
     <None Include="Properties\PublishProfiles\OA.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Control\DepartmentControl.js" />
@@ -1106,7 +1116,11 @@
     <Compile Include="Areas\PermissionManager\Controllers\UserInfoController.cs" />
     <Compile Include="Areas\PermissionManager\Controllers\UserRoleController.cs" />
     <Compile Include="Areas\PermissionManager\PermissionManagerAreaRegistration.cs" />
+    <Compile Include="Areas\ProductManager\Controllers\BrandController.cs" />
+    <Compile Include="Areas\ProductManager\Controllers\GoodsController.cs" />
+    <Compile Include="Areas\ProductManager\Controllers\ProductCategoryController.cs" />
     <Compile Include="Areas\ProductManager\Controllers\ProductController.cs" />
+    <Compile Include="Areas\ProductManager\Controllers\SpecController.cs" />
     <Compile Include="Areas\ProductManager\ProductManagerAreaRegistration.cs" />
     <Compile Include="Areas\ReportManager\Controllers\HrReportController.cs" />
     <Compile Include="Areas\ReportManager\ReportManagerAreaRegistration.cs" />
@@ -1209,7 +1223,7 @@
     <Folder Include="Areas\PermissionManager\Views\Permission\" />
     <Folder Include="Areas\PermissionManager\Views\Shared\" />
     <Folder Include="Areas\ProductManager\Models\" />
-    <Folder Include="Areas\ProductManager\Views\Product\" />
+    <Folder Include="Areas\ProductManager\Scripts\" />
     <Folder Include="Areas\ProductManager\Views\Shared\" />
     <Folder Include="Areas\ReportManager\Models\" />
     <Folder Include="Areas\ReportManager\Views\Shared\" />
