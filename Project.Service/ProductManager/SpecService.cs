@@ -123,6 +123,8 @@ namespace Project.Service.ProductManager
               //  expr = expr.And(p => p.PkId == where.PkId);
               // if (!string.IsNullOrEmpty(where.SpecName))
               //  expr = expr.And(p => p.SpecName == where.SpecName);
+              // if (!string.IsNullOrEmpty(where.SpecValues))
+              //  expr = expr.And(p => p.SpecValues == where.SpecValues);
  #endregion
             var list = _specRepository.Query().Where(expr).OrderByDescending(p => p.PkId).Skip(skipResults).Take(maxResults).ToList();
             var count = _specRepository.Query().Where(expr).Count();
@@ -142,6 +144,8 @@ namespace Project.Service.ProductManager
               //  expr = expr.And(p => p.PkId == where.PkId);
               // if (!string.IsNullOrEmpty(where.SpecName))
               //  expr = expr.And(p => p.SpecName == where.SpecName);
+              // if (!string.IsNullOrEmpty(where.SpecValues))
+              //  expr = expr.And(p => p.SpecValues == where.SpecValues);
  #endregion
             var list = _specRepository.Query().Where(expr).OrderBy(p => p.PkId).ToList();
             return list;

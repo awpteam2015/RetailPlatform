@@ -45,18 +45,20 @@ namespace Project.WebApplication.Areas.ProductManager.Controllers
 			//where.ProductCode = RequestHelper.GetFormString("ProductCode");
 			//where.Price = RequestHelper.GetFormString("Price");
 			//where.ProductCategoryId = RequestHelper.GetFormString("ProductCategoryId");
-			//where.SpecId1 = RequestHelper.GetFormString("SpecId1");
-			//where.SpecId2 = RequestHelper.GetFormString("SpecId2");
-			//where.SpecId3 = RequestHelper.GetFormString("SpecId3");
-			//where.SpecName1 = RequestHelper.GetFormString("SpecName1");
-			//where.SpecName2 = RequestHelper.GetFormString("SpecName2");
-			//where.SpecName3 = RequestHelper.GetFormString("SpecName3");
+			//where.IsHasSpec1 = RequestHelper.GetFormString("IsHasSpec1");
+			//where.IsHasSpec2 = RequestHelper.GetFormString("IsHasSpec2");
+			//where.IsHasSpec3 = RequestHelper.GetFormString("IsHasSpec3");
 			//where.Attribute1 = RequestHelper.GetFormString("Attribute1");
 			//where.Attribute2 = RequestHelper.GetFormString("Attribute2");
 			//where.Attribute3 = RequestHelper.GetFormString("Attribute3");
 			//where.PicUrl1 = RequestHelper.GetFormString("PicUrl1");
 			//where.PicUrl2 = RequestHelper.GetFormString("PicUrl2");
 			//where.PicUrl3 = RequestHelper.GetFormString("PicUrl3");
+			//where.CreatorUserCode = RequestHelper.GetFormString("CreatorUserCode");
+			//where.CreationTime = RequestHelper.GetFormString("CreationTime");
+			//where.LastModifierUserCode = RequestHelper.GetFormString("LastModifierUserCode");
+			//where.LastModificationTime = RequestHelper.GetFormString("LastModificationTime");
+			//where.Remark = RequestHelper.GetFormString("Remark");
             var searchList = ProductService.GetInstance().Search(where, (pIndex - 1) * pSize, pSize);
 
             var dataGridEntity = new DataGridResponse()

@@ -68,11 +68,6 @@
             <param name="model"></param>
             <returns></returns>
         </member>
-        <member name="T:Project.WebApplication.Areas.ProductManager.Controllers.ProductController">
-            <summary>
-            
-            </summary>
-        </member>
         <member name="M:Project.WebApplication.Areas.ReportManager.Controllers.HrReportController.EmployeeRSReport">
             <summary>
             人数统计情况报表

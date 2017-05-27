@@ -42,6 +42,7 @@ namespace Project.WebApplication.Areas.ProductManager.Controllers
             var where = new SpecEntity();
 			//where.PkId = RequestHelper.GetFormString("PkId");
 			//where.SpecName = RequestHelper.GetFormString("SpecName");
+			//where.SpecValues = RequestHelper.GetFormString("SpecValues");
             var searchList = SpecService.GetInstance().Search(where, (pIndex - 1) * pSize, pSize);
 
             var dataGridEntity = new DataGridResponse()

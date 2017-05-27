@@ -16,11 +16,11 @@ namespace Project.Model.ProductManager
     { 
         #region 属性
         /// <summary>
-        /// 
+        /// 分类名称
         /// </summary>
         public virtual System.String ProductCategoryName{get; set;}
         /// <summary>
-        /// 
+        /// 父级分类
         /// </summary>
         public virtual System.Int32? ParentProductCategoryId{get; set;}
         /// <summary>

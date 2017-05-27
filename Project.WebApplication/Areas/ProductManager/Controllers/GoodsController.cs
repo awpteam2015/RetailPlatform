@@ -43,7 +43,7 @@ namespace Project.WebApplication.Areas.ProductManager.Controllers
 			//where.PkId = RequestHelper.GetFormString("PkId");
 			//where.GoodsCode = RequestHelper.GetFormString("GoodsCode");
 			//where.GoodsName = RequestHelper.GetFormString("GoodsName");
-			//where.ProductId = RequestHelper.GetFormString("ProductId");
+			//where.ProductCode = RequestHelper.GetFormString("ProductCode");
 			//where.SpecValue1 = RequestHelper.GetFormString("SpecValue1");
 			//where.SpecValue2 = RequestHelper.GetFormString("SpecValue2");
 			//where.SpecValue3 = RequestHelper.GetFormString("SpecValue3");

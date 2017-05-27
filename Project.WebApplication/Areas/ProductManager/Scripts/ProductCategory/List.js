@@ -22,8 +22,8 @@ var pro = pro || {};
                 singleSelect: true,
                 columns: [[
          { field: 'PkId', title: '', width: 100 },
-         { field: 'ProductCategoryName', title: '', width: 100 },
-         { field: 'ParentProductCategoryId', title: '', width: 100 },
+         { field: 'ProductCategoryName', title: '分类名称', width: 100 },
+         { field: 'ParentProductCategoryId', title: '父级分类', width: 100 },
          { field: 'CategoryRoute', title: '分类路径', width: 100 },
          { field: 'Rank', title: '分类层级', width: 100 },
                 ]],

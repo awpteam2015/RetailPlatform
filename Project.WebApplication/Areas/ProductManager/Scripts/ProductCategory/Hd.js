@@ -70,8 +70,8 @@
                     },
                     messages: {
           PkId:  "必填!",
-          ProductCategoryName:  "必填!",
-          ParentProductCategoryId:  "必填!",
+          ProductCategoryName:  "分类名称必填!",
+          ParentProductCategoryId:  "父级分类必填!",
           CategoryRoute:  "分类路径必填!",
           Rank:  "分类层级必填!",
                     },

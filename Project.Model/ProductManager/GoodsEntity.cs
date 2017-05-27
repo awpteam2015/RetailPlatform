@@ -16,13 +16,17 @@ namespace Project.Model.ProductManager
     { 
         #region 属性
         /// <summary>
-        /// 
+        /// 商品编码
+        /// </summary>
+        public virtual System.String GoodsCode{get; set;}
+        /// <summary>
+        /// 商品名称
         /// </summary>
         public virtual System.String GoodsName{get; set;}
         /// <summary>
-        /// 
+        /// 产品编码
         /// </summary>
-        public virtual System.Int32? ProductId{get; set;}
+        public virtual System.Int32? ProductCode{get; set;}
         /// <summary>
         /// 功率
         /// </summary>
@@ -32,7 +36,7 @@ namespace Project.Model.ProductManager
         /// </summary>
         public virtual System.String SpecValue2{get; set;}
         /// <summary>
-        /// 
+        /// 其他
         /// </summary>
         public virtual System.String SpecValue3{get; set;}
 		#endregion

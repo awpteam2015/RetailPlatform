@@ -129,18 +129,12 @@ namespace Project.Service.ProductManager
               //  expr = expr.And(p => p.Price == where.Price);
               // if (!string.IsNullOrEmpty(where.ProductCategoryId))
               //  expr = expr.And(p => p.ProductCategoryId == where.ProductCategoryId);
-              // if (!string.IsNullOrEmpty(where.SpecId1))
-              //  expr = expr.And(p => p.SpecId1 == where.SpecId1);
-              // if (!string.IsNullOrEmpty(where.SpecId2))
-              //  expr = expr.And(p => p.SpecId2 == where.SpecId2);
-              // if (!string.IsNullOrEmpty(where.SpecId3))
-              //  expr = expr.And(p => p.SpecId3 == where.SpecId3);
-              // if (!string.IsNullOrEmpty(where.SpecName1))
-              //  expr = expr.And(p => p.SpecName1 == where.SpecName1);
-              // if (!string.IsNullOrEmpty(where.SpecName2))
-              //  expr = expr.And(p => p.SpecName2 == where.SpecName2);
-              // if (!string.IsNullOrEmpty(where.SpecName3))
-              //  expr = expr.And(p => p.SpecName3 == where.SpecName3);
+              // if (!string.IsNullOrEmpty(where.IsHasSpec1))
+              //  expr = expr.And(p => p.IsHasSpec1 == where.IsHasSpec1);
+              // if (!string.IsNullOrEmpty(where.IsHasSpec2))
+              //  expr = expr.And(p => p.IsHasSpec2 == where.IsHasSpec2);
+              // if (!string.IsNullOrEmpty(where.IsHasSpec3))
+              //  expr = expr.And(p => p.IsHasSpec3 == where.IsHasSpec3);
               // if (!string.IsNullOrEmpty(where.Attribute1))
               //  expr = expr.And(p => p.Attribute1 == where.Attribute1);
               // if (!string.IsNullOrEmpty(where.Attribute2))
@@ -153,6 +147,16 @@ namespace Project.Service.ProductManager
               //  expr = expr.And(p => p.PicUrl2 == where.PicUrl2);
               // if (!string.IsNullOrEmpty(where.PicUrl3))
               //  expr = expr.And(p => p.PicUrl3 == where.PicUrl3);
+              // if (!string.IsNullOrEmpty(where.CreatorUserCode))
+              //  expr = expr.And(p => p.CreatorUserCode == where.CreatorUserCode);
+              // if (!string.IsNullOrEmpty(where.CreationTime))
+              //  expr = expr.And(p => p.CreationTime == where.CreationTime);
+              // if (!string.IsNullOrEmpty(where.LastModifierUserCode))
+              //  expr = expr.And(p => p.LastModifierUserCode == where.LastModifierUserCode);
+              // if (!string.IsNullOrEmpty(where.LastModificationTime))
+              //  expr = expr.And(p => p.LastModificationTime == where.LastModificationTime);
+              // if (!string.IsNullOrEmpty(where.Remark))
+              //  expr = expr.And(p => p.Remark == where.Remark);
  #endregion
             var list = _productRepository.Query().Where(expr).OrderByDescending(p => p.PkId).Skip(skipResults).Take(maxResults).ToList();
             var count = _productRepository.Query().Where(expr).Count();
@@ -178,18 +182,12 @@ namespace Project.Service.ProductManager
               //  expr = expr.And(p => p.Price == where.Price);
               // if (!string.IsNullOrEmpty(where.ProductCategoryId))
               //  expr = expr.And(p => p.ProductCategoryId == where.ProductCategoryId);
-              // if (!string.IsNullOrEmpty(where.SpecId1))
-              //  expr = expr.And(p => p.SpecId1 == where.SpecId1);
-              // if (!string.IsNullOrEmpty(where.SpecId2))
-              //  expr = expr.And(p => p.SpecId2 == where.SpecId2);
-              // if (!string.IsNullOrEmpty(where.SpecId3))
-              //  expr = expr.And(p => p.SpecId3 == where.SpecId3);
-              // if (!string.IsNullOrEmpty(where.SpecName1))
-              //  expr = expr.And(p => p.SpecName1 == where.SpecName1);
-              // if (!string.IsNullOrEmpty(where.SpecName2))
-              //  expr = expr.And(p => p.SpecName2 == where.SpecName2);
-              // if (!string.IsNullOrEmpty(where.SpecName3))
-              //  expr = expr.And(p => p.SpecName3 == where.SpecName3);
+              // if (!string.IsNullOrEmpty(where.IsHasSpec1))
+              //  expr = expr.And(p => p.IsHasSpec1 == where.IsHasSpec1);
+              // if (!string.IsNullOrEmpty(where.IsHasSpec2))
+              //  expr = expr.And(p => p.IsHasSpec2 == where.IsHasSpec2);
+              // if (!string.IsNullOrEmpty(where.IsHasSpec3))
+              //  expr = expr.And(p => p.IsHasSpec3 == where.IsHasSpec3);
               // if (!string.IsNullOrEmpty(where.Attribute1))
               //  expr = expr.And(p => p.Attribute1 == where.Attribute1);
               // if (!string.IsNullOrEmpty(where.Attribute2))
@@ -202,6 +200,16 @@ namespace Project.Service.ProductManager
               //  expr = expr.And(p => p.PicUrl2 == where.PicUrl2);
               // if (!string.IsNullOrEmpty(where.PicUrl3))
               //  expr = expr.And(p => p.PicUrl3 == where.PicUrl3);
+              // if (!string.IsNullOrEmpty(where.CreatorUserCode))
+              //  expr = expr.And(p => p.CreatorUserCode == where.CreatorUserCode);
+              // if (!string.IsNullOrEmpty(where.CreationTime))
+              //  expr = expr.And(p => p.CreationTime == where.CreationTime);
+              // if (!string.IsNullOrEmpty(where.LastModifierUserCode))
+              //  expr = expr.And(p => p.LastModifierUserCode == where.LastModifierUserCode);
+              // if (!string.IsNullOrEmpty(where.LastModificationTime))
+              //  expr = expr.And(p => p.LastModificationTime == where.LastModificationTime);
+              // if (!string.IsNullOrEmpty(where.Remark))
+              //  expr = expr.And(p => p.Remark == where.Remark);
  #endregion
             var list = _productRepository.Query().Where(expr).OrderBy(p => p.PkId).ToList();
             return list;

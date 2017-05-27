@@ -17,8 +17,9 @@ namespace  Project.Map.ProductManager
         {
             this.MapPkidDefault<GoodsEntity,int>();
  
+            Map(p => p.GoodsCode);    
             Map(p => p.GoodsName);    
-            Map(p => p.ProductId);    
+            Map(p => p.ProductCode);    
             Map(p => p.SpecValue1);    
             Map(p => p.SpecValue2);    
             Map(p => p.SpecValue3);    

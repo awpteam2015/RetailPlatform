@@ -21,18 +21,20 @@ namespace  Project.Map.ProductManager
             Map(p => p.ProductCode);    
             Map(p => p.Price);    
             Map(p => p.ProductCategoryId);    
-            Map(p => p.SpecId1);    
-            Map(p => p.SpecId2);    
-            Map(p => p.SpecId3);    
-            Map(p => p.SpecName1);    
-            Map(p => p.SpecName2);    
-            Map(p => p.SpecName3);    
+            Map(p => p.IsHasSpec1);    
+            Map(p => p.IsHasSpec2);    
+            Map(p => p.IsHasSpec3);    
             Map(p => p.Attribute1);    
             Map(p => p.Attribute2);    
             Map(p => p.Attribute3);    
             Map(p => p.PicUrl1);    
             Map(p => p.PicUrl2);    
             Map(p => p.PicUrl3);    
+            Map(p => p.CreatorUserCode);    
+            Map(p => p.CreationTime);    
+            Map(p => p.LastModifierUserCode);    
+            Map(p => p.LastModificationTime);    
+            Map(p => p.Remark);    
         }
     }
 }

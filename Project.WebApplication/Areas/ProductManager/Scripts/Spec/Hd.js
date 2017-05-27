@@ -64,10 +64,12 @@
                     rules: {
           PkId: { required: true  },
           SpecName: { required: true  },
+          SpecValues: { required: true  },
                     },
                     messages: {
           PkId:  "必填!",
           SpecName:  "必填!",
+          SpecValues:  "必填!",
                     },
                     errorPlacement: function (error, element) {
                         pro.commonKit.errorPlacementHd(error, element);

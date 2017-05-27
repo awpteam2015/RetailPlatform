@@ -18,6 +18,7 @@ namespace  Project.Map.ProductManager
             this.MapPkidDefault<SpecEntity,int>();
  
             Map(p => p.SpecName);    
+            Map(p => p.SpecValues);    
         }
     }
 }

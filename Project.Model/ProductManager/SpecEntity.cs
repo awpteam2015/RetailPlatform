@@ -19,6 +19,10 @@ namespace Project.Model.ProductManager
         /// 
         /// </summary>
         public virtual System.String SpecName{get; set;}
+        /// <summary>
+        /// 
+        /// </summary>
+        public virtual System.String SpecValues{get; set;}
 		#endregion
         
 

@@ -125,8 +125,8 @@ namespace Project.Service.ProductManager
               //  expr = expr.And(p => p.GoodsCode == where.GoodsCode);
               // if (!string.IsNullOrEmpty(where.GoodsName))
               //  expr = expr.And(p => p.GoodsName == where.GoodsName);
-              // if (!string.IsNullOrEmpty(where.ProductId))
-              //  expr = expr.And(p => p.ProductId == where.ProductId);
+              // if (!string.IsNullOrEmpty(where.ProductCode))
+              //  expr = expr.And(p => p.ProductCode == where.ProductCode);
               // if (!string.IsNullOrEmpty(where.SpecValue1))
               //  expr = expr.And(p => p.SpecValue1 == where.SpecValue1);
               // if (!string.IsNullOrEmpty(where.SpecValue2))
@@ -154,8 +154,8 @@ namespace Project.Service.ProductManager
               //  expr = expr.And(p => p.GoodsCode == where.GoodsCode);
               // if (!string.IsNullOrEmpty(where.GoodsName))
               //  expr = expr.And(p => p.GoodsName == where.GoodsName);
-              // if (!string.IsNullOrEmpty(where.ProductId))
-              //  expr = expr.And(p => p.ProductId == where.ProductId);
+              // if (!string.IsNullOrEmpty(where.ProductCode))
+              //  expr = expr.And(p => p.ProductCode == where.ProductCode);
               // if (!string.IsNullOrEmpty(where.SpecValue1))
               //  expr = expr.And(p => p.SpecValue1 == where.SpecValue1);
               // if (!string.IsNullOrEmpty(where.SpecValue2))

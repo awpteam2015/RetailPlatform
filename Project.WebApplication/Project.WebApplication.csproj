@@ -223,6 +223,16 @@
     <Content Include="Areas\PermissionManager\Views\Role\RoleFunctionDetailList.cshtml">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="Areas\ProductManager\Scripts\Brand\Hd.js" />
+    <Content Include="Areas\ProductManager\Scripts\Brand\List.js" />
+    <Content Include="Areas\ProductManager\Scripts\Goods\Hd.js" />
+    <Content Include="Areas\ProductManager\Scripts\Goods\List.js" />
+    <Content Include="Areas\ProductManager\Scripts\ProductCategory\Hd.js" />
+    <Content Include="Areas\ProductManager\Scripts\ProductCategory\List.js" />
+    <Content Include="Areas\ProductManager\Scripts\Product\Hd.js" />
+    <Content Include="Areas\ProductManager\Scripts\Product\List.js" />
+    <Content Include="Areas\ProductManager\Scripts\Spec\Hd.js" />
+    <Content Include="Areas\ProductManager\Scripts\Spec\List.js" />
     <Content Include="Areas\ReportManager\Scripts\HrReport\AttendanceReport2.js" />
     <Content Include="Areas\ReportManager\Scripts\HrReport\AttendanceReport.js" />
     <Content Include="Areas\ReportManager\Scripts\HrReport\EmployeeDYReport.js" />
@@ -1223,7 +1233,6 @@
     <Folder Include="Areas\PermissionManager\Views\Permission\" />
     <Folder Include="Areas\PermissionManager\Views\Shared\" />
     <Folder Include="Areas\ProductManager\Models\" />
-    <Folder Include="Areas\ProductManager\Scripts\" />
     <Folder Include="Areas\ProductManager\Views\Shared\" />
     <Folder Include="Areas\ReportManager\Models\" />
     <Folder Include="Areas\ReportManager\Views\Shared\" />
