@@ -7,6 +7,7 @@ using AutoMapper;
 using Project.Infrastructure.FrameworkCore.AutoMapper;
 using Project.Model.HRManager;
 using Project.Model.PermissionManager;
+using Project.Model.ProductManager;
 using Project.Model.RiverManager;
 using Project.Service.PermissionManager.DTO;
 
@@ -21,6 +22,14 @@ namespace Project.Service
 
         private static void InitAutoMapper()
         {
+
+            Mapper.CreateMap<BrandEntity, BrandEntity>().IgnoreAllNull();
+            Mapper.CreateMap<GoodsEntity, GoodsEntity>().IgnoreAllNull();
+            Mapper.CreateMap<ProductCategoryEntity, ProductCategoryEntity>().IgnoreAllNull();
+            Mapper.CreateMap<ProductEntity, ProductEntity>().IgnoreAllNull();
+            Mapper.CreateMap<SpecEntity, SpecEntity>().IgnoreAllNull();
+
+
             Mapper.CreateMap<RiverAttachEntity, RiverAttachEntity>().IgnoreAllNull();
             Mapper.CreateMap<MsgNoticeEntity, MsgNoticeEntity>().IgnoreAllNull();
             Mapper.CreateMap<RiverEntity, RiverEntity>().IgnoreAllNull();

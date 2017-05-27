@@ -416,6 +416,7 @@
     <Content Include="Areas\RiverManager\Views\RiverProblemApply\DbFinishList.cshtml" />
     <Content Include="Areas\RiverManager\Views\RiverProblemApply\DbReturnHd.cshtml" />
     <Content Include="Areas\RiverManager\Views\River\CheckStateList.cshtml" />
+    <Content Include="Areas\ProductManager\Views\web.config" />
     <None Include="Properties\PublishProfiles\OA.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Control\DepartmentControl.js" />
@@ -1105,6 +1106,8 @@
     <Compile Include="Areas\PermissionManager\Controllers\UserInfoController.cs" />
     <Compile Include="Areas\PermissionManager\Controllers\UserRoleController.cs" />
     <Compile Include="Areas\PermissionManager\PermissionManagerAreaRegistration.cs" />
+    <Compile Include="Areas\ProductManager\Controllers\ProductController.cs" />
+    <Compile Include="Areas\ProductManager\ProductManagerAreaRegistration.cs" />
     <Compile Include="Areas\ReportManager\Controllers\HrReportController.cs" />
     <Compile Include="Areas\ReportManager\ReportManagerAreaRegistration.cs" />
     <Compile Include="Areas\RiverManager\Controllers\MsgNoticeController.cs" />
@@ -1205,6 +1208,9 @@
     <Folder Include="Areas\PermissionManager\Models\" />
     <Folder Include="Areas\PermissionManager\Views\Permission\" />
     <Folder Include="Areas\PermissionManager\Views\Shared\" />
+    <Folder Include="Areas\ProductManager\Models\" />
+    <Folder Include="Areas\ProductManager\Views\Product\" />
+    <Folder Include="Areas\ProductManager\Views\Shared\" />
     <Folder Include="Areas\ReportManager\Models\" />
     <Folder Include="Areas\ReportManager\Views\Shared\" />
     <Folder Include="Areas\RiverManager\Models\" />

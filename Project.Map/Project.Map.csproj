@@ -87,6 +87,11 @@
     <Compile Include="PermissionManager\UserFunctionDetailMap.cs" />
     <Compile Include="PermissionManager\UserInfoMap.cs" />
     <Compile Include="PermissionManager\UserRoleMap.cs" />
+    <Compile Include="ProductManager\BrandMap.cs" />
+    <Compile Include="ProductManager\GoodsMap.cs" />
+    <Compile Include="ProductManager\ProductCategoryMap.cs" />
+    <Compile Include="ProductManager\ProductMap.cs" />
+    <Compile Include="ProductManager\SpecMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RiverManager\MessageTagMap.cs" />
     <Compile Include="RiverManager\MsgNoticeMap.cs" />
