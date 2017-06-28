@@ -72,11 +72,11 @@
             if (value == undefined) {
                 value = "";
             }
-           
+         
             var html = '<select name="' + name + (width == undefined ? '"' : '" style="width:' + width + 'px"') + (disabled == undefined ? ' ' : 'disabled="disabled"') + '>' + html + '</select>';
             if (value) {
                 html += '<script>$("select[name=' + name + ']").val("' + value + '");</script>';
-            }
+            } 
             return html;
         },
         //给input和span赋值

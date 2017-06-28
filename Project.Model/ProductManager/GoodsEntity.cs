@@ -13,8 +13,9 @@ using Project.Infrastructure.FrameworkCore.Domain.Entities.Component;
 namespace Project.Model.ProductManager
 {
     public class GoodsEntity: Entity
-    { 
-        #region 属性
+    {
+        #region 属性   
+        public virtual System.Int32? ProductId{get; set;}
         /// <summary>
         /// 商品编码
         /// </summary>
@@ -26,7 +27,7 @@ namespace Project.Model.ProductManager
         /// <summary>
         /// 产品编码
         /// </summary>
-        public virtual System.Int32? ProductCode{get; set;}
+        public virtual System.String ProductCode {get; set;}
         /// <summary>
         /// 功率
         /// </summary>

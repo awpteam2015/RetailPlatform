@@ -223,6 +223,6 @@ G:\云端备份\我设计的框架\Retail2\Project.Infrastructure.FrameworkCore\
 G:\云端备份\我设计的框架\Retail2\Project.Infrastructure.FrameworkCore\bin\Debug\zh-Hans\System.Web.WebPages.Deployment.resources.dll
 G:\云端备份\我设计的框架\Retail2\Project.Infrastructure.FrameworkCore\bin\Debug\zh-Hans\System.Web.WebPages.Razor.resources.dll
 G:\云端备份\我设计的框架\Retail2\Project.Infrastructure.FrameworkCore\bin\Debug\zh-Hans\System.Net.Http.Formatting.resources.dll
-G:\云端备份\我设计的框架\Retail2\Project.Infrastructure.FrameworkCore\obj\Debug\Project.Infrastructure.FrameworkCore.csprojResolveAssemblyReference.cache
 G:\云端备份\我设计的框架\Retail2\Project.Infrastructure.FrameworkCore\obj\Debug\Project.Infrastructure.FrameworkCore.dll
 G:\云端备份\我设计的框架\Retail2\Project.Infrastructure.FrameworkCore\obj\Debug\Project.Infrastructure.FrameworkCore.pdb
+G:\云端备份\我设计的框架\Retail2\Project.Infrastructure.FrameworkCore\obj\Debug\Project.Infrastructure.FrameworkCore.csprojResolveAssemblyReference.cache

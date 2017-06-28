@@ -36,10 +36,10 @@ namespace Project.Infrastructure.FrameworkCore.Domain.Repositories
                     tx.Commit();
                     return key;
                 }
-                catch
+                catch(Exception e)
                 {
                     tx.Rollback();
-                    throw;
+                    throw e;
                 }
             }
         }

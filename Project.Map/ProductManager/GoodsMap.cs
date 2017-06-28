@@ -16,7 +16,7 @@ namespace  Project.Map.ProductManager
         public GoodsMap():base("PRM_Goods")
         {
             this.MapPkidDefault<GoodsEntity,int>();
- 
+            Map(p => p.ProductId);
             Map(p => p.GoodsCode);    
             Map(p => p.GoodsName);    
             Map(p => p.ProductCode);    

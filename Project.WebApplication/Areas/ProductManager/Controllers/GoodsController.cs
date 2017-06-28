@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web.Mvc;
 using AutoMapper;
 using Project.Infrastructure.FrameworkCore.DataNhibernate.Helpers;
+using Project.Infrastructure.FrameworkCore.ToolKit;
 using Project.Infrastructure.FrameworkCore.ToolKit.JsonHandler;
 using Project.Infrastructure.FrameworkCore.ToolKit.LinqExpansion;
 using Project.Infrastructure.FrameworkCore.WebMvc.Controllers.Results;
@@ -53,6 +54,23 @@ namespace Project.WebApplication.Areas.ProductManager.Controllers
             {
                 total = searchList.Item2,
                 rows = searchList.Item1
+            };
+            return new AbpJsonResult(dataGridEntity, new NHibernateContractResolver());
+        }
+
+
+        public AbpJsonResult GetAllList()
+        {
+   
+            var where = new GoodsEntity();
+            where.ProductId = RequestHelper.GetFormInt("ProductId",0);
+          
+            var searchList = GoodsService.GetInstance().GetList(where);
+
+            var dataGridEntity = new DataGridResponse()
+            {
+                total = searchList.Count,
+                rows = searchList
             };
             return new AbpJsonResult(dataGridEntity, new NHibernateContractResolver());
         }
