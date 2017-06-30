@@ -21,10 +21,17 @@ var pro = pro || {};
                 rownumbers: true, //行号
                 singleSelect: true,
                 columns: [[
-         { field: 'Id', title: '', width: 100 },
+         { field: 'PkId', title: '', width: 100 },
          { field: 'ProductId', title: '', width: 100 },
-         { field: 'SpecId', title: '', width: 100 },
-         { field: 'SpecType', title: '', width: 100 },
+         { field: 'GoodsCode', title: '货号', width: 100 },
+         { field: 'GoodsStock', title: '库存', width: 100 },
+         { field: 'GoodsPrice', title: '销售价', width: 100 },
+         { field: 'GoodsCost', title: '成本价', width: 100 },
+         { field: 'GoodsWeight', title: '重量', width: 100 },
+         { field: 'GoodsWeightUnit', title: '重量单位', width: 100 },
+         { field: 'Unit', title: '单位', width: 100 },
+         { field: 'Title', title: '商品描述', width: 100 },
+         { field: 'IsDefault', title: '是否是默认商品', width: 100 },
                 ]],
                 pagination: true,
                 pageSize: 20, //每页显示的记录条数，默认为10     

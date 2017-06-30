@@ -93,9 +93,13 @@
     <Compile Include="ProductManager\ProductCategoryEntity.cs" />
     <Compile Include="ProductManager\ProductEntity.cs" />
     <Compile Include="ProductManager\ProductImageEntity.cs" />
+    <Compile Include="ProductManager\ProductSpecEntity.cs" />
     <Compile Include="ProductManager\SpecEntity.cs" />
     <Compile Include="ProductManager\SpecValueEntity.cs" />
+    <Compile Include="ProductManager\SystemCategoryAttributeEntity.cs" />
+    <Compile Include="ProductManager\SystemCategoryBrandEntity.cs" />
     <Compile Include="ProductManager\SystemCategoryEntity.cs" />
+    <Compile Include="ProductManager\SystemCategorySpecEntity.cs" />
     <Compile Include="ReportManager\AttendanceViewEntity2.cs" />
     <Compile Include="ReportManager\AttendanceViewEntity.cs" />
     <Compile Include="ReportManager\EmployeeInOutEntity.cs" />

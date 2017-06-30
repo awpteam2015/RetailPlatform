@@ -106,11 +106,11 @@ namespace Project.Model.ProductManager
         /// <summary>
         /// 页面关键字
         /// </summary>
-        public virtual System.String MetaKeywords{get; set;}
+        public virtual System.String Meta_Keywords{get; set;}
         /// <summary>
         /// 页面描述
         /// </summary>
-        public virtual System.String MetaDescription{get; set;}
+        public virtual System.String Meta_Description{get; set;}
         /// <summary>
         /// 是否上架
         /// </summary>
@@ -122,19 +122,19 @@ namespace Project.Model.ProductManager
         /// <summary>
         /// Pdt_desc
         /// </summary>
-        public virtual System.String PdtDesc{get; set;}
+        public virtual System.String Pdt_desc{get; set;}
         /// <summary>
         /// Spec_desc
         /// </summary>
-        public virtual System.String SpecDesc{get; set;}
+        public virtual System.String Spec_desc{get; set;}
         /// <summary>
         /// Params_desc
         /// </summary>
-        public virtual System.String ParamsDesc{get; set;}
+        public virtual System.String Params_desc{get; set;}
         /// <summary>
         /// Tags_desc
         /// </summary>
-        public virtual System.String TagsDesc{get; set;}
+        public virtual System.String Tags_desc{get; set;}
         /// <summary>
         /// 创建人
         /// </summary>
@@ -166,39 +166,39 @@ namespace Project.Model.ProductManager
         /// <summary>
         /// 扩展属性1
         /// </summary>
-        public virtual System.String P1{get; set;}
+        public virtual System.String p_1{get; set;}
         /// <summary>
         /// 扩展属性2
         /// </summary>
-        public virtual System.String P2{get; set;}
+        public virtual System.String p_2{get; set;}
         /// <summary>
         /// 扩展属性1
         /// </summary>
-        public virtual System.String P3{get; set;}
+        public virtual System.String p_3{get; set;}
         /// <summary>
         /// 扩展属性2
         /// </summary>
-        public virtual System.String P4{get; set;}
+        public virtual System.String p_4{get; set;}
         /// <summary>
         /// 扩展属性1
         /// </summary>
-        public virtual System.String P5{get; set;}
+        public virtual System.String p_5{get; set;}
         /// <summary>
         /// 扩展属性2
         /// </summary>
-        public virtual System.String P6{get; set;}
+        public virtual System.String p_6{get; set;}
         /// <summary>
         /// 扩展属性1
         /// </summary>
-        public virtual System.String P7{get; set;}
+        public virtual System.String p_7{get; set;}
         /// <summary>
         /// 扩展属性2
         /// </summary>
-        public virtual System.String P8{get; set;}
+        public virtual System.String p_8{get; set;}
         /// <summary>
         /// 扩展属性1
         /// </summary>
-        public virtual System.String P9{get; set;}
+        public virtual System.String p_9{get; set;}
 		#endregion
         
 

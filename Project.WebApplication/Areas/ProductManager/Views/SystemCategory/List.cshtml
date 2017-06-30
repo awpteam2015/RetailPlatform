@@ -13,7 +13,7 @@
     <script src="/Areas/ProductManager/Scripts/SystemCategory/List.js?JsParamter=@SiteConfig.GetConfig().JsParamter" type="text/javascript"></script>
 }
 
-<div title="系统分类--规格关联表" style="padding:1px;">
+<div title="系统分类" style="padding:1px;">
     <table id="datagrid" style="height:auto;" iconcls=".icon-save" singleselect="true"  toolbar="#tb" fit="true"></table>
     <div id="tb" style="padding:5px;height:auto">
         <div  style="margin-bottom: 5px">
@@ -43,19 +43,82 @@
             
               <tr>
             <td >
-                :
+                分类名称:
             </td>
             <td >
-                <input id="SpecId" name="SpecId"  type="text"  />
+                <input id="SystemCategoryName" name="SystemCategoryName"  type="text"  />
             </td>
         </tr>
             
               <tr>
             <td >
-                :
+                排序:
             </td>
             <td >
-                <input id="SystemCategoryId" name="SystemCategoryId"  type="text"  />
+                <input id="Sort" name="Sort"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td >
+                创建人:
+            </td>
+            <td >
+                <input id="CreatorUserCode" name="CreatorUserCode"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td >
+                创建时间:
+            </td>
+            <td >
+                <input id="CreationTime" name="CreationTime"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td >
+                修改人:
+            </td>
+            <td >
+                <input id="LastModifierUserCode" name="LastModifierUserCode"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td >
+                修改时间:
+            </td>
+            <td >
+                <input id="LastModificationTime" name="LastModificationTime"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td >
+                是否删除:
+            </td>
+            <td >
+                <input id="IsDeleted" name="IsDeleted"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td >
+                删除人:
+            </td>
+            <td >
+                <input id="DeleterUserCode" name="DeleterUserCode"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td >
+                删除时间:
+            </td>
+            <td >
+                <input id="DeletionTime" name="DeletionTime"  type="text"  />
             </td>
         </tr>
           <tr>

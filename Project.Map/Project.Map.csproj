@@ -96,9 +96,13 @@
     <Compile Include="ProductManager\ProductCategoryMap.cs" />
     <Compile Include="ProductManager\ProductImageMap.cs" />
     <Compile Include="ProductManager\ProductMap.cs" />
+    <Compile Include="ProductManager\ProductSpecMap.cs" />
     <Compile Include="ProductManager\SpecMap.cs" />
     <Compile Include="ProductManager\SpecValueMap.cs" />
+    <Compile Include="ProductManager\SystemCategoryAttributeMap.cs" />
+    <Compile Include="ProductManager\SystemCategoryBrandMap.cs" />
     <Compile Include="ProductManager\SystemCategoryMap.cs" />
+    <Compile Include="ProductManager\SystemCategorySpecMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RiverManager\MessageTagMap.cs" />
     <Compile Include="RiverManager\MsgNoticeMap.cs" />

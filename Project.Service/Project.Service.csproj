@@ -115,9 +115,13 @@
     <Compile Include="ProductManager\ProductCategoryService.cs" />
     <Compile Include="ProductManager\ProductImageService.cs" />
     <Compile Include="ProductManager\ProductService.cs" />
+    <Compile Include="ProductManager\ProductSpecService.cs" />
     <Compile Include="ProductManager\SpecService.cs" />
     <Compile Include="ProductManager\SpecValueService.cs" />
+    <Compile Include="ProductManager\SystemCategoryAttributeService.cs" />
+    <Compile Include="ProductManager\SystemCategoryBrandService.cs" />
     <Compile Include="ProductManager\SystemCategoryService.cs" />
+    <Compile Include="ProductManager\SystemCategorySpecService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReportManager\UserInfoReportService.cs" />
     <Compile Include="ReportManager\HrReportService.cs" />

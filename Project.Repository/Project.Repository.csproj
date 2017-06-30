@@ -92,9 +92,13 @@
     <Compile Include="ProductManager\ProductCategoryRepository.cs" />
     <Compile Include="ProductManager\ProductImageRepository.cs" />
     <Compile Include="ProductManager\ProductRepository.cs" />
+    <Compile Include="ProductManager\ProductSpecRepository.cs" />
     <Compile Include="ProductManager\SpecRepository.cs" />
     <Compile Include="ProductManager\SpecValueRepository.cs" />
+    <Compile Include="ProductManager\SystemCategoryAttributeRepository.cs" />
+    <Compile Include="ProductManager\SystemCategoryBrandRepository.cs" />
     <Compile Include="ProductManager\SystemCategoryRepository.cs" />
+    <Compile Include="ProductManager\SystemCategorySpecRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReportManager\HrReportRepository.cs" />
     <Compile Include="ReportManager\UserInfoReportRepository.cs" />

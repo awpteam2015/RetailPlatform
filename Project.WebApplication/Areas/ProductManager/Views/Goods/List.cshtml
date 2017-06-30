@@ -13,7 +13,7 @@
     <script src="/Areas/ProductManager/Scripts/Goods/List.js?JsParamter=@SiteConfig.GetConfig().JsParamter" type="text/javascript"></script>
 }
 
-<div title="" style="padding:1px;">
+<div title="商品表" style="padding:1px;">
     <table id="datagrid" style="height:auto;" iconcls=".icon-save" singleselect="true"  toolbar="#tb" fit="true"></table>
     <div id="tb" style="padding:5px;height:auto">
         <div  style="margin-bottom: 5px">
@@ -37,7 +37,7 @@
                 :
             </td>
             <td >
-                <input id="Id" name="Id"  type="text"  />
+                <input id="PkId" name="PkId"  type="text"  />
             </td>
         </tr>
             
@@ -52,19 +52,82 @@
             
               <tr>
             <td >
-                :
+                货号:
             </td>
             <td >
-                <input id="SpecId" name="SpecId"  type="text"  />
+                <input id="GoodsCode" name="GoodsCode"  type="text"  />
             </td>
         </tr>
             
               <tr>
             <td >
-                :
+                库存:
             </td>
             <td >
-                <input id="SpecType" name="SpecType"  type="text"  />
+                <input id="GoodsStock" name="GoodsStock"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td >
+                销售价:
+            </td>
+            <td >
+                <input id="GoodsPrice" name="GoodsPrice"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td >
+                成本价:
+            </td>
+            <td >
+                <input id="GoodsCost" name="GoodsCost"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td >
+                重量:
+            </td>
+            <td >
+                <input id="GoodsWeight" name="GoodsWeight"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td >
+                重量单位:
+            </td>
+            <td >
+                <input id="GoodsWeightUnit" name="GoodsWeightUnit"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td >
+                单位:
+            </td>
+            <td >
+                <input id="Unit" name="Unit"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td >
+                商品描述:
+            </td>
+            <td >
+                <input id="Title" name="Title"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td >
+                是否是默认商品:
+            </td>
+            <td >
+                <input id="IsDefault" name="IsDefault"  type="text"  />
             </td>
         </tr>
           <tr>

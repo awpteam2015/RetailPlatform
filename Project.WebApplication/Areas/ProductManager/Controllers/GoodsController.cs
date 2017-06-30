@@ -40,10 +40,17 @@ namespace Project.WebApplication.Areas.ProductManager.Controllers
             var pIndex = this.Request["page"].ConvertTo<int>();
             var pSize = this.Request["rows"].ConvertTo<int>();
             var where = new GoodsEntity();
-			//where.Id = RequestHelper.GetFormString("Id");
+			//where.PkId = RequestHelper.GetFormString("PkId");
 			//where.ProductId = RequestHelper.GetFormString("ProductId");
-			//where.SpecId = RequestHelper.GetFormString("SpecId");
-			//where.SpecType = RequestHelper.GetFormString("SpecType");
+			//where.GoodsCode = RequestHelper.GetFormString("GoodsCode");
+			//where.GoodsStock = RequestHelper.GetFormString("GoodsStock");
+			//where.GoodsPrice = RequestHelper.GetFormString("GoodsPrice");
+			//where.GoodsCost = RequestHelper.GetFormString("GoodsCost");
+			//where.GoodsWeight = RequestHelper.GetFormString("GoodsWeight");
+			//where.GoodsWeightUnit = RequestHelper.GetFormString("GoodsWeightUnit");
+			//where.Unit = RequestHelper.GetFormString("Unit");
+			//where.Title = RequestHelper.GetFormString("Title");
+			//where.IsDefault = RequestHelper.GetFormString("IsDefault");
             var searchList = GoodsService.GetInstance().Search(where, (pIndex - 1) * pSize, pSize);
 
             var dataGridEntity = new DataGridResponse()

@@ -63,13 +63,27 @@
                 $("#form1").validate({
                     rules: {
           PkId: { required: true  },
-          SpecId: { required: true  },
-          SystemCategoryId: { required: true  },
+          SystemCategoryName: { required: true  },
+          Sort: { required: true  },
+          CreatorUserCode: { required: true  },
+          CreationTime: { required: true  },
+          LastModifierUserCode: { required: true  },
+          LastModificationTime: { required: true  },
+          IsDeleted: { required: true  },
+          DeleterUserCode: { required: true  },
+          DeletionTime: { required: true  },
                     },
                     messages: {
           PkId:  "必填!",
-          SpecId:  "必填!",
-          SystemCategoryId:  "必填!",
+          SystemCategoryName:  "分类名称必填!",
+          Sort:  "排序必填!",
+          CreatorUserCode:  "创建人必填!",
+          CreationTime:  "创建时间必填!",
+          LastModifierUserCode:  "修改人必填!",
+          LastModificationTime:  "修改时间必填!",
+          IsDeleted:  "是否删除必填!",
+          DeleterUserCode:  "删除人必填!",
+          DeletionTime:  "删除时间必填!",
                     },
                     errorPlacement: function (error, element) {
                         pro.commonKit.errorPlacementHd(error, element);
