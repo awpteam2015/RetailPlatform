@@ -2,8 +2,8 @@
  /***************************************************************************
  *       功能：     PRMBrand业务处理层
  *       作者：     李伟伟
- *       日期：     2017/5/27
- *       描述：     品牌
+ *       日期：     2017/6/30
+ *       描述：     品牌表
  * *************************************************************************/
 using System.Linq;
 using System.Collections.Generic;
@@ -114,7 +114,7 @@ namespace Project.Service.ProductManager
         /// <param name="entity">条件实体</param>
         /// <param name="skipResults">开始</param>
         /// <param name="maxResults">结束</param>
-        /// <returns>获取当前页【品牌】和总【品牌】数</returns>
+        /// <returns>获取当前页【品牌表】和总【品牌表】数</returns>
         public System.Tuple<IList<BrandEntity>, int> Search(BrandEntity where, int skipResults, int maxResults)
         {
                 var expr = PredicateBuilder.True<BrandEntity>();
@@ -123,8 +123,16 @@ namespace Project.Service.ProductManager
               //  expr = expr.And(p => p.PkId == where.PkId);
               // if (!string.IsNullOrEmpty(where.BrandName))
               //  expr = expr.And(p => p.BrandName == where.BrandName);
-              // if (!string.IsNullOrEmpty(where.BrandDes))
-              //  expr = expr.And(p => p.BrandDes == where.BrandDes);
+              // if (!string.IsNullOrEmpty(where.Sort))
+              //  expr = expr.And(p => p.Sort == where.Sort);
+              // if (!string.IsNullOrEmpty(where.UrlLink))
+              //  expr = expr.And(p => p.UrlLink == where.UrlLink);
+              // if (!string.IsNullOrEmpty(where.Logo))
+              //  expr = expr.And(p => p.Logo == where.Logo);
+              // if (!string.IsNullOrEmpty(where.Remark))
+              //  expr = expr.And(p => p.Remark == where.Remark);
+              // if (!string.IsNullOrEmpty(where.GoodsNum))
+              //  expr = expr.And(p => p.GoodsNum == where.GoodsNum);
  #endregion
             var list = _brandRepository.Query().Where(expr).OrderByDescending(p => p.PkId).Skip(skipResults).Take(maxResults).ToList();
             var count = _brandRepository.Query().Where(expr).Count();
@@ -144,8 +152,16 @@ namespace Project.Service.ProductManager
               //  expr = expr.And(p => p.PkId == where.PkId);
               // if (!string.IsNullOrEmpty(where.BrandName))
               //  expr = expr.And(p => p.BrandName == where.BrandName);
-              // if (!string.IsNullOrEmpty(where.BrandDes))
-              //  expr = expr.And(p => p.BrandDes == where.BrandDes);
+              // if (!string.IsNullOrEmpty(where.Sort))
+              //  expr = expr.And(p => p.Sort == where.Sort);
+              // if (!string.IsNullOrEmpty(where.UrlLink))
+              //  expr = expr.And(p => p.UrlLink == where.UrlLink);
+              // if (!string.IsNullOrEmpty(where.Logo))
+              //  expr = expr.And(p => p.Logo == where.Logo);
+              // if (!string.IsNullOrEmpty(where.Remark))
+              //  expr = expr.And(p => p.Remark == where.Remark);
+              // if (!string.IsNullOrEmpty(where.GoodsNum))
+              //  expr = expr.And(p => p.GoodsNum == where.GoodsNum);
  #endregion
             var list = _brandRepository.Query().Where(expr).OrderBy(p => p.PkId).ToList();
             return list;

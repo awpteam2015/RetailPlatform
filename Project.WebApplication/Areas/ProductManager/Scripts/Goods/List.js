@@ -21,13 +21,10 @@ var pro = pro || {};
                 rownumbers: true, //行号
                 singleSelect: true,
                 columns: [[
-         { field: 'PkId', title: '', width: 100 },
-         { field: 'GoodsCode', title: '商品编码', width: 100 },
-         { field: 'GoodsName', title: '商品名称', width: 100 },
-         { field: 'ProductCode', title: '产品编码', width: 100 },
-         { field: 'SpecValue1', title: '功率', width: 100 },
-         { field: 'SpecValue2', title: '颜色', width: 100 },
-         { field: 'SpecValue3', title: '其他', width: 100 },
+         { field: 'Id', title: '', width: 100 },
+         { field: 'ProductId', title: '', width: 100 },
+         { field: 'SpecId', title: '', width: 100 },
+         { field: 'SpecType', title: '', width: 100 },
                 ]],
                 pagination: true,
                 pageSize: 20, //每页显示的记录条数，默认为10     

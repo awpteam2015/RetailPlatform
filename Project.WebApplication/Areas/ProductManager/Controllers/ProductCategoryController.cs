@@ -41,10 +41,20 @@ namespace Project.WebApplication.Areas.ProductManager.Controllers
             var pSize = this.Request["rows"].ConvertTo<int>();
             var where = new ProductCategoryEntity();
 			//where.PkId = RequestHelper.GetFormString("PkId");
-			//where.ProductCategoryName = RequestHelper.GetFormString("ProductCategoryName");
-			//where.ParentProductCategoryId = RequestHelper.GetFormString("ParentProductCategoryId");
-			//where.CategoryRoute = RequestHelper.GetFormString("CategoryRoute");
+			//where.ProductcategoryName = RequestHelper.GetFormString("ProductcategoryName");
+			//where.ParentId = RequestHelper.GetFormString("ParentId");
 			//where.Rank = RequestHelper.GetFormString("Rank");
+			//where.Sort = RequestHelper.GetFormString("Sort");
+			//where.SystemCategoryId = RequestHelper.GetFormString("SystemCategoryId");
+			//where.SystemCategoryName = RequestHelper.GetFormString("SystemCategoryName");
+			//where.Route = RequestHelper.GetFormString("Route");
+			//where.CreatorUserCode = RequestHelper.GetFormString("CreatorUserCode");
+			//where.CreationTime = RequestHelper.GetFormString("CreationTime");
+			//where.LastModifierUserCode = RequestHelper.GetFormString("LastModifierUserCode");
+			//where.LastModificationTime = RequestHelper.GetFormString("LastModificationTime");
+			//where.IsDeleted = RequestHelper.GetFormString("IsDeleted");
+			//where.DeleterUserCode = RequestHelper.GetFormString("DeleterUserCode");
+			//where.DeletionTime = RequestHelper.GetFormString("DeletionTime");
             var searchList = ProductCategoryService.GetInstance().Search(where, (pIndex - 1) * pSize, pSize);
 
             var dataGridEntity = new DataGridResponse()

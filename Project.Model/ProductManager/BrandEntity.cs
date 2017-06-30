@@ -3,8 +3,8 @@
  /***************************************************************************
  *       功能：     PRMBrand实体类
  *       作者：     李伟伟
- *       日期：     2017/5/27
- *       描述：     品牌
+ *       日期：     2017/6/30
+ *       描述：     品牌表
  * *************************************************************************/
 using System;
 using Project.Infrastructure.FrameworkCore.Domain.Entities;
@@ -22,7 +22,23 @@ namespace Project.Model.ProductManager
         /// <summary>
         /// 
         /// </summary>
-        public virtual System.String BrandDes{get; set;}
+        public virtual System.Int32? Sort{get; set;}
+        /// <summary>
+        /// 
+        /// </summary>
+        public virtual System.String UrlLink{get; set;}
+        /// <summary>
+        /// 
+        /// </summary>
+        public virtual System.String Logo{get; set;}
+        /// <summary>
+        /// 
+        /// </summary>
+        public virtual System.String Remark{get; set;}
+        /// <summary>
+        /// 产品数量
+        /// </summary>
+        public virtual System.Int32? GoodsNum{get; set;}
 		#endregion
         
 

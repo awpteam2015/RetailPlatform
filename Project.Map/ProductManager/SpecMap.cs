@@ -2,8 +2,8 @@
  /***************************************************************************
  *       功能：     PRMSpec映射类
  *       作者：     李伟伟
- *       日期：     2017/5/27
- *       描述：     规格
+ *       日期：     2017/6/30
+ *       描述：     规格表
  * *************************************************************************/
 
 using Project.Infrastructure.FrameworkCore.DataNhibernate.EntityMappings;
@@ -18,7 +18,9 @@ namespace  Project.Map.ProductManager
             this.MapPkidDefault<SpecEntity,int>();
  
             Map(p => p.SpecName);    
-            Map(p => p.SpecValues);    
+            Map(p => p.Memo);    
+            Map(p => p.SpecType);    
+            Map(p => p.ShowType);    
         }
     }
 }

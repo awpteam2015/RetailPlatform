@@ -1,6 +1,6 @@
 ﻿
 
-
+  
 
 
 
@@ -13,46 +13,65 @@
     <script src="/Areas/ProductManager/Scripts/Product/List.js?JsParamter=@SiteConfig.GetConfig().JsParamter" type="text/javascript"></script>
 }
 
-<div title="产品表" style="padding:1px;">
-    <table id="datagrid" style="height:auto;" iconcls=".icon-save" singleselect="true" toolbar="#tb" fit="true"></table>
+<div title="" style="padding:1px;">
+    <table id="datagrid" style="height:auto;" iconcls=".icon-save" singleselect="true"  toolbar="#tb" fit="true"></table>
     <div id="tb" style="padding:5px;height:auto">
-        <div style="margin-bottom: 5px">
-            <a id="btnAdd" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true">添加</a>
-
-            <a id="btnDel" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true">删除</a>
-
-            <a id="btnEdit" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true">编辑</a>
-
-            <a id="btnRefresh" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-reload',plain:true">刷新</a>
-
+        <div  style="margin-bottom: 5px">
+            <a id="btnAdd" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true" >添加</a>
+  
+            <a id="btnDel" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true" >删除</a>
+           
+            <a id="btnEdit" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true" >编辑</a>
+          
+            <a id="btnRefresh" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-reload',plain:true" >刷新</a>
+           
         </div>
-
+      
         <div id="divSearch">
             <form>
-                <table class="mtable">
-                    <tr>
-                        <td>
-                            产品名称:
-                        </td>
-                        <td>
-                            <input id="ProductName" name="ProductName" type="text" />
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>
-                            产品编码:
-                        </td>
-                        <td>
-                            <input id="ProductCode" name="ProductCode" type="text" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <a href="#" class="easyui-linkbutton" iconcls="icon-search" id="btnSearch">搜索</a>
-                        </td>
-                    </tr>
-                </table>
+            
+             <table class="mtable">
+            
+              <tr>
+            <td >
+                :
+            </td>
+            <td >
+                <input id="Id" name="Id"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td >
+                :
+            </td>
+            <td >
+                <input id="SystemCategoryId" name="SystemCategoryId"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td >
+                :
+            </td>
+            <td >
+                <input id="ProductId" name="ProductId"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td >
+                等级:
+            </td>
+            <td >
+                <input id="Rank1" name="Rank1"  type="text"  />
+            </td>
+        </tr>
+          <tr>
+        <td colspan="2">   <a href="#" class="easyui-linkbutton" iconcls="icon-search" id="btnSearch">搜索</a>
+        </td>
+        </tr>
+        </table>
             </form>
         </div>
     </div>

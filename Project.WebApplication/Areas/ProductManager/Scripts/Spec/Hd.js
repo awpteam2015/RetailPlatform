@@ -64,12 +64,16 @@
                     rules: {
           PkId: { required: true  },
           SpecName: { required: true  },
-          SpecValues: { required: true  },
+          Memo: { required: true  },
+          SpecType: { required: true  },
+          ShowType: { required: true  },
                     },
                     messages: {
           PkId:  "必填!",
           SpecName:  "必填!",
-          SpecValues:  "必填!",
+          Memo:  "必填!",
+          SpecType:  "0text 1image必填!",
+          ShowType:  "0平铺 1下拉框必填!",
                     },
                     errorPlacement: function (error, element) {
                         pro.commonKit.errorPlacementHd(error, element);

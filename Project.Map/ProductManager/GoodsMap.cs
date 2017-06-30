@@ -1,9 +1,9 @@
 ﻿
  /***************************************************************************
- *       功能：     PRMGoods映射类
+ *       功能：     PRMGoodsSpec映射类
  *       作者：     李伟伟
- *       日期：     2017/5/27
- *       描述：     商品表
+ *       日期：     2017/6/30
+ *       描述：     
  * *************************************************************************/
 
 using Project.Infrastructure.FrameworkCore.DataNhibernate.EntityMappings;
@@ -13,16 +13,13 @@ namespace  Project.Map.ProductManager
 {
     public class GoodsMap : BaseMap<GoodsEntity,int>
     {
-        public GoodsMap():base("PRM_Goods")
+        public GoodsMap():base("PRM_Goods_Spec")
         {
             this.MapPkidDefault<GoodsEntity,int>();
-            Map(p => p.ProductId);
-            Map(p => p.GoodsCode);    
-            Map(p => p.GoodsName);    
-            Map(p => p.ProductCode);    
-            Map(p => p.SpecValue1);    
-            Map(p => p.SpecValue2);    
-            Map(p => p.SpecValue3);    
+ 
+            Map(p => p.ProductId);    
+            Map(p => p.SpecId);    
+            Map(p => p.SpecType);    
         }
     }
 }

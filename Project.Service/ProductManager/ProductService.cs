@@ -1,9 +1,9 @@
 ﻿
  /***************************************************************************
- *       功能：     PRMProduct业务处理层
+ *       功能：     PRMProductSystemCategory业务处理层
  *       作者：     李伟伟
- *       日期：     2017/5/27
- *       描述：     产品表
+ *       日期：     2017/6/30
+ *       描述：     
  * *************************************************************************/
 using System.Linq;
 using System.Collections.Generic;
@@ -114,49 +114,19 @@ namespace Project.Service.ProductManager
         /// <param name="entity">条件实体</param>
         /// <param name="skipResults">开始</param>
         /// <param name="maxResults">结束</param>
-        /// <returns>获取当前页【产品表】和总【产品表】数</returns>
+        /// <returns>获取当前页【】和总【】数</returns>
         public System.Tuple<IList<ProductEntity>, int> Search(ProductEntity where, int skipResults, int maxResults)
         {
                 var expr = PredicateBuilder.True<ProductEntity>();
                   #region
-              // if (!string.IsNullOrEmpty(where.PkId))
-              //  expr = expr.And(p => p.PkId == where.PkId);
-              // if (!string.IsNullOrEmpty(where.ProductName))
-              //  expr = expr.And(p => p.ProductName == where.ProductName);
-              // if (!string.IsNullOrEmpty(where.ProductCode))
-              //  expr = expr.And(p => p.ProductCode == where.ProductCode);
-              // if (!string.IsNullOrEmpty(where.Price))
-              //  expr = expr.And(p => p.Price == where.Price);
-              // if (!string.IsNullOrEmpty(where.ProductCategoryId))
-              //  expr = expr.And(p => p.ProductCategoryId == where.ProductCategoryId);
-              // if (!string.IsNullOrEmpty(where.IsHasSpec1))
-              //  expr = expr.And(p => p.IsHasSpec1 == where.IsHasSpec1);
-              // if (!string.IsNullOrEmpty(where.IsHasSpec2))
-              //  expr = expr.And(p => p.IsHasSpec2 == where.IsHasSpec2);
-              // if (!string.IsNullOrEmpty(where.IsHasSpec3))
-              //  expr = expr.And(p => p.IsHasSpec3 == where.IsHasSpec3);
-              // if (!string.IsNullOrEmpty(where.Attribute1))
-              //  expr = expr.And(p => p.Attribute1 == where.Attribute1);
-              // if (!string.IsNullOrEmpty(where.Attribute2))
-              //  expr = expr.And(p => p.Attribute2 == where.Attribute2);
-              // if (!string.IsNullOrEmpty(where.Attribute3))
-              //  expr = expr.And(p => p.Attribute3 == where.Attribute3);
-              // if (!string.IsNullOrEmpty(where.PicUrl1))
-              //  expr = expr.And(p => p.PicUrl1 == where.PicUrl1);
-              // if (!string.IsNullOrEmpty(where.PicUrl2))
-              //  expr = expr.And(p => p.PicUrl2 == where.PicUrl2);
-              // if (!string.IsNullOrEmpty(where.PicUrl3))
-              //  expr = expr.And(p => p.PicUrl3 == where.PicUrl3);
-              // if (!string.IsNullOrEmpty(where.CreatorUserCode))
-              //  expr = expr.And(p => p.CreatorUserCode == where.CreatorUserCode);
-              // if (!string.IsNullOrEmpty(where.CreationTime))
-              //  expr = expr.And(p => p.CreationTime == where.CreationTime);
-              // if (!string.IsNullOrEmpty(where.LastModifierUserCode))
-              //  expr = expr.And(p => p.LastModifierUserCode == where.LastModifierUserCode);
-              // if (!string.IsNullOrEmpty(where.LastModificationTime))
-              //  expr = expr.And(p => p.LastModificationTime == where.LastModificationTime);
-              // if (!string.IsNullOrEmpty(where.Remark))
-              //  expr = expr.And(p => p.Remark == where.Remark);
+              // if (!string.IsNullOrEmpty(where.Id))
+              //  expr = expr.And(p => p.Id == where.Id);
+              // if (!string.IsNullOrEmpty(where.SystemCategoryId))
+              //  expr = expr.And(p => p.SystemCategoryId == where.SystemCategoryId);
+              // if (!string.IsNullOrEmpty(where.ProductId))
+              //  expr = expr.And(p => p.ProductId == where.ProductId);
+              // if (!string.IsNullOrEmpty(where.Rank1))
+              //  expr = expr.And(p => p.Rank1 == where.Rank1);
  #endregion
             var list = _productRepository.Query().Where(expr).OrderByDescending(p => p.PkId).Skip(skipResults).Take(maxResults).ToList();
             var count = _productRepository.Query().Where(expr).Count();
@@ -172,44 +142,14 @@ namespace Project.Service.ProductManager
         {
                var expr = PredicateBuilder.True<ProductEntity>();
              #region
-              // if (!string.IsNullOrEmpty(where.PkId))
-              //  expr = expr.And(p => p.PkId == where.PkId);
-              // if (!string.IsNullOrEmpty(where.ProductName))
-              //  expr = expr.And(p => p.ProductName == where.ProductName);
-              // if (!string.IsNullOrEmpty(where.ProductCode))
-              //  expr = expr.And(p => p.ProductCode == where.ProductCode);
-              // if (!string.IsNullOrEmpty(where.Price))
-              //  expr = expr.And(p => p.Price == where.Price);
-              // if (!string.IsNullOrEmpty(where.ProductCategoryId))
-              //  expr = expr.And(p => p.ProductCategoryId == where.ProductCategoryId);
-              // if (!string.IsNullOrEmpty(where.IsHasSpec1))
-              //  expr = expr.And(p => p.IsHasSpec1 == where.IsHasSpec1);
-              // if (!string.IsNullOrEmpty(where.IsHasSpec2))
-              //  expr = expr.And(p => p.IsHasSpec2 == where.IsHasSpec2);
-              // if (!string.IsNullOrEmpty(where.IsHasSpec3))
-              //  expr = expr.And(p => p.IsHasSpec3 == where.IsHasSpec3);
-              // if (!string.IsNullOrEmpty(where.Attribute1))
-              //  expr = expr.And(p => p.Attribute1 == where.Attribute1);
-              // if (!string.IsNullOrEmpty(where.Attribute2))
-              //  expr = expr.And(p => p.Attribute2 == where.Attribute2);
-              // if (!string.IsNullOrEmpty(where.Attribute3))
-              //  expr = expr.And(p => p.Attribute3 == where.Attribute3);
-              // if (!string.IsNullOrEmpty(where.PicUrl1))
-              //  expr = expr.And(p => p.PicUrl1 == where.PicUrl1);
-              // if (!string.IsNullOrEmpty(where.PicUrl2))
-              //  expr = expr.And(p => p.PicUrl2 == where.PicUrl2);
-              // if (!string.IsNullOrEmpty(where.PicUrl3))
-              //  expr = expr.And(p => p.PicUrl3 == where.PicUrl3);
-              // if (!string.IsNullOrEmpty(where.CreatorUserCode))
-              //  expr = expr.And(p => p.CreatorUserCode == where.CreatorUserCode);
-              // if (!string.IsNullOrEmpty(where.CreationTime))
-              //  expr = expr.And(p => p.CreationTime == where.CreationTime);
-              // if (!string.IsNullOrEmpty(where.LastModifierUserCode))
-              //  expr = expr.And(p => p.LastModifierUserCode == where.LastModifierUserCode);
-              // if (!string.IsNullOrEmpty(where.LastModificationTime))
-              //  expr = expr.And(p => p.LastModificationTime == where.LastModificationTime);
-              // if (!string.IsNullOrEmpty(where.Remark))
-              //  expr = expr.And(p => p.Remark == where.Remark);
+              // if (!string.IsNullOrEmpty(where.Id))
+              //  expr = expr.And(p => p.Id == where.Id);
+              // if (!string.IsNullOrEmpty(where.SystemCategoryId))
+              //  expr = expr.And(p => p.SystemCategoryId == where.SystemCategoryId);
+              // if (!string.IsNullOrEmpty(where.ProductId))
+              //  expr = expr.And(p => p.ProductId == where.ProductId);
+              // if (!string.IsNullOrEmpty(where.Rank1))
+              //  expr = expr.And(p => p.Rank1 == where.Rank1);
  #endregion
             var list = _productRepository.Query().Where(expr).OrderBy(p => p.PkId).ToList();
             return list;

@@ -2,8 +2,8 @@
  /***************************************************************************
  *       功能：     PRMBrand映射类
  *       作者：     李伟伟
- *       日期：     2017/5/27
- *       描述：     品牌
+ *       日期：     2017/6/30
+ *       描述：     品牌表
  * *************************************************************************/
 
 using Project.Infrastructure.FrameworkCore.DataNhibernate.EntityMappings;
@@ -18,7 +18,11 @@ namespace  Project.Map.ProductManager
             this.MapPkidDefault<BrandEntity,int>();
  
             Map(p => p.BrandName);    
-            Map(p => p.BrandDes);    
+            Map(p => p.Sort);    
+            Map(p => p.UrlLink);    
+            Map(p => p.Logo);    
+            Map(p => p.Remark);    
+            Map(p => p.GoodsNum);    
         }
     }
 }

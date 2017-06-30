@@ -6,7 +6,6 @@ using System.Linq;
 using System.Web.Mvc;
 using AutoMapper;
 using Project.Infrastructure.FrameworkCore.DataNhibernate.Helpers;
-using Project.Infrastructure.FrameworkCore.ToolKit;
 using Project.Infrastructure.FrameworkCore.ToolKit.JsonHandler;
 using Project.Infrastructure.FrameworkCore.ToolKit.LinqExpansion;
 using Project.Infrastructure.FrameworkCore.WebMvc.Controllers.Results;
@@ -41,36 +40,16 @@ namespace Project.WebApplication.Areas.ProductManager.Controllers
             var pIndex = this.Request["page"].ConvertTo<int>();
             var pSize = this.Request["rows"].ConvertTo<int>();
             var where = new GoodsEntity();
-			//where.PkId = RequestHelper.GetFormString("PkId");
-			//where.GoodsCode = RequestHelper.GetFormString("GoodsCode");
-			//where.GoodsName = RequestHelper.GetFormString("GoodsName");
-			//where.ProductCode = RequestHelper.GetFormString("ProductCode");
-			//where.SpecValue1 = RequestHelper.GetFormString("SpecValue1");
-			//where.SpecValue2 = RequestHelper.GetFormString("SpecValue2");
-			//where.SpecValue3 = RequestHelper.GetFormString("SpecValue3");
+			//where.Id = RequestHelper.GetFormString("Id");
+			//where.ProductId = RequestHelper.GetFormString("ProductId");
+			//where.SpecId = RequestHelper.GetFormString("SpecId");
+			//where.SpecType = RequestHelper.GetFormString("SpecType");
             var searchList = GoodsService.GetInstance().Search(where, (pIndex - 1) * pSize, pSize);
 
             var dataGridEntity = new DataGridResponse()
             {
                 total = searchList.Item2,
                 rows = searchList.Item1
-            };
-            return new AbpJsonResult(dataGridEntity, new NHibernateContractResolver());
-        }
-
-
-        public AbpJsonResult GetAllList()
-        {
-   
-            var where = new GoodsEntity();
-            where.ProductId = RequestHelper.GetFormInt("ProductId",0);
-          
-            var searchList = GoodsService.GetInstance().GetList(where);
-
-            var dataGridEntity = new DataGridResponse()
-            {
-                total = searchList.Count,
-                rows = searchList
             };
             return new AbpJsonResult(dataGridEntity, new NHibernateContractResolver());
         }

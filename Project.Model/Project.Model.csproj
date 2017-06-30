@@ -84,11 +84,18 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="PermissionManager\UserRoleModel.cs" />
+    <Compile Include="ProductManager\AttributeValueEntity.cs" />
     <Compile Include="ProductManager\BrandEntity.cs" />
+    <Compile Include="ProductManager\ExtAttributeEntity.cs" />
     <Compile Include="ProductManager\GoodsEntity.cs" />
+    <Compile Include="ProductManager\GoodsSpecValueEntity.cs" />
+    <Compile Include="ProductManager\ProductAttributeValueEntity.cs" />
     <Compile Include="ProductManager\ProductCategoryEntity.cs" />
     <Compile Include="ProductManager\ProductEntity.cs" />
+    <Compile Include="ProductManager\ProductImageEntity.cs" />
     <Compile Include="ProductManager\SpecEntity.cs" />
+    <Compile Include="ProductManager\SpecValueEntity.cs" />
+    <Compile Include="ProductManager\SystemCategoryEntity.cs" />
     <Compile Include="ReportManager\AttendanceViewEntity2.cs" />
     <Compile Include="ReportManager\AttendanceViewEntity.cs" />
     <Compile Include="ReportManager\EmployeeInOutEntity.cs" />

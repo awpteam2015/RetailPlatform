@@ -2,8 +2,8 @@
  /***************************************************************************
  *       功能：     PRMProductCategory映射类
  *       作者：     李伟伟
- *       日期：     2017/5/27
- *       描述：     商品分类
+ *       日期：     2017/6/30
+ *       描述：     
  * *************************************************************************/
 
 using Project.Infrastructure.FrameworkCore.DataNhibernate.EntityMappings;
@@ -17,10 +17,20 @@ namespace  Project.Map.ProductManager
         {
             this.MapPkidDefault<ProductCategoryEntity,int>();
  
-            Map(p => p.ProductCategoryName);    
-            Map(p => p.ParentProductCategoryId);    
-            Map(p => p.CategoryRoute);    
+            Map(p => p.ProductcategoryName);    
+            Map(p => p.ParentId);    
             Map(p => p.Rank);    
+            Map(p => p.Sort);    
+            Map(p => p.SystemCategoryId);    
+            Map(p => p.SystemCategoryName);    
+            Map(p => p.Route);    
+            Map(p => p.CreatorUserCode);    
+            Map(p => p.CreationTime);    
+            Map(p => p.LastModifierUserCode);    
+            Map(p => p.LastModificationTime);    
+            Map(p => p.IsDeleted);    
+            Map(p => p.DeleterUserCode);    
+            Map(p => p.DeletionTime);    
         }
     }
 }

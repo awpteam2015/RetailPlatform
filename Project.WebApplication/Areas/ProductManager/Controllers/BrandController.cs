@@ -42,7 +42,11 @@ namespace Project.WebApplication.Areas.ProductManager.Controllers
             var where = new BrandEntity();
 			//where.PkId = RequestHelper.GetFormString("PkId");
 			//where.BrandName = RequestHelper.GetFormString("BrandName");
-			//where.BrandDes = RequestHelper.GetFormString("BrandDes");
+			//where.Sort = RequestHelper.GetFormString("Sort");
+			//where.UrlLink = RequestHelper.GetFormString("UrlLink");
+			//where.Logo = RequestHelper.GetFormString("Logo");
+			//where.Remark = RequestHelper.GetFormString("Remark");
+			//where.GoodsNum = RequestHelper.GetFormString("GoodsNum");
             var searchList = BrandService.GetInstance().Search(where, (pIndex - 1) * pSize, pSize);
 
             var dataGridEntity = new DataGridResponse()

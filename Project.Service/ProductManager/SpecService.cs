@@ -2,8 +2,8 @@
  /***************************************************************************
  *       功能：     PRMSpec业务处理层
  *       作者：     李伟伟
- *       日期：     2017/5/27
- *       描述：     规格
+ *       日期：     2017/6/30
+ *       描述：     规格表
  * *************************************************************************/
 using System.Linq;
 using System.Collections.Generic;
@@ -114,7 +114,7 @@ namespace Project.Service.ProductManager
         /// <param name="entity">条件实体</param>
         /// <param name="skipResults">开始</param>
         /// <param name="maxResults">结束</param>
-        /// <returns>获取当前页【规格】和总【规格】数</returns>
+        /// <returns>获取当前页【规格表】和总【规格表】数</returns>
         public System.Tuple<IList<SpecEntity>, int> Search(SpecEntity where, int skipResults, int maxResults)
         {
                 var expr = PredicateBuilder.True<SpecEntity>();
@@ -123,8 +123,12 @@ namespace Project.Service.ProductManager
               //  expr = expr.And(p => p.PkId == where.PkId);
               // if (!string.IsNullOrEmpty(where.SpecName))
               //  expr = expr.And(p => p.SpecName == where.SpecName);
-              // if (!string.IsNullOrEmpty(where.SpecValues))
-              //  expr = expr.And(p => p.SpecValues == where.SpecValues);
+              // if (!string.IsNullOrEmpty(where.Memo))
+              //  expr = expr.And(p => p.Memo == where.Memo);
+              // if (!string.IsNullOrEmpty(where.SpecType))
+              //  expr = expr.And(p => p.SpecType == where.SpecType);
+              // if (!string.IsNullOrEmpty(where.ShowType))
+              //  expr = expr.And(p => p.ShowType == where.ShowType);
  #endregion
             var list = _specRepository.Query().Where(expr).OrderByDescending(p => p.PkId).Skip(skipResults).Take(maxResults).ToList();
             var count = _specRepository.Query().Where(expr).Count();
@@ -144,8 +148,12 @@ namespace Project.Service.ProductManager
               //  expr = expr.And(p => p.PkId == where.PkId);
               // if (!string.IsNullOrEmpty(where.SpecName))
               //  expr = expr.And(p => p.SpecName == where.SpecName);
-              // if (!string.IsNullOrEmpty(where.SpecValues))
-              //  expr = expr.And(p => p.SpecValues == where.SpecValues);
+              // if (!string.IsNullOrEmpty(where.Memo))
+              //  expr = expr.And(p => p.Memo == where.Memo);
+              // if (!string.IsNullOrEmpty(where.SpecType))
+              //  expr = expr.And(p => p.SpecType == where.SpecType);
+              // if (!string.IsNullOrEmpty(where.ShowType))
+              //  expr = expr.And(p => p.ShowType == where.ShowType);
  #endregion
             var list = _specRepository.Query().Where(expr).OrderBy(p => p.PkId).ToList();
             return list;

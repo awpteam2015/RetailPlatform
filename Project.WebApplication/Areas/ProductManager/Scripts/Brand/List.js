@@ -23,7 +23,11 @@ var pro = pro || {};
                 columns: [[
          { field: 'PkId', title: '', width: 100 },
          { field: 'BrandName', title: '', width: 100 },
-         { field: 'BrandDes', title: '', width: 100 },
+         { field: 'Sort', title: '', width: 100 },
+         { field: 'UrlLink', title: '', width: 100 },
+         { field: 'Logo', title: '', width: 100 },
+         { field: 'Remark', title: '', width: 100 },
+         { field: 'GoodsNum', title: '产品数量', width: 100 },
                 ]],
                 pagination: true,
                 pageSize: 20, //每页显示的记录条数，默认为10     
