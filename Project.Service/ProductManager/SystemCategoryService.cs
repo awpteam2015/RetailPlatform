@@ -1,9 +1,9 @@
 ﻿
  /***************************************************************************
- *       功能：     PRMSystemCategorySpec业务处理层
+ *       功能：     PRMSystemCategory业务处理层
  *       作者：     李伟伟
  *       日期：     2017/6/30
- *       描述：     系统分类--规格关联表
+ *       描述：     系统分类
  * *************************************************************************/
 using System.Linq;
 using System.Collections.Generic;
@@ -114,17 +114,31 @@ namespace Project.Service.ProductManager
         /// <param name="entity">条件实体</param>
         /// <param name="skipResults">开始</param>
         /// <param name="maxResults">结束</param>
-        /// <returns>获取当前页【系统分类--规格关联表】和总【系统分类--规格关联表】数</returns>
+        /// <returns>获取当前页【系统分类】和总【系统分类】数</returns>
         public System.Tuple<IList<SystemCategoryEntity>, int> Search(SystemCategoryEntity where, int skipResults, int maxResults)
         {
                 var expr = PredicateBuilder.True<SystemCategoryEntity>();
                   #region
               // if (!string.IsNullOrEmpty(where.PkId))
               //  expr = expr.And(p => p.PkId == where.PkId);
-              // if (!string.IsNullOrEmpty(where.SpecId))
-              //  expr = expr.And(p => p.SpecId == where.SpecId);
-              // if (!string.IsNullOrEmpty(where.SystemCategoryId))
-              //  expr = expr.And(p => p.SystemCategoryId == where.SystemCategoryId);
+              // if (!string.IsNullOrEmpty(where.SystemCategoryName))
+              //  expr = expr.And(p => p.SystemCategoryName == where.SystemCategoryName);
+              // if (!string.IsNullOrEmpty(where.Sort))
+              //  expr = expr.And(p => p.Sort == where.Sort);
+              // if (!string.IsNullOrEmpty(where.CreatorUserCode))
+              //  expr = expr.And(p => p.CreatorUserCode == where.CreatorUserCode);
+              // if (!string.IsNullOrEmpty(where.CreationTime))
+              //  expr = expr.And(p => p.CreationTime == where.CreationTime);
+              // if (!string.IsNullOrEmpty(where.LastModifierUserCode))
+              //  expr = expr.And(p => p.LastModifierUserCode == where.LastModifierUserCode);
+              // if (!string.IsNullOrEmpty(where.LastModificationTime))
+              //  expr = expr.And(p => p.LastModificationTime == where.LastModificationTime);
+              // if (!string.IsNullOrEmpty(where.IsDeleted))
+              //  expr = expr.And(p => p.IsDeleted == where.IsDeleted);
+              // if (!string.IsNullOrEmpty(where.DeleterUserCode))
+              //  expr = expr.And(p => p.DeleterUserCode == where.DeleterUserCode);
+              // if (!string.IsNullOrEmpty(where.DeletionTime))
+              //  expr = expr.And(p => p.DeletionTime == where.DeletionTime);
  #endregion
             var list = _systemCategoryRepository.Query().Where(expr).OrderByDescending(p => p.PkId).Skip(skipResults).Take(maxResults).ToList();
             var count = _systemCategoryRepository.Query().Where(expr).Count();
@@ -142,10 +156,24 @@ namespace Project.Service.ProductManager
              #region
               // if (!string.IsNullOrEmpty(where.PkId))
               //  expr = expr.And(p => p.PkId == where.PkId);
-              // if (!string.IsNullOrEmpty(where.SpecId))
-              //  expr = expr.And(p => p.SpecId == where.SpecId);
-              // if (!string.IsNullOrEmpty(where.SystemCategoryId))
-              //  expr = expr.And(p => p.SystemCategoryId == where.SystemCategoryId);
+              // if (!string.IsNullOrEmpty(where.SystemCategoryName))
+              //  expr = expr.And(p => p.SystemCategoryName == where.SystemCategoryName);
+              // if (!string.IsNullOrEmpty(where.Sort))
+              //  expr = expr.And(p => p.Sort == where.Sort);
+              // if (!string.IsNullOrEmpty(where.CreatorUserCode))
+              //  expr = expr.And(p => p.CreatorUserCode == where.CreatorUserCode);
+              // if (!string.IsNullOrEmpty(where.CreationTime))
+              //  expr = expr.And(p => p.CreationTime == where.CreationTime);
+              // if (!string.IsNullOrEmpty(where.LastModifierUserCode))
+              //  expr = expr.And(p => p.LastModifierUserCode == where.LastModifierUserCode);
+              // if (!string.IsNullOrEmpty(where.LastModificationTime))
+              //  expr = expr.And(p => p.LastModificationTime == where.LastModificationTime);
+              // if (!string.IsNullOrEmpty(where.IsDeleted))
+              //  expr = expr.And(p => p.IsDeleted == where.IsDeleted);
+              // if (!string.IsNullOrEmpty(where.DeleterUserCode))
+              //  expr = expr.And(p => p.DeleterUserCode == where.DeleterUserCode);
+              // if (!string.IsNullOrEmpty(where.DeletionTime))
+              //  expr = expr.And(p => p.DeletionTime == where.DeletionTime);
  #endregion
             var list = _systemCategoryRepository.Query().Where(expr).OrderBy(p => p.PkId).ToList();
             return list;

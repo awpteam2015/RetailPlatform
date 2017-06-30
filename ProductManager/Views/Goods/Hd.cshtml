@@ -1,0 +1,139 @@
+﻿
+
+  
+
+
+@{
+    ViewBag.Title = "Hd";
+    Layout = "~/Views/Shared/_LayoutHandler.cshtml";
+}
+
+@section JavaScript{
+    <script src="/Areas/ProductManager/Scripts/Goods/Hd.js?JsParamter=@SiteConfig.GetConfig().JsParamter"></script>
+}
+<div style="display: none">
+<input id="BindEntity" type="text" value="@ViewBag.BindEntity" />
+<input id="Command" type="hidden" />
+</div>
+<div class="mtable_div">
+    <form id="form1">
+        <table class="mtable">
+            
+              <tr>
+            <td  >
+                <span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="PkId" name="PkId"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                <span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="ProductId" name="ProductId"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                货号<span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="GoodsCode" name="GoodsCode"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                库存<span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="GoodsStock" name="GoodsStock"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                销售价<span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="GoodsPrice" name="GoodsPrice"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                成本价<span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="GoodsCost" name="GoodsCost"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                重量<span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="GoodsWeight" name="GoodsWeight"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                重量单位<span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="GoodsWeightUnit" name="GoodsWeightUnit"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                单位<span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="Unit" name="Unit"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                商品描述<span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="Title" name="Title"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                是否是默认商品<span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="IsDefault" name="IsDefault"  type="text"  />
+            </td>
+        </tr>
+          
+        </table>
+    </form>
+</div>
+<div style="padding: 10px 10px 0 10px; text-align: center;">
+    @if (Request["PkId"]==null||int.Parse(Request["PkId"]) == 0)
+    {
+        <a id="btnAdd" class="easyui-linkbutton" iconcls="icon-add" href="javascript:void(0)">新增</a>
+    }
+    else
+    {
+        <a id="btnEdit" class="easyui-linkbutton" iconcls="icon-ok" href="javascript:void(0)">编辑</a>
+    }
+    <a id="btnClose" class="easyui-linkbutton" iconcls="icon-cancel" href="javascript:void(0)">关闭</a>
+</div>
+
+
+
+
+

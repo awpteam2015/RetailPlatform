@@ -1,9 +1,9 @@
 ﻿
  /***************************************************************************
- *       功能：     PRMGoodsSpec业务处理层
+ *       功能：     PRMGoods业务处理层
  *       作者：     李伟伟
  *       日期：     2017/6/30
- *       描述：     
+ *       描述：     商品表
  * *************************************************************************/
 using System.Linq;
 using System.Collections.Generic;
@@ -114,19 +114,33 @@ namespace Project.Service.ProductManager
         /// <param name="entity">条件实体</param>
         /// <param name="skipResults">开始</param>
         /// <param name="maxResults">结束</param>
-        /// <returns>获取当前页【】和总【】数</returns>
+        /// <returns>获取当前页【商品表】和总【商品表】数</returns>
         public System.Tuple<IList<GoodsEntity>, int> Search(GoodsEntity where, int skipResults, int maxResults)
         {
                 var expr = PredicateBuilder.True<GoodsEntity>();
                   #region
-              // if (!string.IsNullOrEmpty(where.Id))
-              //  expr = expr.And(p => p.Id == where.Id);
+              // if (!string.IsNullOrEmpty(where.PkId))
+              //  expr = expr.And(p => p.PkId == where.PkId);
               // if (!string.IsNullOrEmpty(where.ProductId))
               //  expr = expr.And(p => p.ProductId == where.ProductId);
-              // if (!string.IsNullOrEmpty(where.SpecId))
-              //  expr = expr.And(p => p.SpecId == where.SpecId);
-              // if (!string.IsNullOrEmpty(where.SpecType))
-              //  expr = expr.And(p => p.SpecType == where.SpecType);
+              // if (!string.IsNullOrEmpty(where.GoodsCode))
+              //  expr = expr.And(p => p.GoodsCode == where.GoodsCode);
+              // if (!string.IsNullOrEmpty(where.GoodsStock))
+              //  expr = expr.And(p => p.GoodsStock == where.GoodsStock);
+              // if (!string.IsNullOrEmpty(where.GoodsPrice))
+              //  expr = expr.And(p => p.GoodsPrice == where.GoodsPrice);
+              // if (!string.IsNullOrEmpty(where.GoodsCost))
+              //  expr = expr.And(p => p.GoodsCost == where.GoodsCost);
+              // if (!string.IsNullOrEmpty(where.GoodsWeight))
+              //  expr = expr.And(p => p.GoodsWeight == where.GoodsWeight);
+              // if (!string.IsNullOrEmpty(where.GoodsWeightUnit))
+              //  expr = expr.And(p => p.GoodsWeightUnit == where.GoodsWeightUnit);
+              // if (!string.IsNullOrEmpty(where.Unit))
+              //  expr = expr.And(p => p.Unit == where.Unit);
+              // if (!string.IsNullOrEmpty(where.Title))
+              //  expr = expr.And(p => p.Title == where.Title);
+              // if (!string.IsNullOrEmpty(where.IsDefault))
+              //  expr = expr.And(p => p.IsDefault == where.IsDefault);
  #endregion
             var list = _goodsRepository.Query().Where(expr).OrderByDescending(p => p.PkId).Skip(skipResults).Take(maxResults).ToList();
             var count = _goodsRepository.Query().Where(expr).Count();
@@ -142,14 +156,28 @@ namespace Project.Service.ProductManager
         {
                var expr = PredicateBuilder.True<GoodsEntity>();
              #region
-              // if (!string.IsNullOrEmpty(where.Id))
-              //  expr = expr.And(p => p.Id == where.Id);
+              // if (!string.IsNullOrEmpty(where.PkId))
+              //  expr = expr.And(p => p.PkId == where.PkId);
               // if (!string.IsNullOrEmpty(where.ProductId))
               //  expr = expr.And(p => p.ProductId == where.ProductId);
-              // if (!string.IsNullOrEmpty(where.SpecId))
-              //  expr = expr.And(p => p.SpecId == where.SpecId);
-              // if (!string.IsNullOrEmpty(where.SpecType))
-              //  expr = expr.And(p => p.SpecType == where.SpecType);
+              // if (!string.IsNullOrEmpty(where.GoodsCode))
+              //  expr = expr.And(p => p.GoodsCode == where.GoodsCode);
+              // if (!string.IsNullOrEmpty(where.GoodsStock))
+              //  expr = expr.And(p => p.GoodsStock == where.GoodsStock);
+              // if (!string.IsNullOrEmpty(where.GoodsPrice))
+              //  expr = expr.And(p => p.GoodsPrice == where.GoodsPrice);
+              // if (!string.IsNullOrEmpty(where.GoodsCost))
+              //  expr = expr.And(p => p.GoodsCost == where.GoodsCost);
+              // if (!string.IsNullOrEmpty(where.GoodsWeight))
+              //  expr = expr.And(p => p.GoodsWeight == where.GoodsWeight);
+              // if (!string.IsNullOrEmpty(where.GoodsWeightUnit))
+              //  expr = expr.And(p => p.GoodsWeightUnit == where.GoodsWeightUnit);
+              // if (!string.IsNullOrEmpty(where.Unit))
+              //  expr = expr.And(p => p.Unit == where.Unit);
+              // if (!string.IsNullOrEmpty(where.Title))
+              //  expr = expr.And(p => p.Title == where.Title);
+              // if (!string.IsNullOrEmpty(where.IsDefault))
+              //  expr = expr.And(p => p.IsDefault == where.IsDefault);
  #endregion
             var list = _goodsRepository.Query().Where(expr).OrderBy(p => p.PkId).ToList();
             return list;
