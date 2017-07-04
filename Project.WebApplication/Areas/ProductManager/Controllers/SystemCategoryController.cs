@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web.Mvc;
 using AutoMapper;
 using Project.Infrastructure.FrameworkCore.DataNhibernate.Helpers;
+using Project.Infrastructure.FrameworkCore.ToolKit;
 using Project.Infrastructure.FrameworkCore.ToolKit.JsonHandler;
 using Project.Infrastructure.FrameworkCore.ToolKit.LinqExpansion;
 using Project.Infrastructure.FrameworkCore.WebMvc.Controllers.Results;
@@ -16,6 +17,9 @@ using Project.WebApplication.Controllers;
 
 namespace Project.WebApplication.Areas.ProductManager.Controllers
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class SystemCategoryController : BaseController
     {
 
@@ -40,16 +44,16 @@ namespace Project.WebApplication.Areas.ProductManager.Controllers
             var pIndex = this.Request["page"].ConvertTo<int>();
             var pSize = this.Request["rows"].ConvertTo<int>();
             var where = new SystemCategoryEntity();
-			//where.PkId = RequestHelper.GetFormString("PkId");
-			//where.SystemCategoryName = RequestHelper.GetFormString("SystemCategoryName");
-			//where.Sort = RequestHelper.GetFormString("Sort");
-			//where.CreatorUserCode = RequestHelper.GetFormString("CreatorUserCode");
-			//where.CreationTime = RequestHelper.GetFormString("CreationTime");
-			//where.LastModifierUserCode = RequestHelper.GetFormString("LastModifierUserCode");
-			//where.LastModificationTime = RequestHelper.GetFormString("LastModificationTime");
-			//where.IsDeleted = RequestHelper.GetFormString("IsDeleted");
-			//where.DeleterUserCode = RequestHelper.GetFormString("DeleterUserCode");
-			//where.DeletionTime = RequestHelper.GetFormString("DeletionTime");
+            //where.PkId = RequestHelper.GetFormString("PkId");
+            where.SystemCategoryName = RequestHelper.GetFormString("SystemCategoryName");
+            //where.Sort = RequestHelper.GetFormString("Sort");
+            //where.CreatorUserCode = RequestHelper.GetFormString("CreatorUserCode");
+            //where.CreationTime = RequestHelper.GetFormString("CreationTime");
+            //where.LastModifierUserCode = RequestHelper.GetFormString("LastModifierUserCode");
+            //where.LastModificationTime = RequestHelper.GetFormString("LastModificationTime");
+            //where.IsDeleted = RequestHelper.GetFormString("IsDeleted");
+            //where.DeleterUserCode = RequestHelper.GetFormString("DeleterUserCode");
+            //where.DeletionTime = RequestHelper.GetFormString("DeletionTime");
             var searchList = SystemCategoryService.GetInstance().Search(where, (pIndex - 1) * pSize, pSize);
 
             var dataGridEntity = new DataGridResponse()

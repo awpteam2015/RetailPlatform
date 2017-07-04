@@ -55,6 +55,17 @@ namespace Project.WebApplication.Areas.ProductManager.Controllers
             return new AbpJsonResult(dataGridEntity, new NHibernateContractResolver());
         }
 
+        public AbpJsonResult GetListAll()
+        {
+            var searchList = SpecService.GetInstance().GetList(new SpecEntity());
+            var dataGridEntity = new DataGridResponse()
+            {
+                total = searchList.Count,
+                rows = searchList
+            };
+            return new AbpJsonResult(dataGridEntity, new NHibernateContractResolver());
+        }
+
 
         [HttpPost]
         public AbpJsonResult Add(AjaxRequest<SpecEntity> postData)
