@@ -203,6 +203,10 @@
     <Content Include="Areas\PermissionManager\Scripts\Function\List.js" />
     <Content Include="Areas\PermissionManager\Scripts\Module\Hd.js" />
     <Content Include="Areas\PermissionManager\Scripts\Module\List.js" />
+    <Content Include="Areas\PermissionManager\Scripts\ParameterGroupDetail\Hd.js" />
+    <Content Include="Areas\PermissionManager\Scripts\ParameterGroupDetail\List.js" />
+    <Content Include="Areas\PermissionManager\Scripts\ParameterGroup\Hd.js" />
+    <Content Include="Areas\PermissionManager\Scripts\ParameterGroup\List.js" />
     <Content Include="Areas\PermissionManager\Scripts\RoleDepartment\Hd.js" />
     <Content Include="Areas\PermissionManager\Scripts\RoleDepartment\List.js" />
     <Content Include="Areas\PermissionManager\Scripts\RoleFunctionDetail\Hd.js" />
@@ -465,6 +469,10 @@
     <Content Include="Areas\ProductManager\Views\SpecValue\List.cshtml" />
     <Content Include="Areas\ProductManager\Views\SystemCategory\Hd.cshtml" />
     <Content Include="Areas\ProductManager\Views\SystemCategory\List.cshtml" />
+    <Content Include="Areas\PermissionManager\Views\ParameterGroupDetail\Hd.cshtml" />
+    <Content Include="Areas\PermissionManager\Views\ParameterGroupDetail\List.cshtml" />
+    <Content Include="Areas\PermissionManager\Views\ParameterGroup\Hd.cshtml" />
+    <Content Include="Areas\PermissionManager\Views\ParameterGroup\List.cshtml" />
     <None Include="Properties\PublishProfiles\OA.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Control\DepartmentControl.js" />
@@ -1145,6 +1153,8 @@
     <Compile Include="Areas\PermissionManager\Controllers\FunctionController.cs" />
     <Compile Include="Areas\PermissionManager\Controllers\FunctionDetailController.cs" />
     <Compile Include="Areas\PermissionManager\Controllers\ModuleController.cs" />
+    <Compile Include="Areas\PermissionManager\Controllers\ParameterGroupController.cs" />
+    <Compile Include="Areas\PermissionManager\Controllers\ParameterGroupDetailController.cs" />
     <Compile Include="Areas\PermissionManager\Controllers\PermissionController.cs" />
     <Compile Include="Areas\PermissionManager\Controllers\RoleController.cs" />
     <Compile Include="Areas\PermissionManager\Controllers\RoleDepartmentController.cs" />

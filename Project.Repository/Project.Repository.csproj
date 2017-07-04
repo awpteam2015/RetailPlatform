@@ -88,6 +88,8 @@
     <Compile Include="ProductManager\ExtAttributeRepository.cs" />
     <Compile Include="ProductManager\GoodsRepository.cs" />
     <Compile Include="ProductManager\GoodsSpecValueRepository.cs" />
+    <Compile Include="ProductManager\ParameterGroupDetailRepository.cs" />
+    <Compile Include="ProductManager\ParameterGroupRepository.cs" />
     <Compile Include="ProductManager\ProductAttributeValueRepository.cs" />
     <Compile Include="ProductManager\ProductCategoryRepository.cs" />
     <Compile Include="ProductManager\ProductImageRepository.cs" />

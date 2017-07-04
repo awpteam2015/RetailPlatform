@@ -118,22 +118,22 @@ namespace Project.Service.ProductManager
         public System.Tuple<IList<BrandEntity>, int> Search(BrandEntity where, int skipResults, int maxResults)
         {
                 var expr = PredicateBuilder.True<BrandEntity>();
-                  #region
-              // if (!string.IsNullOrEmpty(where.PkId))
-              //  expr = expr.And(p => p.PkId == where.PkId);
-              // if (!string.IsNullOrEmpty(where.BrandName))
-              //  expr = expr.And(p => p.BrandName == where.BrandName);
-              // if (!string.IsNullOrEmpty(where.Sort))
-              //  expr = expr.And(p => p.Sort == where.Sort);
-              // if (!string.IsNullOrEmpty(where.UrlLink))
-              //  expr = expr.And(p => p.UrlLink == where.UrlLink);
-              // if (!string.IsNullOrEmpty(where.Logo))
-              //  expr = expr.And(p => p.Logo == where.Logo);
-              // if (!string.IsNullOrEmpty(where.Remark))
-              //  expr = expr.And(p => p.Remark == where.Remark);
-              // if (!string.IsNullOrEmpty(where.GoodsNum))
-              //  expr = expr.And(p => p.GoodsNum == where.GoodsNum);
- #endregion
+            #region
+            // if (!string.IsNullOrEmpty(where.PkId))
+            //  expr = expr.And(p => p.PkId == where.PkId);
+            if (!string.IsNullOrEmpty(where.BrandName))
+                expr = expr.And(p => p.BrandName.Contains(where.BrandName));
+            // if (!string.IsNullOrEmpty(where.Sort))
+            //  expr = expr.And(p => p.Sort == where.Sort);
+            // if (!string.IsNullOrEmpty(where.UrlLink))
+            //  expr = expr.And(p => p.UrlLink == where.UrlLink);
+            // if (!string.IsNullOrEmpty(where.Logo))
+            //  expr = expr.And(p => p.Logo == where.Logo);
+            // if (!string.IsNullOrEmpty(where.Remark))
+            //  expr = expr.And(p => p.Remark == where.Remark);
+            // if (!string.IsNullOrEmpty(where.GoodsNum))
+            //  expr = expr.And(p => p.GoodsNum == where.GoodsNum);
+            #endregion
             var list = _brandRepository.Query().Where(expr).OrderByDescending(p => p.PkId).Skip(skipResults).Take(maxResults).ToList();
             var count = _brandRepository.Query().Where(expr).Count();
             return new System.Tuple<IList<BrandEntity>, int>(list, count);

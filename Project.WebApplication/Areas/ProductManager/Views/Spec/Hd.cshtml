@@ -1,6 +1,6 @@
 ﻿
 
-  
+
 
 
 @{
@@ -12,63 +12,53 @@
     <script src="/Areas/ProductManager/Scripts/Spec/Hd.js?JsParamter=@SiteConfig.GetConfig().JsParamter"></script>
 }
 <div style="display: none">
-<input id="BindEntity" type="text" value="@ViewBag.BindEntity" />
-<input id="Command" type="hidden" />
+    <input id="BindEntity" type="text" value="@ViewBag.BindEntity" />
+    <input id="Command" type="hidden" />
 </div>
 <div class="mtable_div">
     <form id="form1">
         <table class="mtable">
-            
-              <tr>
-            <td  >
-                <span style="color: Red">*</span>:
-            </td>
-            <td >
-                <input id="PkId" name="PkId"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td  >
-                <span style="color: Red">*</span>:
-            </td>
-            <td >
-                <input id="SpecName" name="SpecName"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td  >
-                <span style="color: Red">*</span>:
-            </td>
-            <td >
-                <input id="Memo" name="Memo"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td  >
-                0text 1image<span style="color: Red">*</span>:
-            </td>
-            <td >
-                <input id="SpecType" name="SpecType"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td  >
-                0平铺 1下拉框<span style="color: Red">*</span>:
-            </td>
-            <td >
-                <input id="ShowType" name="ShowType"  type="text"  />
-            </td>
-        </tr>
-          
+            <tr>
+                <td>
+                   规格名称 <span style="color: Red">*</span>:
+                </td>
+                <td>
+                    <input id="SpecName" name="SpecName" type="text" />
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                   规格备注 <span style="color: Red">*</span>:
+                </td>
+                <td>
+                    <input id="Memo" name="Memo" type="text" />
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    显示类型<span style="color: Red">*</span>:
+                </td>
+                <td>
+                    <input id="SpecType" name="SpecType" type="text" />
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    展示方式<span style="color: Red">*</span>:
+                </td>
+                <td>
+                    <input id="ShowType" name="ShowType" type="text" />
+                </td>
+            </tr>
+
         </table>
     </form>
 </div>
 <div style="padding: 10px 10px 0 10px; text-align: center;">
-    @if (Request["PkId"]==null||int.Parse(Request["PkId"]) == 0)
+    @if (Request["PkId"] == null || int.Parse(Request["PkId"]) == 0)
     {
         <a id="btnAdd" class="easyui-linkbutton" iconcls="icon-add" href="javascript:void(0)">新增</a>
     }
@@ -78,8 +68,6 @@
     }
     <a id="btnClose" class="easyui-linkbutton" iconcls="icon-cancel" href="javascript:void(0)">关闭</a>
 </div>
-
-
 
 
 

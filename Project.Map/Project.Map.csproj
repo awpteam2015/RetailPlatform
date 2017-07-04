@@ -92,6 +92,8 @@
     <Compile Include="ProductManager\ExtAttributeMap.cs" />
     <Compile Include="ProductManager\GoodsMap.cs" />
     <Compile Include="ProductManager\GoodsSpecValueMap.cs" />
+    <Compile Include="ProductManager\ParameterGroupDetailMap.cs" />
+    <Compile Include="ProductManager\ParameterGroupMap.cs" />
     <Compile Include="ProductManager\ProductAttributeValueMap.cs" />
     <Compile Include="ProductManager\ProductCategoryMap.cs" />
     <Compile Include="ProductManager\ProductImageMap.cs" />

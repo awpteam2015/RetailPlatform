@@ -62,22 +62,22 @@
             addRule: function () {
                 $("#form1").validate({
                     rules: {
-          PkId: { required: true  },
-          BrandName: { required: true  },
-          Sort: { required: true  },
-          UrlLink: { required: true  },
-          Logo: { required: true  },
-          Remark: { required: true  },
-          GoodsNum: { required: true  },
+          //PkId: { required: true  },
+          BrandName: { required: true  }
+          //Sort: { required: true  },
+          //UrlLink: { required: true  },
+          //Logo: { required: true  },
+          //Remark: { required: true  },
+          //GoodsNum: { required: true  }
                     },
                     messages: {
-          PkId:  "必填!",
-          BrandName:  "必填!",
-          Sort:  "必填!",
-          UrlLink:  "必填!",
-          Logo:  "必填!",
-          Remark:  "必填!",
-          GoodsNum:  "产品数量必填!",
+         // PkId:  "必填!",
+          BrandName:  "必填!"
+          //Sort:  "必填!",
+          //UrlLink:  "必填!",
+          //Logo:  "必填!",
+          //Remark:  "必填!",
+          //GoodsNum:  "产品数量必填!",
                     },
                     errorPlacement: function (error, element) {
                         pro.commonKit.errorPlacementHd(error, element);

@@ -89,6 +89,8 @@
     <Compile Include="ProductManager\ExtAttributeEntity.cs" />
     <Compile Include="ProductManager\GoodsEntity.cs" />
     <Compile Include="ProductManager\GoodsSpecValueEntity.cs" />
+    <Compile Include="ProductManager\ParameterGroupDetailEntity.cs" />
+    <Compile Include="ProductManager\ParameterGroupEntity.cs" />
     <Compile Include="ProductManager\ProductAttributeValueEntity.cs" />
     <Compile Include="ProductManager\ProductCategoryEntity.cs" />
     <Compile Include="ProductManager\ProductEntity.cs" />

@@ -1,6 +1,6 @@
 ﻿
 
-  
+
 
 
 @{
@@ -12,63 +12,52 @@
     <script src="/Areas/ProductManager/Scripts/SpecValue/Hd.js?JsParamter=@SiteConfig.GetConfig().JsParamter"></script>
 }
 <div style="display: none">
-<input id="BindEntity" type="text" value="@ViewBag.BindEntity" />
-<input id="Command" type="hidden" />
+    <input id="BindEntity" type="text" value="@ViewBag.BindEntity" />
+    <input id="Command" type="hidden" />
 </div>
 <div class="mtable_div">
     <form id="form1">
         <table class="mtable">
-            
-              <tr>
-            <td  >
-                <span style="color: Red">*</span>:
-            </td>
-            <td >
-                <input id="PkId" name="PkId"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td  >
-                <span style="color: Red">*</span>:
-            </td>
-            <td >
-                <input id="SpecId" name="SpecId"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td  >
-                <span style="color: Red">*</span>:
-            </td>
-            <td >
-                <input id="SpecValueName" name="SpecValueName"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td  >
-                <span style="color: Red">*</span>:
-            </td>
-            <td >
-                <input id="Sort" name="Sort"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td  >
-                <span style="color: Red">*</span>:
-            </td>
-            <td >
-                <input id="ImagePath" name="ImagePath"  type="text"  />
-            </td>
-        </tr>
-          
+            <tr>
+                <td>
+                    规格Id <span style="color: Red">*</span>:
+                </td>
+                <td>
+                    <input id="SpecId" name="SpecValueName" type="text" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    规格值 <span style="color: Red">*</span>:
+                </td>
+                <td>
+                    <input id="SpecValueName" name="SpecValueName" type="text" />
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    排序 <span style="color: Red">*</span>:
+                </td>
+                <td>
+                    <input id="Sort" name="Sort" type="text" />
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    图片地址 <span style="color: Red">*</span>:
+                </td>
+                <td>
+                    <input id="ImagePath" name="ImagePath" type="text" />
+                </td>
+            </tr>
+
         </table>
     </form>
 </div>
 <div style="padding: 10px 10px 0 10px; text-align: center;">
-    @if (Request["PkId"]==null||int.Parse(Request["PkId"]) == 0)
+    @if (Request["PkId"] == null || int.Parse(Request["PkId"]) == 0)
     {
         <a id="btnAdd" class="easyui-linkbutton" iconcls="icon-add" href="javascript:void(0)">新增</a>
     }
@@ -78,8 +67,6 @@
     }
     <a id="btnClose" class="easyui-linkbutton" iconcls="icon-cancel" href="javascript:void(0)">关闭</a>
 </div>
-
-
 
 
 

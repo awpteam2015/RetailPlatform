@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web.Mvc;
 using AutoMapper;
 using Project.Infrastructure.FrameworkCore.DataNhibernate.Helpers;
+using Project.Infrastructure.FrameworkCore.ToolKit;
 using Project.Infrastructure.FrameworkCore.ToolKit.JsonHandler;
 using Project.Infrastructure.FrameworkCore.ToolKit.LinqExpansion;
 using Project.Infrastructure.FrameworkCore.WebMvc.Controllers.Results;
@@ -40,13 +41,13 @@ namespace Project.WebApplication.Areas.ProductManager.Controllers
             var pIndex = this.Request["page"].ConvertTo<int>();
             var pSize = this.Request["rows"].ConvertTo<int>();
             var where = new BrandEntity();
-			//where.PkId = RequestHelper.GetFormString("PkId");
-			//where.BrandName = RequestHelper.GetFormString("BrandName");
-			//where.Sort = RequestHelper.GetFormString("Sort");
-			//where.UrlLink = RequestHelper.GetFormString("UrlLink");
-			//where.Logo = RequestHelper.GetFormString("Logo");
-			//where.Remark = RequestHelper.GetFormString("Remark");
-			//where.GoodsNum = RequestHelper.GetFormString("GoodsNum");
+           // where.PkId = RequestHelper.GetFormString("PkId");
+            where.BrandName = RequestHelper.GetFormString("BrandName");
+            //where.Sort = RequestHelper.GetFormString("Sort");
+            //where.UrlLink = RequestHelper.GetFormString("UrlLink");
+            //where.Logo = RequestHelper.GetFormString("Logo");
+            //where.Remark = RequestHelper.GetFormString("Remark");
+            //where.GoodsNum = RequestHelper.GetFormString("GoodsNum");
             var searchList = BrandService.GetInstance().Search(where, (pIndex - 1) * pSize, pSize);
 
             var dataGridEntity = new DataGridResponse()

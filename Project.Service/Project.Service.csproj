@@ -111,6 +111,8 @@
     <Compile Include="ProductManager\ExtAttributeService.cs" />
     <Compile Include="ProductManager\GoodsService.cs" />
     <Compile Include="ProductManager\GoodsSpecValueService.cs" />
+    <Compile Include="ProductManager\ParameterGroupDetailService.cs" />
+    <Compile Include="ProductManager\ParameterGroupService.cs" />
     <Compile Include="ProductManager\ProductAttributeValueService.cs" />
     <Compile Include="ProductManager\ProductCategoryService.cs" />
     <Compile Include="ProductManager\ProductImageService.cs" />
