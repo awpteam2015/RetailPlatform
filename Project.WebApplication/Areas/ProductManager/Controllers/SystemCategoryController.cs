@@ -29,11 +29,25 @@ namespace Project.WebApplication.Areas.ProductManager.Controllers
             {
                 var entity = SystemCategoryService.GetInstance().GetModelByPk(pkId);
                 ViewBag.BindEntity = JsonHelper.JsonSerializer(entity);
+
+                var specList = SpecService.GetInstance().GetList(new SpecEntity());
+                var extAttributeList = ExtAttributeService.GetInstance().GetList(new ExtAttributeEntity());
+
+                ViewBag.SpecList = JsonHelper.JsonSerializer(new DataGridResponse()
+                {
+                    total = specList.Count,
+                    rows = specList
+                }, new NHibernateContractResolver());
+                ViewBag.ExtAttributeList = JsonHelper.JsonSerializer(new DataGridResponse()
+                {
+                    total = extAttributeList.Count,
+                    rows = extAttributeList
+                }, new NHibernateContractResolver()); 
             }
             return View();
         }
 
- 
+
         public ActionResult List()
         {
             return View();
@@ -70,22 +84,22 @@ namespace Project.WebApplication.Areas.ProductManager.Controllers
         {
             var addResult = SystemCategoryService.GetInstance().Add(postData.RequestEntity);
             var result = new AjaxResponse<SystemCategoryEntity>()
-               {
-                   success = true,
-                   result = postData.RequestEntity
-               };
+            {
+                success = true,
+                result = postData.RequestEntity
+            };
             return new AbpJsonResult(result, new NHibernateContractResolver());
         }
 
 
         [HttpPost]
-        public AbpJsonResult Edit( AjaxRequest<SystemCategoryEntity> postData)
+        public AbpJsonResult Edit(AjaxRequest<SystemCategoryEntity> postData)
         {
             var newInfo = postData.RequestEntity;
             var orgInfo = SystemCategoryService.GetInstance().GetModelByPk(postData.RequestEntity.PkId);
             var mergInfo = Mapper.Map(newInfo, orgInfo);
             var updateResult = SystemCategoryService.GetInstance().Update(mergInfo);
-            
+
             var result = new AjaxResponse<SystemCategoryEntity>()
             {
                 success = updateResult,

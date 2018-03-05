@@ -20,7 +20,6 @@
 
             /////////////
             gridObj.grid({
-                url: '/PermissionManager/Function/GetFunctionDetailList?FunctionId=' + pro.commonKit.getUrlParam("PkId"),
                 fitColumns: false,
                 nowrap: false,
                 rownumbers: true, //行号
@@ -35,42 +34,22 @@
                             }
                         },
                         {
-                            field: 'FunctionDetailName1',
+                            field: 'AttributeId',
                             title: '属性名',
                             width: 200,
                             formatter: function (value, row, index) {
                                 return pro.controlKit.getInputHtml("FunctionDetailName_" + row.PkId, value);
                             }
-                        },
-                        {
-                            field: 'FunctionDetailName2',
-                            title: '表现类型',
-                            width: 100,
-                            formatter: function (value, row, index) {
-                                return pro.controlKit.getInputHtml("FunctionDetailName_" + row.PkId, value);
-                            }
-                        },
-                        {
-                            field: 'FunctionDetailName3',
-                            title: '选择项可选值[请以英文的逗号（,）分开]',
-                            width: 300,
-                            formatter: function (value, row, index) {
-                                return pro.controlKit.getInputHtml("FunctionDetailName_" + row.PkId, value);
-                            }
-                        },
-                          {
-                              field: 'FunctionDetailName4',
-                              title: '排序',
-                              width: 100,
-                              formatter: function (value, row, index) {
-                                  return pro.controlKit.getInputHtml("FunctionDetailName_" + row.PkId, value);
-                              }
-                          }
+                        }
+
                     ]
                 ],
                 pagination: false
             }
            );
+            gridObj.grid('loadData', JSON.parse($("#ExtAttributeList").val()));
+
+
             $("#btnAdd_ToolBar").click(function () {
                 gridObj.insertRow({
                     PkId: gridObj.PkId,
@@ -90,7 +69,6 @@
 
             /////////////
             gridObj2.grid({
-                url: '/ProductManager/Spec/GetListAll?SystemCategoryId=' + pro.commonKit.getUrlParam("PkId"),
                 fitColumns: false,
                 nowrap: false,
                 rownumbers: true, //行号
@@ -128,7 +106,7 @@
                                 return pro.controlKit.getSpanHtml("FunctionDetailName_" + row.PkId, value);
                             }
                         }
-                      
+
                     ]
                 ],
                 pagination: false
@@ -151,6 +129,7 @@
                 gridObj2.delRow();
 
             });
+            gridObj2.grid('loadData', JSON.parse($("#SpecList").val()));
 
             /////////////
             gridObj3.grid({
@@ -184,7 +163,7 @@
                                 return pro.controlKit.getInputHtml("FunctionDetailName_" + row.PkId, value);
                             }
                         }
-                       
+
                     ]
                 ],
                 pagination: false
@@ -207,76 +186,6 @@
                 gridObj3.delRow();
             });
             ///////////////////////////
-            gridObj4.grid({
-                url: '/PermissionManager/Function/GetFunctionDetailList?FunctionId=' + pro.commonKit.getUrlParam("PkId"),
-                fitColumns: false,
-                nowrap: false,
-                rownumbers: true, //行号
-                singleSelect: true,
-                idField: "PkId",
-                columns: [
-                    [
-                        {
-                            field: 'PkId', title: '', hidden: true, width: 100,
-                            formatter: function (value, row, index) {
-                                return pro.controlKit.getInputHtml("PkId", value);
-                            }
-                        },
-                        {
-                            field: 'FunctionDetailName1',
-                            title: '属性名',
-                            width: 200,
-                            formatter: function (value, row, index) {
-                                return pro.controlKit.getInputHtml("FunctionDetailName_" + row.PkId, value);
-                            }
-                        },
-                        {
-                            field: 'FunctionDetailName2',
-                            title: '表现类型',
-                            width: 100,
-                            formatter: function (value, row, index) {
-                                return pro.controlKit.getInputHtml("FunctionDetailName_" + row.PkId, value);
-                            }
-                        },
-                        {
-                            field: 'FunctionDetailName3',
-                            title: '选择项可选值[请以英文的逗号（,）分开]',
-                            width: 300,
-                            formatter: function (value, row, index) {
-                                return pro.controlKit.getInputHtml("FunctionDetailName_" + row.PkId, value);
-                            }
-                        },
-                          {
-                              field: 'FunctionDetailName4',
-                              title: '排序',
-                              width: 100,
-                              formatter: function (value, row, index) {
-                                  return pro.controlKit.getInputHtml("FunctionDetailName_" + row.PkId, value);
-                              }
-                          }
-                    ]
-                ],
-                pagination: false
-            }
-    );
-            $("#btnAdd4_ToolBar").click(function () {
-                gridObj4.insertRow({
-                    PkId: gridObj.PkId,
-                    FunctionDetailCode: ""
-                });
-
-                //console.log(JSON.stringify($("#datagrid").datagrid('getRows')));
-                //console.log(gridObj.PkId + 1);
-
-                $("#datagrid4").datagrid('selectRecord', gridObj.PkId + 1);
-            });
-
-
-            $("#btnDel4_ToolBar").click(function () {
-                gridObj4.delRow();
-            });
-
-
 
 
 
