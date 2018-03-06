@@ -97,7 +97,7 @@ namespace Project.WebApplication.Controllers
                     }
                     else
                     {
-                        filterContext.Result = new ContentResult { Content = @"<script>window.top.location='/Login/Index2'</script>" };
+                        filterContext.Result = new ContentResult { Content = @"<script>window.top.location='/Login/Index3'</script>" };
                     }
                 }
                 else
@@ -132,7 +132,7 @@ namespace Project.WebApplication.Controllers
         {
             if (!HttpContext.User.Identity.IsAuthenticated)
             {
-                filterContext.Result = new ContentResult { Content = @"<script>window.top.location='/Login/Index2'</script>" };
+                filterContext.Result = new ContentResult { Content = @"<script>window.top.location='/Login/Index3'</script>" };
                 base.OnAuthentication(filterContext);
                 return;
             }

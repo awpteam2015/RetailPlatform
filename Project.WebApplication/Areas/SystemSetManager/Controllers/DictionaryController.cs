@@ -63,7 +63,7 @@ namespace Project.WebApplication.Areas.SystemSetManager.Controllers
             return new AbpJsonResult(searchList, new NHibernateContractResolver(new[] { "children" }));
         }
 
-        public AbpJsonResult GetListByCode()
+        public AbpJsonResult GetList_Combobox()
         {
             var where = new DictionaryEntity();
             //where.PkId = RequestHelper.GetFormString("PkId");

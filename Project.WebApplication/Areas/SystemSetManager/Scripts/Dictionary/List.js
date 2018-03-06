@@ -15,7 +15,7 @@ var pro = pro || {};
             var tabObj = initObj.tabObj;
             var gridObj = initObj.gridObj;
             gridObj.grid({
-                url: '/HRManager/Dictionary/GetList',
+                url: '/SystemSetManager/Dictionary/GetList',
                 idField: "KeyCode",
                 treeField: "KeyCode",
                 fitColumns: false,
@@ -37,7 +37,7 @@ var pro = pro || {};
                );
 
             $("#btnAdd").click(function () {
-                tabObj.add("/HRManager/Dictionary/Hd", "新增");
+                tabObj.add("/SystemSetManager/Dictionary/Hd", "新增");
             });
 
             $("#btnEdit").click(function () {
@@ -47,7 +47,7 @@ var pro = pro || {};
                 }
                 var PkId = gridObj.getSelectedRow().PkId;
                 var keyName = gridObj.getSelectedRow().KeyName;
-                tabObj.add("/HRManager/Dictionary/Hd?PkId=" + PkId, "编辑" + keyName);
+                tabObj.add("/SystemSetManager/Dictionary/Hd?PkId=" + PkId, "编辑" + keyName);
             });
 
 
@@ -63,7 +63,7 @@ var pro = pro || {};
                 $.messager.confirm("确认操作", "是否确认删除", function (bl) {
                     if (!bl) return;
                     abp.ajax({
-                        url: "/HRManager/Dictionary/Delete?PkId=" + gridObj.getSelectedRow().PkId
+                        url: "/SystemSetManager/Dictionary/Delete?PkId=" + gridObj.getSelectedRow().PkId
                     }).done(
                     function (dataresult, data) {
                         $.alertExtend.info();

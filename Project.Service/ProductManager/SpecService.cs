@@ -5,9 +5,13 @@
  *       日期：     2017/6/30
  *       描述：     规格表
  * *************************************************************************/
+
+using System;
 using System.Linq;
 using System.Collections.Generic;
+using Project.Infrastructure.FrameworkCore.DataNhibernate;
 using Project.Infrastructure.FrameworkCore.DataNhibernate.Helpers;
+using Project.Infrastructure.FrameworkCore.ToolKit.LinqExpansion;
 using Project.Model.ProductManager;
 using Project.Repository.ProductManager;
 
@@ -18,14 +22,16 @@ namespace Project.Service.ProductManager
        
        #region 构造函数
         private readonly SpecRepository  _specRepository;
-            private static readonly SpecService Instance = new SpecService();
+        private readonly SpecValueRepository _specValueRepository;
+        private static readonly SpecService Instance = new SpecService();
 
         public SpecService()
         {
-           this._specRepository =new SpecRepository();
+            _specValueRepository = new SpecValueRepository();
+            this._specRepository =new SpecRepository();
         }
-        
-         public static  SpecService GetInstance()
+
+        public static  SpecService GetInstance()
         {
             return Instance;
         }
@@ -40,7 +46,24 @@ namespace Project.Service.ProductManager
         /// <returns></returns>
         public System.Int32 Add(SpecEntity entity)
         {
-            return _specRepository.Save(entity);
+            using (var tx = NhTransactionHelper.BeginTransaction())
+            {
+                try
+                {
+                    var pkId= _specRepository.Save(entity);
+                    entity.SpecValueEntityList.ToList().ForEach(p =>
+                    {
+                        p.SpecId = pkId;
+                    });
+                    tx.Commit();
+                    return pkId;
+                }
+                catch (Exception e)
+                {
+                    tx.Rollback();
+                    throw;
+                }
+            }
         }
         
         
@@ -85,15 +108,41 @@ namespace Project.Service.ProductManager
         /// <param name="entity"></param>
         public bool Update(SpecEntity entity)
         {
-          try
+            var oldEntity = this.GetModelByPk(entity.PkId);
+            var date = DateTime.Now;
+            entity.SpecValueEntityList.ToList().ForEach(p =>
             {
-            _specRepository.Update(entity);
-         return true;
-        }
-        catch
-        {
-         return false;
-        }
+                //if (p.PkId <= 0)
+                //{
+                //}
+                //else
+                //{
+                //    var oldRowEntity = oldEntity.SpecValueEntityList.SingleOrDefault(x => x.PkId == p.PkId);
+                //}
+                p.SpecId = entity.PkId;
+                //p.ModuleId = entity.ModuleId;
+                //p.LastModificationTime = date;
+                //p.LastModifierUserCode = "";
+            });
+
+            var deleteList = oldEntity.SpecValueEntityList.Where( p => entity.SpecValueEntityList.All(x => x.PkId != p.PkId)).ToList();
+
+            using (var tx = NhTransactionHelper.BeginTransaction())
+            {
+                try
+                {
+                    _specRepository.Merge(entity);
+
+                    deleteList.ForEach(p => { _specValueRepository.Delete(p); });
+                    tx.Commit();
+                    return true;
+                }
+                catch(Exception e)
+                {
+                    tx.Rollback();
+                    throw;
+                }
+            }
         }
 
 
@@ -118,18 +167,18 @@ namespace Project.Service.ProductManager
         public System.Tuple<IList<SpecEntity>, int> Search(SpecEntity where, int skipResults, int maxResults)
         {
                 var expr = PredicateBuilder.True<SpecEntity>();
-                  #region
-              // if (!string.IsNullOrEmpty(where.PkId))
-              //  expr = expr.And(p => p.PkId == where.PkId);
-              // if (!string.IsNullOrEmpty(where.SpecName))
-              //  expr = expr.And(p => p.SpecName == where.SpecName);
-              // if (!string.IsNullOrEmpty(where.Memo))
-              //  expr = expr.And(p => p.Memo == where.Memo);
-              // if (!string.IsNullOrEmpty(where.SpecType))
-              //  expr = expr.And(p => p.SpecType == where.SpecType);
-              // if (!string.IsNullOrEmpty(where.ShowType))
-              //  expr = expr.And(p => p.ShowType == where.ShowType);
- #endregion
+            #region
+            // if (!string.IsNullOrEmpty(where.PkId))
+            //  expr = expr.And(p => p.PkId == where.PkId);
+            if (!string.IsNullOrEmpty(where.SpecName))
+                expr = expr.And(p => p.SpecName == where.SpecName);
+            if (!string.IsNullOrEmpty(where.Remark))
+                expr = expr.And(p => p.Remark == where.Remark);
+            if (where.SpecType!=0)
+                expr = expr.And(p => p.SpecType == where.SpecType);
+            if (where.ShowType!=0)
+                expr = expr.And(p => p.ShowType == where.ShowType);
+            #endregion
             var list = _specRepository.Query().Where(expr).OrderByDescending(p => p.PkId).Skip(skipResults).Take(maxResults).ToList();
             var count = _specRepository.Query().Where(expr).Count();
             return new System.Tuple<IList<SpecEntity>, int>(list, count);
@@ -156,6 +205,7 @@ namespace Project.Service.ProductManager
               //  expr = expr.And(p => p.ShowType == where.ShowType);
  #endregion
             var list = _specRepository.Query().Where(expr).OrderBy(p => p.PkId).ToList();
+
             return list;
         }
         #endregion

@@ -2,8 +2,85 @@
 (function () {
     pro.Spec = pro.Spec || {};
     pro.Spec.HdPage = pro.Spec.HdPage || {};
+
     pro.Spec.HdPage = {
+        init: function () {
+            return {
+                tabObj: new pro.TabBase(),
+                gridObj: new pro.GridBase("#datagrid", false)
+            };
+        },
         initPage: function () {
+            var initObj = this.init();
+            var tabObj = initObj.tabObj;
+            var gridObj = initObj.gridObj;
+            gridObj.grid({
+                url: '/ProductManager/Spec/GetSpecValueList?SpecId=' + pro.commonKit.getUrlParam("PkId"),
+                fitColumns: false,
+                nowrap: false,
+                rownumbers: true, //行号
+                singleSelect: true,
+                idField: "PkId",
+                columns: [
+                    [
+                        {
+                            field: 'PkId', title: '', hidden: true, width: 100,
+                            formatter: function (value, row, index) {
+                                return pro.controlKit.getInputHtml("PkId", value);
+                            }
+                        },
+                        {
+                            field: 'SpecValueName',
+                            title: '规格值名称',
+                            width: 100,
+                            formatter: function (value, row, index) {
+                                return pro.controlKit.getInputHtml("SpecValueName_" + row.PkId, value);
+                            }
+                        },
+                         {
+                             field: 'ImagePath',
+                             title: '图片地址',
+                             width: 100,
+                             formatter: function (value, row, index) {
+                                 return pro.controlKit.getInputHtml("ImagePath_" + row.PkId, value);
+                             }
+                         },
+                        {
+                            field: 'Sort',
+                            title: '排序',
+                            width: 100,
+                            formatter: function (value, row, index) {
+                                return pro.controlKit.getInputHtml("Sort_" + row.PkId, value);
+                            }
+                        }
+                       
+                    ]
+                ],
+                pagination: false
+            }
+            );
+
+            $("#btnAdd_ToolBar").click(function () {
+                gridObj.insertRow({
+                    PkId: gridObj.PkId,
+                    FunctionDetailCode: ""
+                });
+
+                //console.log(JSON.stringify($("#datagrid").datagrid('getRows')));
+                //console.log(gridObj.PkId + 1);
+
+                $("#datagrid").datagrid('selectRecord', gridObj.PkId + 1);
+            });
+
+
+            $("#btnDel_ToolBar").click(function () {
+                gridObj.delRow();
+            });
+
+
+
+
+
             $("#btnAdd").click(function () {
                 pro.Spec.HdPage.submit("Add");
             });
@@ -16,26 +93,64 @@
                 parent.pro.Spec.ListPage.closeTab("");
             });
 
+            var bindEntity;
             if ($("#BindEntity").val()) {
                 var bindField = pro.bindKit.getHeadJson();
-                var bindEntity = JSON.parse($("#BindEntity").val());
+                 bindEntity = JSON.parse($("#BindEntity").val());
                 for (var filedname in bindField) {
                     $("[name=" + filedname + "]").val(bindEntity[filedname]);
                 }
                 //行项目信息用json绑定控件
                 //alert(JSON.stringify(BindEntity.List));
             }
+
+
+
+            $('#SpecType').combobox({
+                required: true,
+                editable: false,
+                valueField: 'KeyValue',
+                textField: 'KeyName',
+                url: '/SystemSetManager/Dictionary/GetList_Combobox?ParentKeyCode=SpecType',
+                onLoadSuccess: function () {
+                    if (pro.commonKit.getUrlParam("PkId") > 0) {
+                        $("#SpecType").combobox('setValue', bindEntity['SpecType']);
+                    }
+                }
+            });
+
+
+            $('#ShowType').combobox({
+                required: true,
+                editable: false,
+                valueField: 'KeyValue',
+                textField: 'KeyName',
+                url: '/SystemSetManager/Dictionary/GetList_Combobox?ParentKeyCode=ShowType',
+                onLoadSuccess: function () {
+                    if (pro.commonKit.getUrlParam("PkId") > 0) {
+                        $("#ShowType").combobox('setValue', bindEntity['ShowType']);
+                    }
+                }
+            });
+
         },
         submit: function (command) {
             var postData = {};
             postData.RequestEntity = pro.submitKit.getHeadJson();
+            postData.RequestEntity.SpecTypeName = $("#SpecType").combobox('getText');
+            postData.RequestEntity.ShowTypeName = $("#ShowType").combobox('getText');
+
+
+            pro.submitKit.config.columnPkidName = "PkId";
+            pro.submitKit.config.columns = ["SpecValueName", "ImagePath", "Sort"];
+            postData.RequestEntity.SpecValueEntityList = pro.submitKit.getRowJson();
 
             if (pro.commonKit.getUrlParam("PkId") != "") {
                 postData.RequestEntity.PkId = pro.commonKit.getUrlParam("PkId");
             }
 
             this.submitExtend.addRule();
-            if (!$("#form1").valid() && this.submitExtend.logicValidate()) {
+            if (!$("#form1").valid() || !this.submitExtend.logicValidate()) {
                 $.alertExtend.error();
                 return false;
             }
@@ -64,16 +179,16 @@
                     rules: {
           PkId: { required: true  },
           SpecName: { required: true  },
-          Memo: { required: true  },
+          Remark: { required: true  },
           SpecType: { required: true  },
-          ShowType: { required: true  },
+          ShowType: { required: true  }
                     },
                     messages: {
           PkId:  "必填!",
           SpecName:  "必填!",
-          Memo:  "必填!",
+          Remark:  "必填!",
           SpecType:  "0text 1image必填!",
-          ShowType:  "0平铺 1下拉框必填!",
+          ShowType:  "0平铺 1下拉框必填!"
                     },
                     errorPlacement: function (error, element) {
                         pro.commonKit.errorPlacementHd(error, element);
@@ -82,6 +197,14 @@
                 });
             },
             logicValidate: function () {
+
+                if (!$("#SpecType").combogrid("isValid")) {
+                    return false;
+                }
+
+                if (!$("#ShowType").combogrid("isValid")) {
+                    return false;
+                }
                 return true;
             }
         },

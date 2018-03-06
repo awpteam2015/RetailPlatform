@@ -100,23 +100,23 @@ namespace Project.Infrastructure.FrameworkCore.Domain.Repositories
             }
         }
 
-        //public void SaveOrUpdate(TEntity entity)
-        //{
-        //    ISession session = SessionFactoryManager.GetCurrentSession();
-        //    using (var tx = NhTransactionHelper.BeginTransaction())
-        //    {
-        //        try
-        //        {
-        //            session.SaveOrUpdate(entity);
-        //            tx.Commit();
-        //        }
-        //        catch
-        //        {
-        //            tx.Rollback();
-        //            throw;
-        //        }
-        //    }
-        //}
+        public void SaveOrUpdate(TEntity entity)
+        {
+            ISession session = SessionFactoryManager.GetCurrentSession();
+            using (var tx = NhTransactionHelper.BeginTransaction())
+            {
+                try
+                {
+                    session.SaveOrUpdate(entity);
+                    tx.Commit();
+                }
+                catch
+                {
+                    tx.Rollback();
+                    throw;
+                }
+            }
+        }
 
         /// <summary>
         /// 

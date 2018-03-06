@@ -20,19 +20,19 @@
         <table class="mtable">
             <tr>
                 <td>
-                   规格名称 <span style="color: Red">*</span>:
+                    规格名称 <span style="color: Red">*</span>:
                 </td>
                 <td>
-                    <input id="SpecName" name="SpecName" type="text" />
+                    <input id="SpecName" name="SpecName" type="text"/>
                 </td>
             </tr>
 
             <tr>
                 <td>
-                   规格备注 <span style="color: Red">*</span>:
+                    规格备注 <span style="color: Red">*</span>:
                 </td>
                 <td>
-                    <input id="Memo" name="Memo" type="text" />
+                    <input id="Remark" name="Remark" type="text"/>
                 </td>
             </tr>
 
@@ -41,7 +41,7 @@
                     显示类型<span style="color: Red">*</span>:
                 </td>
                 <td>
-                    <input id="SpecType" name="SpecType" type="text" />
+                    <input id="SpecType" name="SpecType" type="text"/>
                 </td>
             </tr>
 
@@ -50,11 +50,23 @@
                     展示方式<span style="color: Red">*</span>:
                 </td>
                 <td>
-                    <input id="ShowType" name="ShowType" type="text" />
+                    <input id="ShowType" name="ShowType" type="text"/>
                 </td>
             </tr>
 
         </table>
+
+        <div title="规格值" style="padding:1px;height: 500px">
+            <table id="datagrid" toolbar="#tb" fit="true"></table>
+            <div id="tb" style="padding: 5px; height: auto">
+                <div style="margin-bottom: 5px">
+                    <a id="btnAdd_ToolBar" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true">添加</a>
+                    <a id="btnDel_ToolBar" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true">删除</a>
+                </div>
+                <div id="divSearch">
+                </div>
+            </div>
+        </div>
     </form>
 </div>
 <div style="padding: 10px 10px 0 10px; text-align: center;">

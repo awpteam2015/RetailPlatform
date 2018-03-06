@@ -21,11 +21,11 @@ var pro = pro || {};
                 rownumbers: true, //行号
                 singleSelect: true,
                 columns: [[
-         { field: 'PkId', title: '', width: 100 },
-         { field: 'SpecName', title: '', width: 100 },
-         { field: 'Memo', title: '', width: 100 },
-         { field: 'SpecType', title: '0text 1image', width: 100 },
-         { field: 'ShowType', title: '0平铺 1下拉框', width: 100 },
+         { field: 'PkId', title: '序号', width: 100 },
+         { field: 'SpecName', title: '规格名称', width: 100 },
+         { field: 'Remark', title: '备注', width: 100 },
+         { field: 'SpecTypeName', title: '规格类型', width: 100 },
+         { field: 'ShowTypeName', title: '展现方式', width: 100 }
                 ]],
                 pagination: true,
                 pageSize: 20, //每页显示的记录条数，默认为10     
@@ -76,6 +76,38 @@ var pro = pro || {};
             $("#btnRefresh").click(function () {
                 gridObj.refresh();
             });
+
+
+           
+
+            $('#SpecType').combobox({
+                required: false,
+                editable: false,
+                valueField: 'KeyValue',
+                textField: 'KeyName',
+                url: '/SystemSetManager/Dictionary/GetList_Combobox?ParentKeyCode=SpecType',
+                onLoadSuccess: function () {
+                    //if (pro.commonKit.getUrlParam("PkId") > 0) {
+                    //    $("#WorkState").combobox('setValue', bindEntity['WorkState']);
+                    //}
+                }
+            });
+
+
+            $('#ShowType').combobox({
+                required: false,
+                editable: false,
+                valueField: 'KeyValue',
+                textField: 'KeyName',
+                url: '/SystemSetManager/Dictionary/GetList_Combobox?ParentKeyCode=ShowType',
+                onLoadSuccess: function () {
+                    //if (pro.commonKit.getUrlParam("PkId") > 0) {
+                    //    $("#WorkState").combobox('setValue', bindEntity['WorkState']);
+                    //}
+                }
+            });
+
+
         },
          closeTab: function () {
             this.init().tabObj.closeTab();

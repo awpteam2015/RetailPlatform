@@ -10,7 +10,7 @@
                 editable: false,
                 valueField: 'KeyCode',
                 textField: 'KeyName',
-                url: '/HRManager/Dictionary/GetList_Combotree'
+                url: '/SystemSetManager/Dictionary/GetList_Combotree'
             });
 
             $("#btnAdd").click(function () {
@@ -50,7 +50,7 @@
             }
 
             abp.ajax({
-                url: "/HRManager/Dictionary/" + command,
+                url: "/SystemSetManager/Dictionary/" + command,
                 data: JSON.stringify(postData)
             }).done(
                 function (dataresult, data) {

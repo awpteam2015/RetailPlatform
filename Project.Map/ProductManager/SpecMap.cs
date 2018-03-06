@@ -18,9 +18,18 @@ namespace  Project.Map.ProductManager
             this.MapPkidDefault<SpecEntity,int>();
  
             Map(p => p.SpecName);    
-            Map(p => p.Memo);    
+            Map(p => p.Remark);    
             Map(p => p.SpecType);    
-            Map(p => p.ShowType);    
+            Map(p => p.ShowType);
+
+            Map(p => p.SpecTypeName);
+            Map(p => p.ShowTypeName);
+
+            HasMany(p => p.SpecValueEntityList)
+            .AsSet()
+            .LazyLoad()
+            .Cascade.All().Inverse()
+            .KeyColumn("SpecId");
         }
     }
 }

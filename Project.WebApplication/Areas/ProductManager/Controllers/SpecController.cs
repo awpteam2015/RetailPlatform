@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web.Mvc;
 using AutoMapper;
 using Project.Infrastructure.FrameworkCore.DataNhibernate.Helpers;
+using Project.Infrastructure.FrameworkCore.ToolKit;
 using Project.Infrastructure.FrameworkCore.ToolKit.JsonHandler;
 using Project.Infrastructure.FrameworkCore.ToolKit.LinqExpansion;
 using Project.Infrastructure.FrameworkCore.WebMvc.Controllers.Results;
@@ -40,11 +41,11 @@ namespace Project.WebApplication.Areas.ProductManager.Controllers
             var pIndex = this.Request["page"].ConvertTo<int>();
             var pSize = this.Request["rows"].ConvertTo<int>();
             var where = new SpecEntity();
-			//where.PkId = RequestHelper.GetFormString("PkId");
-			//where.SpecName = RequestHelper.GetFormString("SpecName");
-			//where.Memo = RequestHelper.GetFormString("Memo");
-			//where.SpecType = RequestHelper.GetFormString("SpecType");
-			//where.ShowType = RequestHelper.GetFormString("ShowType");
+            //where.PkId = RequestHelper.GetFormString("PkId");
+            where.SpecName = RequestHelper.GetFormString("SpecName");
+            where.Remark = RequestHelper.GetFormString("Remark");
+            where.SpecType = RequestHelper.GetInt("SpecType");
+            where.ShowType = RequestHelper.GetInt("ShowType");
             var searchList = SpecService.GetInstance().Search(where, (pIndex - 1) * pSize, pSize);
 
             var dataGridEntity = new DataGridResponse()
@@ -58,6 +59,20 @@ namespace Project.WebApplication.Areas.ProductManager.Controllers
         public AbpJsonResult GetListAll()
         {
             var searchList = SpecService.GetInstance().GetList(new SpecEntity());
+            var dataGridEntity = new DataGridResponse()
+            {
+                total = searchList.Count,
+                rows = searchList
+            };
+            return new AbpJsonResult(dataGridEntity, new NHibernateContractResolver());
+        }
+
+
+        public AbpJsonResult GetSpecValueList()
+        {
+            var where = new SpecValueEntity();
+            where.SpecId= RequestHelper.GetInt("SpecId");
+            var searchList = SpecValueService.GetInstance().GetList(where);
             var dataGridEntity = new DataGridResponse()
             {
                 total = searchList.Count,
@@ -83,10 +98,7 @@ namespace Project.WebApplication.Areas.ProductManager.Controllers
         [HttpPost]
         public AbpJsonResult Edit( AjaxRequest<SpecEntity> postData)
         {
-            var newInfo = postData.RequestEntity;
-            var orgInfo = SpecService.GetInstance().GetModelByPk(postData.RequestEntity.PkId);
-            var mergInfo = Mapper.Map(newInfo, orgInfo);
-            var updateResult = SpecService.GetInstance().Update(mergInfo);
+            var updateResult = SpecService.GetInstance().Update(postData.RequestEntity);
             
             var result = new AjaxResponse<SpecEntity>()
             {

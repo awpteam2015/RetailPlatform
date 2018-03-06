@@ -200,7 +200,7 @@ namespace Project.WebApplication.Controllers
             FormsAuthentication.FormsCookiePath);
             var encryptedTicket = FormsAuthentication.Encrypt(ticket);
             var cookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
-            cookie.Expires = DateTime.Now.AddMinutes(300);
+            cookie.Expires = DateTime.Now.AddMinutes(3000);
             cookie.HttpOnly = true;
             Response.Cookies.Add(cookie);
 
