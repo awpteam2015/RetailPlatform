@@ -1,20 +1,15 @@
-﻿
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using Project.Infrastructure.FrameworkCore.DataNhibernate.Helpers;
+using Project.Infrastructure.FrameworkCore.ToolKit;
 using Project.Infrastructure.FrameworkCore.ToolKit.JsonHandler;
 using Project.Infrastructure.FrameworkCore.ToolKit.LinqExpansion;
+using Project.Infrastructure.FrameworkCore.WebMvc.Controllers.Results;
+using Project.Infrastructure.FrameworkCore.WebMvc.Models;
 using Project.Model.HRManager;
 using Project.Service.HRManager;
 using Project.WebApplication.Controllers;
-using Project.Infrastructure.FrameworkCore.ToolKit;
-using Project.Infrastructure.FrameworkCore.WebMvc.Controllers.Results;
-using Project.Infrastructure.FrameworkCore.WebMvc.Models;
 
-namespace Project.WebApplication.Areas.HRManager.Controllers
+namespace Project.WebApplication.Areas.SystemSetManager.Controllers
 {
     public class DictionaryController : BaseController
     {
@@ -77,10 +72,10 @@ namespace Project.WebApplication.Areas.HRManager.Controllers
             //where.KeyName = RequestHelper.GetFormString("KeyName");
             //where.KeyValue = RequestHelper.GetFormString("KeyValue");
             var searchList = DictionaryService.GetInstance().GetList(where);
-            if (!string.IsNullOrEmpty(RequestHelper.GetQueryString("AllFlag")))
-            {
-                searchList.Insert(0, new DictionaryEntity() { KeyName = "全部", KeyValue = "" });
-            }
+            //if (!string.IsNullOrEmpty(RequestHelper.GetQueryString("AllFlag")))
+            //{
+            //    searchList.Insert(0, new DictionaryEntity() { KeyName = "全部", KeyValue = "" });
+            //}
             return new AbpJsonResult(searchList, new NHibernateContractResolver());
         }
 

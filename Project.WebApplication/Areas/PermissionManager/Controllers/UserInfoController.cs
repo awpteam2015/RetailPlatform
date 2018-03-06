@@ -170,12 +170,12 @@ namespace Project.WebApplication.Areas.PermissionManager.Controllers
             postData.RequestEntity.CreatorUserCode = "";
             postData.RequestEntity.Password = Encrypt.MD5Encrypt(postData.RequestEntity.Password);
 
-            postData.RequestEntity.RiverOwerList.ForEach(p =>
-            {
-                p.UserCode = postData.RequestEntity.UserCode;
-                p.RiverName = RiverService.GetInstance().GetModelByPk(p.RiverId.GetValueOrDefault()).RiverName;
-                p.UserName = UserInfoService.GetInstance().GetUserInfo(p.UserCode).UserName;
-            });
+            //postData.RequestEntity.RiverOwerList.ForEach(p =>
+            //{
+            //    p.UserCode = postData.RequestEntity.UserCode;
+            //    p.RiverName = RiverService.GetInstance().GetModelByPk(p.RiverId.GetValueOrDefault()).RiverName;
+            //    p.UserName = UserInfoService.GetInstance().GetUserInfo(p.UserCode).UserName;
+            //});
 
             var addResult = UserInfoService.GetInstance().Add(postData.RequestEntity);
             var result = new AjaxResponse<UserInfoEntity>()
