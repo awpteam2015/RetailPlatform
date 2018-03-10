@@ -5,8 +5,11 @@
 *       日期：     2017/6/30
 *       描述：     系统分类
 * *************************************************************************/
+
+using System;
 using System.Linq;
 using System.Collections.Generic;
+using Project.Infrastructure.FrameworkCore.DataNhibernate;
 using Project.Infrastructure.FrameworkCore.DataNhibernate.Helpers;
 using Project.Model.ProductManager;
 using Project.Repository.ProductManager;
@@ -18,11 +21,23 @@ namespace Project.Service.ProductManager
 
         #region 构造函数
         private readonly SystemCategoryRepository _systemCategoryRepository;
+
+        private readonly SystemCategoryAttributeRepository _systemCategoryAttributeRepository;
+
+        private readonly SystemCategoryBrandRepository _systemCategoryBrandRepository;
+
+        private readonly SystemCategorySpecRepository _systemCategorySpecRepository;
+
         private static readonly SystemCategoryService Instance = new SystemCategoryService();
 
         public SystemCategoryService()
         {
             this._systemCategoryRepository = new SystemCategoryRepository();
+
+            this._systemCategoryAttributeRepository = new SystemCategoryAttributeRepository();
+            this._systemCategoryBrandRepository = new SystemCategoryBrandRepository();
+            this._systemCategorySpecRepository = new SystemCategorySpecRepository();
+
         }
 
         public static SystemCategoryService GetInstance()
@@ -40,7 +55,36 @@ namespace Project.Service.ProductManager
         /// <returns></returns>
         public System.Int32 Add(SystemCategoryEntity entity)
         {
-            return _systemCategoryRepository.Save(entity);
+
+            using (var tx = NhTransactionHelper.BeginTransaction())
+            {
+                try
+                {
+                    var pkId = _systemCategoryRepository.Save(entity);
+                    entity.SystemCategoryAttributeList.ToList().ForEach(p =>
+                    {
+                        p.SystemCategoryId = pkId;
+                    });
+
+                    entity.SystemCategorySpecList.ToList().ForEach(p =>
+                    {
+                        p.SystemCategoryId = pkId;
+                    });
+
+                    entity.SystemCategoryBrandList.ToList().ForEach(p =>
+                    {
+                        p.SystemCategoryId = pkId;
+                    });
+
+                    tx.Commit();
+                    return pkId;
+                }
+                catch (Exception e)
+                {
+                    tx.Rollback();
+                    throw;
+                }
+            }
         }
 
 
@@ -85,14 +129,38 @@ namespace Project.Service.ProductManager
         /// <param name="entity"></param>
         public bool Update(SystemCategoryEntity entity)
         {
-            try
+            var oldEntity = this.GetModelByPk(entity.PkId);
+
+            entity.SystemCategoryAttributeList.ToList().ForEach(p =>
             {
-                _systemCategoryRepository.Update(entity);
-                return true;
-            }
-            catch
+                p.SystemCategoryId = entity.PkId;
+            });
+            var deleteAttributeList = oldEntity.SystemCategoryAttributeList.Where(p => entity.SystemCategoryAttributeList.All(x => x.PkId != p.PkId)).ToList();
+
+            entity.SystemCategorySpecList.ToList().ForEach(p =>
             {
-                return false;
+                p.SystemCategoryId = entity.PkId;
+            });
+            var deleteSpecList = oldEntity.SystemCategorySpecList.Where(p => entity.SystemCategorySpecList.All(x => x.PkId != p.PkId)).ToList();
+
+            using (var tx = NhTransactionHelper.BeginTransaction())
+            {
+                try
+                {
+                    _systemCategoryRepository.Merge(entity);
+
+                    deleteAttributeList.ForEach(p => { _systemCategoryAttributeRepository.Delete(p); });
+
+                    deleteSpecList.ForEach(p => { _systemCategorySpecRepository.Delete(p); });
+
+                    tx.Commit();
+                    return true;
+                }
+                catch (Exception e)
+                {
+                    tx.Rollback();
+                    throw;
+                }
             }
         }
 

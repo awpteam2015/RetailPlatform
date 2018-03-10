@@ -13,8 +13,14 @@ using Project.Infrastructure.FrameworkCore.Domain.Entities.Component;
 namespace Project.Model.ProductManager
 {
     public class SpecValueEntity: Entity
-    { 
+    {
         #region 属性
+
+        public virtual System.Int32? SpecValueId {
+            get { return PkId; }
+        }
+
+
         /// <summary>
         /// 
         /// </summary>
@@ -31,12 +37,8 @@ namespace Project.Model.ProductManager
         /// 
         /// </summary>
         public virtual System.String ImagePath{get; set;}
-		#endregion
-        
-
-        #region 新增属性
-        
         #endregion
+
     }
 }
 

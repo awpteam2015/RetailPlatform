@@ -68,6 +68,67 @@
             <param name="model"></param>
             <returns></returns>
         </member>
+        <member name="P:Project.WebApplication.Areas.ProductManager.Models.ProductHdVm.SpecVmList">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Project.WebApplication.Areas.ProductManager.Models.SpecVm.SpecId">
+             <summary>
+            规格编号
+             </summary>
+        </member>
+        <member name="P:Project.WebApplication.Areas.ProductManager.Models.SpecVm.SpecName">
+            <summary>
+            规格名称
+            </summary>
+        </member>
+        <member name="P:Project.WebApplication.Areas.ProductManager.Models.SpecVm.SpecValueList">
+            <summary>
+            规格值
+            </summary>
+        </member>
+        <member name="P:Project.WebApplication.Areas.ProductManager.Models.SpecValueVm.SpecValueId">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Project.WebApplication.Areas.ProductManager.Models.SpecValueVm.SpecId">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Project.WebApplication.Areas.ProductManager.Models.SpecValueVm.SpecValueName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Project.WebApplication.Areas.ProductManager.Models.SpecValueVm.Sort">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Project.WebApplication.Areas.ProductManager.Models.SpecValueVm.ImagePath">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Project.WebApplication.Areas.ProductManager.Models.SpecValueVm.IsCheck">
+            <summary>
+            是否选中
+            </summary>
+        </member>
+        <member name="P:Project.WebApplication.Areas.ProductManager.Models.SpecValueVm.OtherSpecValueName">
+            <summary>
+            别名
+            </summary>
+        </member>
+        <member name="M:Project.WebApplication.Areas.ProductManager.Controllers.ExtAttributeController.GetAttributeValueList">
+            <summary>
+            扩展属性值
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:Project.WebApplication.Areas.ProductManager.Controllers.SystemCategoryController">
             <summary>
             
@@ -174,6 +235,11 @@
             在执行由操作方法返回的操作结果前调用。
             </summary>
             <param name="filterContext">有关当前请求和操作结果的信息。</param>
+        </member>
+        <member name="T:Project.WebApplication.Controllers.ProductController">
+            <summary>
+            
+            </summary>
         </member>
         <member name="M:Project.WebApplication.Controllers.OpenController.GetRiverEntity(System.Int32)">
             <summary>

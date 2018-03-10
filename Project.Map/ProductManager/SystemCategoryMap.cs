@@ -25,7 +25,28 @@ namespace  Project.Map.ProductManager
             Map(p => p.LastModificationTime);    
             Map(p => p.IsDeleted);    
             Map(p => p.DeleterUserCode);    
-            Map(p => p.DeletionTime);    
+            Map(p => p.DeletionTime);
+
+            HasMany(p => p.SystemCategoryAttributeList)
+      .AsSet()
+      .LazyLoad()
+      .Cascade.All().Inverse()
+      .KeyColumn("SystemCategoryId");
+
+
+            HasMany(p => p.SystemCategoryBrandList)
+      .AsSet()
+      .LazyLoad()
+      .Cascade.All().Inverse()
+      .KeyColumn("SystemCategoryId");
+
+
+            HasMany(p => p.SystemCategorySpecList)
+      .AsSet()
+      .LazyLoad()
+      .Cascade.All().Inverse()
+      .KeyColumn("SystemCategoryId");
+
         }
     }
 }

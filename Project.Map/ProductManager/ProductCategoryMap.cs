@@ -30,7 +30,13 @@ namespace  Project.Map.ProductManager
             Map(p => p.LastModificationTime);    
             Map(p => p.IsDeleted);    
             Map(p => p.DeleterUserCode);    
-            Map(p => p.DeletionTime);    
+            Map(p => p.DeletionTime);
+
+            HasMany(p => p.children)
+ .AsSet()
+ .LazyLoad()
+ .Cascade.All().Inverse()
+ .KeyColumn("ParentId");
         }
     }
 }

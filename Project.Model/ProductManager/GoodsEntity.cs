@@ -7,14 +7,27 @@
  *       描述：     商品表
  * *************************************************************************/
 using System;
+using System.Collections.Generic;
 using Project.Infrastructure.FrameworkCore.Domain.Entities;
 using Project.Infrastructure.FrameworkCore.Domain.Entities.Component;
 
 namespace Project.Model.ProductManager
 {
     public class GoodsEntity: Entity
-    { 
+    {
+
+
+        public GoodsEntity()
+        {
+            GoodsSpecValueList=new HashSet<GoodsSpecValueEntity>();
+        }
+
         #region 属性
+        /// <summary>
+        /// 组合规格的sku编码
+        /// </summary>
+        public virtual string CombineId { get; set; }
+
         /// <summary>
         /// 
         /// </summary>
@@ -23,6 +36,12 @@ namespace Project.Model.ProductManager
         /// 货号
         /// </summary>
         public virtual System.String GoodsCode{get; set;}
+
+        /// <summary>
+        /// Sku编码
+        /// </summary>
+        public virtual System.String SkuCode { get; set; }
+
         /// <summary>
         /// 库存
         /// </summary>
@@ -31,26 +50,7 @@ namespace Project.Model.ProductManager
         /// 销售价
         /// </summary>
         public virtual System.Decimal? GoodsPrice{get; set;}
-        /// <summary>
-        /// 成本价
-        /// </summary>
-        public virtual System.Decimal? GoodsCost{get; set;}
-        /// <summary>
-        /// 重量
-        /// </summary>
-        public virtual System.Int32? GoodsWeight{get; set;}
-        /// <summary>
-        /// 重量单位
-        /// </summary>
-        public virtual System.String GoodsWeightUnit{get; set;}
-        /// <summary>
-        /// 单位
-        /// </summary>
-        public virtual System.String Unit{get; set;}
-        /// <summary>
-        /// 商品描述
-        /// </summary>
-        public virtual System.String Title{get; set;}
+ 
         /// <summary>
         /// 是否是默认商品
         /// </summary>
@@ -59,7 +59,8 @@ namespace Project.Model.ProductManager
         
 
         #region 新增属性
-        
+
+        public virtual ISet<GoodsSpecValueEntity> GoodsSpecValueList{ get; set;}
         #endregion
     }
 }

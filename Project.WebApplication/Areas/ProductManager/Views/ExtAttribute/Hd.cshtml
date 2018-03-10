@@ -18,53 +18,38 @@
 <div class="mtable_div">
     <form id="form1">
         <table class="mtable">
-            
-              <tr>
-            <td  >
-                <span style="color: Red">*</span>:
-            </td>
-            <td >
-                <input id="PkId" name="PkId"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td  >
-                <span style="color: Red">*</span>:
-            </td>
-            <td >
-                <input id="AttributeName" name="AttributeName"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td  >
-                <span style="color: Red">*</span>:
-            </td>
-            <td >
-                <input id="OtherName" name="OtherName"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td  >
-                表现方式 1 select 2input 3<span style="color: Red">*</span>:
-            </td>
-            <td >
-                <input id="ShowType" name="ShowType"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td  >
-                <span style="color: Red">*</span>:
-            </td>
-            <td >
-                <input id="AttributeValues" name="AttributeValues"  type="text"  />
-            </td>
-        </tr>
-          
+
+            <tr>
+                <td >
+                    属性名 <span style="color: Red">*</span>:
+                </td>
+                <td >
+                    <input id="AttributeName" name="AttributeName" type="text"/>
+                </td>
+            </tr>
+
+            <tr>
+                <td >
+                    表现方式 <span style="color: Red">*</span>:
+                </td>
+                <td >
+                    <input id="ShowType" name="ShowType" type="text"/>
+                </td>
+            </tr>
         </table>
+
+        <div title="属性值" style="padding:1px;height: 500px">
+            <table id="datagrid" toolbar="#tb" fit="true"></table>
+            <div id="tb" style="padding: 5px; height: auto">
+                <div style="margin-bottom: 5px">
+                    <a id="btnAdd_ToolBar" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true">添加</a>
+                    <a id="btnDel_ToolBar" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true">删除</a>
+                </div>
+                <div id="divSearch">
+                </div>
+            </div>
+        </div>
+
     </form>
 </div>
 <div style="padding: 10px 10px 0 10px; text-align: center;">

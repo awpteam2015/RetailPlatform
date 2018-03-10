@@ -3,7 +3,88 @@
     pro.ExtAttribute = pro.ExtAttribute || {};
     pro.ExtAttribute.HdPage = pro.ExtAttribute.HdPage || {};
     pro.ExtAttribute.HdPage = {
+        init: function () {
+            return {
+                tabObj: new pro.TabBase(),
+                gridObj: new pro.GridBase("#datagrid", false)
+            };
+        },
         initPage: function () {
+
+            var initObj = this.init();
+            var tabObj = initObj.tabObj;
+            var gridObj = initObj.gridObj;
+            gridObj.grid({
+                url: '/ProductManager/ExtAttribute/GetAttributeValueList?AttributeId=' + pro.commonKit.getUrlParam("PkId"),
+                fitColumns: false,
+                nowrap: false,
+                rownumbers: true, //行号
+                singleSelect: true,
+                idField: "PkId",
+                columns: [
+                    [
+                        {
+                            field: 'PkId', title: '', hidden: true, width: 100,
+                            formatter: function (value, row, index) {
+                                return pro.controlKit.getInputHtml("PkId", value);
+                            }
+                        },
+                        {
+                            field: 'AttributeValueName',
+                            title: '属性值',
+                            width: 100,
+                            formatter: function (value, row, index) {
+                                return pro.controlKit.getInputHtml("AttributeValueName_" + row.PkId, value);
+                            }
+                        },
+                        {
+                            field: 'Sort',
+                            title: '排序',
+                            width: 100,
+                            formatter: function (value, row, index) {
+                                return pro.controlKit.getInputHtml("Sort_" + row.PkId, value);
+                            }
+                        }
+
+                    ]
+                ],
+                pagination: false
+            }
+            );
+
+            $("#btnAdd_ToolBar").click(function () {
+                gridObj.insertRow({
+                    PkId: gridObj.PkId,
+                    FunctionDetailCode: ""
+                });
+
+                //console.log(JSON.stringify($("#datagrid").datagrid('getRows')));
+                //console.log(gridObj.PkId + 1);
+
+                $("#datagrid").datagrid('selectRecord', gridObj.PkId + 1);
+            });
+
+
+            $("#btnDel_ToolBar").click(function () {
+                gridObj.delRow();
+            });
+
+
+            $('#ShowType').combobox({
+                required: true,
+                editable: false,
+                valueField: 'KeyValue',
+                textField: 'KeyName',
+                url: '/SystemSetManager/Dictionary/GetList_Combobox?ParentKeyCode=AttributeShowType',
+                onLoadSuccess: function () {
+                    if (pro.commonKit.getUrlParam("PkId") > 0) {
+                        $("#ShowType").combobox('setValue', bindEntity['ShowType']);
+                    }
+                }
+            });
+
+
+
             $("#btnAdd").click(function () {
                 pro.ExtAttribute.HdPage.submit("Add");
             });
@@ -29,6 +110,13 @@
         submit: function (command) {
             var postData = {};
             postData.RequestEntity = pro.submitKit.getHeadJson();
+            postData.RequestEntity.ShowTypeName = $("#ShowType").combobox('getText');
+
+
+            pro.submitKit.config.columnPkidName = "PkId";
+            pro.submitKit.config.columns = ["AttributeValueName", "Sort"];
+            postData.RequestEntity.AttributeValueEntityList = pro.submitKit.getRowJson();
+
 
             if (pro.commonKit.getUrlParam("PkId") != "") {
                 postData.RequestEntity.PkId = pro.commonKit.getUrlParam("PkId");

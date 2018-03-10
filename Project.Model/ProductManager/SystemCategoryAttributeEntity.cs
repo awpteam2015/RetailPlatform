@@ -27,11 +27,16 @@ namespace Project.Model.ProductManager
         /// 0不是必须的1是必须的
         /// </summary>
         public virtual System.Int32? IsMust{get; set;}
-		#endregion
-        
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public virtual System.Int32 Sort { get; set; }
+        #endregion
+
 
         #region 新增属性
-        
+
         #endregion
     }
 }

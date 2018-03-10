@@ -51,7 +51,7 @@ namespace Project.Service.ProductManager
                 try
                 {
                     var pkId= _specRepository.Save(entity);
-                    entity.SpecValueEntityList.ToList().ForEach(p =>
+                    entity.SpecValueList.ToList().ForEach(p =>
                     {
                         p.SpecId = pkId;
                     });
@@ -110,7 +110,7 @@ namespace Project.Service.ProductManager
         {
             var oldEntity = this.GetModelByPk(entity.PkId);
             var date = DateTime.Now;
-            entity.SpecValueEntityList.ToList().ForEach(p =>
+            entity.SpecValueList.ToList().ForEach(p =>
             {
                 //if (p.PkId <= 0)
                 //{
@@ -125,7 +125,7 @@ namespace Project.Service.ProductManager
                 //p.LastModifierUserCode = "";
             });
 
-            var deleteList = oldEntity.SpecValueEntityList.Where( p => entity.SpecValueEntityList.All(x => x.PkId != p.PkId)).ToList();
+            var deleteList = oldEntity.SpecValueList.Where( p => entity.SpecValueList.All(x => x.PkId != p.PkId)).ToList();
 
             using (var tx = NhTransactionHelper.BeginTransaction())
             {

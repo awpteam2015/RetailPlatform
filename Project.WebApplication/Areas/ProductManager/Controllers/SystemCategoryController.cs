@@ -30,20 +30,39 @@ namespace Project.WebApplication.Areas.ProductManager.Controllers
                 var entity = SystemCategoryService.GetInstance().GetModelByPk(pkId);
                 ViewBag.BindEntity = JsonHelper.JsonSerializer(entity);
 
-                var specList = SpecService.GetInstance().GetList(new SpecEntity());
-                var extAttributeList = ExtAttributeService.GetInstance().GetList(new ExtAttributeEntity());
+                //var specList = SpecService.GetInstance().GetList(new SpecEntity());
+                //var extAttributeList = ExtAttributeService.GetInstance().GetList(new ExtAttributeEntity());
 
-                ViewBag.SpecList = JsonHelper.JsonSerializer(new DataGridResponse()
-                {
-                    total = specList.Count,
-                    rows = specList
-                }, new NHibernateContractResolver());
-                ViewBag.ExtAttributeList = JsonHelper.JsonSerializer(new DataGridResponse()
-                {
-                    total = extAttributeList.Count,
-                    rows = extAttributeList
-                }, new NHibernateContractResolver()); 
+                //ViewBag.SpecList = JsonHelper.JsonSerializer(new DataGridResponse()
+                //{
+                //    total = entity.SystemCategorySpecList.Count,
+                //    rows = entity.SystemCategorySpecList
+                //}, new NHibernateContractResolver());
+                //ViewBag.ExtAttributeList = JsonHelper.JsonSerializer(new DataGridResponse()
+                //{
+                //    total = entity.SystemCategoryAttributeList.Count,
+                //    rows = entity.SystemCategoryAttributeList
+                //}, new NHibernateContractResolver());
             }
+            
+
+            var specHtml = "";
+            var specList = SpecService.GetInstance().GetList(new SpecEntity());
+            specList.ForEach(p =>
+            {
+                specHtml += "<option value=\""+p.PkId+"\">"+p.SpecName+"</option>";
+            });
+
+            var attributeHtml = "";
+            var attributeList = ExtAttributeService.GetInstance().GetList(new ExtAttributeEntity());
+            attributeList.ForEach(p =>
+            {
+                attributeHtml += "<option value=\"" + p.PkId + "\">" + p.AttributeName + "</option>";
+            });
+
+            ViewBag.SpecHtml = specHtml;
+            ViewBag.AttributeHtml = attributeHtml;
+
             return View();
         }
 
@@ -79,6 +98,45 @@ namespace Project.WebApplication.Areas.ProductManager.Controllers
         }
 
 
+        public AbpJsonResult GetListALL()
+        {
+            var searchList = SystemCategoryService.GetInstance().GetList(new SystemCategoryEntity());
+            return new AbpJsonResult(searchList, new NHibernateContractResolver());
+        }
+
+
+        public AbpJsonResult GetSystemCategoryAttributeList()
+        {
+            var where = new SystemCategoryAttributeEntity();
+            where.SystemCategoryId= RequestHelper.GetInt("SystemCategoryId");
+
+            var list = SystemCategoryAttributeService.GetInstance().GetList(where);
+
+            var dataGridEntity = new DataGridResponse()
+            {
+                total = list.Count(),
+                rows = list
+            };
+            return new AbpJsonResult(dataGridEntity, new NHibernateContractResolver());
+        }
+
+
+        public AbpJsonResult GetSystemCategorySpecList()
+        {
+            var where = new SystemCategorySpecEntity();
+            where.SystemCategoryId= RequestHelper.GetInt("SystemCategoryId");
+
+            var list = SystemCategorySpecService.GetInstance().GetList(where);
+
+            var dataGridEntity = new DataGridResponse()
+            {
+                total = list.Count(),
+                rows = list
+            };
+            return new AbpJsonResult(dataGridEntity, new NHibernateContractResolver());
+        }
+
+
         [HttpPost]
         public AbpJsonResult Add(AjaxRequest<SystemCategoryEntity> postData)
         {
@@ -95,10 +153,7 @@ namespace Project.WebApplication.Areas.ProductManager.Controllers
         [HttpPost]
         public AbpJsonResult Edit(AjaxRequest<SystemCategoryEntity> postData)
         {
-            var newInfo = postData.RequestEntity;
-            var orgInfo = SystemCategoryService.GetInstance().GetModelByPk(postData.RequestEntity.PkId);
-            var mergInfo = Mapper.Map(newInfo, orgInfo);
-            var updateResult = SystemCategoryService.GetInstance().Update(mergInfo);
+            var updateResult = SystemCategoryService.GetInstance().Update(postData.RequestEntity);
 
             var result = new AjaxResponse<SystemCategoryEntity>()
             {

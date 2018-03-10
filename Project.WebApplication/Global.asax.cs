@@ -8,9 +8,11 @@ using System.Web.Routing;
 using AutoMapper;
 using Project.Infrastructure.FrameworkCore.AutoMapper;
 using Project.Model.PermissionManager;
+using Project.Model.ProductManager;
 using Project.Model.ReportManager;
 using Project.Model.RiverManager;
 using Project.Service;
+using Project.WebApplication.Areas.ProductManager.Models;
 using Project.WebApplication.Models.Response;
 
 namespace Project.WebApplication
@@ -23,11 +25,16 @@ namespace Project.WebApplication
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
 
-Mapper.CreateMap<UserInfoViewEntity, UserInfoResponse>().IgnoreAllNull();
+            Mapper.CreateMap<UserInfoViewEntity, UserInfoResponse>().IgnoreAllNull();
             Mapper.CreateMap<UserInfoEntity, UserInfoResponse>().IgnoreAllNull();
             Mapper.CreateMap<RiverProblemApplyEntity, ProblemResponse>().IgnoreAllNull();
 
             Mapper.CreateMap<RiverAttachEntity, GetRiverAttachListResponse>().IgnoreAllNull();
+
+            Mapper.CreateMap<SpecEntity, SpecVm>().IgnoreAllNull();
+            Mapper.CreateMap<SpecValueEntity, SpecValueVm>().IgnoreAllNull();
+
+           // Mapper.CreateMap<ProductEntity, ProductHdVm>().IgnoreAllNull();
 
             BootstrapperService.Init();
         }

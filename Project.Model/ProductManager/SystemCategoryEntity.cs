@@ -18,11 +18,11 @@ namespace Project.Model.ProductManager
 
         public SystemCategoryEntity()
         {
-            SystemCategoryBrandList = new List<SystemCategoryBrandEntity>();
-            SystemCategorySpecList = new List<SystemCategorySpecEntity>();
-            SystemCategoryAttributeList = new List<SystemCategoryAttributeEntity>();
-            ParameterGroupList = new List<ParameterGroupEntity>();
-            ParameterGroupDetailList = new List<ParameterGroupDetailEntity>();
+            SystemCategoryBrandList = new HashSet<SystemCategoryBrandEntity>();
+            SystemCategorySpecList = new HashSet<SystemCategorySpecEntity>();
+            SystemCategoryAttributeList = new HashSet<SystemCategoryAttributeEntity>();
+            //ParameterGroupList = new List<ParameterGroupEntity>();
+            //ParameterGroupDetailList = new List<ParameterGroupDetailEntity>();
         }
 
 
@@ -70,29 +70,29 @@ namespace Project.Model.ProductManager
         /// <summary>
         /// 系统类型对应品牌
         /// </summary>
-        public virtual IList<SystemCategoryBrandEntity> SystemCategoryBrandList { get; set; }
+        public virtual ISet<SystemCategoryBrandEntity> SystemCategoryBrandList { get; set; }
 
         /// <summary>
         /// 系统类型对应规格
         /// </summary>
-        public virtual IList<SystemCategorySpecEntity> SystemCategorySpecList { get; set; }
+        public virtual ISet<SystemCategorySpecEntity> SystemCategorySpecList { get; set; }
 
 
         /// <summary>
         /// 系统类型对应属性
         /// </summary>
-        public virtual IList<SystemCategoryAttributeEntity> SystemCategoryAttributeList { get; set; }
+        public virtual ISet<SystemCategoryAttributeEntity> SystemCategoryAttributeList { get; set; }
 
-        /// <summary>
-        /// 系统类型对应参数组
-        /// </summary>
-        public virtual IList<ParameterGroupEntity> ParameterGroupList { get; set; }
+        ///// <summary>
+        ///// 系统类型对应参数组
+        ///// </summary>
+        //public virtual IList<ParameterGroupEntity> ParameterGroupList { get; set; }
 
 
-        /// <summary>
-        /// 系统类型对应参数明细
-        /// </summary>
-        public virtual IList<ParameterGroupDetailEntity> ParameterGroupDetailList { get; set; }
+        ///// <summary>
+        ///// 系统类型对应参数明细
+        ///// </summary>
+        //public virtual IList<ParameterGroupDetailEntity> ParameterGroupDetailList { get; set; }
 
         #endregion
     }

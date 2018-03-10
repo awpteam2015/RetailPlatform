@@ -5,8 +5,11 @@
  *       日期：     2017/6/30
  *       描述：     产品表
  * *************************************************************************/
+
+using System;
 using System.Linq;
 using System.Collections.Generic;
+using Project.Infrastructure.FrameworkCore.DataNhibernate;
 using Project.Infrastructure.FrameworkCore.DataNhibernate.Helpers;
 using Project.Model.ProductManager;
 using Project.Repository.ProductManager;
@@ -40,7 +43,36 @@ namespace Project.Service.ProductManager
         /// <returns></returns>
         public System.Int32 Add(ProductEntity entity)
         {
-            return _productRepository.Save(entity);
+
+            using (var tx = NhTransactionHelper.BeginTransaction())
+            {
+                try
+                {
+                    var pkId = _productRepository.Save(entity);
+                    entity.GoodsEntityList.ToList().ForEach(p =>
+                    {
+                        p.ProductId = pkId;
+
+                      p.GoodsSpecValueList.ToList().ForEach(x =>
+                      {
+                          x.GoodsId = p.PkId;
+                          x.ProductId = p.ProductId;
+                      });
+
+                    });
+
+                    tx.Commit();
+                    return pkId;
+                }
+                catch (Exception e)
+                {
+                    tx.Rollback();
+                    throw;
+                }
+            }
+
+
+           
         }
         
         

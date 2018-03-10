@@ -11,12 +11,12 @@
 @section JavaScript{
     <script src="/Areas/ProductManager/Scripts/SystemCategory/Hd.js?JsParamter=@SiteConfig.GetConfig().JsParamter"></script>
 }
-<div style="display: none">
+<div style="display:none ">
     <input id="BindEntity" type="text" value="@ViewBag.BindEntity" />
     <input id="Command" type="hidden"/>
 
-    <textarea id="SpecList">@ViewBag.SpecList</textarea>
-    <textarea id="ExtAttributeList">@ViewBag.ExtAttributeList</textarea>
+    <textarea id="SpecHtml" >@ViewBag.SpecHtml</textarea>
+    <textarea id="AttributeHtml" >@ViewBag.AttributeHtml</textarea>
 </div>
 <div class="mtable_div">
     <form id="form1">
@@ -26,11 +26,11 @@
         </div>
         <table class="mtable">
             <tr>
-                <td>
+                <td  style="width: 200px">
                     分类名称<span style="color: Red">*</span>:
                 </td>
                 <td>
-                    <input id="SystemCategoryName" name="SystemCategoryName" type="text" />
+                    <input id="SystemCategoryName" name="SystemCategoryName" type="text"/>
                 </td>
             </tr>
 
@@ -39,25 +39,27 @@
                     排序<span style="color: Red">*</span>:
                 </td>
                 <td>
-                    <input id="Sort" name="Sort" type="text" />
+                    <input id="Sort" name="Sort" type="text"/>
                 </td>
             </tr>
 
-            <tr>
+            @*<tr>
                 <td>
                     关联品牌<span style="color: Red">*</span>:
                 </td>
                 <td>
-                    <input id="Brand" name="Sort" type="text" />
+                    <input id="Brand" name="Brand" type="text"/>
                 </td>
-            </tr>
+            </tr>*@
         </table>
+
+
         <div class="easyui-tabs" style="height: 0px;" border="false">
             <div title="扩展属性">
             </div>
         </div>
 
-        <div title="扩展属性" style="padding: 1px; height: 300px">
+        <div title="扩展属性" style="padding: 1px; height: 300px;">
             <table id="datagrid" toolbar="#tb" fit="true"></table>
             <div id="tb" style="padding: 5px; height: auto">
                 <div style="margin-bottom: 5px">
@@ -69,39 +71,25 @@
         </div>
 
         <div class="easyui-tabs" style="height: 0px;" border="false">
-            <div title="规格">
+            <div title="关联规格">
             </div>
         </div>
-        <div title="规格" style="padding: 1px; height: 300px">
+        <div title="关联规格" style="padding: 1px; height: 300px">
             <table id="datagrid2" toolbar="#tb2" fit="true"></table>
             <div id="tb2" style="padding: 5px; height: auto">
                 <div style="margin-bottom: 5px">
                     <a id="btnAdd2_ToolBar" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true">添加</a>
                     <a id="btnDel2_ToolBar" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true">删除</a>
                 </div>
-               
+
             </div>
         </div>
+       
 
-        @*<div class="easyui-tabs" style="height: 0px;" border="false">
-            <div title="详细参数">
-            </div>
-        </div>
-        <div title="详细参数" style="padding: 1px; height: 300px; ">
-            <table id="datagrid3" toolbar="#tb3" fit="true"></table>
-            <div id="tb3" style="padding: 5px; height: auto">
-                <div style="margin-bottom: 5px">
-                    <a id="btnAdd3_ToolBar" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true">添加</a>
-                    <a id="btnDel3_ToolBar" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true">删除</a>
-                </div>
-              
-            </div>
-        </div>*@
-
-        <div style="clear:both "></div>
+      
     </form>
 </div>
-<div style="padding: 10px 10px 0 10px; text-align: center;width: 100%">
+<div style="padding: 10px 10px 0 10px; text-align: center;">
     @if (Request["PkId"] == null || int.Parse(Request["PkId"]) == 0)
     {
         <a id="btnAdd" class="easyui-linkbutton" iconcls="icon-add" href="javascript:void(0)">新增</a>

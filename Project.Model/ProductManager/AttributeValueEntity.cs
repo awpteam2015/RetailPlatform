@@ -23,11 +23,16 @@ namespace Project.Model.ProductManager
         /// 
         /// </summary>
         public virtual System.Int32? AttributeId{get; set;}
-		#endregion
-        
+
+        /// <summary>
+        /// 排序
+        /// </summary>
+        public virtual System.Int32? Sort { get; set; }
+        #endregion
+
 
         #region 新增属性
-        
+
         #endregion
     }
 }

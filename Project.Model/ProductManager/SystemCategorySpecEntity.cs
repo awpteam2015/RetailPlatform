@@ -7,13 +7,20 @@
  *       描述：     系统分类--规格关联表
  * *************************************************************************/
 using System;
+using System.Collections.Generic;
 using Project.Infrastructure.FrameworkCore.Domain.Entities;
 using Project.Infrastructure.FrameworkCore.Domain.Entities.Component;
 
 namespace Project.Model.ProductManager
 {
     public class SystemCategorySpecEntity: Entity
-    { 
+    {
+
+        public  SystemCategorySpecEntity()
+        {
+           
+        }
+
         #region 属性
         /// <summary>
         /// 
@@ -23,11 +30,18 @@ namespace Project.Model.ProductManager
         /// 
         /// </summary>
         public virtual System.Int32? SystemCategoryId{get; set;}
-		#endregion
-        
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public virtual System.Int32 Sort { get; set; }
+        #endregion
+
 
         #region 新增属性
-        
+
+        public virtual SpecEntity SpecEntity { get; set; }
+
         #endregion
     }
 }

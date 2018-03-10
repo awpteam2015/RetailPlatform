@@ -139,14 +139,14 @@ namespace Project.Service.ProductManager
         public IList<SystemCategorySpecEntity> GetList(SystemCategorySpecEntity where)
         {
                var expr = PredicateBuilder.True<SystemCategorySpecEntity>();
-             #region
-              // if (!string.IsNullOrEmpty(where.PkId))
-              //  expr = expr.And(p => p.PkId == where.PkId);
-              // if (!string.IsNullOrEmpty(where.SpecId))
-              //  expr = expr.And(p => p.SpecId == where.SpecId);
-              // if (!string.IsNullOrEmpty(where.SystemCategoryId))
-              //  expr = expr.And(p => p.SystemCategoryId == where.SystemCategoryId);
- #endregion
+            #region
+            // if (!string.IsNullOrEmpty(where.PkId))
+            //  expr = expr.And(p => p.PkId == where.PkId);
+            // if (!string.IsNullOrEmpty(where.SpecId))
+            //  expr = expr.And(p => p.SpecId == where.SpecId);
+            if (where.SystemCategoryId>0)
+                expr = expr.And(p => p.SystemCategoryId == where.SystemCategoryId);
+            #endregion
             var list = _systemCategorySpecRepository.Query().Where(expr).OrderBy(p => p.PkId).ToList();
             return list;
         }

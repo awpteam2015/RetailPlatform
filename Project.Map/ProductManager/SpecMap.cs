@@ -25,7 +25,7 @@ namespace  Project.Map.ProductManager
             Map(p => p.SpecTypeName);
             Map(p => p.ShowTypeName);
 
-            HasMany(p => p.SpecValueEntityList)
+            HasMany(p => p.SpecValueList)
             .AsSet()
             .LazyLoad()
             .Cascade.All().Inverse()

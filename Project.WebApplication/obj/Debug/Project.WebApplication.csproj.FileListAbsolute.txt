@@ -317,3 +317,6 @@ G:\云端备份\我设计的框架\Retail2\Project.WebApplication\bin\zh-Hans\Sy
 G:\云端备份\我设计的框架\Retail2\Project.WebApplication\obj\Debug\Project.WebApplication.csprojResolveAssemblyReference.cache
 G:\云端备份\我设计的框架\Retail2\Project.WebApplication\obj\Debug\Project.WebApplication.dll
 G:\云端备份\我设计的框架\Retail2\Project.WebApplication\obj\Debug\Project.WebApplication.pdb
+G:\云端备份\我设计的框架\Retail2\Project.WebApplication\bin\zh-Hans\System.Net.Http.Formatting.resources.dll
+G:\云端备份\我设计的框架\Retail2\Project.WebApplication\bin\zh-Hans\System.Web.Http.resources.dll
+G:\云端备份\我设计的框架\Retail2\Project.WebApplication\bin\zh-Hans\System.Web.Http.WebHost.resources.dll

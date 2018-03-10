@@ -1,6 +1,6 @@
 ﻿
 
-  
+
 
 
 
@@ -13,452 +13,60 @@
     <script src="/Areas/ProductManager/Scripts/Product/List.js?JsParamter=@SiteConfig.GetConfig().JsParamter" type="text/javascript"></script>
 }
 
-<div title="产品表" style="padding:1px;">
-    <table id="datagrid" style="height:auto;" iconcls=".icon-save" singleselect="true"  toolbar="#tb" fit="true"></table>
+<div title="产品列表" style="padding:1px;">
+    <table id="datagrid" style="height:auto;" iconcls=".icon-save" singleselect="true" toolbar="#tb" fit="true"></table>
     <div id="tb" style="padding:5px;height:auto">
-        <div  style="margin-bottom: 5px">
-            <a id="btnAdd" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true" >添加</a>
-  
-            <a id="btnDel" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true" >删除</a>
-           
-            <a id="btnEdit" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true" >编辑</a>
-          
-            <a id="btnRefresh" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-reload',plain:true" >刷新</a>
-           
+        <div style="margin-bottom: 5px">
+
+            <input id="SystemCategoryId" name="SystemCategoryId" type="text" value="4"/>
+
+            <a id="btnAdd" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true">发布商品</a>
+
+            <a id="btnDel" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true">删除</a>
+
+            <a id="btnEdit" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true">编辑</a>
+
+            <a id="btnDown" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true">下架</a>
+
+            <a id="btnRefresh" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-reload',plain:true">刷新</a>
+
         </div>
-      
+
         <div id="divSearch">
             <form>
-            
-             <table class="mtable">
-            
-              <tr>
-            <td >
-                产品ID:
-            </td>
-            <td >
-                <input id="PkId" name="PkId"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td >
-                产品名称:
-            </td>
-            <td >
-                <input id="ProductName" name="ProductName"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td >
-                系统类型:
-            </td>
-            <td >
-                <input id="SystemCategoryId" name="SystemCategoryId"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td >
-                商品分类:
-            </td>
-            <td >
-                <input id="ProductCategoryId" name="ProductCategoryId"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td >
-                商品分类全路由:
-            </td>
-            <td >
-                <input id="ProductCategoryRoute" name="ProductCategoryRoute"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td >
-                品牌ID:
-            </td>
-            <td >
-                <input id="BrandId" name="BrandId"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td >
-                商品编号:
-            </td>
-            <td >
-                <input id="ProductCode" name="ProductCode"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td >
-                计量单位:
-            </td>
-            <td >
-                <input id="Unit" name="Unit"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td >
-                简介:
-            </td>
-            <td >
-                <input id="BriefDescription" name="BriefDescription"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td >
-                详细描述:
-            </td>
-            <td >
-                <input id="Description" name="Description"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td >
-                重量:
-            </td>
-            <td >
-                <input id="Weight" name="Weight"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td >
-                重量单位:
-            </td>
-            <td >
-                <input id="WeightUnit" name="WeightUnit"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td >
-                市场价:
-            </td>
-            <td >
-                <input id="MarketPrice" name="MarketPrice"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td >
-                销售价:
-            </td>
-            <td >
-                <input id="SellPrice" name="SellPrice"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td >
-                成本价:
-            </td>
-            <td >
-                <input id="Cost" name="Cost"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td >
-                货币单位:
-            </td>
-            <td >
-                <input id="PriceUnit" name="PriceUnit"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td >
-                库存数量:
-            </td>
-            <td >
-                <input id="StockNum" name="StockNum"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td >
-                最大数量限制:
-            </td>
-            <td >
-                <input id="BuyMaxNum" name="BuyMaxNum"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td >
-                最小数量限制:
-            </td>
-            <td >
-                <input id="BuyMinNum" name="BuyMinNum"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td >
-                访问次数:
-            </td>
-            <td >
-                <input id="ViewNum" name="ViewNum"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td >
-                评论次数:
-            </td>
-            <td >
-                <input id="CommentNum" name="CommentNum"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td >
-                售出数量:
-            </td>
-            <td >
-                <input id="SelledNum" name="SelledNum"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td >
-                页面标题:
-            </td>
-            <td >
-                <input id="Title" name="Title"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td >
-                页面关键字:
-            </td>
-            <td >
-                <input id="MetaKeywords" name="MetaKeywords"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td >
-                页面描述:
-            </td>
-            <td >
-                <input id="MetaDescription" name="MetaDescription"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td >
-                是否上架:
-            </td>
-            <td >
-                <input id="IsShow" name="IsShow"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td >
-                是否推荐:
-            </td>
-            <td >
-                <input id="IsCommand" name="IsCommand"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td >
-                Pdt_desc:
-            </td>
-            <td >
-                <input id="PdtDesc" name="PdtDesc"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td >
-                Spec_desc:
-            </td>
-            <td >
-                <input id="SpecDesc" name="SpecDesc"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td >
-                Params_desc:
-            </td>
-            <td >
-                <input id="ParamsDesc" name="ParamsDesc"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td >
-                Tags_desc:
-            </td>
-            <td >
-                <input id="TagsDesc" name="TagsDesc"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td >
-                创建人:
-            </td>
-            <td >
-                <input id="CreatorUserCode" name="CreatorUserCode"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td >
-                创建时间:
-            </td>
-            <td >
-                <input id="CreationTime" name="CreationTime"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td >
-                修改人:
-            </td>
-            <td >
-                <input id="LastModifierUserCode" name="LastModifierUserCode"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td >
-                修改时间:
-            </td>
-            <td >
-                <input id="LastModificationTime" name="LastModificationTime"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td >
-                是否删除:
-            </td>
-            <td >
-                <input id="IsDeleted" name="IsDeleted"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td >
-                删除人:
-            </td>
-            <td >
-                <input id="DeleterUserCode" name="DeleterUserCode"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td >
-                删除时间:
-            </td>
-            <td >
-                <input id="DeletionTime" name="DeletionTime"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td >
-                扩展属性1:
-            </td>
-            <td >
-                <input id="P1" name="P1"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td >
-                扩展属性2:
-            </td>
-            <td >
-                <input id="P2" name="P2"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td >
-                扩展属性1:
-            </td>
-            <td >
-                <input id="P3" name="P3"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td >
-                扩展属性2:
-            </td>
-            <td >
-                <input id="P4" name="P4"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td >
-                扩展属性1:
-            </td>
-            <td >
-                <input id="P5" name="P5"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td >
-                扩展属性2:
-            </td>
-            <td >
-                <input id="P6" name="P6"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td >
-                扩展属性1:
-            </td>
-            <td >
-                <input id="P7" name="P7"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td >
-                扩展属性2:
-            </td>
-            <td >
-                <input id="P8" name="P8"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td >
-                扩展属性1:
-            </td>
-            <td >
-                <input id="P9" name="P9"  type="text"  />
-            </td>
-        </tr>
-          <tr>
-        <td colspan="2">   <a href="#" class="easyui-linkbutton" iconcls="icon-search" id="btnSearch">搜索</a>
-        </td>
-        </tr>
-        </table>
+
+                <table class="mtable">
+
+                    <tr>
+                        <td>
+                            产品名称:
+                        </td>
+                        <td>
+                            <input id="ProductName" name="ProductName" type="text" />
+                        </td>
+
+
+                        <td>
+                            商品分类:
+                        </td>
+                        <td>
+                            <input id="ProductCategoryId" name="ProductCategoryId" type="text" />
+                        </td>
+
+                        <td>
+                            品牌ID:
+                        </td>
+                        <td>
+                            <input id="BrandId" name="BrandId" type="text" />
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="2">
+                            <a href="#" class="easyui-linkbutton" iconcls="icon-search" id="btnSearch">搜索</a>
+                        </td>
+                    </tr>
+                </table>
             </form>
         </div>
     </div>

@@ -202,7 +202,28 @@ namespace Project.Service.ProductManager
 
 
         #region 新增方法
-        
+
+        //public IList<ProductCategoryEntity> GetTreeList(string parentId)
+        //{
+        //    var topProductCategoryEntity=
+        //}
+
+
+        //private void GetChildList(IList<ProductCategoryEntity> allList, ProductCategoryEntity parentDepartmentEntity)
+        //{
+
+        //    var childList = allList.Where(p => p.ParentId == parentDepartmentEntity.DepartmentCode).ToList();
+        //    if (childList.Any())
+        //    {
+        //        parentDepartmentEntity.children = childList;
+        //        childList.ForEach(p =>
+        //        {
+        //            GetChildList(allList, p);
+        //        });
+        //    }
+
+        //}
+
         #endregion
     }
 }

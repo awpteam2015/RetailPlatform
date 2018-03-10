@@ -39,11 +39,13 @@ namespace Project.Model.ProductManager
         /// 
         /// </summary>
         public virtual System.String SpecValueName{get; set;}
-		#endregion
-        
+
+        public virtual System.String SpecValueOtherName { get; set; }
+        #endregion
+
 
         #region 新增属性
-        
+
         #endregion
     }
 }

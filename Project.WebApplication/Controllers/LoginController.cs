@@ -194,13 +194,13 @@ namespace Project.WebApplication.Controllers
             1 /*version*/,
             Guid.NewGuid().ToString(),
             DateTime.Now,
-            DateTime.Now.AddMinutes(300),
+            DateTime.Now.AddMinutes(30000),
             true,//持久性
             JsonConvert.SerializeObject(userInfo.Item3),
             FormsAuthentication.FormsCookiePath);
             var encryptedTicket = FormsAuthentication.Encrypt(ticket);
             var cookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
-            cookie.Expires = DateTime.Now.AddMinutes(3000);
+            cookie.Expires = DateTime.Now.AddMinutes(30000);
             cookie.HttpOnly = true;
             Response.Cookies.Add(cookie);
 

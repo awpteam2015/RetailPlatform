@@ -22,7 +22,8 @@ namespace  Project.Map.ProductManager
             Map(p => p.SpecId);    
             Map(p => p.SpecName);    
             Map(p => p.SpecValueId);    
-            Map(p => p.SpecValueName);    
+            Map(p => p.SpecValueName);
+            Map(p => p.SpecValueOtherName);    
         }
     }
 }

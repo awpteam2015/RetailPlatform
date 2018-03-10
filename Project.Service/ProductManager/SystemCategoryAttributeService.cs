@@ -141,16 +141,16 @@ namespace Project.Service.ProductManager
         public IList<SystemCategoryAttributeEntity> GetList(SystemCategoryAttributeEntity where)
         {
                var expr = PredicateBuilder.True<SystemCategoryAttributeEntity>();
-             #region
-              // if (!string.IsNullOrEmpty(where.PkId))
-              //  expr = expr.And(p => p.PkId == where.PkId);
-              // if (!string.IsNullOrEmpty(where.AttributeId))
-              //  expr = expr.And(p => p.AttributeId == where.AttributeId);
-              // if (!string.IsNullOrEmpty(where.SystemCategoryId))
-              //  expr = expr.And(p => p.SystemCategoryId == where.SystemCategoryId);
-              // if (!string.IsNullOrEmpty(where.IsMust))
-              //  expr = expr.And(p => p.IsMust == where.IsMust);
- #endregion
+            #region
+            // if (!string.IsNullOrEmpty(where.PkId))
+            //  expr = expr.And(p => p.PkId == where.PkId);
+            // if (!string.IsNullOrEmpty(where.AttributeId))
+            //  expr = expr.And(p => p.AttributeId == where.AttributeId);
+            if (where.SystemCategoryId>0)
+                expr = expr.And(p => p.SystemCategoryId == where.SystemCategoryId);
+            // if (!string.IsNullOrEmpty(where.IsMust))
+            //  expr = expr.And(p => p.IsMust == where.IsMust);
+            #endregion
             var list = _systemCategoryAttributeRepository.Query().Where(expr).OrderBy(p => p.PkId).ToList();
             return list;
         }

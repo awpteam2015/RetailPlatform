@@ -18,10 +18,12 @@ namespace Project.Model.ProductManager
 
         public SpecEntity()
         {
-            this.SpecValueEntityList = new HashSet<SpecValueEntity>();
+            this.SpecValueList = new HashSet<SpecValueEntity>();
         }
 
         #region 属性
+
+
         /// <summary>
         /// 
         /// </summary>
@@ -55,7 +57,7 @@ namespace Project.Model.ProductManager
         /// <summary>
         /// 规格值
         /// </summary>
-        public virtual ISet<SpecValueEntity> SpecValueEntityList { get; set; }
+        public virtual ISet<SpecValueEntity> SpecValueList { get; set; }
 
         #endregion
 

@@ -18,7 +18,8 @@ namespace  Project.Map.ProductManager
             this.MapPkidDefault<AttributeValueEntity,int>();
  
             Map(p => p.AttributeValueName);    
-            Map(p => p.AttributeId);    
+            Map(p => p.AttributeId);
+            Map(p => p.Sort);
         }
     }
 }

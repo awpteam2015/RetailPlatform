@@ -7,7 +7,7 @@ var pro = pro || {};
       init: function () {
             return {
                 tabObj: new pro.TabBase(),
-                gridObj: new pro.GridBase("#datagrid", false)
+                gridObj: new pro.GridBase("#datagrid", true)
             };
         },
         initPage: function () {
@@ -16,6 +16,8 @@ var pro = pro || {};
             var gridObj = initObj.gridObj;
             gridObj.grid({
                 url: '/ProductManager/ProductCategory/GetList',
+                idField: "PkId",
+                treeField: "PkId",
                 fitColumns: false,
                 nowrap: false,
                 rownumbers: true, //行号
@@ -28,18 +30,12 @@ var pro = pro || {};
          { field: 'Sort', title: '', width: 100 },
          { field: 'SystemCategoryId', title: '', width: 100 },
          { field: 'SystemCategoryName', title: '', width: 100 },
-         { field: 'Route', title: '路径', width: 100 },
-         { field: 'CreatorUserCode', title: '创建人', width: 100 },
-         { field: 'CreationTime', title: '创建时间', width: 100 },
-         { field: 'LastModifierUserCode', title: '修改人', width: 100 },
-         { field: 'LastModificationTime', title: '修改时间', width: 100 },
-         { field: 'IsDeleted', title: '是否删除', width: 100 },
-         { field: 'DeleterUserCode', title: '删除人', width: 100 },
-         { field: 'DeletionTime', title: '删除时间', width: 100 },
-                ]],
-                pagination: true,
-                pageSize: 20, //每页显示的记录条数，默认为10     
-                pageList: [20, 30, 40] //可以设置每页记录条数的列表    
+         { field: 'Route', title: '路径', width: 100 }
+        
+                ]]
+                //pagination: true,
+                //pageSize: 20, //每页显示的记录条数，默认为10     
+                //pageList: [20, 30, 40] //可以设置每页记录条数的列表    
             }
                );
 

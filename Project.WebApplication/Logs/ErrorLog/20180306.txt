@@ -18,3 +18,7 @@
 2018-03-06 16:03:30,944 [10] ERROR ErrorLogger [(null)] - object is an unsaved transient instance - save the transient instance before merging: Project.Model.ProductManager.SpecValueEntity
 2018-03-06 16:04:24,269 [23] ERROR ErrorLogger [(null)] - object is an unsaved transient instance - save the transient instance before merging: Project.Model.ProductManager.SpecValueEntity
 2018-03-06 16:05:32,636 [23] ERROR ErrorLogger [(null)] - a different object with the same identifier value was already associated with the session: 3, of entity: Project.Model.ProductManager.SpecEntity
+2018-03-06 17:41:26,343 [35] ERROR ErrorLogger [(null)] - could not execute query
+[ select attributev0_.PkId as PkId36_, attributev0_.AttributeValueName as Attribut2_36_, attributev0_.AttributeId as Attribut3_36_, attributev0_.Sort as Sort36_ from PRM_AttributeValue attributev0_ where @p0=1 and attributev0_.AttributeId=@p1 order by attributev0_.PkId asc ]
+  Name:p1 - Value:True  Name:p2 - Value:0
+[SQL: select attributev0_.PkId as PkId36_, attributev0_.AttributeValueName as Attribut2_36_, attributev0_.AttributeId as Attribut3_36_, attributev0_.Sort as Sort36_ from PRM_AttributeValue attributev0_ where @p0=1 and attributev0_.AttributeId=@p1 order by attributev0_.PkId asc]

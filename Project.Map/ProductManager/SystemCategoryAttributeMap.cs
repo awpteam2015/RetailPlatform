@@ -19,7 +19,8 @@ namespace  Project.Map.ProductManager
  
             Map(p => p.AttributeId);    
             Map(p => p.SystemCategoryId);    
-            Map(p => p.IsMust);    
+            Map(p => p.IsMust);
+            Map(p => p.Sort);
         }
     }
 }

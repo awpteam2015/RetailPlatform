@@ -143,6 +143,8 @@
     <Content Include="Areas\HRManager\Scripts\Contract\Upload.js" />
     <Content Include="Areas\HRManager\Scripts\Contract\Hd.js" />
     <Content Include="Areas\HRManager\Scripts\Contract\List.js" />
+    <Content Include="Areas\ProductManager\Scripts\Product\ProductAttributeHd.js" />
+    <Content Include="Areas\ProductManager\Scripts\Product\ProductSpecHd.js" />
     <Content Include="Areas\SystemSetManager\Scripts\Dictionary\Hd.js" />
     <Content Include="Areas\SystemSetManager\Scripts\Dictionary\List.js" />
     <Content Include="Areas\HRManager\Scripts\EmployeeChildren\Hd.js" />
@@ -241,8 +243,6 @@
     <Content Include="Areas\ProductManager\Scripts\ProductAttributeValue\List.js" />
     <Content Include="Areas\ProductManager\Scripts\ProductCategory\Hd.js" />
     <Content Include="Areas\ProductManager\Scripts\ProductCategory\List.js" />
-    <Content Include="Areas\ProductManager\Scripts\ProductImage\Hd.js" />
-    <Content Include="Areas\ProductManager\Scripts\ProductImage\List.js" />
     <Content Include="Areas\ProductManager\Scripts\Product\Hd.js" />
     <Content Include="Areas\ProductManager\Scripts\Product\List.js" />
     <Content Include="Areas\ProductManager\Scripts\SpecValue\Hd.js" />
@@ -277,6 +277,7 @@
     <Content Include="Areas\SystemSetManager\Scripts\HolidayDetail\List.js" />
     <Content Include="Areas\SystemSetManager\Scripts\IndexPageSet\Hd.js" />
     <Content Include="Areas\SystemSetManager\Scripts\IndexPageSet\List.js" />
+    <Content Include="CodeRecord代码记录\JavaScript.js" />
     <Content Include="Config\hibernate.cfg.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -303,6 +304,7 @@
     <Content Include="Resources\gx.png" />
     <Content Include="Resources\ng.png" />
     <Content Include="Scripts\Control\AllDepartmentControl.js" />
+    <Content Include="Scripts\Control\ProductcategoryControl.js" />
     <Content Include="Scripts\jqueryPlugins\jquery-easyui\jquery.messager.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -495,7 +497,12 @@
     <Content Include="Scripts\jqueryPlugins\jquery_uploadify\uploadify.css" />
     <Content Include="Scripts\jqueryPlugins\jquery_uploadify\uploadify.swf" />
     <Content Include="Scripts\jqueryPlugins\jquery_uploadify\uploadify_jxp.css" />
+    <None Include="Scripts\linq\JSLINQ-vsdoc.js" />
+    <Content Include="Scripts\linq\JSLINQ.js" />
+    <Content Include="Scripts\linq\JSLINQextend.js" />
+    <Content Include="Scripts\linq\Samples.js" />
     <Content Include="Scripts\maps.js" />
+    <Content Include="Scripts\pro\combinationCount.js" />
     <Content Include="Scripts\pro\kindeditor\kindeditor.js" />
     <Content Include="Scripts\pro\kindeditor\lang\ar.js" />
     <Content Include="Scripts\pro\kindeditor\lang\en.js" />
@@ -1124,6 +1131,7 @@
     <Compile Include="Areas\HRManager\Controllers\AttendanceUploadRecordController.cs" />
     <Compile Include="Areas\HRManager\Controllers\ContinEducationController.cs" />
     <Compile Include="Areas\HRManager\Controllers\ContractController.cs" />
+    <Compile Include="Areas\ProductManager\Models\ProductHdVm.cs" />
     <Compile Include="Areas\SystemSetManager\Controllers\DictionaryController.cs" />
     <Compile Include="Areas\HRManager\Controllers\EmployeeChildrenController.cs" />
     <Compile Include="Areas\HRManager\Controllers\EmployeeFileController.cs" />
@@ -1196,6 +1204,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ApiTestController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\WeiXinController.cs" />
     <Compile Include="Controllers\OpenController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
@@ -1281,7 +1290,6 @@
     <Folder Include="Areas\PermissionManager\Models\" />
     <Folder Include="Areas\PermissionManager\Views\Permission\" />
     <Folder Include="Areas\PermissionManager\Views\Shared\" />
-    <Folder Include="Areas\ProductManager\Models\" />
     <Folder Include="Areas\ProductManager\Scripts\ProductSpec\" />
     <Folder Include="Areas\ProductManager\Scripts\SystemCategoryAttribute\" />
     <Folder Include="Areas\ProductManager\Scripts\SystemCategoryBrand\" />

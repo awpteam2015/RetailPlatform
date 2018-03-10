@@ -21,11 +21,9 @@ var pro = pro || {};
                 rownumbers: true, //行号
                 singleSelect: true,
                 columns: [[
-         { field: 'PkId', title: '', width: 100 },
-         { field: 'AttributeName', title: '', width: 100 },
-         { field: 'OtherName', title: '', width: 100 },
-         { field: 'ShowType', title: '表现方式 1 select 2input 3', width: 100 },
-         { field: 'AttributeValues', title: '', width: 100 },
+         { field: 'PkId', title: '序号', width: 100 },
+         { field: 'AttributeName', title: '属性名', width: 100 },
+         { field: 'ShowType', title: '表现方式', width: 100 }
                 ]],
                 pagination: true,
                 pageSize: 20, //每页显示的记录条数，默认为10     
@@ -76,6 +74,26 @@ var pro = pro || {};
             $("#btnRefresh").click(function () {
                 gridObj.refresh();
             });
+
+
+
+
+
+
+            $('#ShowType').combobox({
+                required: false,
+                editable: false,
+                valueField: 'KeyValue',
+                textField: 'KeyName',
+                url: '/SystemSetManager/Dictionary/GetList_Combobox?ParentKeyCode=AttributeShowType',
+                onLoadSuccess: function () {
+                    //if (pro.commonKit.getUrlParam("PkId") > 0) {
+                    //    $("#WorkState").combobox('setValue', bindEntity['WorkState']);
+                    //}
+                }
+            });
+
+
         },
          closeTab: function () {
             this.init().tabObj.closeTab();

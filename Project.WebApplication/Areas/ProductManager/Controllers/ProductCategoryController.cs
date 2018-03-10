@@ -29,7 +29,7 @@ namespace Project.WebApplication.Areas.ProductManager.Controllers
             return View();
         }
 
- 
+
         public ActionResult List()
         {
             return View();
@@ -37,56 +37,44 @@ namespace Project.WebApplication.Areas.ProductManager.Controllers
 
         public AbpJsonResult GetList()
         {
-            var pIndex = this.Request["page"].ConvertTo<int>();
-            var pSize = this.Request["rows"].ConvertTo<int>();
             var where = new ProductCategoryEntity();
-			//where.PkId = RequestHelper.GetFormString("PkId");
-			//where.ProductcategoryName = RequestHelper.GetFormString("ProductcategoryName");
-			//where.ParentId = RequestHelper.GetFormString("ParentId");
-			//where.Rank = RequestHelper.GetFormString("Rank");
-			//where.Sort = RequestHelper.GetFormString("Sort");
-			//where.SystemCategoryId = RequestHelper.GetFormString("SystemCategoryId");
-			//where.SystemCategoryName = RequestHelper.GetFormString("SystemCategoryName");
-			//where.Route = RequestHelper.GetFormString("Route");
-			//where.CreatorUserCode = RequestHelper.GetFormString("CreatorUserCode");
-			//where.CreationTime = RequestHelper.GetFormString("CreationTime");
-			//where.LastModifierUserCode = RequestHelper.GetFormString("LastModifierUserCode");
-			//where.LastModificationTime = RequestHelper.GetFormString("LastModificationTime");
-			//where.IsDeleted = RequestHelper.GetFormString("IsDeleted");
-			//where.DeleterUserCode = RequestHelper.GetFormString("DeleterUserCode");
-			//where.DeletionTime = RequestHelper.GetFormString("DeletionTime");
-            var searchList = ProductCategoryService.GetInstance().Search(where, (pIndex - 1) * pSize, pSize);
+            var searchList = ProductCategoryService.GetInstance().GetList(where);
 
-            var dataGridEntity = new DataGridResponse()
-            {
-                total = searchList.Item2,
-                rows = searchList.Item1
-            };
+            var dataGridEntity = new DataGridTreeResponse<ProductCategoryEntity>(searchList.Count, searchList);
             return new AbpJsonResult(dataGridEntity, new NHibernateContractResolver());
         }
 
 
+        public AbpJsonResult GetList_Combotree()
+        {
+            //var where = new ProductCategoryEntity();
+            //var searchList = ProductCategoryService.GetInstance().GetList(where);
+
+            var dataGridEntity = ProductCategoryService.GetInstance().GetModelByPk(1);
+            
+            return new AbpJsonResult(new List<ProductCategoryEntity>() { dataGridEntity }, new NHibernateContractResolver(new string[] { "children" }));
+        }
         [HttpPost]
         public AbpJsonResult Add(AjaxRequest<ProductCategoryEntity> postData)
         {
             var addResult = ProductCategoryService.GetInstance().Add(postData.RequestEntity);
             var result = new AjaxResponse<ProductCategoryEntity>()
-               {
-                   success = true,
-                   result = postData.RequestEntity
-               };
+            {
+                success = true,
+                result = postData.RequestEntity
+            };
             return new AbpJsonResult(result, new NHibernateContractResolver());
         }
 
 
         [HttpPost]
-        public AbpJsonResult Edit( AjaxRequest<ProductCategoryEntity> postData)
+        public AbpJsonResult Edit(AjaxRequest<ProductCategoryEntity> postData)
         {
             var newInfo = postData.RequestEntity;
             var orgInfo = ProductCategoryService.GetInstance().GetModelByPk(postData.RequestEntity.PkId);
             var mergInfo = Mapper.Map(newInfo, orgInfo);
             var updateResult = ProductCategoryService.GetInstance().Update(mergInfo);
-            
+
             var result = new AjaxResponse<ProductCategoryEntity>()
             {
                 success = updateResult,

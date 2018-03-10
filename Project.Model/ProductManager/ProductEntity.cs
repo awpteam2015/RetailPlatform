@@ -7,13 +7,19 @@
  *       描述：     产品表
  * *************************************************************************/
 using System;
+using System.Collections.Generic;
 using Project.Infrastructure.FrameworkCore.Domain.Entities;
 using Project.Infrastructure.FrameworkCore.Domain.Entities.Component;
 
 namespace Project.Model.ProductManager
 {
     public class ProductEntity: Entity
-    { 
+    {
+        public ProductEntity()
+        {
+            GoodsEntityList=new HashSet<GoodsEntity>();
+        }
+
         #region 属性
         /// <summary>
         /// 产品名称
@@ -203,7 +209,15 @@ namespace Project.Model.ProductManager
         
 
         #region 新增属性
-        
+
+        /// <summary>
+        /// 商品列表
+        /// </summary>
+        public virtual ISet<GoodsEntity> GoodsEntityList { get; set; }
+
+
+        public virtual ISet<GoodsSpecValueEntity> GoodsSpecValueEntityList { get; set; }
+
         #endregion
     }
 }

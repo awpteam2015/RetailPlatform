@@ -7,35 +7,44 @@
  *       描述：     扩展属性表
  * *************************************************************************/
 using System;
+using System.Collections.Generic;
 using Project.Infrastructure.FrameworkCore.Domain.Entities;
 using Project.Infrastructure.FrameworkCore.Domain.Entities.Component;
 
 namespace Project.Model.ProductManager
 {
     public class ExtAttributeEntity: Entity
-    { 
+    {
+        public ExtAttributeEntity()
+        {
+            AttributeValueEntityList=new HashSet<AttributeValueEntity>();
+        }
+
         #region 属性
         /// <summary>
         /// 
         /// </summary>
         public virtual System.String AttributeName{get; set;}
-        /// <summary>
-        /// 
-        /// </summary>
-        public virtual System.String OtherName{get; set;}
+
         /// <summary>
         /// 表现方式 1 select 2input 3
         /// </summary>
-        public virtual System.Byte? ShowType{get; set;}
+        public virtual int ShowType{get; set;}
+
         /// <summary>
         /// 
         /// </summary>
-        public virtual System.String AttributeValues{get; set;}
-		#endregion
-        
+        public virtual string ShowTypeName { get; set;}
+   
+        #endregion
+
 
         #region 新增属性
-        
+        /// <summary>
+        /// 扩展属性值
+        /// </summary>
+        public virtual ISet<AttributeValueEntity> AttributeValueEntityList { get; set; }
+
         #endregion
     }
 }

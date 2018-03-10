@@ -4,6 +4,10 @@
     pro.ProductCategory.HdPage = pro.ProductCategory.HdPage || {};
     pro.ProductCategory.HdPage = {
         initPage: function () {
+
+            pro.ProductcategoryControl.init({ controlId: "ParentId", required: true });
+
+
             $("#btnAdd").click(function () {
                 pro.ProductCategory.HdPage.submit("Add");
             });

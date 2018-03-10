@@ -1,10 +1,10 @@
 ﻿
- /***************************************************************************
- *       功能：     PRMAttributeValue业务处理层
- *       作者：     李伟伟
- *       日期：     2017/6/30
- *       描述：     扩展属性值
- * *************************************************************************/
+/***************************************************************************
+*       功能：     PRMAttributeValue业务处理层
+*       作者：     李伟伟
+*       日期：     2017/6/30
+*       描述：     扩展属性值
+* *************************************************************************/
 using System.Linq;
 using System.Collections.Generic;
 using Project.Infrastructure.FrameworkCore.DataNhibernate.Helpers;
@@ -15,17 +15,17 @@ namespace Project.Service.ProductManager
 {
     public class AttributeValueService
     {
-       
-       #region 构造函数
-        private readonly AttributeValueRepository  _attributeValueRepository;
-            private static readonly AttributeValueService Instance = new AttributeValueService();
+
+        #region 构造函数
+        private readonly AttributeValueRepository _attributeValueRepository;
+        private static readonly AttributeValueService Instance = new AttributeValueService();
 
         public AttributeValueService()
         {
-           this._attributeValueRepository =new AttributeValueRepository();
+            this._attributeValueRepository = new AttributeValueRepository();
         }
-        
-         public static  AttributeValueService GetInstance()
+
+        public static AttributeValueService GetInstance()
         {
             return Instance;
         }
@@ -33,7 +33,7 @@ namespace Project.Service.ProductManager
 
 
         #region 基础方法 
-         /// <summary>
+        /// <summary>
         /// 新增
         /// </summary>
         /// <param name="entity"></param>
@@ -42,24 +42,24 @@ namespace Project.Service.ProductManager
         {
             return _attributeValueRepository.Save(entity);
         }
-        
-        
-         /// <summary>
+
+
+        /// <summary>
         /// 删除
         /// </summary>
         /// <param name="pkId"></param>
         public bool DeleteByPkId(System.Int32 pkId)
         {
-         try
+            try
             {
-            var entity= _attributeValueRepository.GetById(pkId);
-            _attributeValueRepository.Delete(entity);
-             return true;
-        }
-        catch
-        {
-         return false;
-        }
+                var entity = _attributeValueRepository.GetById(pkId);
+                _attributeValueRepository.Delete(entity);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         /// <summary>
@@ -68,15 +68,15 @@ namespace Project.Service.ProductManager
         /// <param name="entity"></param>
         public bool Delete(AttributeValueEntity entity)
         {
-         try
+            try
             {
-            _attributeValueRepository.Delete(entity);
-             return true;
-        }
-        catch
-        {
-         return false;
-        }
+                _attributeValueRepository.Delete(entity);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         /// <summary>
@@ -85,15 +85,15 @@ namespace Project.Service.ProductManager
         /// <param name="entity"></param>
         public bool Update(AttributeValueEntity entity)
         {
-          try
+            try
             {
-            _attributeValueRepository.Update(entity);
-         return true;
-        }
-        catch
-        {
-         return false;
-        }
+                _attributeValueRepository.Update(entity);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
 
@@ -117,15 +117,15 @@ namespace Project.Service.ProductManager
         /// <returns>获取当前页【扩展属性值】和总【扩展属性值】数</returns>
         public System.Tuple<IList<AttributeValueEntity>, int> Search(AttributeValueEntity where, int skipResults, int maxResults)
         {
-                var expr = PredicateBuilder.True<AttributeValueEntity>();
-                  #region
-              // if (!string.IsNullOrEmpty(where.PkId))
-              //  expr = expr.And(p => p.PkId == where.PkId);
-              // if (!string.IsNullOrEmpty(where.AttributeValueName))
-              //  expr = expr.And(p => p.AttributeValueName == where.AttributeValueName);
-              // if (!string.IsNullOrEmpty(where.AttributeId))
-              //  expr = expr.And(p => p.AttributeId == where.AttributeId);
- #endregion
+            var expr = PredicateBuilder.True<AttributeValueEntity>();
+            #region
+            // if (!string.IsNullOrEmpty(where.PkId))
+            //  expr = expr.And(p => p.PkId == where.PkId);
+            // if (!string.IsNullOrEmpty(where.AttributeValueName))
+            //  expr = expr.And(p => p.AttributeValueName == where.AttributeValueName);
+            // if (!string.IsNullOrEmpty(where.AttributeId))
+            //  expr = expr.And(p => p.AttributeId == where.AttributeId);
+            #endregion
             var list = _attributeValueRepository.Query().Where(expr).OrderByDescending(p => p.PkId).Skip(skipResults).Take(maxResults).ToList();
             var count = _attributeValueRepository.Query().Where(expr).Count();
             return new System.Tuple<IList<AttributeValueEntity>, int>(list, count);
@@ -138,15 +138,14 @@ namespace Project.Service.ProductManager
         /// <returns>返回列表</returns>
         public IList<AttributeValueEntity> GetList(AttributeValueEntity where)
         {
-               var expr = PredicateBuilder.True<AttributeValueEntity>();
-             #region
-              // if (!string.IsNullOrEmpty(where.PkId))
-              //  expr = expr.And(p => p.PkId == where.PkId);
-              // if (!string.IsNullOrEmpty(where.AttributeValueName))
-              //  expr = expr.And(p => p.AttributeValueName == where.AttributeValueName);
-              // if (!string.IsNullOrEmpty(where.AttributeId))
-              //  expr = expr.And(p => p.AttributeId == where.AttributeId);
- #endregion
+            var expr = PredicateBuilder.True<AttributeValueEntity>();
+            #region
+            // if (!string.IsNullOrEmpty(where.PkId))
+            //  expr = expr.And(p => p.PkId == where.PkId);
+            // if (!string.IsNullOrEmpty(where.AttributeValueName))
+            //  expr = expr.And(p => p.AttributeValueName == where.AttributeValueName);
+            expr = expr.And(p => p.AttributeId == where.AttributeId);
+            #endregion
             var list = _attributeValueRepository.Query().Where(expr).OrderBy(p => p.PkId).ToList();
             return list;
         }
@@ -154,11 +153,11 @@ namespace Project.Service.ProductManager
 
 
         #region 新增方法
-        
+
         #endregion
     }
 }
 
-    
- 
+
+
 
