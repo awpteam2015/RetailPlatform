@@ -51,7 +51,7 @@ namespace Project.Service.ProductManager
                 try
                 {
                     var pkId = _extAttributeRepository.Save(entity);
-                    entity.AttributeValueEntityList.ToList().ForEach(p =>
+                    entity.AttributeValueList.ToList().ForEach(p =>
                     {
                         p.AttributeId = pkId;
                     });
@@ -110,12 +110,12 @@ namespace Project.Service.ProductManager
         {
             var oldEntity = this.GetModelByPk(entity.PkId);
             var date = DateTime.Now;
-            entity.AttributeValueEntityList.ToList().ForEach(p =>
+            entity.AttributeValueList.ToList().ForEach(p =>
             {
                 p.AttributeId = entity.PkId;
             });
 
-            var deleteList = oldEntity.AttributeValueEntityList.Where(p => entity.AttributeValueEntityList.All(x => x.PkId != p.PkId)).ToList();
+            var deleteList = oldEntity.AttributeValueList.Where(p => entity.AttributeValueList.All(x => x.PkId != p.PkId)).ToList();
             using (var tx = NhTransactionHelper.BeginTransaction())
             {
                 try

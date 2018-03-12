@@ -28,20 +28,31 @@ namespace Project.WebApplication.Areas.ProductManager.Controllers
 
             var systemCategorySpecEntityList = SystemCategorySpecService.GetInstance().GetList(new SystemCategorySpecEntity() { SystemCategoryId = systemCategoryId });
 
+            var systemCategoryAttributeEntityList = SystemCategoryAttributeService.GetInstance().GetList(new SystemCategoryAttributeEntity() { SystemCategoryId = systemCategoryId });
+
             var specEntityList = new List<SpecEntity>();
             systemCategorySpecEntityList.ForEach(p =>
             {
                 specEntityList.Add(p.SpecEntity);
             });
+            var specVmList = Mapper.Map<List<SpecVm>>(specEntityList);
 
-            var SpecVmList = Mapper.Map<List<SpecVm>>(specEntityList);
+
+            var attributeEntityList = new List<ExtAttributeEntity>();
+            systemCategoryAttributeEntityList.ForEach(p =>
+            {
+                attributeEntityList.Add(p.AttributeEntity);
+            });
+            var attributeVmList = Mapper.Map<List<AttributeVm>>(attributeEntityList);
+
 
             if (pkId > 0)
             {
                 var entity = ProductService.GetInstance().GetModelByPk(pkId);
-                ViewBag.BindEntity = JsonHelper.JsonSerializer(entity,new NullToEmptyStringResolver());
+                entity.GoodsEntityList.ForEach(p => { p.IsUse = 1; });
 
-                SpecVmList.ForEach(p =>
+                ViewBag.BindEntity = JsonHelper.JsonSerializer(entity,new NullToEmptyStringResolver());
+                specVmList.ForEach(p =>
                 {
                     p.SpecValueList.ForEach(x =>
                     {
@@ -54,7 +65,8 @@ namespace Project.WebApplication.Areas.ProductManager.Controllers
             }
 
 
-            ViewBag.SpecVmList = JsonHelper.JsonSerializer(SpecVmList);
+            ViewBag.SpecVmList = JsonHelper.JsonSerializer(specVmList);
+            ViewBag.AttributeVmList = JsonHelper.JsonSerializer(attributeVmList);
             return View();
         }
 
@@ -132,8 +144,9 @@ namespace Project.WebApplication.Areas.ProductManager.Controllers
         {
             postData.RequestEntity.BriefDescription = Base64Helper.DecodeBase64(postData.RequestEntity.BriefDescription);
             postData.RequestEntity.Description = Base64Helper.DecodeBase64(postData.RequestEntity.Description);
+            postData.RequestEntity.GoodsEntityList =new HashSet<GoodsEntity>(postData.RequestEntity.GoodsEntityList.Where(p => p.IsUse == 1));
 
-            var addResult = ProductService.GetInstance().Add(postData.RequestEntity);
+           var addResult = ProductService.GetInstance().Add(postData.RequestEntity);
 
             var result = new AjaxResponse<ProductEntity>()
             {

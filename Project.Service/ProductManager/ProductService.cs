@@ -30,7 +30,7 @@ namespace Project.Service.ProductManager
         {
             this._productRepository = new ProductRepository();
             this._goodsRepository = new GoodsRepository();
-            _goodsSpecValueRepository=new GoodsSpecValueRepository();
+            _goodsSpecValueRepository = new GoodsSpecValueRepository();
         }
 
         public static ProductService GetInstance()
@@ -124,15 +124,16 @@ namespace Project.Service.ProductManager
         {
             var newInfo = entity;
             var orgInfo = ProductService.GetInstance().GetModelByPk(entity.PkId);
-
             orgInfo.SellPrice = newInfo.SellPrice;
+            orgInfo.StockNum = newInfo.StockNum;
+            orgInfo.ProductCode = newInfo.ProductCode;
+            orgInfo.ProductName = newInfo.ProductName;
+            orgInfo.BriefDescription = newInfo.BriefDescription;
+            orgInfo.Description = newInfo.Description;
 
             var addGoodsEntityList = entity.GoodsEntityList.Where(p => orgInfo.GoodsEntityList.All(x => x.CombineId != p.CombineId)).ToList();
-
             var updateGoodsEntityList = orgInfo.GoodsEntityList.Where(p => entity.GoodsEntityList.Any(x => x.CombineId == p.CombineId)).ToList();
-
             var deleteGoodsEntityList = orgInfo.GoodsEntityList.Where(p => entity.GoodsEntityList.All(x => x.CombineId != p.CombineId)).ToList();
-
 
             addGoodsEntityList.ForEach(p =>
             {
@@ -143,12 +144,11 @@ namespace Project.Service.ProductManager
             {
                 var newEntity = entity.GoodsEntityList.SingleOrDefault(x => x.CombineId == p.CombineId);
                 p.GoodsPrice = newEntity.GoodsPrice;
-                p.GoodsCode= newEntity.GoodsCode;
-                p.GoodsStock= newEntity.GoodsStock;
-                p.GoodsPrice= newEntity.GoodsPrice;
-                p.SkuCode= newEntity.SkuCode;
+                p.GoodsCode = newEntity.GoodsCode;
+                p.GoodsStock = newEntity.GoodsStock;
+                p.GoodsPrice = newEntity.GoodsPrice;
+                p.SkuCode = newEntity.SkuCode;
             });
-
 
             using (var tx = NhTransactionHelper.BeginTransaction())
             {
@@ -156,11 +156,12 @@ namespace Project.Service.ProductManager
                 {
                     _productRepository.Update(orgInfo);
 
-                    orgInfo.GoodsEntityList =new HashSet<GoodsEntity>(orgInfo.GoodsEntityList.Where(p => deleteGoodsEntityList.All(x => x.PkId != p.PkId)).ToList());
+                    #region Sku列表处理
+                    orgInfo.GoodsEntityList = new HashSet<GoodsEntity>(orgInfo.GoodsEntityList.Where(p => deleteGoodsEntityList.All(x => x.PkId != p.PkId)).ToList());
 
                     orgInfo.GoodsEntityList.ForEach(p =>
                     {
-                        p.ProductId= orgInfo.PkId;
+                        p.ProductId = orgInfo.PkId;
                         _goodsRepository.SaveOrUpdate(p);
 
                         p.GoodsSpecValueList.ForEach(x =>
@@ -174,6 +175,7 @@ namespace Project.Service.ProductManager
                     {
                         _goodsRepository.Delete(p);
                     });
+                    #endregion
 
                     tx.Commit();
                     return true;

@@ -22,6 +22,8 @@ namespace  Project.Map.ProductManager
             Map(p => p.AttributeId);    
             Map(p => p.ProductId);    
             Map(p => p.ValueContent);    
+
+
         }
     }
 }

@@ -34,7 +34,10 @@ namespace Project.WebApplication
             Mapper.CreateMap<SpecEntity, SpecVm>().IgnoreAllNull();
             Mapper.CreateMap<SpecValueEntity, SpecValueVm>().IgnoreAllNull();
 
-           // Mapper.CreateMap<ProductEntity, ProductHdVm>().IgnoreAllNull();
+            Mapper.CreateMap<ExtAttributeEntity, AttributeVm>().IgnoreAllNull();
+            Mapper.CreateMap<AttributeValueEntity, AttributeValueVm>().IgnoreAllNull();
+
+            // Mapper.CreateMap<ProductEntity, ProductHdVm>().IgnoreAllNull();
 
             BootstrapperService.Init();
         }

@@ -36,9 +36,9 @@ namespace Project.Model.ProductManager
 
 
         #region 新增属性
-
-        #endregion
-    }
+        public virtual ExtAttributeEntity AttributeEntity { get; set; }
+    #endregion
+}
 }
 
     

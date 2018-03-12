@@ -112,11 +112,11 @@ var pro = pro || {};
 
                 var text = $(this).html();
 
-                if (text == "不启动") {
-                    $(this).html("启动");
+                if (text == "不启用") {
+                    $(this).html("启用");
                     $("input[name=IsUse_" + combineId + "]").val(0);
                 } else {
-                    $(this).html("不启动");
+                    $(this).html("不启用");
                     $("input[name=IsUse_" + combineId + "]").val(1);
                 }
 
@@ -343,7 +343,7 @@ var pro = pro || {};
                     rowSpecHtml += "<td>" + specValue.SpecValueOtherName + "</td>";
                 });
 
-                var rowHtml = ' <tr style="display:">\
+                var rowHtml = ' <tr style="">\
                            '+ rowSpecHtml + '\
                             <td>\
                                 <input type="text"  name="GoodsPrice_' + skuRow.CombineId + '"   value="' + skuRow.GoodsPrice + '"/> \

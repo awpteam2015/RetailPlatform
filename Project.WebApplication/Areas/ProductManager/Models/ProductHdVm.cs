@@ -10,13 +10,13 @@ namespace Project.WebApplication.Areas.ProductManager.Models
     {
         public ProductHdVm()
         {
-            SpecVmList=new List<SpecVm>();
+          
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public List<SpecVm> SpecVmList { get; set; }
+        ///// <summary>
+        ///// 
+        ///// </summary>
+        //public List<SpecVm> SpecVmList { get; set; }
 
         //public IList<SystemCategorySpecEntity> SystemCategorySpecEntityList { get; set; }
     }
@@ -84,6 +84,33 @@ namespace Project.WebApplication.Areas.ProductManager.Models
 
         #endregion
     }
+
+
+
+    public class AttributeVm
+    {
+        public string AttributeName;
+
+        public int ShowType;
+
+        public virtual IList<AttributeValueVm> AttributeValueList { get; set; }
+    }
+
+    public class AttributeValueVm
+    {
+        public string AttributeId { get; set; }
+
+        public string AttributeValueId { get; set; }
+
+        public string AttributeValueName { get; set; }
+
+
+        public virtual int IsCheck { get; set; }
+
+
+        public virtual int SelectValue { get; set; }
+    }
+
 
 
     //public class GoodVm

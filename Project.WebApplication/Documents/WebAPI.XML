@@ -68,11 +68,6 @@
             <param name="model"></param>
             <returns></returns>
         </member>
-        <member name="P:Project.WebApplication.Areas.ProductManager.Models.ProductHdVm.SpecVmList">
-            <summary>
-            
-            </summary>
-        </member>
         <member name="P:Project.WebApplication.Areas.ProductManager.Models.SpecVm.SpecId">
              <summary>
             规格编号

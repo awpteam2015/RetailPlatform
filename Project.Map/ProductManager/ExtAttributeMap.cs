@@ -24,7 +24,7 @@ namespace Project.Map.ProductManager
             // Map(p => p.AttributeValues);
 
 
-            HasMany(p => p.AttributeValueEntityList)
+            HasMany(p => p.AttributeValueList)
          .AsSet()
          .LazyLoad()
          .Cascade.All().Inverse()

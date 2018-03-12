@@ -12,6 +12,7 @@
 @section JavaScript{
     <script src="/Areas/ProductManager/Scripts/Product/Hd.js?JsParamter=@SiteConfig.GetConfig().JsParamter"></script>
     <script src="/Areas/ProductManager/Scripts/Product/ProductSpecHd.js?JsParamter=@SiteConfig.GetConfig().JsParamter"></script>
+    <script src="/Areas/ProductManager/Scripts/Product/ProductAttributeHd.js?JsParamter=@SiteConfig.GetConfig().JsParamter"></script>
     <script src="/Scripts/pro/combinationCount.js"></script>
 }
 <div style="display: ">
@@ -19,6 +20,7 @@
     <textarea id="BindEntity">@ViewBag.BindEntity</textarea>
     <input id="Command" type="hidden" />
     <textarea id="SpecVmList">@ViewBag.SpecVmList</textarea>
+    <textarea id="AttributeVmList">@ViewBag.AttributeVmList</textarea>
 </div>
 <div class="mtable_div">
     <form id="form1">
@@ -38,20 +40,11 @@
                 </tr>
             </table>*@
 
-        @*<div class="easyui-tabs" style="height: 0px;" border="false">
-                <div title="商品属性">
-                </div>
+        <div class="easyui-tabs" style="height: 0px;" border="false">
+            <div title="商品属性">
             </div>
-            <table class="mtable">
-                <tr>
-                    <td>
-                        商品属性<span style="color: Red">*</span>:
-                    </td>
-                    <td>
-                        待定
-                    </td>
-                </tr>
-            </table>*@
+        </div>
+        <table class="mtable" id="attributeArea" ></table>
 
         <div class="easyui-tabs" style="height: 0px;" border="false">
             <div title="商品价格库存">
@@ -119,6 +112,17 @@
         </div>
 
         <table class="mtable">
+
+            <tr>
+                <td>
+                    商品分类<span style="color: Red">*</span>:
+                </td>
+                <td>
+                    <input id="ProductCategoryId" name="ProductCategoryId" type="text" />
+                </td>
+            </tr>
+
+
             <tr>
                 <td>
                     商品标题<span style="color: Red">*</span>:
@@ -130,7 +134,14 @@
 
             <tr>
                 <td>
-                    商品图片<span style="color: Red">*</span>:
+                    主图<span style="color: Red">*</span>:
+                </td>
+                <td></td>
+            </tr>
+
+            <tr>
+                <td>
+                    其他图片<span style="color: Red">*</span>:
                 </td>
                 <td></td>
             </tr>
@@ -154,6 +165,7 @@
 
                 </td>
             </tr>
+
         </table>
 
 

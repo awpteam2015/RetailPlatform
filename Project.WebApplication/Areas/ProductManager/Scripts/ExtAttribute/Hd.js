@@ -115,7 +115,7 @@
 
             pro.submitKit.config.columnPkidName = "PkId";
             pro.submitKit.config.columns = ["AttributeValueName", "Sort"];
-            postData.RequestEntity.AttributeValueEntityList = pro.submitKit.getRowJson();
+            postData.RequestEntity.AttributeValueList = pro.submitKit.getRowJson();
 
 
             if (pro.commonKit.getUrlParam("PkId") != "") {

@@ -21,6 +21,14 @@ namespace  Project.Map.ProductManager
             Map(p => p.SystemCategoryId);    
             Map(p => p.IsMust);
             Map(p => p.Sort);
+
+
+            References(p => p.AttributeEntity)
+                   .LazyLoad()
+                  .Not.Insert()
+                  .Not.Update()
+                  .NotFound.Ignore()
+                  .Column("AttributeId");
         }
     }
 }
