@@ -31,7 +31,7 @@ namespace Project.Model.ProductManager
         /// <summary>
         /// 
         /// </summary>
-        public virtual System.Int32? ProductId{get; set;}
+        public virtual System.Int32 ProductId{get; set;}
         /// <summary>
         /// 货号
         /// </summary>
@@ -45,22 +45,25 @@ namespace Project.Model.ProductManager
         /// <summary>
         /// 库存
         /// </summary>
-        public virtual System.Int32? GoodsStock{get; set;}
+        public virtual System.Int32 GoodsStock{get; set;}
         /// <summary>
         /// 销售价
         /// </summary>
-        public virtual System.Decimal? GoodsPrice{get; set;}
+        public virtual System.Decimal GoodsPrice{get; set;}
  
         /// <summary>
         /// 是否是默认商品
         /// </summary>
-        public virtual System.Int32? IsDefault{get; set;}
+        public virtual System.Int32 IsDefault{get; set;}
 		#endregion
         
 
         #region 新增属性
 
         public virtual ISet<GoodsSpecValueEntity> GoodsSpecValueList{ get; set;}
+
+
+        public virtual System.Int32 IsUse { get; set; }
         #endregion
     }
 }

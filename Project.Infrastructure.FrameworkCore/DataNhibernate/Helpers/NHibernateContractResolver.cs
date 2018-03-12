@@ -55,6 +55,20 @@ namespace Project.Infrastructure.FrameworkCore.DataNhibernate.Helpers
                     memberInfo :
                     infos[0]).ToList();
         }
+
+
+
+        protected override IList<JsonProperty> CreateProperties(Type type, MemberSerialization memberSerialization)
+        {
+            return type.GetProperties()
+                    .Select(p =>
+                    {
+                        var jp = base.CreateProperty(p, memberSerialization);
+                        jp.ValueProvider = new NullToEmptyStringValueProvider(p);
+                        return jp;
+                    }).ToList();
+        }
+
         private static bool IsMemberDynamicProxyMixin(PropertyInfo memberInfo)
         {
             return memberInfo.Name == "__interceptors";
@@ -108,6 +122,29 @@ namespace Project.Infrastructure.FrameworkCore.DataNhibernate.Helpers
                 return type;
             }
             return FindBaseType(type.BaseType);
+        }
+    }
+
+
+    public class NullToEmptyStringValueProvider : IValueProvider
+    {
+        PropertyInfo _MemberInfo;
+        public NullToEmptyStringValueProvider(PropertyInfo memberInfo)
+        {
+            _MemberInfo = memberInfo;
+        }
+
+        public object GetValue(object target)
+        {
+            object result = _MemberInfo.GetValue(target, null);
+            if (_MemberInfo.PropertyType == typeof(string) && result == null) result = "";
+            return result;
+
+        }
+
+        public void SetValue(object target, object value)
+        {
+            _MemberInfo.SetValue(target, value, null);
         }
     }
 }

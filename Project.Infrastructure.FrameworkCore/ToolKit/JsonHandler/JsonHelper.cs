@@ -42,7 +42,7 @@ namespace Project.Infrastructure.FrameworkCore.ToolKit.JsonHandler
                     ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
                     Converters = new JsonConverter[] { new IsoDateTimeConverter { DateTimeFormat = dateFormat },
                     new StringEnumConverter() { } },
-                    NullValueHandling = NullValueHandling.Ignore,
+                   // NullValueHandling = NullValueHandling.Ignore,
                     ContractResolver = contractResolver
                 });
                 return t;

@@ -23,6 +23,7 @@ namespace Project.Map.ProductManager
             Map(p => p.GoodsPrice);
             Map(p => p.IsDefault);
             Map(p => p.CombineId);
+            Map(p => p.SkuCode);
 
 
             HasMany(p => p.GoodsSpecValueList)

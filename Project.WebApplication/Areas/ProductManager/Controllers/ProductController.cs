@@ -39,7 +39,7 @@ namespace Project.WebApplication.Areas.ProductManager.Controllers
             if (pkId > 0)
             {
                 var entity = ProductService.GetInstance().GetModelByPk(pkId);
-                ViewBag.BindEntity = JsonHelper.JsonSerializer(entity);
+                ViewBag.BindEntity = JsonHelper.JsonSerializer(entity,new NullToEmptyStringResolver());
 
                 SpecVmList.ForEach(p =>
                 {
@@ -51,9 +51,6 @@ namespace Project.WebApplication.Areas.ProductManager.Controllers
                         }
                     });
                 });
-
-
-
             }
 
 
@@ -153,10 +150,7 @@ namespace Project.WebApplication.Areas.ProductManager.Controllers
             postData.RequestEntity.BriefDescription = Base64Helper.DecodeBase64(postData.RequestEntity.BriefDescription);
             postData.RequestEntity.Description = Base64Helper.DecodeBase64(postData.RequestEntity.Description);
 
-            var newInfo = postData.RequestEntity;
-            var orgInfo = ProductService.GetInstance().GetModelByPk(postData.RequestEntity.PkId);
-            var mergInfo = Mapper.Map(newInfo, orgInfo);
-            var updateResult = ProductService.GetInstance().Update(mergInfo);
+            var updateResult =ProductService.GetInstance().Update(postData.RequestEntity);
 
             var result = new AjaxResponse<ProductEntity>()
             {

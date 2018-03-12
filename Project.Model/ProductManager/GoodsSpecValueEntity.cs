@@ -18,15 +18,15 @@ namespace Project.Model.ProductManager
         /// <summary>
         /// 
         /// </summary>
-        public virtual System.Int32? GoodsId{get; set;}
+        public virtual System.Int32 GoodsId{get; set;}
         /// <summary>
         /// 
         /// </summary>
-        public virtual System.Int32? ProductId{get; set;}
+        public virtual System.Int32 ProductId{get; set;}
         /// <summary>
         /// 
         /// </summary>
-        public virtual System.Int32? SpecId{get; set;}
+        public virtual System.Int32 SpecId{get; set;}
         /// <summary>
         /// 
         /// </summary>
@@ -34,7 +34,7 @@ namespace Project.Model.ProductManager
         /// <summary>
         /// 
         /// </summary>
-        public virtual System.Int32? SpecValueId{get; set;}
+        public virtual System.Int32 SpecValueId{get; set;}
         /// <summary>
         /// 
         /// </summary>

@@ -1,0 +1,7 @@
+2018-03-12 10:34:57,621 [12] ERROR ErrorLogger [(null)] - While preparing SELECT goodsentit0_.ProductId as ProductId1_, goodsentit0_.PkId as PkId1_, goodsentit0_.PkId as PkId39_0_, goodsentit0_.ProductId as ProductId39_0_, goodsentit0_.GoodsCode as GoodsCode39_0_, goodsentit0_.GoodsStock as GoodsStock39_0_, goodsentit0_.GoodsPrice as GoodsPrice39_0_, goodsentit0_.IsDefault as IsDefault39_0_, goodsentit0_.CombineId as CombineId39_0_ FROM PRM_Goods goodsentit0_ WHERE goodsentit0_.ProductId=@p0 an error occurred
+2018-03-12 10:42:51,841 [22] ERROR ErrorLogger [(null)] - Begin failed with SQL exception
+2018-03-12 12:34:58,261 [9] ERROR ErrorLogger [(null)] - deleted object would be re-saved by cascade (remove deleted object from associations)[Project.Model.ProductManager.GoodsEntity#12]
+2018-03-12 12:39:38,105 [14] ERROR ErrorLogger [(null)] - deleted object would be re-saved by cascade (remove deleted object from associations)[Project.Model.ProductManager.GoodsEntity#12]
+2018-03-12 12:42:11,041 [7] ERROR ErrorLogger [(null)] - deleted object would be re-saved by cascade (remove deleted object from associations)[Project.Model.ProductManager.GoodsEntity#12]
+2018-03-12 13:30:22,087 [9] ERROR ErrorLogger [(null)] - could not execute batch command.[SQL: SQL not available]
+2018-03-12 13:30:28,743 [10] ERROR ErrorLogger [(null)] - could not execute batch command.[SQL: SQL not available]
