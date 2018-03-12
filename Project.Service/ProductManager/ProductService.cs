@@ -24,6 +24,8 @@ namespace Project.Service.ProductManager
         private readonly ProductRepository _productRepository;
         private readonly GoodsRepository _goodsRepository;
         private readonly GoodsSpecValueRepository _goodsSpecValueRepository;
+        private readonly ProductAttributeValueRepository _productAttributeValueRepository;
+
         private static readonly ProductService Instance = new ProductService();
 
         public ProductService()
@@ -31,6 +33,7 @@ namespace Project.Service.ProductManager
             this._productRepository = new ProductRepository();
             this._goodsRepository = new GoodsRepository();
             _goodsSpecValueRepository = new GoodsSpecValueRepository();
+            _productAttributeValueRepository = new ProductAttributeValueRepository();
         }
 
         public static ProductService GetInstance()
@@ -65,6 +68,12 @@ namespace Project.Service.ProductManager
                         });
 
                     });
+
+                    entity.ProductAttributeValueEntityList.ToList().ForEach(p =>
+                    {
+                        p.ProductId = pkId;
+                    });
+
 
                     tx.Commit();
                     return pkId;
@@ -131,6 +140,28 @@ namespace Project.Service.ProductManager
             orgInfo.BriefDescription = newInfo.BriefDescription;
             orgInfo.Description = newInfo.Description;
 
+            #region 产品属性处理
+            var addProductAttributeValueEntityList = entity.ProductAttributeValueEntityList.Where(p => orgInfo.ProductAttributeValueEntityList.All(x => x.AttributeValueId != p.AttributeValueId && x.AttributeId != p.AttributeId)).ToList();
+            var updateProductAttributeValueEntityList = orgInfo.ProductAttributeValueEntityList.Where(p => entity.ProductAttributeValueEntityList.Any(x => x.AttributeValueId == p.AttributeValueId && x.AttributeId == p.AttributeId)).ToList();
+            var deleteProductAttributeValueEntityList = orgInfo.ProductAttributeValueEntityList.Where(p => entity.ProductAttributeValueEntityList.All(x => x.AttributeValueId != p.AttributeValueId && x.AttributeId != p.AttributeId)).ToList();
+
+            addProductAttributeValueEntityList.ForEach(p =>
+            {
+                orgInfo.ProductAttributeValueEntityList.Add(p);
+            });
+
+            updateProductAttributeValueEntityList.ForEach(p =>
+            {
+                var newEntity = entity.ProductAttributeValueEntityList.SingleOrDefault(x => x.AttributeValueId == p.AttributeValueId && x.AttributeId == p.AttributeId);
+                //p.GoodsPrice = newEntity.GoodsPrice;
+                //p.GoodsCode = newEntity.GoodsCode;
+                //p.GoodsStock = newEntity.GoodsStock;
+                //p.GoodsPrice = newEntity.GoodsPrice;
+                //p.SkuCode = newEntity.SkuCode;
+            });
+            #endregion
+
+            #region sku列表处理
             var addGoodsEntityList = entity.GoodsEntityList.Where(p => orgInfo.GoodsEntityList.All(x => x.CombineId != p.CombineId)).ToList();
             var updateGoodsEntityList = orgInfo.GoodsEntityList.Where(p => entity.GoodsEntityList.Any(x => x.CombineId == p.CombineId)).ToList();
             var deleteGoodsEntityList = orgInfo.GoodsEntityList.Where(p => entity.GoodsEntityList.All(x => x.CombineId != p.CombineId)).ToList();
@@ -149,12 +180,29 @@ namespace Project.Service.ProductManager
                 p.GoodsPrice = newEntity.GoodsPrice;
                 p.SkuCode = newEntity.SkuCode;
             });
+            #endregion
+
 
             using (var tx = NhTransactionHelper.BeginTransaction())
             {
                 try
                 {
                     _productRepository.Update(orgInfo);
+
+                    #region 产品属性处理
+                    orgInfo.ProductAttributeValueEntityList = new HashSet<ProductAttributeValueEntity>(orgInfo.ProductAttributeValueEntityList.Where(p => deleteProductAttributeValueEntityList.All(x => x.PkId != p.PkId)).ToList());
+
+                    orgInfo.ProductAttributeValueEntityList.ForEach(p =>
+                    {
+                        p.ProductId = orgInfo.PkId;
+                    });
+
+                    deleteProductAttributeValueEntityList.ForEach(p =>
+                    {
+                        _productAttributeValueRepository.Delete(p);
+                    });
+                    #endregion
+
 
                     #region Sku列表处理
                     orgInfo.GoodsEntityList = new HashSet<GoodsEntity>(orgInfo.GoodsEntityList.Where(p => deleteGoodsEntityList.All(x => x.PkId != p.PkId)).ToList());
@@ -176,6 +224,7 @@ namespace Project.Service.ProductManager
                         _goodsRepository.Delete(p);
                     });
                     #endregion
+
 
                     tx.Commit();
                     return true;

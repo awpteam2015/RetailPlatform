@@ -118,6 +118,11 @@
             别名
             </summary>
         </member>
+        <member name="P:Project.WebApplication.Areas.ProductManager.Models.AttributeValueVm.IsCheck">
+            <summary>
+            是否选中
+            </summary>
+        </member>
         <member name="M:Project.WebApplication.Areas.ProductManager.Controllers.ExtAttributeController.GetAttributeValueList">
             <summary>
             扩展属性值

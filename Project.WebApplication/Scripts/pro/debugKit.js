@@ -6,7 +6,7 @@
             alert(msg);
         },
         consoleLog: function (msg) {
-            console.log(msg);
+            console.log(JSON.stringify(msg));
         }
     };
 })();

@@ -5,3 +5,9 @@
 2018-03-12 12:42:11,041 [7] ERROR ErrorLogger [(null)] - deleted object would be re-saved by cascade (remove deleted object from associations)[Project.Model.ProductManager.GoodsEntity#12]
 2018-03-12 13:30:22,087 [9] ERROR ErrorLogger [(null)] - could not execute batch command.[SQL: SQL not available]
 2018-03-12 13:30:28,743 [10] ERROR ErrorLogger [(null)] - could not execute batch command.[SQL: SQL not available]
+2018-03-12 17:46:14,281 [64] ERROR ErrorLogger [(null)] - 值不能为 null。
+参数名: source
+2018-03-12 17:48:37,265 [44] ERROR ErrorLogger [(null)] - 值不能为 null。
+参数名: source
+2018-03-12 17:50:44,749 [42] ERROR ErrorLogger [(null)] - 值不能为 null。
+参数名: source

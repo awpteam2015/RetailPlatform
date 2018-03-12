@@ -93,22 +93,26 @@ namespace Project.WebApplication.Areas.ProductManager.Models
 
         public int ShowType;
 
+        public virtual string SelectValue { get; set; }
+
         public virtual IList<AttributeValueVm> AttributeValueList { get; set; }
     }
 
     public class AttributeValueVm
     {
-        public string AttributeId { get; set; }
+        public int AttributeId { get; set; }
 
-        public string AttributeValueId { get; set; }
+        public int AttributeValueId { get; set; }
 
         public string AttributeValueName { get; set; }
 
-
+        /// <summary>
+        /// 是否选中
+        /// </summary>
         public virtual int IsCheck { get; set; }
 
+        //public virtual int IsSelect { get; set; }
 
-        public virtual int SelectValue { get; set; }
     }
 
 

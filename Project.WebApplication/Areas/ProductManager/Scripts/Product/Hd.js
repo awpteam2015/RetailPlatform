@@ -59,6 +59,8 @@
             var postData = {};
             postData.RequestEntity = pro.submitKit.getHeadJson();
             postData.RequestEntity.GoodsEntityList = pro.Product.ProductSpecHd.opData.skuList;
+            postData.RequestEntity.ProductAttributeValueEntityList = pro.Product.ProductAttributeHd.opData.productAttributeValueList;
+
 
             if (pro.commonKit.getUrlParam("PkId") != "") {
                 postData.RequestEntity.PkId = pro.commonKit.getUrlParam("PkId");

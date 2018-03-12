@@ -229,8 +229,6 @@
     <Content Include="Areas\PermissionManager\Views\Role\RoleFunctionDetailList.cshtml">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="Areas\ProductManager\Scripts\AttributeValue\Hd.js" />
-    <Content Include="Areas\ProductManager\Scripts\AttributeValue\List.js" />
     <Content Include="Areas\ProductManager\Scripts\Brand\Hd.js" />
     <Content Include="Areas\ProductManager\Scripts\Brand\List.js" />
     <Content Include="Areas\ProductManager\Scripts\ExtAttribute\Hd.js" />
@@ -1283,9 +1281,6 @@
     <Folder Include="Areas\PermissionManager\Views\Permission\" />
     <Folder Include="Areas\PermissionManager\Views\Shared\" />
     <Folder Include="Areas\ProductManager\Scripts\ProductSpec\" />
-    <Folder Include="Areas\ProductManager\Scripts\SystemCategoryAttribute\" />
-    <Folder Include="Areas\ProductManager\Scripts\SystemCategoryBrand\" />
-    <Folder Include="Areas\ProductManager\Scripts\SystemCategorySpec\" />
     <Folder Include="Areas\ProductManager\Views\Shared\" />
     <Folder Include="Areas\ReportManager\Models\" />
     <Folder Include="Areas\ReportManager\Views\Shared\" />
