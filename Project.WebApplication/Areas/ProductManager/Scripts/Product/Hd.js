@@ -10,7 +10,7 @@
             };
         },
         initPage: function () {
-
+            pro.ProductcategoryControl.init({ controlId: "ProductCategoryId", required: false });
             //$('#tab').tabs();
 
             $("#btnAdd").click(function () {

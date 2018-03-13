@@ -152,8 +152,8 @@ var pro = pro || {};
                     }
 
                     specValueHtml += '<div style="width: 200px;float: left">\
-                        <input id="spec_' + specValue.SpecId + '_' + specValue.SpecValueId + '" name="spec_' + specValue.SpecId + '"  ' + checkHmtl + ' type="checkbox" value="' + specValue.SpecValueId + '"    onchange="pro.Product.ProductSpecHd.chooseSpec(this)" />\
-                        <input for="spec_' + specValue.SpecId + '_' + specValue.SpecValueId + '" type="text" value="' + specValue.SpecValueName + '"  orgValue="' + specValue.SpecValueName + '"/>\
+                        <input id="spec_' + specValue.SpecId + '_' + specValue.SpecValueId + '" name="spec_' + specValue.SpecId + '"  ' + checkHmtl + ' type="checkbox" value="' + specValue.SpecValueId + '"    onchange="pro.Product.ProductSpecHd.chooseSpec()" />\
+                        <input onchange="pro.Product.ProductSpecHd.changeSpecName(this)" for="spec_' + specValue.SpecId + '_' + specValue.SpecValueId + '" type="text" value="' + specValue.SpecValueName + '"  orgValue="' + specValue.SpecValueName + '"/>\
                     </div>';
 
 
@@ -175,6 +175,25 @@ var pro = pro || {};
             $(html).insertAfter("#specArea tr:eq(0)");
 
         },
+        //改变规格名称
+        changeSpecName: function (i) {
+            var pkid = $(i).attr("for");
+            var pkidArr = pkid.split('_');
+            var specId = pkidArr[1];
+            var specValueId = pkidArr[2];
+            var specValueOtherName = $(i).val();
+
+            JSLINQ(pro.Product.ProductSpecHd.opData.skuHistoryList).ForEach(function (skuRow) {
+                
+                JSLINQ(skuRow.GoodsSpecValueList).ForEach(function (specValue) {
+                    if (specValue.SpecValueId == specValueId) {
+                        specValue.SpecValueOtherName = specValueOtherName;
+                    }
+                });
+            });
+
+            this.chooseSpec();
+        },
         //选中规格
         chooseSpec: function () {
             pro.Product.ProductSpecHd.opData.chooseSpecList = [];
@@ -194,7 +213,6 @@ var pro = pro || {};
             );
 
             this.addSku();
-
         },
         //新增Sku
         addSku: function () {

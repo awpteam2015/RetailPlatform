@@ -41,7 +41,7 @@ namespace Project.WebApplication.Areas.ProductManager.Controllers
             var searchList = ProductCategoryService.GetInstance().GetList(where);
 
             var dataGridEntity = new DataGridTreeResponse<ProductCategoryEntity>(searchList.Count, searchList);
-            return new AbpJsonResult(dataGridEntity, new NHibernateContractResolver());
+            return new AbpJsonResult(dataGridEntity, new NHibernateContractResolver(null, new string[] { "children" }));
         }
 
 
