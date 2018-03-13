@@ -51,7 +51,7 @@ namespace Project.WebApplication.Areas.ProductManager.Controllers
                 var entity = ProductService.GetInstance().GetModelByPk(pkId);
                 entity.GoodsEntityList.ForEach(p => { p.IsUse = 1; });
 
-                ViewBag.BindEntity = JsonHelper.JsonSerializer(entity,new NullToEmptyStringResolver());
+                ViewBag.BindEntity = JsonHelper.JsonSerializer(entity,new SpecialContractResolver());
                 specVmList.ForEach(p =>
                 {
                     p.SpecValueList.ForEach(x =>

@@ -191,6 +191,7 @@
     <Compile Include="ToolKit\IPHelper.cs" />
     <Compile Include="ToolKit\JsonHandler\DBNullCreationConverter.cs" />
     <Compile Include="ToolKit\JsonHandler\JsonHelper.cs" />
+    <Compile Include="ToolKit\JsonHandler\NullableValueProvider.cs" />
     <Compile Include="ToolKit\JsonHandler\NullToEmptyStringResolver.cs" />
     <Compile Include="ToolKit\LinqExpansion\DynamicQuery.cs" />
     <Compile Include="ToolKit\LinqExpansion\Expansion.cs" />
