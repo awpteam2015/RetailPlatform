@@ -139,6 +139,8 @@ namespace Project.Service.ProductManager
             orgInfo.ProductName = newInfo.ProductName;
             orgInfo.BriefDescription = newInfo.BriefDescription;
             orgInfo.Description = newInfo.Description;
+            orgInfo.ProductCategoryId = newInfo.ProductCategoryId;
+
 
             #region 产品属性处理
             var addProductAttributeValueEntityList = entity.ProductAttributeValueEntityList.Where(p => orgInfo.ProductAttributeValueEntityList.All(x => x.AttributeValueId != p.AttributeValueId && x.AttributeId != p.AttributeId)).ToList();
