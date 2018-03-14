@@ -62,7 +62,7 @@ namespace Project.Model.ProductManager
         /// <summary>
         /// 重量
         /// </summary>
-        public virtual System.Int32? Weight{get; set;}
+        public virtual System.Decimal Weight{get; set;}
         /// <summary>
         /// 重量单位
         /// </summary>
