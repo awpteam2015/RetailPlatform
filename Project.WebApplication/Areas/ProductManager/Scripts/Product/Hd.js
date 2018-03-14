@@ -10,6 +10,13 @@
             };
         },
         initPage: function () {
+        
+            UE.getEditor('Description', {
+                initialFrameHeight: 320,
+                autoHeightEnabled: false,
+                initialFrameWidth:800
+            });
+
             pro.ProductcategoryControl.init({ controlId: "ProductCategoryId", required: false });
             //$('#tab').tabs();
 
@@ -60,6 +67,7 @@
             postData.RequestEntity = pro.submitKit.getHeadJson();
             postData.RequestEntity.GoodsEntityList = pro.Product.ProductSpecHd.opData.skuList;
             postData.RequestEntity.ProductAttributeValueEntityList = pro.Product.ProductAttributeHd.opData.productAttributeValueList;
+            postData.RequestEntity.ProductImageEntityList = pro.Product.ProductImageHd.getImageList();
 
 
             if (pro.commonKit.getUrlParam("PkId") != "") {

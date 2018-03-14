@@ -87,6 +87,13 @@ namespace Project.Map.ProductManager
 .Cascade.All().Inverse()
 .KeyColumn("ProductId");
 
+
+            HasMany(p => p.ProductImageEntityList)
+.AsSet()
+.LazyLoad()
+.Cascade.All().Inverse()
+.KeyColumn("ProductId");
+
         }
     }
 }

@@ -25,6 +25,7 @@ namespace Project.Service.ProductManager
         private readonly GoodsRepository _goodsRepository;
         private readonly GoodsSpecValueRepository _goodsSpecValueRepository;
         private readonly ProductAttributeValueRepository _productAttributeValueRepository;
+        private readonly ProductImageRepository _productImageRepository;
 
         private static readonly ProductService Instance = new ProductService();
 
@@ -34,6 +35,7 @@ namespace Project.Service.ProductManager
             this._goodsRepository = new GoodsRepository();
             _goodsSpecValueRepository = new GoodsSpecValueRepository();
             _productAttributeValueRepository = new ProductAttributeValueRepository();
+            _productImageRepository = new ProductImageRepository();
         }
 
         public static ProductService GetInstance()
@@ -184,6 +186,27 @@ namespace Project.Service.ProductManager
             });
             #endregion
 
+            #region 商品图片处理
+            var addProductImageEntityList = entity.ProductImageEntityList.Where(p => orgInfo.ProductImageEntityList.All(x => x.ImageUrl != p.ImageUrl)).ToList();
+            var updateProductImageEntityList = orgInfo.ProductImageEntityList.Where(p => entity.ProductImageEntityList.Any(x => x.ImageUrl == p.ImageUrl)).ToList();
+            var deleteProductImageEntityList = orgInfo.ProductImageEntityList.Where(p => entity.ProductImageEntityList.All(x => x.ImageUrl != p.ImageUrl)).ToList();
+
+            addProductImageEntityList.ForEach(p =>
+            {
+                orgInfo.ProductImageEntityList.Add(p);
+            });
+
+            //updateProductImageEntityList.ForEach(p =>
+            //{
+            //    var newEntity = entity.GoodsEntityList.SingleOrDefault(x => x.CombineId == p.CombineId);
+            //    p.GoodsPrice = newEntity.GoodsPrice;
+            //    p.GoodsCode = newEntity.GoodsCode;
+            //    p.GoodsStock = newEntity.GoodsStock;
+            //    p.GoodsPrice = newEntity.GoodsPrice;
+            //    p.SkuCode = newEntity.SkuCode;
+            //});
+            #endregion
+
 
             using (var tx = NhTransactionHelper.BeginTransaction())
             {
@@ -204,7 +227,6 @@ namespace Project.Service.ProductManager
                         _productAttributeValueRepository.Delete(p);
                     });
                     #endregion
-
 
                     #region Sku列表处理
                     orgInfo.GoodsEntityList = new HashSet<GoodsEntity>(orgInfo.GoodsEntityList.Where(p => deleteGoodsEntityList.All(x => x.PkId != p.PkId)).ToList());
@@ -227,6 +249,19 @@ namespace Project.Service.ProductManager
                     });
                     #endregion
 
+                    #region 商品处理列表
+                    orgInfo.ProductImageEntityList = new HashSet<ProductImageEntity>(orgInfo.ProductImageEntityList.Where(p => deleteProductImageEntityList.All(x => x.PkId != p.PkId)).ToList());
+
+                    orgInfo.ProductImageEntityList.ForEach(p =>
+                    {
+                        p.ProductId = orgInfo.PkId;
+                    });
+
+                    deleteProductImageEntityList.ForEach(p =>
+                    {
+                        _productImageRepository.Delete(p);
+                    });
+                    #endregion
 
                     tx.Commit();
                     return true;

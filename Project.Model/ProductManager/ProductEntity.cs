@@ -19,6 +19,7 @@ namespace Project.Model.ProductManager
         {
             GoodsEntityList=new HashSet<GoodsEntity>();
             ProductAttributeValueEntityList=new HashSet<ProductAttributeValueEntity>();
+            ProductImageEntityList=new HashSet<ProductImageEntity>();
         }
 
         #region 属性
@@ -221,6 +222,11 @@ namespace Project.Model.ProductManager
 
 
         public virtual ISet<ProductAttributeValueEntity> ProductAttributeValueEntityList { get; set; }
+
+        /// <summary>
+        /// 产品对应图片
+        /// </summary>
+        public virtual  ISet<ProductImageEntity> ProductImageEntityList { get; set; }
         #endregion
     }
 }
