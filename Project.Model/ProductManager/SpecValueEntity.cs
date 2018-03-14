@@ -36,7 +36,7 @@ namespace Project.Model.ProductManager
         /// <summary>
         /// 
         /// </summary>
-        public virtual System.String ImagePath{get; set;}
+        public virtual System.String ImageUrl{get; set;}
         #endregion
 
     }

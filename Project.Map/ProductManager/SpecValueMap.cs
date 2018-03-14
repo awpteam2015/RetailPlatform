@@ -20,7 +20,7 @@ namespace  Project.Map.ProductManager
             Map(p => p.SpecId);    
             Map(p => p.SpecValueName);    
             Map(p => p.Sort);    
-            Map(p => p.ImagePath);    
+            Map(p => p.ImageUrl);    
         }
     }
 }

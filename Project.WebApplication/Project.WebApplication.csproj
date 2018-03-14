@@ -303,6 +303,7 @@
     <Content Include="Resources\gx.png" />
     <Content Include="Resources\ng.png" />
     <Content Include="Scripts\Control\AllDepartmentControl.js" />
+    <Content Include="Scripts\Control\ImageUploadControl.js" />
     <Content Include="Scripts\Control\ProductcategoryControl.js" />
     <Content Include="Scripts\Control\ueditor\dialogs\anchor\anchor.html" />
     <Content Include="Scripts\Control\ueditor\dialogs\attachment\attachment.css" />
@@ -698,6 +699,7 @@
     <Content Include="Areas\PermissionManager\Views\ParameterGroupDetail\List.cshtml" />
     <Content Include="Areas\PermissionManager\Views\ParameterGroup\Hd.cshtml" />
     <Content Include="Areas\PermissionManager\Views\ParameterGroup\List.cshtml" />
+    <Content Include="Areas\SystemSetManager\Views\Upload\UploadImagePage.cshtml" />
     <None Include="Properties\PublishProfiles\OA.pubxml" />
     <Content Include="Scripts\Control\ueditor\net\fileUp.ashx" />
     <Content Include="Scripts\Control\ueditor\net\getContent.ashx" />
@@ -1533,8 +1535,8 @@
     <Folder Include="Areas\ReportManager\Views\Shared\" />
     <Folder Include="Areas\RiverManager\Models\" />
     <Folder Include="Areas\SystemSetManager\Models\" />
+    <Folder Include="Areas\SystemSetManager\Scripts\Upload\" />
     <Folder Include="Areas\SystemSetManager\Views\Shared\" />
-    <Folder Include="Areas\SystemSetManager\Views\Upload\" />
     <Folder Include="Scripts\Control\ueditor\third-party\snapscreen\" />
     <Folder Include="UploadFile\" />
   </ItemGroup>

@@ -10,6 +10,9 @@
 
 @section JavaScript{
     <script src="/Areas/ProductManager/Scripts/Spec/Hd.js?JsParamter=@SiteConfig.GetConfig().JsParamter"></script>
+    <script src="/Scripts/jqueryPlugins/jquery_uploadify/jquery.uploadify.js"></script>
+    <link href="/Scripts/jqueryPlugins/jquery_uploadify/uploadify.css" rel="stylesheet" />
+    <script src="/Scripts/Control/ImageUploadControl.js"></script>
 }
 <div style="display: none">
     <input id="BindEntity" type="text" value="@ViewBag.BindEntity" />
@@ -23,7 +26,7 @@
                     规格名称 <span style="color: Red">*</span>:
                 </td>
                 <td>
-                    <input id="SpecName" name="SpecName" type="text"/>
+                    <input id="SpecName" name="SpecName" type="text" />
                 </td>
             </tr>
 
@@ -32,7 +35,7 @@
                     规格备注 <span style="color: Red">*</span>:
                 </td>
                 <td>
-                    <input id="Remark" name="Remark" type="text"/>
+                    <input id="Remark" name="Remark" type="text" />
                 </td>
             </tr>
 
@@ -41,7 +44,7 @@
                     显示类型<span style="color: Red">*</span>:
                 </td>
                 <td>
-                    <input id="SpecType" name="SpecType" type="text"/>
+                    <input id="SpecType" name="SpecType" type="text" />
                 </td>
             </tr>
 
@@ -50,13 +53,13 @@
                     展示方式<span style="color: Red">*</span>:
                 </td>
                 <td>
-                    <input id="ShowType" name="ShowType" type="text"/>
+                    <input id="ShowType" name="ShowType" type="text" />
                 </td>
             </tr>
 
         </table>
 
-        <div title="规格值" style="padding:1px;height: 500px">
+        <div title="规格值" style="padding: 1px; height: 500px">
             <table id="datagrid" toolbar="#tb" fit="true"></table>
             <div id="tb" style="padding: 5px; height: auto">
                 <div style="margin-bottom: 5px">
@@ -67,6 +70,8 @@
                 </div>
             </div>
         </div>
+
+
     </form>
 </div>
 <div style="padding: 10px 10px 0 10px; text-align: center;">

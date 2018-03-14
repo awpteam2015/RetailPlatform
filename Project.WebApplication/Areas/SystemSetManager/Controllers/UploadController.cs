@@ -19,6 +19,12 @@ namespace Project.WebApplication.Areas.SystemSetManager.Controllers
             return View();
         }
 
+        public ActionResult UploadImagePage()
+        {
+            return View();
+        }
+
+
         [HttpPost]
         public ContentResult UploadImage()
         {

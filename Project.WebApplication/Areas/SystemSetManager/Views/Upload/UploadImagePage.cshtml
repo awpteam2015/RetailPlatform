@@ -1,0 +1,68 @@
+﻿
+@{
+    ViewBag.Title = "Hd";
+    Layout = "~/Views/Shared/_LayoutHandler.cshtml";
+}
+
+@section JavaScript{
+    <script src="/Scripts/jqueryPlugins/jquery_uploadify/jquery.uploadify.js"></script>
+    <link href="/Scripts/jqueryPlugins/jquery_uploadify/uploadify.css" rel="stylesheet" />
+}
+<div style="display: none">
+
+</div>
+<div class="mtable_div">
+    <form id="form1">
+        <div style="width: 150px; height: 200px">
+            <div style="display: none">
+                <input id="ImageUrl" name="ImageUrl" type="text" />
+            </div>
+            <div id="div_filename" style="height: 170px; width: 150px">
+
+            </div>
+            <div style="width: 150px;">
+                <input id="file_upload" name="file_upload" type="file" />
+            </div>
+        </div>
+
+        <input type="button" value="确认" onclick="onConfirm()"/>
+    </form>
+</div>
+
+<script type="text/javascript">
+   
+    $('#file_upload').uploadify({
+        'formData': { "path": "ImgFile" },
+        'swf': '/Scripts/jqueryPlugins/jquery_uploadify/uploadify.swf',
+        'uploader': '/SystemSetManager/Upload/UploadImage',
+        'buttonText': '上传图片',
+        'fileTypeDesc': 'Image Files',
+        'fileTypeExts': '*.jpg;*.bmp;*.png;*.gif',
+        'onUploadSuccess': function (file, data, response) {
+            var json = $.parseJSON(data);
+            if (json.success) {
+                $('#div_filename').html("<span ><img  name=\"listP\" id=\"img\" style=\"height:150px;width:150px;\" src=\"" + json.extension.fileFullPath + "\">" + "</img> <a href=\"javascript:void(0)\" onclick=\"pro.Product.ProductImageHd.delImage()\">删除</a></span>");//+ json.extension.orgfileName
+                $("#ImageUrl").val(json.extension.fileFullPath);
+            } else {
+                alert(json.msg);
+            }
+        }
+    });
+
+    $('#file_upload').trigger("change");
+
+    function delImage() {
+        $("#img").parent().remove();
+        $("#ImageUrl").val("");
+    }
+
+
+    function onConfirm() {
+        var pkid = pro.commonKit.getUrlParam("PkId");
+        parent.$("input[name=ImagePath_" + pkid + "]").val($("#ImageUrl").val());
+        parent.$('#div_UploadImage').dialog("close");
+    }
+</script>
+
+
+
