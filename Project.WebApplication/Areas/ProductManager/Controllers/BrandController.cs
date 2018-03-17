@@ -59,10 +59,30 @@ namespace Project.WebApplication.Areas.ProductManager.Controllers
         }
 
 
+        public AbpJsonResult GetList_Combobox()
+        {
+            var where = new BrandEntity();
+            //where.PkId = RequestHelper.GetFormString("PkId");
+            //where.KeyCode = RequestHelper.GetFormString("KeyCode");
+            //where.ParentKeyCode = RequestHelper.GetQueryString("ParentKeyCode");
+            //where.KeyName = RequestHelper.GetFormString("KeyName");
+            //where.KeyValue = RequestHelper.GetFormString("KeyValue");
+            var searchList = BrandService.GetInstance().GetList(where);
+            //searchList.Insert(0, new BrandEntity() { KeyName = "全部", KeyValue = "" });
+            //if (!string.IsNullOrEmpty(RequestHelper.GetQueryString("AllFlag")))
+            //{
+            //    searchList.Insert(0, new DictionaryEntity() { KeyName = "全部", KeyValue = "" });
+            //}
+            return new AbpJsonResult(searchList, new NHibernateContractResolver());
+        }
+
+
         [HttpPost]
         public AbpJsonResult Add(AjaxRequest<BrandEntity> postData)
         {
+            postData.RequestEntity.Description = Base64Helper.DecodeBase64(postData.RequestEntity.Description);
             var addResult = BrandService.GetInstance().Add(postData.RequestEntity);
+
             var result = new AjaxResponse<BrandEntity>()
                {
                    success = true,
@@ -75,6 +95,7 @@ namespace Project.WebApplication.Areas.ProductManager.Controllers
         [HttpPost]
         public AbpJsonResult Edit( AjaxRequest<BrandEntity> postData)
         {
+            postData.RequestEntity.Description = Base64Helper.DecodeBase64(postData.RequestEntity.Description);
             var newInfo = postData.RequestEntity;
             var orgInfo = BrandService.GetInstance().GetModelByPk(postData.RequestEntity.PkId);
             var mergInfo = Mapper.Map(newInfo, orgInfo);

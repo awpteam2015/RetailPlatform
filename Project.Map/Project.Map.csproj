@@ -51,6 +51,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ContentManager\OfflineActivityMap.cs" />
+    <Compile Include="ContentManager\PageContentCategoryMap.cs" />
+    <Compile Include="ContentManager\PageContentMap.cs" />
+    <Compile Include="CustomerManager\CardTypeMap.cs" />
+    <Compile Include="CustomerManager\CustomerAddressMap.cs" />
+    <Compile Include="CustomerManager\CustomerCollectionMap.cs" />
+    <Compile Include="CustomerManager\CustomerMap.cs" />
     <Compile Include="HRManager\AttendanceMap.cs" />
     <Compile Include="HRManager\AttendanceUploadRecordMap.cs" />
     <Compile Include="HRManager\ContinEducationMap.cs" />
@@ -76,6 +83,10 @@
     <Compile Include="HRManager\WorkExperienceMap.cs" />
     <Compile Include="HRManager\YearHolidayDefinitionMap.cs" />
     <Compile Include="HRManager\YGWageMap.cs" />
+    <Compile Include="OrderManager\OrderInvoiceMap.cs" />
+    <Compile Include="OrderManager\OrderMainDetailMap.cs" />
+    <Compile Include="OrderManager\OrderMainMap.cs" />
+    <Compile Include="OrderManager\ShopCartMap.cs" />
     <Compile Include="PermissionManager\DepartmentMap.cs" />
     <Compile Include="PermissionManager\FunctionDetailMap.cs" />
     <Compile Include="PermissionManager\FunctionMap.cs" />

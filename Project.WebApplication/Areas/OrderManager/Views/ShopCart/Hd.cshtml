@@ -1,0 +1,148 @@
+﻿
+
+  
+
+
+@{
+    ViewBag.Title = "Hd";
+    Layout = "~/Views/Shared/_LayoutHandler.cshtml";
+}
+
+@section JavaScript{
+    <script src="/Areas/OrderManager/Scripts/ShopCart/Hd.js?JsParamter=@SiteConfig.GetConfig().JsParamter"></script>
+}
+<div style="display: none">
+<input id="BindEntity" type="text" value="@ViewBag.BindEntity" />
+<input id="Command" type="hidden" />
+</div>
+<div class="mtable_div">
+    <form id="form1">
+        <table class="mtable">
+            
+              <tr>
+            <td  >
+                <span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="PkId" name="PkId"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                订单号<span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="OrderNo" name="OrderNo"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                商品分类<span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="ProductCategoryId" name="ProductCategoryId"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                产品主键<span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="ProductId" name="ProductId"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                商品代码<span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="GoodsCode" name="GoodsCode"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                商品主键<span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="GoodsId" name="GoodsId"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                商品原价_decimal_<span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="Price" name="Price"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                购买价_decimal_<span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="PriceSubDiscount" name="PriceSubDiscount"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                单项小计_decimal_<span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="TotalAmount" name="TotalAmount"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                商品重量<span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="ProductWeight" name="ProductWeight"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                规格汇总<span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="SpecName" name="SpecName"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                <span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="CustomerId" name="CustomerId"  type="text"  />
+            </td>
+        </tr>
+          
+        </table>
+    </form>
+</div>
+<div style="padding: 10px 10px 0 10px; text-align: center;">
+    @if (Request["PkId"]==null||int.Parse(Request["PkId"]) == 0)
+    {
+        <a id="btnAdd" class="easyui-linkbutton" iconcls="icon-add" href="javascript:void(0)">新增</a>
+    }
+    else
+    {
+        <a id="btnEdit" class="easyui-linkbutton" iconcls="icon-ok" href="javascript:void(0)">编辑</a>
+    }
+    <a id="btnClose" class="easyui-linkbutton" iconcls="icon-cancel" href="javascript:void(0)">关闭</a>
+</div>
+
+
+
+
+

@@ -51,8 +51,13 @@ namespace Project.Service.ProductManager
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
-        public System.Int32 Add(ProductEntity entity)
+        public Tuple<bool,string> Add(ProductEntity entity)
         {
+            if (!entity.GoodsEntityList.Any())
+            {
+                return new Tuple<bool, string>(false,"请选择产品规格来生成组合商品。");
+            }
+
 
             using (var tx = NhTransactionHelper.BeginTransaction())
             {
@@ -78,7 +83,7 @@ namespace Project.Service.ProductManager
 
 
                     tx.Commit();
-                    return pkId;
+                    return new Tuple<bool, string>(true, pkId.ToString());
                 }
                 catch (Exception e)
                 {
@@ -131,8 +136,13 @@ namespace Project.Service.ProductManager
         /// 更新
         /// </summary>
         /// <param name="entity"></param>
-        public bool Update(ProductEntity entity)
+        public Tuple<bool, string> Update(ProductEntity entity)
         {
+            if (!entity.GoodsEntityList.Any())
+            {
+                return new Tuple<bool, string>(false, "请选择产品规格来生成组合商品。");
+            }
+
             var newInfo = entity;
             var orgInfo = ProductService.GetInstance().GetModelByPk(entity.PkId);
             orgInfo.SellPrice = newInfo.SellPrice;
@@ -264,7 +274,7 @@ namespace Project.Service.ProductManager
                     #endregion
 
                     tx.Commit();
-                    return true;
+                    return new Tuple<bool, string>(true,"");
                 }
                 catch (Exception e)
                 {
@@ -299,12 +309,12 @@ namespace Project.Service.ProductManager
             #region
             // if (!string.IsNullOrEmpty(where.PkId))
             //  expr = expr.And(p => p.PkId == where.PkId);
-            // if (!string.IsNullOrEmpty(where.ProductName))
-            //  expr = expr.And(p => p.ProductName == where.ProductName);
-            // if (!string.IsNullOrEmpty(where.SystemCategoryId))
-            //  expr = expr.And(p => p.SystemCategoryId == where.SystemCategoryId);
-            // if (!string.IsNullOrEmpty(where.ProductCategoryId))
-            //  expr = expr.And(p => p.ProductCategoryId == where.ProductCategoryId);
+             if (!string.IsNullOrEmpty(where.ProductName))
+              expr = expr.And(p => p.ProductName == where.ProductName);
+            if (where.SystemCategoryId>0)
+                expr = expr.And(p => p.SystemCategoryId == where.SystemCategoryId);
+            if (where.ProductCategoryId>0)
+                expr = expr.And(p => p.ProductCategoryId == where.ProductCategoryId);
             // if (!string.IsNullOrEmpty(where.ProductCategoryRoute))
             //  expr = expr.And(p => p.ProductCategoryRoute == where.ProductCategoryRoute);
             // if (!string.IsNullOrEmpty(where.BrandId))

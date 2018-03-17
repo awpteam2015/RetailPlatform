@@ -144,7 +144,7 @@ namespace Project.Service.ProductManager
             //  expr = expr.And(p => p.PkId == where.PkId);
             // if (!string.IsNullOrEmpty(where.SpecId))
             //  expr = expr.And(p => p.SpecId == where.SpecId);
-            if (where.SystemCategoryId>0)
+            if (where.SystemCategoryId>=0)
                 expr = expr.And(p => p.SystemCategoryId == where.SystemCategoryId);
             #endregion
             var list = _systemCategorySpecRepository.Query().Where(expr).OrderBy(p => p.PkId).ToList();

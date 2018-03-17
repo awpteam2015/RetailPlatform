@@ -52,10 +52,12 @@ var pro = pro || {};
 
                 var newData = $(this).val();
 
+                var sumNum = 0;
                 JSLINQ(pro.Product.ProductSpecHd.opData.skuList).ForEach(function (skuRow) {
                     if (skuRow.CombineId == combineId) {
                         skuRow.GoodsStock = newData;
                     }
+                    sumNum +=parseInt( skuRow.GoodsStock);
                 });
 
                 JSLINQ(pro.Product.ProductSpecHd.opData.skuHistoryList).ForEach(function (skuRow) {
@@ -63,6 +65,10 @@ var pro = pro || {};
                         skuRow.GoodsStock = newData;
                     }
                 });
+
+
+                $("#StockNum").val(sumNum);
+
             });
 
 
@@ -151,9 +157,15 @@ var pro = pro || {};
                         checkHmtl = 'checked="true"';
                     }
 
+                    //图片类型
+                    var imageHmtl = "";
+                    //if (spec.SpecType == 2) {
+                    //    imageHmtl = '<img for="spec_' + specValue.SpecId + '_' + specValue.SpecValueId + '"  style="height:30px;width:30px;" src="' + specValue.ImageUrl + '"  orgsrc="' + specValue.ImageUrl + '">';
+                    //}
+
                     specValueHtml += '<div style="width: 200px;float: left">\
                         <input id="spec_' + specValue.SpecId + '_' + specValue.SpecValueId + '" name="spec_' + specValue.SpecId + '"  ' + checkHmtl + ' type="checkbox" value="' + specValue.SpecValueId + '"    onchange="pro.Product.ProductSpecHd.chooseSpec()" />\
-                        <input onchange="pro.Product.ProductSpecHd.changeSpecName(this)" for="spec_' + specValue.SpecId + '_' + specValue.SpecValueId + '" type="text" value="' + specValue.SpecValueName + '"  orgValue="' + specValue.SpecValueName + '"/>\
+                        ' + imageHmtl + '<input onchange="pro.Product.ProductSpecHd.changeSpecName(this)" for="spec_' + specValue.SpecId + '_' + specValue.SpecValueId + '" type="text" value="' + specValue.SpecValueName + '"  orgValue="' + specValue.SpecValueName + '"/>\
                     </div>';
 
 
@@ -242,6 +254,7 @@ var pro = pro || {};
 
                 this.addSkuHtml();
             } else {
+                pro.Product.ProductSpecHd.opData.skuList = [];
                 $("#skuArea").html("");
             }
 

@@ -1,0 +1,146 @@
+﻿
+
+  
+
+
+
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_LayoutList.cshtml";
+}
+
+@section JavaScript{
+    <script src="/Areas/OrderManager/Scripts/OrderMainDetail/List.js?JsParamter=@SiteConfig.GetConfig().JsParamter" type="text/javascript"></script>
+}
+
+<div title="订单主表明细" style="padding:1px;">
+    <table id="datagrid" style="height:auto;" iconcls=".icon-save" singleselect="true"  toolbar="#tb" fit="true"></table>
+    <div id="tb" style="padding:5px;height:auto">
+        <div  style="margin-bottom: 5px">
+            <a id="btnAdd" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true" >添加</a>
+  
+            <a id="btnDel" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true" >删除</a>
+           
+            <a id="btnEdit" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true" >编辑</a>
+          
+            <a id="btnRefresh" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-reload',plain:true" >刷新</a>
+           
+        </div>
+      
+        <div id="divSearch">
+            <form>
+            
+             <table class="mtable">
+            
+              <tr>
+            <td >
+                :
+            </td>
+            <td >
+                <input id="PkId" name="PkId"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td >
+                订单号:
+            </td>
+            <td >
+                <input id="OrderNo" name="OrderNo"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td >
+                商品分类:
+            </td>
+            <td >
+                <input id="ProductCategoryId" name="ProductCategoryId"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td >
+                产品主键:
+            </td>
+            <td >
+                <input id="ProductId" name="ProductId"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td >
+                商品代码:
+            </td>
+            <td >
+                <input id="GoodsCode" name="GoodsCode"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td >
+                商品主键:
+            </td>
+            <td >
+                <input id="GoodsId" name="GoodsId"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td >
+                商品原价_decimal_:
+            </td>
+            <td >
+                <input id="Price" name="Price"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td >
+                购买价_decimal_:
+            </td>
+            <td >
+                <input id="PriceSubDiscount" name="PriceSubDiscount"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td >
+                单项小计_decimal_:
+            </td>
+            <td >
+                <input id="TotalAmount" name="TotalAmount"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td >
+                商品重量:
+            </td>
+            <td >
+                <input id="ProductWeight" name="ProductWeight"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td >
+                规格汇总:
+            </td>
+            <td >
+                <input id="SpecName" name="SpecName"  type="text"  />
+            </td>
+        </tr>
+          <tr>
+        <td colspan="2">   <a href="#" class="easyui-linkbutton" iconcls="icon-search" id="btnSearch">搜索</a>
+        </td>
+        </tr>
+        </table>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+

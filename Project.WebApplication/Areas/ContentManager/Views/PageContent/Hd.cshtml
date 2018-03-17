@@ -1,0 +1,193 @@
+﻿
+
+  
+
+
+@{
+    ViewBag.Title = "Hd";
+    Layout = "~/Views/Shared/_LayoutHandler.cshtml";
+}
+
+@section JavaScript{
+    <script src="/Areas/ContentManager/Scripts/PageContent/Hd.js?JsParamter=@SiteConfig.GetConfig().JsParamter"></script>
+}
+<div style="display: none">
+<input id="BindEntity" type="text" value="@ViewBag.BindEntity" />
+<input id="Command" type="hidden" />
+</div>
+<div class="mtable_div">
+    <form id="form1">
+        <table class="mtable">
+            
+              <tr>
+            <td  >
+                <span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="PkId" name="PkId"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                <span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="Title1" name="Title1"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                <span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="Title2" name="Title2"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                <span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="Title3" name="Title3"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                <span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="Description1" name="Description1"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                <span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="Description2" name="Description2"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                <span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="Description3" name="Description3"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                <span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="ImageUrl1" name="ImageUrl1"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                <span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="ImageUrl2" name="ImageUrl2"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                <span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="ImageUrl3" name="ImageUrl3"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                删除时间<span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="DeletionTime" name="DeletionTime"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                删除人<span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="DeleterUserCode" name="DeleterUserCode"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                是否删除<span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="IsDeleted" name="IsDeleted"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                修改时间<span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="LastModificationTime" name="LastModificationTime"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                修改人<span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="LastModifierUserCode" name="LastModifierUserCode"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                创建时间<span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="CreationTime" name="CreationTime"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                创建人<span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="CreatorUserCode" name="CreatorUserCode"  type="text"  />
+            </td>
+        </tr>
+          
+        </table>
+    </form>
+</div>
+<div style="padding: 10px 10px 0 10px; text-align: center;">
+    @if (Request["PkId"]==null||int.Parse(Request["PkId"]) == 0)
+    {
+        <a id="btnAdd" class="easyui-linkbutton" iconcls="icon-add" href="javascript:void(0)">新增</a>
+    }
+    else
+    {
+        <a id="btnEdit" class="easyui-linkbutton" iconcls="icon-ok" href="javascript:void(0)">编辑</a>
+    }
+    <a id="btnClose" class="easyui-linkbutton" iconcls="icon-cancel" href="javascript:void(0)">关闭</a>
+</div>
+
+
+
+
+

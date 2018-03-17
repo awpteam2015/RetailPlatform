@@ -57,6 +57,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BootstrapperService.cs" />
+    <Compile Include="ContentManager\OfflineActivityService.cs" />
+    <Compile Include="ContentManager\PageContentCategoryService.cs" />
+    <Compile Include="ContentManager\PageContentService.cs" />
+    <Compile Include="CustomerManager\CardTypeService.cs" />
+    <Compile Include="CustomerManager\CustomerAddressService.cs" />
+    <Compile Include="CustomerManager\CustomerCollectionService.cs" />
+    <Compile Include="CustomerManager\CustomerService.cs" />
     <Compile Include="HRManager\AttendanceUploadRecordService.cs" />
     <Compile Include="HRManager\ContinEducationService.cs" />
     <Compile Include="HRManager\ContractService.cs" />
@@ -85,6 +92,10 @@
     <Compile Include="HRManager\Validate\EmployeeInfoValidate.cs" />
     <Compile Include="HRManager\WorkExperienceService.cs" />
     <Compile Include="HRManager\YGWageService.cs" />
+    <Compile Include="OrderManager\OrderInvoiceService.cs" />
+    <Compile Include="OrderManager\OrderMainDetailService.cs" />
+    <Compile Include="OrderManager\OrderMainService.cs" />
+    <Compile Include="OrderManager\ShopCartService.cs" />
     <Compile Include="PermissionManager\DepartmentService.cs" />
     <Compile Include="PermissionManager\DTO\MenuDTO.cs" />
     <Compile Include="PermissionManager\DTO\LoginUserInfoDTO.cs" />
@@ -155,7 +166,9 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="ProductManager\Validate\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

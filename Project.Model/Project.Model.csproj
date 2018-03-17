@@ -39,6 +39,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ContentManager\OfflineActivityEntity.cs" />
+    <Compile Include="ContentManager\PageContentCategoryEntity.cs" />
+    <Compile Include="ContentManager\PageContentEntity.cs" />
+    <Compile Include="CustomerManager\CardTypeEntity.cs" />
+    <Compile Include="CustomerManager\CustomerAddressEntity.cs" />
+    <Compile Include="CustomerManager\CustomerCollectionEntity.cs" />
+    <Compile Include="CustomerManager\CustomerEntity.cs" />
     <Compile Include="Enum\HRManager\ContractIsActiveEnum.cs" />
     <Compile Include="Enum\HRManager\ContractStateEnum.cs" />
     <Compile Include="HRManager\AttendanceEntity.cs" />
@@ -66,6 +73,10 @@
     <Compile Include="HRManager\WorkExperienceEntity.cs" />
     <Compile Include="HRManager\YearHolidayDefinitionEntity.cs" />
     <Compile Include="HRManager\YGWageEntity.cs" />
+    <Compile Include="OrderManager\OrderInvoiceEntity.cs" />
+    <Compile Include="OrderManager\OrderMainDetailEntity.cs" />
+    <Compile Include="OrderManager\OrderMainEntity.cs" />
+    <Compile Include="OrderManager\ShopCartEntity.cs" />
     <Compile Include="Other\ExcelData.cs" />
     <Compile Include="Other\FileInfoDTO.cs" />
     <Compile Include="Other\UploadEntity.cs" />

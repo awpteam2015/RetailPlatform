@@ -19,10 +19,9 @@ namespace  Project.Map.ProductManager
  
             Map(p => p.BrandName);    
             Map(p => p.Sort);    
-            Map(p => p.UrlLink);    
-            Map(p => p.Logo);    
-            Map(p => p.Remark);    
-            Map(p => p.GoodsNum);    
+            Map(p => p.ImageUrl);    
+            Map(p => p.Description);    
+      
         }
     }
 }

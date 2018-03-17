@@ -4,6 +4,36 @@
     pro.Brand.HdPage = pro.Brand.HdPage || {};
     pro.Brand.HdPage = {
         initPage: function () {
+
+            UE.getEditor('Description', {
+                initialFrameHeight: 320,
+                autoHeightEnabled: false,
+                initialFrameWidth: 800
+            });
+
+
+            $('#file_upload1').uploadify({
+                'formData': { "path": "ImgFile" },
+                'swf': '/Scripts/jqueryPlugins/jquery_uploadify/uploadify.swf',
+                'uploader': '/SystemSetManager/Upload/UploadImage',
+                'buttonText': '选择图片',
+                // 'width':50,
+                'fileTypeDesc': 'Image Files',
+                'fileTypeExts': '*.jpg;*.bmp;*.png;*.gif',
+                'onUploadSuccess': function (file, data, response) {
+                    var json = $.parseJSON(data);
+                    if (json.success) {
+                        var pkid = 1;
+                        $('#div_filename' + pkid).html("<span ><img id='img_" + pkid + "' name=\"listP\" style=\"height:150px;width:150px;\" src=\"" + json.extension.fileFullPath + "\">" + "</img> <a href=\"javascript:void(0)\" onclick=\"pro.Brand.HdPage.delImage(" + pkid + ")\">删除</a></span>");//+ json.extension.orgfileName
+                        $("#ImageUrl" + pkid).val(json.extension.fileFullPath);
+
+                    } else {
+                        alert(json.msg);
+                    }
+                }
+            });
+
+
             $("#btnAdd").click(function () {
                 pro.Brand.HdPage.submit("Add");
             });
@@ -22,10 +52,17 @@
                 for (var filedname in bindField) {
                     $("[name=" + filedname + "]").val(bindEntity[filedname]);
                 }
+
+                var pkid = 1;
+                $('#div_filename' + pkid).html("<span ><img id='img_" + pkid + "' name=\"listP\" style=\"height:150px;width:150px;\" src=\"" + bindEntity['ImageUrl'] + "\">" + "</img> <a href=\"javascript:void(0)\" onclick=\"pro.Product.ProductImageHd.delImage(" + pkid + ")\">删除</a></span>");
+
+                $("#ImageUrl" + pkid).val(bindEntity['ImageUrl']);
+
                 //行项目信息用json绑定控件
                 //alert(JSON.stringify(BindEntity.List));
             }
         },
+
         submit: function (command) {
             var postData = {};
             postData.RequestEntity = pro.submitKit.getHeadJson();
@@ -92,6 +129,10 @@
 
         addTab: function (subtitle, url) {
 
+        },
+        delImage: function (i) {
+            $("#img_" + i).parent().remove();
+            $("#ImageUrl" + i).val("");
         }
 
     };

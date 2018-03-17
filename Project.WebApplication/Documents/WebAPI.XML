@@ -78,6 +78,11 @@
             规格名称
             </summary>
         </member>
+        <member name="P:Project.WebApplication.Areas.ProductManager.Models.SpecVm.SpecType">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="P:Project.WebApplication.Areas.ProductManager.Models.SpecVm.SpecValueList">
             <summary>
             规格值
@@ -103,7 +108,7 @@
             
             </summary>
         </member>
-        <member name="P:Project.WebApplication.Areas.ProductManager.Models.SpecValueVm.ImagePath">
+        <member name="P:Project.WebApplication.Areas.ProductManager.Models.SpecValueVm.ImageUrl">
             <summary>
             
             </summary>

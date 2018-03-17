@@ -26,19 +26,13 @@ namespace Project.Model.ProductManager
         /// <summary>
         /// 
         /// </summary>
-        public virtual System.String UrlLink{get; set;}
+        public virtual System.String ImageUrl { get; set;}
+ 
         /// <summary>
         /// 
         /// </summary>
-        public virtual System.String Logo{get; set;}
-        /// <summary>
-        /// 
-        /// </summary>
-        public virtual System.String Remark{get; set;}
-        /// <summary>
-        /// 产品数量
-        /// </summary>
-        public virtual System.Int32? GoodsNum{get; set;}
+        public virtual System.String Description { get; set;}
+ 
 		#endregion
         
 

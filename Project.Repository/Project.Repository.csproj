@@ -47,6 +47,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ContentManager\OfflineActivityRepository.cs" />
+    <Compile Include="ContentManager\PageContentCategoryRepository.cs" />
+    <Compile Include="ContentManager\PageContentRepository.cs" />
+    <Compile Include="CustomerManager\CardTypeRepository.cs" />
+    <Compile Include="CustomerManager\CustomerAddressRepository.cs" />
+    <Compile Include="CustomerManager\CustomerCollectionRepository.cs" />
+    <Compile Include="CustomerManager\CustomerRepository.cs" />
     <Compile Include="HRManager\AttendanceRepository.cs" />
     <Compile Include="HRManager\AttendanceUploadRecordRepository.cs" />
     <Compile Include="HRManager\ContinEducationRepository.cs" />
@@ -72,6 +79,10 @@
     <Compile Include="HRManager\WorkExperienceRepository.cs" />
     <Compile Include="HRManager\YearHolidayDefinitionRepository.cs" />
     <Compile Include="HRManager\YGWageRepository.cs" />
+    <Compile Include="OrderManager\OrderInvoiceRepository.cs" />
+    <Compile Include="OrderManager\OrderMainDetailRepository.cs" />
+    <Compile Include="OrderManager\OrderMainRepository.cs" />
+    <Compile Include="OrderManager\ShopCartRepository.cs" />
     <Compile Include="PermissionManager\DepartmentRepository.cs" />
     <Compile Include="PermissionManager\FunctionDetailRepository.cs" />
     <Compile Include="PermissionManager\FunctionRepository.cs" />

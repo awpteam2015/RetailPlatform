@@ -37,7 +37,7 @@ namespace Project.WebApplication.Areas.ProductManager.Models
         /// <summary>
         /// 
         /// </summary>
-        //public virtual System.Int32 IsCheck { get; set; }
+        public virtual System.Int32 SpecType { get; set; }
 
         /// <summary>
         /// 规格值
@@ -70,7 +70,7 @@ namespace Project.WebApplication.Areas.ProductManager.Models
         /// <summary>
         /// 
         /// </summary>
-        public virtual System.String ImagePath { get; set; }
+        public virtual System.String ImageUrl { get; set; }
 
         /// <summary>
         /// 是否选中

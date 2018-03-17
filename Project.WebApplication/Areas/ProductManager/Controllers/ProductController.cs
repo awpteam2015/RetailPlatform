@@ -51,12 +51,12 @@ namespace Project.WebApplication.Areas.ProductManager.Controllers
                 var entity = ProductService.GetInstance().GetModelByPk(pkId);
                 entity.GoodsEntityList.ForEach(p => { p.IsUse = 1; });
 
-                ViewBag.BindEntity = JsonHelper.JsonSerializer(entity,new SpecialContractResolver());
+                ViewBag.BindEntity = JsonHelper.JsonSerializer(entity, new SpecialContractResolver());
                 specVmList.ForEach(p =>
                 {
                     p.SpecValueList.ForEach(x =>
                     {
-                        if (entity.GoodsSpecValueEntityList.Any(z=>z.SpecValueId==x.SpecValueId))
+                        if (entity.GoodsSpecValueEntityList.Any(z => z.SpecValueId == x.SpecValueId))
                         {
                             x.IsCheck = 1;
                         }
@@ -68,7 +68,7 @@ namespace Project.WebApplication.Areas.ProductManager.Controllers
                 {
                     p.AttributeValueList.ForEach(x =>
                     {
-                        if (entity.ProductAttributeValueEntityList.Any(z=>z.AttributeValueId==x.AttributeValueId))
+                        if (entity.ProductAttributeValueEntityList.Any(z => z.AttributeValueId == x.AttributeValueId))
                         {
                             x.IsCheck = 1;
                         }
@@ -96,12 +96,12 @@ namespace Project.WebApplication.Areas.ProductManager.Controllers
             var pSize = this.Request["rows"].ConvertTo<int>();
             var where = new ProductEntity();
             //where.PkId = RequestHelper.GetFormString("PkId");
-            //where.ProductName = RequestHelper.GetFormString("ProductName");
-            //where.SystemCategoryId = RequestHelper.GetFormString("SystemCategoryId");
-            //where.ProductCategoryId = RequestHelper.GetFormString("ProductCategoryId");
+            where.ProductName = RequestHelper.GetFormString("ProductName");
+            where.SystemCategoryId = RequestHelper.GetInt("SystemCategoryId");
+            where.ProductCategoryId = RequestHelper.GetInt("ProductCategoryId");
             //where.ProductCategoryRoute = RequestHelper.GetFormString("ProductCategoryRoute");
-            //where.BrandId = RequestHelper.GetFormString("BrandId");
-         
+            where.BrandId = RequestHelper.GetInt("BrandId");
+
             var searchList = ProductService.GetInstance().Search(where, (pIndex - 1) * pSize, pSize);
 
             var dataGridEntity = new DataGridResponse()
@@ -118,14 +118,15 @@ namespace Project.WebApplication.Areas.ProductManager.Controllers
         {
             postData.RequestEntity.BriefDescription = Base64Helper.DecodeBase64(postData.RequestEntity.BriefDescription);
             postData.RequestEntity.Description = Base64Helper.DecodeBase64(postData.RequestEntity.Description);
-            postData.RequestEntity.GoodsEntityList =new HashSet<GoodsEntity>(postData.RequestEntity.GoodsEntityList.Where(p => p.IsUse == 1));
+            postData.RequestEntity.GoodsEntityList = new HashSet<GoodsEntity>(postData.RequestEntity.GoodsEntityList.Where(p => p.IsUse == 1));
 
             var addResult = ProductService.GetInstance().Add(postData.RequestEntity);
 
             var result = new AjaxResponse<ProductEntity>()
             {
-                success = true,
-                result = postData.RequestEntity
+                success = addResult.Item1,
+                // result = postData.RequestEntity,
+                error = new ErrorInfo() { message = addResult.Item2 }
             };
             return new AbpJsonResult(result, new NHibernateContractResolver());
         }
@@ -136,13 +137,15 @@ namespace Project.WebApplication.Areas.ProductManager.Controllers
         {
             postData.RequestEntity.BriefDescription = Base64Helper.DecodeBase64(postData.RequestEntity.BriefDescription);
             postData.RequestEntity.Description = Base64Helper.DecodeBase64(postData.RequestEntity.Description);
+            postData.RequestEntity.GoodsEntityList = new HashSet<GoodsEntity>(postData.RequestEntity.GoodsEntityList.Where(p => p.IsUse == 1));
 
-            var updateResult =ProductService.GetInstance().Update(postData.RequestEntity);
+            var updateResult = ProductService.GetInstance().Update(postData.RequestEntity);
 
             var result = new AjaxResponse<ProductEntity>()
             {
-                success = updateResult,
-                result = postData.RequestEntity
+                success = updateResult.Item1,
+                result = postData.RequestEntity,
+                error = new ErrorInfo() { message = updateResult.Item2 }
             };
             return new AbpJsonResult(result, new NHibernateContractResolver(new string[] { "result" }));
         }

@@ -30,7 +30,7 @@ namespace Project.Model.ProductManager
         /// <summary>
         /// 系统类型
         /// </summary>
-        public virtual System.Int32? SystemCategoryId{get; set;}
+        public virtual System.Int32 SystemCategoryId{get; set;}
         /// <summary>
         /// 商品分类
         /// </summary>

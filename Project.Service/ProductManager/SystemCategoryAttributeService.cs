@@ -146,7 +146,7 @@ namespace Project.Service.ProductManager
             //  expr = expr.And(p => p.PkId == where.PkId);
             // if (!string.IsNullOrEmpty(where.AttributeId))
             //  expr = expr.And(p => p.AttributeId == where.AttributeId);
-            if (where.SystemCategoryId>0)
+            if (where.SystemCategoryId>=0)
                 expr = expr.And(p => p.SystemCategoryId == where.SystemCategoryId);
             // if (!string.IsNullOrEmpty(where.IsMust))
             //  expr = expr.And(p => p.IsMust == where.IsMust);

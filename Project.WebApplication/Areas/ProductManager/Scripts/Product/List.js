@@ -26,7 +26,7 @@ var pro = pro || {};
          { field: 'ProductCode', title: '价格', width: 100 },
          { field: 'Unit', title: '库存', width: 100 },
          { field: 'Unit', title: '总销量', width: 100 },
-         { field: 'Unit', title: '上架时间', width: 100 },
+         { field: 'SystemCategoryId', title: '系统分类', width: 100 ,hidden:true}
 
       
                 ]],
@@ -46,7 +46,7 @@ var pro = pro || {};
                     return;
                 }
                 var PkId = gridObj.getSelectedRow().PkId;
-                tabObj.add("/ProductManager/Product/Hd?PkId=" + PkId, "编辑" + PkId);
+                tabObj.add("/ProductManager/Product/Hd?SystemCategoryId=" + gridObj.getSelectedRow().SystemCategoryId + "&PkId=" + PkId, "编辑" + PkId);
             });
 
 
@@ -79,6 +79,10 @@ var pro = pro || {};
             $("#btnRefresh").click(function () {
                 gridObj.refresh();
             });
+
+
+            pro.ProductcategoryControl.init({ controlId: "ProductCategoryId", required: false });
+
         },
          closeTab: function () {
             this.init().tabObj.closeTab();

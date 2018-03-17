@@ -1,0 +1,346 @@
+﻿
+
+  
+
+
+@{
+    ViewBag.Title = "Hd";
+    Layout = "~/Views/Shared/_LayoutHandler.cshtml";
+}
+
+@section JavaScript{
+    <script src="/Areas/OrderManager/Scripts/OrderMain/Hd.js?JsParamter=@SiteConfig.GetConfig().JsParamter"></script>
+}
+<div style="display: none">
+<input id="BindEntity" type="text" value="@ViewBag.BindEntity" />
+<input id="Command" type="hidden" />
+</div>
+<div class="mtable_div">
+    <form id="form1">
+        <table class="mtable">
+            
+              <tr>
+            <td  >
+                订单号<span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="OrderNo" name="OrderNo"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                订单状态(作废:-1;未确认:0;确认:1;先退货审核:T;子订单部分为确认:2)<span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="State" name="State"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                订单总价,包括赠品_decimal_<span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="Totalamount" name="Totalamount"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                赠送积分<span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="PresentPoints" name="PresentPoints"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                会员Id<span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="CustomerId" name="CustomerId"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                会员姓名<span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="CustomerName" name="CustomerName"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                联系人（改）<span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="Linkman" name="Linkman"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                联系人电话<span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="LinkmanTel" name="LinkmanTel"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                联系人手机<span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="LinkmanMobilephone" name="LinkmanMobilephone"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                联系人省份<span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="LinkmanProvinceId" name="LinkmanProvinceId"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                联系人城市<span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="LinkmanCityId" name="LinkmanCityId"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                联系人区域(新增)<span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="LinkmanAreaId" name="LinkmanAreaId"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                联系人配送地址（改）<span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="LinkmanAddress" name="LinkmanAddress"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                联系人配送地址全（改2012.11.2）<span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="LinkmanAddressfull" name="LinkmanAddressfull"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                联系人邮政编码（改）<span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="LinkmanPostcode" name="LinkmanPostcode"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                联系人送货备注（改）<span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="LinkmanRemark" name="LinkmanRemark"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                送货地址id（改2012.11.20）<span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="CustomerAddressId" name="CustomerAddressId"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                支付时间<span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="PayTime" name="PayTime"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                支付备注<span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="PayRemark" name="PayRemark"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                发货时间<span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="SendTime" name="SendTime"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                快递单号<span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="SendNo" name="SendNo"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                发货备注<span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="SendRemark" name="SendRemark"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                退货时间<span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="ReturnTime" name="ReturnTime"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                退货备注<span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="ReturnRemark" name="ReturnRemark"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                客户确认时间<span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="ConfirmTime" name="ConfirmTime"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                客户确认备注<span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="ConfirmRemark" name="ConfirmRemark"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                创建人ip<span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="UserIp" name="UserIp"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                创建人<span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="CreatorUserCode" name="CreatorUserCode"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                创建时间<span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="CreationTime" name="CreationTime"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                修改人<span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="LastModifierUserCode" name="LastModifierUserCode"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                修改时间<span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="LastModificationTime" name="LastModificationTime"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                是否删除<span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="IsDeleted" name="IsDeleted"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                删除人<span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="DeleterUserCode" name="DeleterUserCode"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                删除时间<span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="DeletionTime" name="DeletionTime"  type="text"  />
+            </td>
+        </tr>
+          
+        </table>
+    </form>
+</div>
+<div style="padding: 10px 10px 0 10px; text-align: center;">
+    @if (Request["PkId"]==null||int.Parse(Request["PkId"]) == 0)
+    {
+        <a id="btnAdd" class="easyui-linkbutton" iconcls="icon-add" href="javascript:void(0)">新增</a>
+    }
+    else
+    {
+        <a id="btnEdit" class="easyui-linkbutton" iconcls="icon-ok" href="javascript:void(0)">编辑</a>
+    }
+    <a id="btnClose" class="easyui-linkbutton" iconcls="icon-cancel" href="javascript:void(0)">关闭</a>
+</div>
+
+
+
+
+

@@ -48,15 +48,15 @@
 
             }
 
-            $('#SystemCategoryId').combobox({
+            $('#BrandId').combobox({
                 required: true,
                 editable: false,
                 valueField: 'PkId',
-                textField: 'SystemCategoryName',
-                url: '/ProductManager/Dictionary/GetListALL',
+                textField: 'BrandName',
+                url: '/ProductManager/Brand/GetList_Combobox',
                 onLoadSuccess: function () {
                     if (pro.commonKit.getUrlParam("PkId") > 0) {
-                        $("#SystemCategoryId").combobox('setValue', bindEntity['SystemCategoryId']);
+                        $("#BrandId").combobox('setValue', bindEntity['BrandId']);
                     }
                 }
             });
@@ -65,6 +65,7 @@
         submit: function (command) {
             var postData = {};
             postData.RequestEntity = pro.submitKit.getHeadJson();
+            postData.RequestEntity.SystemCategoryId = pro.commonKit.getUrlParam("SystemCategoryId");
             postData.RequestEntity.GoodsEntityList = pro.Product.ProductSpecHd.opData.skuList;
             postData.RequestEntity.ProductAttributeValueEntityList = pro.Product.ProductAttributeHd.opData.productAttributeValueList;
             postData.RequestEntity.ProductImageEntityList = pro.Product.ProductImageHd.getImageList();
@@ -75,7 +76,7 @@
             }
 
             this.submitExtend.addRule();
-            if (!$("#form1").valid() && this.submitExtend.logicValidate()) {
+            if (!$("#form1").valid() && this.submitExtend.logicValidate(postData)) {
                 $.alertExtend.error();
                 return false;
             }
@@ -206,6 +207,9 @@
                 });
             },
             logicValidate: function () {
+
+
+
                 return true;
             }
         },

@@ -1,0 +1,353 @@
+﻿
+
+  
+
+
+
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_LayoutList.cshtml";
+}
+
+@section JavaScript{
+    <script src="/Areas/OrderManager/Scripts/OrderMain/List.js?JsParamter=@SiteConfig.GetConfig().JsParamter" type="text/javascript"></script>
+}
+
+<div title="订单主表信息" style="padding:1px;">
+    <table id="datagrid" style="height:auto;" iconcls=".icon-save" singleselect="true"  toolbar="#tb" fit="true"></table>
+    <div id="tb" style="padding:5px;height:auto">
+        <div  style="margin-bottom: 5px">
+            <a id="btnAdd" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true" >添加</a>
+  
+            <a id="btnDel" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true" >删除</a>
+           
+            <a id="btnEdit" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true" >编辑</a>
+          
+            <a id="btnRefresh" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-reload',plain:true" >刷新</a>
+           
+        </div>
+      
+        <div id="divSearch">
+            <form>
+            
+             <table class="mtable">
+            
+              <tr>
+            <td >
+                订单号:
+            </td>
+            <td >
+                <input id="OrderNo" name="OrderNo"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td >
+                订单状态(作废:-1;未确认:0;确认:1;先退货审核:T;子订单部分为确认:2):
+            </td>
+            <td >
+                <input id="State" name="State"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td >
+                订单总价,包括赠品_decimal_:
+            </td>
+            <td >
+                <input id="Totalamount" name="Totalamount"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td >
+                赠送积分:
+            </td>
+            <td >
+                <input id="PresentPoints" name="PresentPoints"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td >
+                会员Id:
+            </td>
+            <td >
+                <input id="CustomerId" name="CustomerId"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td >
+                会员姓名:
+            </td>
+            <td >
+                <input id="CustomerName" name="CustomerName"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td >
+                联系人（改）:
+            </td>
+            <td >
+                <input id="Linkman" name="Linkman"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td >
+                联系人电话:
+            </td>
+            <td >
+                <input id="LinkmanTel" name="LinkmanTel"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td >
+                联系人手机:
+            </td>
+            <td >
+                <input id="LinkmanMobilephone" name="LinkmanMobilephone"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td >
+                联系人省份:
+            </td>
+            <td >
+                <input id="LinkmanProvinceId" name="LinkmanProvinceId"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td >
+                联系人城市:
+            </td>
+            <td >
+                <input id="LinkmanCityId" name="LinkmanCityId"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td >
+                联系人区域(新增):
+            </td>
+            <td >
+                <input id="LinkmanAreaId" name="LinkmanAreaId"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td >
+                联系人配送地址（改）:
+            </td>
+            <td >
+                <input id="LinkmanAddress" name="LinkmanAddress"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td >
+                联系人配送地址全（改2012.11.2）:
+            </td>
+            <td >
+                <input id="LinkmanAddressfull" name="LinkmanAddressfull"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td >
+                联系人邮政编码（改）:
+            </td>
+            <td >
+                <input id="LinkmanPostcode" name="LinkmanPostcode"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td >
+                联系人送货备注（改）:
+            </td>
+            <td >
+                <input id="LinkmanRemark" name="LinkmanRemark"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td >
+                送货地址id（改2012.11.20）:
+            </td>
+            <td >
+                <input id="CustomerAddressId" name="CustomerAddressId"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td >
+                支付时间:
+            </td>
+            <td >
+                <input id="PayTime" name="PayTime"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td >
+                支付备注:
+            </td>
+            <td >
+                <input id="PayRemark" name="PayRemark"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td >
+                发货时间:
+            </td>
+            <td >
+                <input id="SendTime" name="SendTime"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td >
+                快递单号:
+            </td>
+            <td >
+                <input id="SendNo" name="SendNo"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td >
+                发货备注:
+            </td>
+            <td >
+                <input id="SendRemark" name="SendRemark"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td >
+                退货时间:
+            </td>
+            <td >
+                <input id="ReturnTime" name="ReturnTime"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td >
+                退货备注:
+            </td>
+            <td >
+                <input id="ReturnRemark" name="ReturnRemark"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td >
+                客户确认时间:
+            </td>
+            <td >
+                <input id="ConfirmTime" name="ConfirmTime"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td >
+                客户确认备注:
+            </td>
+            <td >
+                <input id="ConfirmRemark" name="ConfirmRemark"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td >
+                创建人ip:
+            </td>
+            <td >
+                <input id="UserIp" name="UserIp"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td >
+                创建人:
+            </td>
+            <td >
+                <input id="CreatorUserCode" name="CreatorUserCode"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td >
+                创建时间:
+            </td>
+            <td >
+                <input id="CreationTime" name="CreationTime"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td >
+                修改人:
+            </td>
+            <td >
+                <input id="LastModifierUserCode" name="LastModifierUserCode"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td >
+                修改时间:
+            </td>
+            <td >
+                <input id="LastModificationTime" name="LastModificationTime"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td >
+                是否删除:
+            </td>
+            <td >
+                <input id="IsDeleted" name="IsDeleted"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td >
+                删除人:
+            </td>
+            <td >
+                <input id="DeleterUserCode" name="DeleterUserCode"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td >
+                删除时间:
+            </td>
+            <td >
+                <input id="DeletionTime" name="DeletionTime"  type="text"  />
+            </td>
+        </tr>
+          <tr>
+        <td colspan="2">   <a href="#" class="easyui-linkbutton" iconcls="icon-search" id="btnSearch">搜索</a>
+        </td>
+        </tr>
+        </table>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+

@@ -31,8 +31,9 @@
                     'formData': { "path": "ImgFile" },
                     'swf': '/Scripts/jqueryPlugins/jquery_uploadify/uploadify.swf',
                     'uploader': '/SystemSetManager/Upload/UploadImage',
-                    'buttonText': '上传图片',
+                    'buttonText': '选择图片',
                     'selfDefineId': i,
+                   // 'width':50,
                     'fileTypeDesc': 'Image Files',
                     'fileTypeExts': '*.jpg;*.bmp;*.png;*.gif',
                     'onUploadSuccess': function (file, data, response) {
