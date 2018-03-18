@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web.Mvc;
 using AutoMapper;
 using Project.Infrastructure.FrameworkCore.DataNhibernate.Helpers;
+using Project.Infrastructure.FrameworkCore.ToolKit;
 using Project.Infrastructure.FrameworkCore.ToolKit.JsonHandler;
 using Project.Infrastructure.FrameworkCore.ToolKit.LinqExpansion;
 using Project.Infrastructure.FrameworkCore.WebMvc.Controllers.Results;
@@ -41,20 +42,28 @@ namespace Project.WebApplication.Areas.ContentManager.Controllers
             var pSize = this.Request["rows"].ConvertTo<int>();
             var where = new OfflineActivityEntity();
 			//where.PkId = RequestHelper.GetFormString("PkId");
-			//where.Tttle = RequestHelper.GetFormString("Tttle");
-			//where.OfflineActivityAddress = RequestHelper.GetFormString("OfflineActivityAddress");
-			//where.StartDate = RequestHelper.GetFormString("StartDate");
-			//where.EndDate = RequestHelper.GetFormString("EndDate");
-			//where.ImageUrl = RequestHelper.GetFormString("ImageUrl");
-			//where.BriefDescription = RequestHelper.GetFormString("BriefDescription");
-			//where.State = RequestHelper.GetFormString("State");
-			//where.DeletionTime = RequestHelper.GetFormString("DeletionTime");
-			//where.DeleterUserCode = RequestHelper.GetFormString("DeleterUserCode");
-			//where.IsDeleted = RequestHelper.GetFormString("IsDeleted");
-			//where.LastModificationTime = RequestHelper.GetFormString("LastModificationTime");
-			//where.LastModifierUserCode = RequestHelper.GetFormString("LastModifierUserCode");
-			//where.CreationTime = RequestHelper.GetFormString("CreationTime");
-			//where.CreatorUserCode = RequestHelper.GetFormString("CreatorUserCode");
+			where.Tttle = RequestHelper.GetFormString("Tttle");
+            //where.OfflineActivityAddress = RequestHelper.GetFormString("OfflineActivityAddress");
+            if (RequestHelper.GetFormString("StartDate")!="")
+            {
+                where.StartDate = RequestHelper.GetDateTime("StartDate");
+            }
+
+            if (RequestHelper.GetFormString("EndDate") != "")
+            {
+                where.EndDate = RequestHelper.GetDateTime("EndDate");
+            }
+ 
+            //where.ImageUrl = RequestHelper.GetFormString("ImageUrl");
+            //where.BriefDescription = RequestHelper.GetFormString("BriefDescription");
+            //where.State = RequestHelper.GetFormString("State");
+            //where.DeletionTime = RequestHelper.GetFormString("DeletionTime");
+            //where.DeleterUserCode = RequestHelper.GetFormString("DeleterUserCode");
+            //where.IsDeleted = RequestHelper.GetFormString("IsDeleted");
+            //where.LastModificationTime = RequestHelper.GetFormString("LastModificationTime");
+            //where.LastModifierUserCode = RequestHelper.GetFormString("LastModifierUserCode");
+            //where.CreationTime = RequestHelper.GetFormString("CreationTime");
+            //where.CreatorUserCode = RequestHelper.GetFormString("CreatorUserCode");
             var searchList = OfflineActivityService.GetInstance().Search(where, (pIndex - 1) * pSize, pSize);
 
             var dataGridEntity = new DataGridResponse()
@@ -69,6 +78,7 @@ namespace Project.WebApplication.Areas.ContentManager.Controllers
         [HttpPost]
         public AbpJsonResult Add(AjaxRequest<OfflineActivityEntity> postData)
         {
+            postData.RequestEntity.BriefDescription= Base64Helper.DecodeBase64(postData.RequestEntity.BriefDescription);
             var addResult = OfflineActivityService.GetInstance().Add(postData.RequestEntity);
             var result = new AjaxResponse<OfflineActivityEntity>()
                {
@@ -82,6 +92,7 @@ namespace Project.WebApplication.Areas.ContentManager.Controllers
         [HttpPost]
         public AbpJsonResult Edit( AjaxRequest<OfflineActivityEntity> postData)
         {
+            postData.RequestEntity.BriefDescription = Base64Helper.DecodeBase64(postData.RequestEntity.BriefDescription);
             var newInfo = postData.RequestEntity;
             var orgInfo = OfflineActivityService.GetInstance().GetModelByPk(postData.RequestEntity.PkId);
             var mergInfo = Mapper.Map(newInfo, orgInfo);

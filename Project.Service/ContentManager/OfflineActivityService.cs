@@ -87,7 +87,7 @@ namespace Project.Service.ContentManager
         {
           try
             {
-            _offlineActivityRepository.Update(entity);
+            _offlineActivityRepository.Merge(entity);
          return true;
         }
         catch
@@ -118,38 +118,38 @@ namespace Project.Service.ContentManager
         public System.Tuple<IList<OfflineActivityEntity>, int> Search(OfflineActivityEntity where, int skipResults, int maxResults)
         {
                 var expr = PredicateBuilder.True<OfflineActivityEntity>();
-                  #region
-              // if (!string.IsNullOrEmpty(where.PkId))
-              //  expr = expr.And(p => p.PkId == where.PkId);
-              // if (!string.IsNullOrEmpty(where.Tttle))
-              //  expr = expr.And(p => p.Tttle == where.Tttle);
-              // if (!string.IsNullOrEmpty(where.OfflineActivityAddress))
-              //  expr = expr.And(p => p.OfflineActivityAddress == where.OfflineActivityAddress);
-              // if (!string.IsNullOrEmpty(where.StartDate))
-              //  expr = expr.And(p => p.StartDate == where.StartDate);
-              // if (!string.IsNullOrEmpty(where.EndDate))
-              //  expr = expr.And(p => p.EndDate == where.EndDate);
-              // if (!string.IsNullOrEmpty(where.ImageUrl))
-              //  expr = expr.And(p => p.ImageUrl == where.ImageUrl);
-              // if (!string.IsNullOrEmpty(where.BriefDescription))
-              //  expr = expr.And(p => p.BriefDescription == where.BriefDescription);
-              // if (!string.IsNullOrEmpty(where.State))
-              //  expr = expr.And(p => p.State == where.State);
-              // if (!string.IsNullOrEmpty(where.DeletionTime))
-              //  expr = expr.And(p => p.DeletionTime == where.DeletionTime);
-              // if (!string.IsNullOrEmpty(where.DeleterUserCode))
-              //  expr = expr.And(p => p.DeleterUserCode == where.DeleterUserCode);
-              // if (!string.IsNullOrEmpty(where.IsDeleted))
-              //  expr = expr.And(p => p.IsDeleted == where.IsDeleted);
-              // if (!string.IsNullOrEmpty(where.LastModificationTime))
-              //  expr = expr.And(p => p.LastModificationTime == where.LastModificationTime);
-              // if (!string.IsNullOrEmpty(where.LastModifierUserCode))
-              //  expr = expr.And(p => p.LastModifierUserCode == where.LastModifierUserCode);
-              // if (!string.IsNullOrEmpty(where.CreationTime))
-              //  expr = expr.And(p => p.CreationTime == where.CreationTime);
-              // if (!string.IsNullOrEmpty(where.CreatorUserCode))
-              //  expr = expr.And(p => p.CreatorUserCode == where.CreatorUserCode);
- #endregion
+            #region
+            // if (!string.IsNullOrEmpty(where.PkId))
+            //  expr = expr.And(p => p.PkId == where.PkId);
+            if (!string.IsNullOrEmpty(where.Tttle))
+                expr = expr.And(p => p.Tttle == where.Tttle);
+            // if (!string.IsNullOrEmpty(where.OfflineActivityAddress))
+            //  expr = expr.And(p => p.OfflineActivityAddress == where.OfflineActivityAddress);
+            if (where.StartDate!=null)
+                expr = expr.And(p => p.StartDate >= where.StartDate);
+            if (where.EndDate!=null)
+                expr = expr.And(p => p.EndDate <= where.EndDate);
+            // if (!string.IsNullOrEmpty(where.ImageUrl))
+            //  expr = expr.And(p => p.ImageUrl == where.ImageUrl);
+            // if (!string.IsNullOrEmpty(where.BriefDescription))
+            //  expr = expr.And(p => p.BriefDescription == where.BriefDescription);
+            // if (!string.IsNullOrEmpty(where.State))
+            //  expr = expr.And(p => p.State == where.State);
+            // if (!string.IsNullOrEmpty(where.DeletionTime))
+            //  expr = expr.And(p => p.DeletionTime == where.DeletionTime);
+            // if (!string.IsNullOrEmpty(where.DeleterUserCode))
+            //  expr = expr.And(p => p.DeleterUserCode == where.DeleterUserCode);
+            // if (!string.IsNullOrEmpty(where.IsDeleted))
+            //  expr = expr.And(p => p.IsDeleted == where.IsDeleted);
+            // if (!string.IsNullOrEmpty(where.LastModificationTime))
+            //  expr = expr.And(p => p.LastModificationTime == where.LastModificationTime);
+            // if (!string.IsNullOrEmpty(where.LastModifierUserCode))
+            //  expr = expr.And(p => p.LastModifierUserCode == where.LastModifierUserCode);
+            // if (!string.IsNullOrEmpty(where.CreationTime))
+            //  expr = expr.And(p => p.CreationTime == where.CreationTime);
+            // if (!string.IsNullOrEmpty(where.CreatorUserCode))
+            //  expr = expr.And(p => p.CreatorUserCode == where.CreatorUserCode);
+            #endregion
             var list = _offlineActivityRepository.Query().Where(expr).OrderByDescending(p => p.PkId).Skip(skipResults).Take(maxResults).ToList();
             var count = _offlineActivityRepository.Query().Where(expr).Count();
             return new System.Tuple<IList<OfflineActivityEntity>, int>(list, count);

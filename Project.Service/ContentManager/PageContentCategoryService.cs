@@ -87,7 +87,7 @@ namespace Project.Service.ContentManager
         {
           try
             {
-            _pageContentCategoryRepository.Update(entity);
+            _pageContentCategoryRepository.Merge(entity);
          return true;
         }
         catch

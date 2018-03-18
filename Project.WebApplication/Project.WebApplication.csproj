@@ -326,6 +326,7 @@
     <Content Include="Resources\ng.png" />
     <Content Include="Scripts\Control\AllDepartmentControl.js" />
     <Content Include="Scripts\Control\AreaSelectControl.js" />
+    <Content Include="Scripts\Control\ImageUploadDefaultControl.js" />
     <Content Include="Scripts\Control\ImageUploadControl.js" />
     <Content Include="Scripts\Control\ProductcategoryControl.js" />
     <Content Include="Scripts\Control\ueditor\dialogs\anchor\anchor.html" />

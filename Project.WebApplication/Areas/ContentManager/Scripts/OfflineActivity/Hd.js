@@ -4,6 +4,9 @@
     pro.OfflineActivity.HdPage = pro.OfflineActivity.HdPage || {};
     pro.OfflineActivity.HdPage = {
         initPage: function () {
+
+            pro.ImageUploadDefaultControl.init();
+
             $("#btnAdd").click(function () {
                 pro.OfflineActivity.HdPage.submit("Add");
             });
@@ -22,6 +25,8 @@
                 for (var filedname in bindField) {
                     $("[name=" + filedname + "]").val(bindEntity[filedname]);
                 }
+
+                pro.ImageUploadDefaultControl.bindData(bindEntity["ImageUrl"]);
                 //行项目信息用json绑定控件
                 //alert(JSON.stringify(BindEntity.List));
             }
@@ -62,21 +67,14 @@
             addRule: function () {
                 $("#form1").validate({
                     rules: {
-          PkId: { required: true  },
+        
           Tttle: { required: true  },
           OfflineActivityAddress: { required: true  },
           StartDate: { required: true  },
           EndDate: { required: true  },
           ImageUrl: { required: true  },
-          BriefDescription: { required: true  },
-          State: { required: true  },
-          DeletionTime: { required: true  },
-          DeleterUserCode: { required: true  },
-          IsDeleted: { required: true  },
-          LastModificationTime: { required: true  },
-          LastModifierUserCode: { required: true  },
-          CreationTime: { required: true  },
-          CreatorUserCode: { required: true  },
+          BriefDescription: { required: true, minlength: 10 }
+        
                     },
                     messages: {
           PkId:  "必填!",
@@ -85,7 +83,7 @@
           StartDate:  "开始时间必填!",
           EndDate:  "结束时间必填!",
           ImageUrl:  "图片必填!",
-          BriefDescription:  "简介必填!",
+          BriefDescription: { required: "简介必填!", minlength: "简介长度不够!" },
           State:  "活动状态必填!",
           DeletionTime:  "删除时间必填!",
           DeleterUserCode:  "删除人必填!",
@@ -93,7 +91,7 @@
           LastModificationTime:  "修改时间必填!",
           LastModifierUserCode:  "修改人必填!",
           CreationTime:  "创建时间必填!",
-          CreatorUserCode:  "创建人必填!",
+          CreatorUserCode:  "创建人必填!"
                     },
                     errorPlacement: function (error, element) {
                         pro.commonKit.errorPlacementHd(error, element);
