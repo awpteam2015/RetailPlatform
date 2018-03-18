@@ -17,7 +17,8 @@ namespace  Project.Map.CustomerManager
         {
             this.MapPkidDefault<CustomerEntity,int>();
  
-            Map(p => p.CardNo);    
+            Map(p => p.CardNo);
+            Map(p => p.CardTypeId);
             Map(p => p.Password);    
             Map(p => p.CustomerName);    
             Map(p => p.Gender);    
@@ -28,8 +29,8 @@ namespace  Project.Map.CustomerManager
             Map(p => p.Mobilephone);    
             Map(p => p.ProvinceId);    
             Map(p => p.CityId);    
-            Map(p => p.CountryId);    
-            Map(p => p.Address);    
+            Map(p => p.AreaId);    
+            Map(p => p.Address);     Map(p => p.AddressFull);    
             Map(p => p.Memo);    
             Map(p => p.Discount);    
             Map(p => p.Totalamount);    

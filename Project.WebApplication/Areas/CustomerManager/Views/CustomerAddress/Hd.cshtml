@@ -1,6 +1,6 @@
 ﻿
 
-  
+
 
 
 @{
@@ -10,128 +10,86 @@
 
 @section JavaScript{
     <script src="/Areas/CustomerManager/Scripts/CustomerAddress/Hd.js?JsParamter=@SiteConfig.GetConfig().JsParamter"></script>
+
+    <script src="/Scripts/Control/AreaSelectControl.js"></script>
 }
 <div style="display: none">
-<input id="BindEntity" type="text" value="@ViewBag.BindEntity" />
-<input id="Command" type="hidden" />
+    <input id="BindEntity" type="text" value="@ViewBag.BindEntity" />
+    <input id="Command" type="hidden" />
 </div>
 <div class="mtable_div">
     <form id="form1">
         <table class="mtable">
-            
-              <tr>
-            <td  >
-                自动增加得建立序列<span style="color: Red">*</span>:
-            </td>
-            <td >
-                <input id="PkId" name="PkId"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td  >
-                <span style="color: Red">*</span>:
-            </td>
-            <td >
-                <input id="CustomerId" name="CustomerId"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td  >
-                送货地址  省<span style="color: Red">*</span>:
-            </td>
-            <td >
-                <input id="Province" name="Province"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td  >
-                送货地址   市<span style="color: Red">*</span>:
-            </td>
-            <td >
-                <input id="CityId" name="CityId"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td  >
-                送货地址   区（新增）<span style="color: Red">*</span>:
-            </td>
-            <td >
-                <input id="CountryId" name="CountryId"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td  >
-                送货地址   详细地址<span style="color: Red">*</span>:
-            </td>
-            <td >
-                <input id="Address" name="Address"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td  >
-                是否是默认地址<span style="color: Red">*</span>:
-            </td>
-            <td >
-                <input id="IsDefault" name="IsDefault"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td  >
-                备注<span style="color: Red">*</span>:
-            </td>
-            <td >
-                <input id="Remarks" name="Remarks"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td  >
-                收货人姓名<span style="color: Red">*</span>:
-            </td>
-            <td >
-                <input id="ReceiverName" name="ReceiverName"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td  >
-                电话<span style="color: Red">*</span>:
-            </td>
-            <td >
-                <input id="FamilyTelephone" name="FamilyTelephone"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td  >
-                邮编<span style="color: Red">*</span>:
-            </td>
-            <td >
-                <input id="PostCode" name="PostCode"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td  >
-                手机<span style="color: Red">*</span>:
-            </td>
-            <td >
-                <input id="Mobilephone" name="Mobilephone"  type="text"  />
-            </td>
-        </tr>
-          
+            <tr>
+                <td style="width: 120px">
+                    收货人姓名<span style="color: Red">*</span>:
+                </td>
+                <td colspan="3">
+                    <input id="ReceiverName" name="ReceiverName" type="text" />
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    省市区
+                </td>
+                <td>
+                    <input id="ProvinceId" name="ProvinceId" type="text" class="easyui-combobox" />
+
+                    <input id="CityId" name="CityId" type="text" class="easyui-combobox" />
+
+                    <input id="AreaId" name="AreaId" type="text" class="easyui-combobox" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    详细地址:
+                </td>
+                <td>
+                    <input id="Address" name="Address" type="text" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    是否是默认地址<span style="color: Red">*</span>:
+                </td>
+                <td>
+                    <select id="IsDefault" name="IsDefault">
+                        <option value="2">否</option>
+                        <option value="1">是</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    手机/电话:
+                </td>
+                <td>
+                    <input id="Mobilephone" name="Mobilephone" type="text" />/  <input id="FamilyTelephone" name="FamilyTelephone" type="text" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    邮编:
+                </td>
+                <td>
+                    <input id="PostCode" name="PostCode" type="text" />
+                </td>
+            </tr>
+
+            @*<tr>
+                    <td>
+                        备注<span style="color: Red">*</span>:
+                    </td>
+                    <td>
+                        <input id="Remarks" name="Remarks" type="text" />
+                    </td>
+                </tr>*@
         </table>
     </form>
 </div>
 <div style="padding: 10px 10px 0 10px; text-align: center;">
-    @if (Request["PkId"]==null||int.Parse(Request["PkId"]) == 0)
+    @if (Request["PkId"] == null || int.Parse(Request["PkId"]) == 0)
     {
         <a id="btnAdd" class="easyui-linkbutton" iconcls="icon-add" href="javascript:void(0)">新增</a>
     }
@@ -141,8 +99,6 @@
     }
     <a id="btnClose" class="easyui-linkbutton" iconcls="icon-cancel" href="javascript:void(0)">关闭</a>
 </div>
-
-
 
 
 

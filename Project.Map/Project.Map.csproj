@@ -125,8 +125,11 @@
     <Compile Include="RiverManager\RiverOwerMap.cs" />
     <Compile Include="RiverManager\RiverProblemApplyMap.cs" />
     <Compile Include="RiverManager\RiverProblemDbMap.cs" />
+    <Compile Include="SystemSetManager\AreaMap.cs" />
+    <Compile Include="SystemSetManager\CityMap.cs" />
     <Compile Include="SystemSetManager\HolidayDetailMap.cs" />
     <Compile Include="SystemSetManager\IndexPageSetMap.cs" />
+    <Compile Include="SystemSetManager\ProvinceMap.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

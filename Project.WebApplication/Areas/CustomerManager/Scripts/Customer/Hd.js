@@ -4,6 +4,9 @@
     pro.Customer.HdPage = pro.Customer.HdPage || {};
     pro.Customer.HdPage = {
         initPage: function () {
+            //省市区初始化
+            pro.AreaSelectControl.init();
+
             $("#btnAdd").click(function () {
                 pro.Customer.HdPage.submit("Add");
             });
@@ -29,6 +32,7 @@
         submit: function (command) {
             var postData = {};
             postData.RequestEntity = pro.submitKit.getHeadJson();
+            postData.RequestEntity.Password = $("#Password").val();
 
             if (pro.commonKit.getUrlParam("PkId") != "") {
                 postData.RequestEntity.PkId = pro.commonKit.getUrlParam("PkId");
@@ -62,32 +66,32 @@
             addRule: function () {
                 $("#form1").validate({
                     rules: {
-          PkId: { required: true  },
-          CardNo: { required: true  },
+          //PkId: { required: true  },
+          //CardNo: { required: true  },
           Password: { required: true  },
           CustomerName: { required: true  },
-          Gender: { required: true  },
-          Birthday: { required: true  },
-          Email: { required: true  },
-          Familytelephone: { required: true  },
-          Postcode: { required: true  },
+          //Gender: { required: true  },
+          //Birthday: { required: true  },
+          //Email: { required: true  },
+          //Familytelephone: { required: true  },
+          //Postcode: { required: true  },
           Mobilephone: { required: true  },
-          ProvinceId: { required: true  },
-          CityId: { required: true  },
-          CountryId: { required: true  },
-          Address: { required: true  },
-          Memo: { required: true  },
-          Discount: { required: true  },
-          Totalamount: { required: true  },
-          Totalpoints: { required: true  },
-          Availablepoints: { required: true  },
-          LastModificationTime: { required: true  },
-          LastModifierUserCode: { required: true  },
-          CreationTime: { required: true  },
-          CreatorUserCode: { required: true  },
-          IsDeleted: { required: true  },
-          DeleterUserCode: { required: true  },
-          DeletionTime: { required: true  },
+          //ProvinceId: { required: true  },
+          //CityId: { required: true  },
+          //CountryId: { required: true  },
+          //Address: { required: true  },
+          //Memo: { required: true  },
+          //Discount: { required: true  },
+          //Totalamount: { required: true  },
+          //Totalpoints: { required: true  },
+          //Availablepoints: { required: true  },
+          //LastModificationTime: { required: true  },
+          //LastModifierUserCode: { required: true  },
+          //CreationTime: { required: true  },
+          //CreatorUserCode: { required: true  },
+          //IsDeleted: { required: true  },
+          //DeleterUserCode: { required: true  },
+          //DeletionTime: { required: true  },
                     },
                     messages: {
           PkId:  "必填!",

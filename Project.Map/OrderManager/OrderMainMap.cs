@@ -2,7 +2,7 @@
  /***************************************************************************
  *       功能：     OMOrderMain映射类
  *       作者：     李伟伟
- *       日期：     2018/3/17
+ *       日期：     2018/3/18
  *       描述：     订单主表信息
  * *************************************************************************/
 
@@ -11,12 +11,12 @@ using Project.Model.OrderManager;
 
 namespace  Project.Map.OrderManager
 {
-    public class OrderMainMap : BaseMap<OrderMainEntity,int>
+    public class OrderMainMap : BaseMap<OrderMainEntity,string>
     {
         public OrderMainMap():base("OM_OrderMain")
         {
-            this.MapPkidDefault<OrderMainEntity,int>();
- 
+            //this.MapPkidDefault<OrderMainEntity,int>();
+            Id(p => p.OrderNo);
             Map(p => p.State);    
             Map(p => p.Totalamount);    
             Map(p => p.PresentPoints);    
@@ -38,6 +38,9 @@ namespace  Project.Map.OrderManager
             Map(p => p.SendTime);    
             Map(p => p.SendNo);    
             Map(p => p.SendRemark);    
+            Map(p => p.ReturnReason);    
+            Map(p => p.ReturnNo);    
+            Map(p => p.ReturnState);    
             Map(p => p.ReturnTime);    
             Map(p => p.ReturnRemark);    
             Map(p => p.ConfirmTime);    

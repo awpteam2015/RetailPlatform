@@ -22,7 +22,7 @@ namespace Project.Model.CustomerManager
         /// <summary>
         /// 送货地址  省
         /// </summary>
-        public virtual System.String Province{get; set;}
+        public virtual System.String ProvinceId{get; set;}
         /// <summary>
         /// 送货地址   市
         /// </summary>
@@ -30,11 +30,16 @@ namespace Project.Model.CustomerManager
         /// <summary>
         /// 送货地址   区（新增）
         /// </summary>
-        public virtual System.String CountryId{get; set;}
+        public virtual System.String AreaId{get; set;}
         /// <summary>
         /// 送货地址   详细地址
         /// </summary>
         public virtual System.String Address{get; set;}
+
+        /// <summary>
+        /// 送货地址   详细地址
+        /// </summary>
+        public virtual System.String AddressFull { get; set; }
         /// <summary>
         /// 是否是默认地址
         /// </summary>
@@ -59,11 +64,23 @@ namespace Project.Model.CustomerManager
         /// 手机
         /// </summary>
         public virtual System.String Mobilephone{get; set;}
-		#endregion
-        
+        #endregion
+
 
         #region 新增属性
-        
+        public virtual System.String Attr_IsDefault {
+            get
+            {
+                if (IsDefault==1)
+                {
+                    return "是";
+                }
+                else
+                {
+                    return "否";
+                }
+            }
+        }
         #endregion
     }
 }

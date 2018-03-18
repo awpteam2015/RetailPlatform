@@ -62,6 +62,9 @@ namespace Project.WebApplication.Areas.OrderManager.Controllers
 			//where.SendTime = RequestHelper.GetFormString("SendTime");
 			//where.SendNo = RequestHelper.GetFormString("SendNo");
 			//where.SendRemark = RequestHelper.GetFormString("SendRemark");
+			//where.ReturnReason = RequestHelper.GetFormString("ReturnReason");
+			//where.ReturnNo = RequestHelper.GetFormString("ReturnNo");
+			//where.ReturnState = RequestHelper.GetFormString("ReturnState");
 			//where.ReturnTime = RequestHelper.GetFormString("ReturnTime");
 			//where.ReturnRemark = RequestHelper.GetFormString("ReturnRemark");
 			//where.ConfirmTime = RequestHelper.GetFormString("ConfirmTime");
@@ -86,7 +89,7 @@ namespace Project.WebApplication.Areas.OrderManager.Controllers
 
 
         [HttpPost]
-        public AbpJsonResult Add(AjaxRequest<OrderMainEntity> postData)
+        public AbpJsonResult Add(AjaxRequest<OrderMainEntity,string> postData)
         {
             var addResult = OrderMainService.GetInstance().Add(postData.RequestEntity);
             var result = new AjaxResponse<OrderMainEntity>()
@@ -99,7 +102,7 @@ namespace Project.WebApplication.Areas.OrderManager.Controllers
 
 
         [HttpPost]
-        public AbpJsonResult Edit( AjaxRequest<OrderMainEntity> postData)
+        public AbpJsonResult Edit( AjaxRequest<OrderMainEntity,string> postData)
         {
             var newInfo = postData.RequestEntity;
             var orgInfo = OrderMainService.GetInstance().GetModelByPk(postData.RequestEntity.PkId.ToString());
@@ -114,16 +117,16 @@ namespace Project.WebApplication.Areas.OrderManager.Controllers
             return new AbpJsonResult(result, new NHibernateContractResolver(new string[] { "result" }));
         }
 
-        [HttpPost]
-        public AbpJsonResult Delete(int pkid)
-        {
-            var deleteResult = OrderMainService.GetInstance().DeleteByPkId(pkid.ToString());
-            var result = new AjaxResponse<OrderMainEntity>()
-            {
-                success = deleteResult
-            };
-            return new AbpJsonResult(result, new NHibernateContractResolver(new string[] { "result" }));
-        }
+        //[HttpPost]
+        //public AbpJsonResult Delete(int pkid)
+        //{
+        //    var deleteResult = OrderMainService.GetInstance().DeleteByPkId(pkid);
+        //    var result = new AjaxResponse<OrderMainEntity>()
+        //    {
+        //        success = deleteResult
+        //    };
+        //    return new AbpJsonResult(result, new NHibernateContractResolver(new string[] { "result" }));
+        //}
     }
 }
 

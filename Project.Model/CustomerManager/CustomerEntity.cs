@@ -19,6 +19,9 @@ namespace Project.Model.CustomerManager
         /// 
         /// </summary>
         public virtual System.String CardNo{get; set;}
+
+        public virtual System.Int32 CardTypeId { get; set; }
+
         /// <summary>
         /// 密码
         /// </summary>
@@ -62,11 +65,11 @@ namespace Project.Model.CustomerManager
         /// <summary>
         /// 居住地址   区（新增）
         /// </summary>
-        public virtual System.String CountryId{get; set;}
+        public virtual System.String AreaId { get; set;}
         /// <summary>
         /// 居住地址   详细地址
         /// </summary>
-        public virtual System.String Address{get; set;}
+        public virtual System.String Address{get; set;}  public virtual System.String AddressFull { get; set;}
         /// <summary>
         /// 备注
         /// </summary>

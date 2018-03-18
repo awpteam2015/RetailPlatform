@@ -139,6 +139,24 @@
             
             </summary>
         </member>
+        <member name="M:Project.WebApplication.Areas.SystemSetManager.Controllers.AreaController.GetList_Combobox_Province">
+            <summary>
+            省
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Project.WebApplication.Areas.SystemSetManager.Controllers.AreaController.GetList_Combobox_City">
+            <summary>
+            市
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Project.WebApplication.Areas.SystemSetManager.Controllers.AreaController.GetList_Combobox_Area">
+            <summary>
+            区
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:Project.WebApplication.Areas.ReportManager.Controllers.HrReportController.EmployeeRSReport">
             <summary>
             人数统计情况报表

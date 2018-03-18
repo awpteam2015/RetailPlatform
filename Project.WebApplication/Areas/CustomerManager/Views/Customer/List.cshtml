@@ -1,6 +1,6 @@
 ﻿
 
-  
+
 
 
 
@@ -14,262 +14,54 @@
 }
 
 <div title="会员信息" style="padding:1px;">
-    <table id="datagrid" style="height:auto;" iconcls=".icon-save" singleselect="true"  toolbar="#tb" fit="true"></table>
+    <table id="datagrid" style="height:auto;" iconcls=".icon-save" singleselect="true" toolbar="#tb" fit="true"></table>
     <div id="tb" style="padding:5px;height:auto">
-        <div  style="margin-bottom: 5px">
-            <a id="btnAdd" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true" >添加</a>
-  
-            <a id="btnDel" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true" >删除</a>
-           
-            <a id="btnEdit" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true" >编辑</a>
-          
-            <a id="btnRefresh" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-reload',plain:true" >刷新</a>
-           
+        <div style="margin-bottom: 5px">
+            <a id="btnAdd" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true">添加</a>
+
+            @*<a id="btnDel" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true">删除</a>*@
+
+            <a id="btnEdit" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true">编辑</a>
+
+            <a id="btnAddress" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true">收货地址列表</a>
+
+            @*<a id="btnLock" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true">注销锁定</a>*@
+
+            <a id="btnRefresh" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-reload',plain:true">刷新</a>
+
         </div>
-      
+
         <div id="divSearch">
             <form>
-            
-             <table class="mtable">
-            
-              <tr>
-            <td >
-                :
-            </td>
-            <td >
-                <input id="PkId" name="PkId"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td >
-                :
-            </td>
-            <td >
-                <input id="CardNo" name="CardNo"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td >
-                密码:
-            </td>
-            <td >
-                <input id="Password" name="Password"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td >
-                会员名称:
-            </td>
-            <td >
-                <input id="CustomerName" name="CustomerName"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td >
-                性别:
-            </td>
-            <td >
-                <input id="Gender" name="Gender"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td >
-                生日:
-            </td>
-            <td >
-                <input id="Birthday" name="Birthday"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td >
-                邮件:
-            </td>
-            <td >
-                <input id="Email" name="Email"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td >
-                家庭电话:
-            </td>
-            <td >
-                <input id="Familytelephone" name="Familytelephone"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td >
-                邮编:
-            </td>
-            <td >
-                <input id="Postcode" name="Postcode"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td >
-                手机:
-            </td>
-            <td >
-                <input id="Mobilephone" name="Mobilephone"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td >
-                居住地址   省:
-            </td>
-            <td >
-                <input id="ProvinceId" name="ProvinceId"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td >
-                居住地址   市:
-            </td>
-            <td >
-                <input id="CityId" name="CityId"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td >
-                居住地址   区（新增）:
-            </td>
-            <td >
-                <input id="CountryId" name="CountryId"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td >
-                居住地址   详细地址:
-            </td>
-            <td >
-                <input id="Address" name="Address"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td >
-                备注:
-            </td>
-            <td >
-                <input id="Memo" name="Memo"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td >
-                折扣率:
-            </td>
-            <td >
-                <input id="Discount" name="Discount"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td >
-                消费总金额:
-            </td>
-            <td >
-                <input id="Totalamount" name="Totalamount"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td >
-                总积分:
-            </td>
-            <td >
-                <input id="Totalpoints" name="Totalpoints"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td >
-                可用积分:
-            </td>
-            <td >
-                <input id="Availablepoints" name="Availablepoints"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td >
-                修改时间:
-            </td>
-            <td >
-                <input id="LastModificationTime" name="LastModificationTime"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td >
-                修改人:
-            </td>
-            <td >
-                <input id="LastModifierUserCode" name="LastModifierUserCode"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td >
-                创建时间:
-            </td>
-            <td >
-                <input id="CreationTime" name="CreationTime"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td >
-                创建人:
-            </td>
-            <td >
-                <input id="CreatorUserCode" name="CreatorUserCode"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td >
-                是否删除:
-            </td>
-            <td >
-                <input id="IsDeleted" name="IsDeleted"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td >
-                删除人:
-            </td>
-            <td >
-                <input id="DeleterUserCode" name="DeleterUserCode"  type="text"  />
-            </td>
-        </tr>
-            
-              <tr>
-            <td >
-                删除时间:
-            </td>
-            <td >
-                <input id="DeletionTime" name="DeletionTime"  type="text"  />
-            </td>
-        </tr>
-          <tr>
-        <td colspan="2">   <a href="#" class="easyui-linkbutton" iconcls="icon-search" id="btnSearch">搜索</a>
-        </td>
-        </tr>
-        </table>
+
+                <table class="mtable">
+                    <tr>
+                        @*<td>
+                            会员卡号 :
+                        </td>
+                        <td>
+                            <input id="CardNo" name="CardNo" type="text" />
+                        </td>*@
+
+                        <td>
+                            会员名称:
+                        </td>
+                        <td>
+                            <input id="CustomerName" name="CustomerName" type="text" />
+                        </td>
+
+                        <td>
+                            注册手机号:
+                        </td>
+                        <td>
+                            <input id="Mobilephone" name="Mobilephone" type="text" />
+                        </td>
+
+                        <td colspan="2">
+                            <a href="#" class="easyui-linkbutton" iconcls="icon-search" id="btnSearch">搜索</a>
+                        </td>
+                    </tr>
+                </table>
             </form>
         </div>
     </div>

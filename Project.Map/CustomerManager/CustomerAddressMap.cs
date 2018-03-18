@@ -18,10 +18,11 @@ namespace  Project.Map.CustomerManager
             this.MapPkidDefault<CustomerAddressEntity,int>();
  
             Map(p => p.CustomerId);    
-            Map(p => p.Province);    
+            Map(p => p.ProvinceId);    
             Map(p => p.CityId);    
-            Map(p => p.CountryId);    
-            Map(p => p.Address);    
+            Map(p => p.AreaId);    
+            Map(p => p.Address);
+            Map(p => p.AddressFull);   
             Map(p => p.IsDefault);    
             Map(p => p.Remarks);    
             Map(p => p.ReceiverName);    

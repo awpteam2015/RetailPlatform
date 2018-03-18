@@ -4,7 +4,7 @@ var pro = pro || {};
     pro.CustomerAddress = pro.CustomerAddress || {};
     pro.CustomerAddress.ListPage = pro.CustomerAddress.ListPage || {};
     pro.CustomerAddress.ListPage = {
-      init: function () {
+        init: function () {
             return {
                 tabObj: new pro.TabBase(),
                 gridObj: new pro.GridBase("#datagrid", false)
@@ -15,24 +15,18 @@ var pro = pro || {};
             var tabObj = initObj.tabObj;
             var gridObj = initObj.gridObj;
             gridObj.grid({
-                url: '/CustomerManager/CustomerAddress/GetList',
+                url: '/CustomerManager/CustomerAddress/GetList?CustomerId=' + pro.commonKit.getUrlParam("CustomerId"),
                 fitColumns: false,
                 nowrap: false,
                 rownumbers: true, //行号
                 singleSelect: true,
                 columns: [[
-         { field: 'PkId', title: '自动增加得建立序列', width: 100 },
-         { field: 'CustomerId', title: '', width: 100 },
-         { field: 'Province', title: '送货地址  省', width: 100 },
-         { field: 'CityId', title: '送货地址   市', width: 100 },
-         { field: 'CountryId', title: '送货地址   区（新增）', width: 100 },
-         { field: 'Address', title: '送货地址   详细地址', width: 100 },
-         { field: 'IsDefault', title: '是否是默认地址', width: 100 },
-         { field: 'Remarks', title: '备注', width: 100 },
          { field: 'ReceiverName', title: '收货人姓名', width: 100 },
+           { field: 'Mobilephone', title: '手机', width: 100 },
          { field: 'FamilyTelephone', title: '电话', width: 100 },
-         { field: 'PostCode', title: '邮编', width: 100 },
-         { field: 'Mobilephone', title: '手机', width: 100 },
+         { field: 'AddressFull', title: '送货地址', width: 300 },
+          { field: 'PostCode', title: '邮编', width: 100 },
+         { field: 'Attr_IsDefault', title: '是否是默认地址', width: 100 }
                 ]],
                 pagination: true,
                 pageSize: 20, //每页显示的记录条数，默认为10     
@@ -41,7 +35,7 @@ var pro = pro || {};
                );
 
             $("#btnAdd").click(function () {
-               tabObj.add("/CustomerManager/CustomerAddress/Hd","新增");
+                tabObj.add("/CustomerManager/CustomerAddress/Hd?CustomerId=" + pro.commonKit.getUrlParam("CustomerId"), "新增");
             });
 
             $("#btnEdit").click(function () {
@@ -50,7 +44,7 @@ var pro = pro || {};
                     return;
                 }
                 var PkId = gridObj.getSelectedRow().PkId;
-                tabObj.add("/CustomerManager/CustomerAddress/Hd?PkId=" + PkId, "编辑" + PkId);
+                tabObj.add("/CustomerManager/CustomerAddress/Hd?PkId=" + PkId + "&CustomerId=" + pro.commonKit.getUrlParam("CustomerId"), "编辑" + PkId);
             });
 
 
@@ -60,7 +54,7 @@ var pro = pro || {};
 
             $("#btnDel").click(function () {
                 if (!gridObj.isSelected()) {
-                $.alertExtend.infoOp();
+                    $.alertExtend.infoOp();
                     return;
                 }
                 $.messager.confirm("确认操作", "是否确认删除", function (bl) {
@@ -84,7 +78,7 @@ var pro = pro || {};
                 gridObj.refresh();
             });
         },
-         closeTab: function () {
+        closeTab: function () {
             this.init().tabObj.closeTab();
         }
     };

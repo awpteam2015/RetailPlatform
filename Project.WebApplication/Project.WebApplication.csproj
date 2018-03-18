@@ -325,6 +325,7 @@
     <Content Include="Resources\gx.png" />
     <Content Include="Resources\ng.png" />
     <Content Include="Scripts\Control\AllDepartmentControl.js" />
+    <Content Include="Scripts\Control\AreaSelectControl.js" />
     <Content Include="Scripts\Control\ImageUploadControl.js" />
     <Content Include="Scripts\Control\ProductcategoryControl.js" />
     <Content Include="Scripts\Control\ueditor\dialogs\anchor\anchor.html" />
@@ -744,6 +745,9 @@
     <Content Include="Areas\ContentManager\Views\PageContentCategory\List.cshtml" />
     <Content Include="Areas\ContentManager\Views\PageContent\Hd.cshtml" />
     <Content Include="Areas\ContentManager\Views\PageContent\List.cshtml" />
+    <Content Include="Areas\OrderManager\Views\web.config" />
+    <Content Include="Areas\CustomerManager\Views\web.config" />
+    <Content Include="Areas\ContentManager\Views\web.config" />
     <None Include="Properties\PublishProfiles\OA.pubxml" />
     <Content Include="Scripts\Control\ueditor\net\fileUp.ashx" />
     <Content Include="Scripts\Control\ueditor\net\getContent.ashx" />
@@ -1411,10 +1415,12 @@
     <Compile Include="Areas\ContentManager\Controllers\OfflineActivityController.cs" />
     <Compile Include="Areas\ContentManager\Controllers\PageContentCategoryController.cs" />
     <Compile Include="Areas\ContentManager\Controllers\PageContentController.cs" />
+    <Compile Include="Areas\ContentManager\ContentManagerAreaRegistration.cs" />
     <Compile Include="Areas\CustomerManager\Controllers\CardTypeController.cs" />
     <Compile Include="Areas\CustomerManager\Controllers\CustomerAddressController.cs" />
     <Compile Include="Areas\CustomerManager\Controllers\CustomerCollectionController.cs" />
     <Compile Include="Areas\CustomerManager\Controllers\CustomerController.cs" />
+    <Compile Include="Areas\CustomerManager\CustomerManagerAreaRegistration.cs" />
     <Compile Include="Areas\HRManager\Controllers\AttendanceController.cs" />
     <Compile Include="Areas\HRManager\Controllers\AttendanceUploadRecordController.cs" />
     <Compile Include="Areas\HRManager\Controllers\ContinEducationController.cs" />
@@ -1423,7 +1429,9 @@
     <Compile Include="Areas\OrderManager\Controllers\OrderMainController.cs" />
     <Compile Include="Areas\OrderManager\Controllers\OrderMainDetailController.cs" />
     <Compile Include="Areas\OrderManager\Controllers\ShopCartController.cs" />
+    <Compile Include="Areas\OrderManager\OrderManagerAreaRegistration.cs" />
     <Compile Include="Areas\ProductManager\Models\ProductHdVm.cs" />
+    <Compile Include="Areas\SystemSetManager\Controllers\AreaController.cs" />
     <Compile Include="Areas\SystemSetManager\Controllers\DictionaryController.cs" />
     <Compile Include="Areas\HRManager\Controllers\EmployeeChildrenController.cs" />
     <Compile Include="Areas\HRManager\Controllers\EmployeeFileController.cs" />

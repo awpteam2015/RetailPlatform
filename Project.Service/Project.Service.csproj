@@ -64,6 +64,9 @@
     <Compile Include="CustomerManager\CustomerAddressService.cs" />
     <Compile Include="CustomerManager\CustomerCollectionService.cs" />
     <Compile Include="CustomerManager\CustomerService.cs" />
+    <Compile Include="CustomerManager\Dto\CustomerDto.cs" />
+    <Compile Include="CustomerManager\Help\CustomerHelp.cs" />
+    <Compile Include="CustomerManager\Validate\CustomerValidate.cs" />
     <Compile Include="HRManager\AttendanceUploadRecordService.cs" />
     <Compile Include="HRManager\ContinEducationService.cs" />
     <Compile Include="HRManager\ContractService.cs" />
@@ -145,9 +148,12 @@
     <Compile Include="RiverManager\RiverProblemApplyService.cs" />
     <Compile Include="RiverManager\RiverProblemDbService.cs" />
     <Compile Include="RiverManager\RiverService.cs" />
+    <Compile Include="SystemSetManager\AreaService.cs" />
+    <Compile Include="SystemSetManager\CityService.cs" />
     <Compile Include="SystemSetManager\HolidayDetailService.cs" />
     <Compile Include="HRManager\YearHholidayDefinitionService.cs" />
     <Compile Include="SystemSetManager\IndexPageSetService.cs" />
+    <Compile Include="SystemSetManager\ProvinceService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Project.Infrastructure.FrameworkCore\Project.Infrastructure.FrameworkCore.csproj">

@@ -4,6 +4,9 @@
     pro.CustomerAddress.HdPage = pro.CustomerAddress.HdPage || {};
     pro.CustomerAddress.HdPage = {
         initPage: function () {
+            pro.AreaSelectControl.init({ required: true });
+
+
             $("#btnAdd").click(function () {
                 pro.CustomerAddress.HdPage.submit("Add");
             });
@@ -29,6 +32,7 @@
         submit: function (command) {
             var postData = {};
             postData.RequestEntity = pro.submitKit.getHeadJson();
+            postData.RequestEntity.CustomerId = pro.commonKit.getUrlParam("CustomerId");
 
             if (pro.commonKit.getUrlParam("PkId") != "") {
                 postData.RequestEntity.PkId = pro.commonKit.getUrlParam("PkId");
@@ -46,7 +50,7 @@
             }).done(
                 function (dataresult, data) {
                    function afterSuccess() {
-                        parent.$("#btnSearch").trigger("click");
+                       parent.$("#btnRefresh").trigger("click");
                         parent.pro.CustomerAddress.ListPage.closeTab();
                     }
                     parent.$.alertExtend.info("", afterSuccess());
@@ -62,18 +66,18 @@
             addRule: function () {
                 $("#form1").validate({
                     rules: {
-          PkId: { required: true  },
-          CustomerId: { required: true  },
-          Province: { required: true  },
-          CityId: { required: true  },
-          CountryId: { required: true  },
-          Address: { required: true  },
-          IsDefault: { required: true  },
-          Remarks: { required: true  },
+          //PkId: { required: true  },
+          //CustomerId: { required: true  },
+          //Province: { required: true  },
+          //CityId: { required: true  },
+          //CountryId: { required: true  },
+          //Address: { required: true  },
+          //IsDefault: { required: true  },
+          //Remarks: { required: true  },
           ReceiverName: { required: true  },
-          FamilyTelephone: { required: true  },
-          PostCode: { required: true  },
-          Mobilephone: { required: true  },
+          //FamilyTelephone: { required: true  },
+          //PostCode: { required: true  },
+          Mobilephone: { required: true  }
                     },
                     messages: {
           PkId:  "自动增加得建立序列必填!",

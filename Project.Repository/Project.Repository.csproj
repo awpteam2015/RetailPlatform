@@ -123,8 +123,11 @@
     <Compile Include="RiverManager\RiverProblemApplyRepository.cs" />
     <Compile Include="RiverManager\RiverProblemDbRepository.cs" />
     <Compile Include="RiverManager\RiverRepository.cs" />
+    <Compile Include="SystemSetManager\AreaRepository.cs" />
+    <Compile Include="SystemSetManager\CityRepository.cs" />
     <Compile Include="SystemSetManager\HolidayDetailRepository.cs" />
     <Compile Include="SystemSetManager\IndexPageSetRepository.cs" />
+    <Compile Include="SystemSetManager\ProvinceRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Project.Infrastructure.FrameworkCore\Project.Infrastructure.FrameworkCore.csproj">

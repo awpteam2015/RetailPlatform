@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web.Mvc;
 using AutoMapper;
 using Project.Infrastructure.FrameworkCore.DataNhibernate.Helpers;
+using Project.Infrastructure.FrameworkCore.ToolKit;
 using Project.Infrastructure.FrameworkCore.ToolKit.JsonHandler;
 using Project.Infrastructure.FrameworkCore.ToolKit.LinqExpansion;
 using Project.Infrastructure.FrameworkCore.WebMvc.Controllers.Results;
@@ -40,18 +41,18 @@ namespace Project.WebApplication.Areas.CustomerManager.Controllers
             var pIndex = this.Request["page"].ConvertTo<int>();
             var pSize = this.Request["rows"].ConvertTo<int>();
             var where = new CustomerAddressEntity();
-			//where.PkId = RequestHelper.GetFormString("PkId");
-			//where.CustomerId = RequestHelper.GetFormString("CustomerId");
-			//where.Province = RequestHelper.GetFormString("Province");
-			//where.CityId = RequestHelper.GetFormString("CityId");
-			//where.CountryId = RequestHelper.GetFormString("CountryId");
-			//where.Address = RequestHelper.GetFormString("Address");
-			//where.IsDefault = RequestHelper.GetFormString("IsDefault");
-			//where.Remarks = RequestHelper.GetFormString("Remarks");
-			//where.ReceiverName = RequestHelper.GetFormString("ReceiverName");
-			//where.FamilyTelephone = RequestHelper.GetFormString("FamilyTelephone");
-			//where.PostCode = RequestHelper.GetFormString("PostCode");
-			//where.Mobilephone = RequestHelper.GetFormString("Mobilephone");
+            //where.PkId = RequestHelper.GetFormString("PkId");
+            where.CustomerId = RequestHelper.GetInt("CustomerId");
+            //where.Province = RequestHelper.GetFormString("Province");
+            //where.CityId = RequestHelper.GetFormString("CityId");
+            //where.CountryId = RequestHelper.GetFormString("CountryId");
+            //where.Address = RequestHelper.GetFormString("Address");
+            //where.IsDefault = RequestHelper.GetFormString("IsDefault");
+            //where.Remarks = RequestHelper.GetFormString("Remarks");
+            //where.ReceiverName = RequestHelper.GetFormString("ReceiverName");
+            //where.FamilyTelephone = RequestHelper.GetFormString("FamilyTelephone");
+            //where.PostCode = RequestHelper.GetFormString("PostCode");
+            //where.Mobilephone = RequestHelper.GetFormString("Mobilephone");
             var searchList = CustomerAddressService.GetInstance().Search(where, (pIndex - 1) * pSize, pSize);
 
             var dataGridEntity = new DataGridResponse()
@@ -69,7 +70,7 @@ namespace Project.WebApplication.Areas.CustomerManager.Controllers
             var addResult = CustomerAddressService.GetInstance().Add(postData.RequestEntity);
             var result = new AjaxResponse<CustomerAddressEntity>()
                {
-                   success = true,
+                   success = addResult>0,
                    result = postData.RequestEntity
                };
             return new AbpJsonResult(result, new NHibernateContractResolver());

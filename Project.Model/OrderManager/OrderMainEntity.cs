@@ -3,7 +3,7 @@
  /***************************************************************************
  *       功能：     OMOrderMain实体类
  *       作者：     李伟伟
- *       日期：     2018/3/17
+ *       日期：     2018/3/18
  *       描述：     订单主表信息
  * *************************************************************************/
 using System;
@@ -12,11 +12,12 @@ using Project.Infrastructure.FrameworkCore.Domain.Entities.Component;
 
 namespace Project.Model.OrderManager
 {
-    public class OrderMainEntity: Entity
+    public class OrderMainEntity: Entity<String>
     {
         #region 属性
 
-        public virtual System.String OrderNo { get; set; }
+        
+       public virtual System.String OrderNo { get; set; }
 
         /// <summary>
         /// 订单状态(作废:-1;未确认:0;确认:1;先退货审核:T;子订单部分为确认:2)
@@ -102,6 +103,18 @@ namespace Project.Model.OrderManager
         /// 发货备注
         /// </summary>
         public virtual System.String SendRemark{get; set;}
+        /// <summary>
+        /// 退货原因
+        /// </summary>
+        public virtual System.String ReturnReason{get; set;}
+        /// <summary>
+        /// 退单快递单号
+        /// </summary>
+        public virtual System.String ReturnNo{get; set;}
+        /// <summary>
+        /// 退货状态
+        /// </summary>
+        public virtual System.Int32? ReturnState{get; set;}
         /// <summary>
         /// 退货时间
         /// </summary>
