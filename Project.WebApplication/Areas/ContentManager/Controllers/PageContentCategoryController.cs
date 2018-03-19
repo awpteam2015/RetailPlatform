@@ -30,7 +30,7 @@ namespace Project.WebApplication.Areas.ContentManager.Controllers
             return View();
         }
 
- 
+
         public ActionResult List()
         {
             return View();
@@ -42,7 +42,7 @@ namespace Project.WebApplication.Areas.ContentManager.Controllers
             var pSize = this.Request["rows"].ConvertTo<int>();
             var where = new PageContentCategoryEntity();
             //where.PkId = RequestHelper.GetFormString("PkId");
-            where.PageContentCategoryName = RequestHelper.GetString("PageContentCategoryName");
+            // where.PageContentCategoryName = RequestHelper.GetString("PageContentCategoryName");
             //where.ParentId = RequestHelper.GetFormString("ParentId");
             //where.Rank = RequestHelper.GetFormString("Rank");
             //where.Sort = RequestHelper.GetFormString("Sort");
@@ -54,15 +54,21 @@ namespace Project.WebApplication.Areas.ContentManager.Controllers
             //where.IsDeleted = RequestHelper.GetFormString("IsDeleted");
             //where.DeleterUserCode = RequestHelper.GetFormString("DeleterUserCode");
             //where.DeletionTime = RequestHelper.GetFormString("DeletionTime");
-            var searchList = PageContentCategoryService.GetInstance().Search(where, (pIndex - 1) * pSize, pSize);
+            var searchList = PageContentCategoryService.GetInstance().GetTopPageContentCategoryList();
 
-            var dataGridEntity = new DataGridResponse()
-            {
-                total = searchList.Item2,
-                rows = searchList.Item1
-            };
-            return new AbpJsonResult(dataGridEntity, new NHibernateContractResolver());
+            var dataGridEntity = new DataGridTreeResponse<PageContentCategoryEntity>(searchList.Count, searchList);
+            return new AbpJsonResult(dataGridEntity, new NHibernateContractResolver(new string[] { "children" }));
         }
+
+        public AbpJsonResult GetList_Combotree()
+        {
+            var where = new PageContentCategoryEntity();
+            //  where.PageContentCategoryName = RequestHelper.GetString("PageContentCategoryName");
+            var list = PageContentCategoryService.GetInstance().GetTopPageContentCategoryList();
+
+            return new AbpJsonResult(list, new NHibernateContractResolver(new string[] { "children" }));
+        }
+
 
 
         [HttpPost]
@@ -70,22 +76,22 @@ namespace Project.WebApplication.Areas.ContentManager.Controllers
         {
             var addResult = PageContentCategoryService.GetInstance().Add(postData.RequestEntity);
             var result = new AjaxResponse<PageContentCategoryEntity>()
-               {
-                   success = true,
-                   result = postData.RequestEntity
-               };
+            {
+                success = true,
+                result = postData.RequestEntity
+            };
             return new AbpJsonResult(result, new NHibernateContractResolver());
         }
 
 
         [HttpPost]
-        public AbpJsonResult Edit( AjaxRequest<PageContentCategoryEntity> postData)
+        public AbpJsonResult Edit(AjaxRequest<PageContentCategoryEntity> postData)
         {
             var newInfo = postData.RequestEntity;
             var orgInfo = PageContentCategoryService.GetInstance().GetModelByPk(postData.RequestEntity.PkId);
             var mergInfo = Mapper.Map(newInfo, orgInfo);
             var updateResult = PageContentCategoryService.GetInstance().Update(mergInfo);
-            
+
             var result = new AjaxResponse<PageContentCategoryEntity>()
             {
                 success = updateResult,

@@ -327,6 +327,7 @@
     <Content Include="Scripts\Control\AreaSelectControl.js" />
     <Content Include="Scripts\Control\ImageUploadDefaultControl.js" />
     <Content Include="Scripts\Control\ImageUploadControl.js" />
+    <Content Include="Scripts\Control\PageContentCategoryControl.js" />
     <Content Include="Scripts\Control\ProductcategoryControl.js" />
     <Content Include="Scripts\Control\ueditor\dialogs\anchor\anchor.html" />
     <Content Include="Scripts\Control\ueditor\dialogs\attachment\attachment.css" />

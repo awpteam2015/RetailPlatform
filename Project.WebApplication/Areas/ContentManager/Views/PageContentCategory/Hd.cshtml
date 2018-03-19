@@ -10,7 +10,7 @@
 
 @section JavaScript{
     <script src="/Areas/ContentManager/Scripts/PageContentCategory/Hd.js?JsParamter=@SiteConfig.GetConfig().JsParamter"></script>
-    <script src="/Scripts/Control/ProductcategoryControl.js?JsParamter=@SiteConfig.GetConfig().JsParamter"></script>
+    <script src="/Scripts/Control/PageContentCategoryControl.js?JsParamter=@SiteConfig.GetConfig().JsParamter"></script>
 }
 <div style="display: none">
     <input id="BindEntity" type="text" value="@ViewBag.BindEntity" />
@@ -20,7 +20,7 @@
     <form id="form1">
         <table class="mtable">
             <tr>
-                <td>
+                <td style="width: 150px">
                     上级内容分类<span style="color: Red">*</span>:
                 </td>
                 <td>
@@ -39,7 +39,7 @@
 
             <tr>
                 <td>
-                    层级<span style="color: Red">*</span>:
+                    层级:
                 </td>
                 <td>
                     <input id="Rank" name="Rank" type="text" />
@@ -48,13 +48,133 @@
 
             <tr>
                 <td>
-                    排序 <span style="color: Red">*</span>:
+                    排序 :
                 </td>
                 <td>
                     <input id="Sort" name="Sort" type="text" />
                 </td>
             </tr>
-          
+
+            <tr>
+                <td>
+                    标题1别名/是否显示 :
+                </td>
+                <td>
+                    <input id="TitleOtherName1" name="TitleOtherName1" type="text" />
+                    <select id="IsShowTitle1" name="IsShowTitle1">
+                        <option value="1">是</option>
+                        <option value="2">否</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    标题2别名/是否显示 :
+                </td>
+                <td>
+                    <input id="TitleOtherName2" name="TitleOtherName2" type="text" />
+                    <select id="IsShowTitle2" name="IsShowTitle2">
+                        <option value="2">否</option>
+                        <option value="1">是</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    标题3别名/是否显示 :
+                </td>
+                <td>
+                    <input id="TitleOtherName3" name="TitleOtherName3" type="text" />
+                    <select id="IsShowTitle3" name="IsShowTitle3">
+                        <option value="2">否</option>
+                        <option value="1">是</option>
+                    </select>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>
+                    描述1别名/是否显示 :
+                </td>
+                <td>
+                    <input id="DescriptionOtherName1" name="DescriptionOtherName1" type="text" />
+                    <select id="IsShowDescription1" name="IsShowDescription1">
+                        <option value="1">是</option>
+                        <option value="2">否</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    描述2别名/是否显示 :
+                </td>
+                <td>
+                    <input id="DescriptionOtherName2" name="DescriptionOtherName2" type="text" />
+                    <select id="IsShowDescription2" name="IsShowDescription2">
+                        <option value="2">否</option>
+                        <option value="1">是</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    描述3别名/是否显示 :
+                </td>
+                <td>
+                    <input id="DescriptionOtherName3" name="DescriptionOtherName3" type="text" />
+                    <select id="IsShowDescription3" name="IsShowDescription3">
+                        <option value="2">否</option>
+                        <option value="1">是</option>
+                    </select>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>
+                    图片1别名/是否显示 :
+                </td>
+                <td>
+                    <input id="ImageUrlOtherName1" name="ImageUrlOtherName1" type="text" />
+                    <select id="IsShowImageUrl1" name="IsShowImageUrl1">
+                        <option value="1">是</option>
+                        <option value="2">否</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    图片2别名/是否显示 :
+                </td>
+                <td>
+                    <input id="ImageUrlOtherName2" name="ImageUrlOtherName2" type="text" />
+                    <select id="IsShowImageUrl2" name="IsShowImageUrl">
+                        <option value="2">否</option>
+                        <option value="1">是</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    图片3别名/是否显示 :
+                </td>
+                <td>
+                    <input id="ImageUrlOtherName3" name="ImageUrlOtherName3" type="text" />
+
+                    <select id="IsShowImageUrl3" name="IsShowImageUrl3">
+                        <option value="2">否</option>
+                        <option value="1">是</option>
+                    </select>
+                </td>
+            </tr>
+
         </table>
     </form>
 </div>

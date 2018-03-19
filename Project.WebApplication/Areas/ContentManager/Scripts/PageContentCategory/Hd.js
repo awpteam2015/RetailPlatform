@@ -4,6 +4,9 @@
     pro.PageContentCategory.HdPage = pro.PageContentCategory.HdPage || {};
     pro.PageContentCategory.HdPage = {
         initPage: function () {
+
+            pro.PageContentCategoryControl.init({ controlId: "ParentId", required: true });
+
             $("#btnAdd").click(function () {
                 pro.PageContentCategory.HdPage.submit("Add");
             });
@@ -11,8 +14,8 @@
             $("#btnEdit").click(function () {
                 pro.PageContentCategory.HdPage.submit("Edit");
             });
-            
-             $("#btnClose").click(function () {
+
+            $("#btnClose").click(function () {
                 parent.pro.PageContentCategory.ListPage.closeTab("");
             });
 
@@ -35,7 +38,7 @@
             }
 
             this.submitExtend.addRule();
-          if (!$("#form1").valid() || !this.submitExtend.logicValidate()) {
+            if (!$("#form1").valid() || !this.submitExtend.logicValidate()) {
                 $.alertExtend.error();
                 return false;
             }
@@ -45,7 +48,7 @@
                 data: JSON.stringify(postData)
             }).done(
                 function (dataresult, data) {
-                   function afterSuccess() {
+                    function afterSuccess() {
                         parent.$("#btnSearch").trigger("click");
                         parent.pro.PageContentCategory.ListPage.closeTab();
                     }
@@ -53,7 +56,7 @@
                 }
             ).fail(
              function (errordetails, errormessage) {
-               //  $.alertExtend.error();
+                 //  $.alertExtend.error();
              }
             );
 
@@ -62,34 +65,24 @@
             addRule: function () {
                 $("#form1").validate({
                     rules: {
-          PkId: { required: true  },
-          PageContentCategoryName: { required: true  },
-          ParentId: { required: true  },
-          Rank: { required: true  },
-          Sort: { required: true  },
-          Route: { required: true  },
-          CreatorUserCode: { required: true  },
-          CreationTime: { required: true  },
-          LastModifierUserCode: { required: true  },
-          LastModificationTime: { required: true  },
-          IsDeleted: { required: true  },
-          DeleterUserCode: { required: true  },
-          DeletionTime: { required: true  },
+                        ParentId: { required: true },
+                        PageContentCategoryName: { required: true }
+                      
                     },
                     messages: {
-          PkId:  "必填!",
-          PageContentCategoryName:  "必填!",
-          ParentId:  "必填!",
-          Rank:  "层级必填!",
-          Sort:  "必填!",
-          Route:  "路径必填!",
-          CreatorUserCode:  "创建人必填!",
-          CreationTime:  "创建时间必填!",
-          LastModifierUserCode:  "修改人必填!",
-          LastModificationTime:  "修改时间必填!",
-          IsDeleted:  "是否删除必填!",
-          DeleterUserCode:  "删除人必填!",
-          DeletionTime:  "删除时间必填!",
+                        PkId: "必填!",
+                        PageContentCategoryName: "必填!",
+                        ParentId: "必填!",
+                        Rank: "层级必填!",
+                        Sort: "必填!",
+                        Route: "路径必填!",
+                        CreatorUserCode: "创建人必填!",
+                        CreationTime: "创建时间必填!",
+                        LastModifierUserCode: "修改人必填!",
+                        LastModificationTime: "修改时间必填!",
+                        IsDeleted: "是否删除必填!",
+                        DeleterUserCode: "删除人必填!",
+                        DeletionTime: "删除时间必填!",
                     },
                     errorPlacement: function (error, element) {
                         pro.commonKit.errorPlacementHd(error, element);

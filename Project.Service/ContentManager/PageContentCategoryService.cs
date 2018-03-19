@@ -1,10 +1,10 @@
 ﻿
- /***************************************************************************
- *       功能：     CNMPageContentCategory业务处理层
- *       作者：     李伟伟
- *       日期：     2018/3/17
- *       描述：     内容分类
- * *************************************************************************/
+/***************************************************************************
+*       功能：     CNMPageContentCategory业务处理层
+*       作者：     李伟伟
+*       日期：     2018/3/17
+*       描述：     内容分类
+* *************************************************************************/
 using System.Linq;
 using System.Collections.Generic;
 using Project.Infrastructure.FrameworkCore.DataNhibernate.Helpers;
@@ -15,17 +15,17 @@ namespace Project.Service.ContentManager
 {
     public class PageContentCategoryService
     {
-       
-       #region 构造函数
-        private readonly PageContentCategoryRepository  _pageContentCategoryRepository;
-            private static readonly PageContentCategoryService Instance = new PageContentCategoryService();
+
+        #region 构造函数
+        private readonly PageContentCategoryRepository _pageContentCategoryRepository;
+        private static readonly PageContentCategoryService Instance = new PageContentCategoryService();
 
         public PageContentCategoryService()
         {
-           this._pageContentCategoryRepository =new PageContentCategoryRepository();
+            this._pageContentCategoryRepository = new PageContentCategoryRepository();
         }
-        
-         public static  PageContentCategoryService GetInstance()
+
+        public static PageContentCategoryService GetInstance()
         {
             return Instance;
         }
@@ -33,7 +33,7 @@ namespace Project.Service.ContentManager
 
 
         #region 基础方法 
-         /// <summary>
+        /// <summary>
         /// 新增
         /// </summary>
         /// <param name="entity"></param>
@@ -42,24 +42,24 @@ namespace Project.Service.ContentManager
         {
             return _pageContentCategoryRepository.Save(entity);
         }
-        
-        
-         /// <summary>
+
+
+        /// <summary>
         /// 删除
         /// </summary>
         /// <param name="pkId"></param>
         public bool DeleteByPkId(System.Int32 pkId)
         {
-         try
+            try
             {
-            var entity= _pageContentCategoryRepository.GetById(pkId);
-            _pageContentCategoryRepository.Delete(entity);
-             return true;
-        }
-        catch
-        {
-         return false;
-        }
+                var entity = _pageContentCategoryRepository.GetById(pkId);
+                _pageContentCategoryRepository.Delete(entity);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         /// <summary>
@@ -68,15 +68,15 @@ namespace Project.Service.ContentManager
         /// <param name="entity"></param>
         public bool Delete(PageContentCategoryEntity entity)
         {
-         try
+            try
             {
-            _pageContentCategoryRepository.Delete(entity);
-             return true;
-        }
-        catch
-        {
-         return false;
-        }
+                _pageContentCategoryRepository.Delete(entity);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         /// <summary>
@@ -85,15 +85,15 @@ namespace Project.Service.ContentManager
         /// <param name="entity"></param>
         public bool Update(PageContentCategoryEntity entity)
         {
-          try
+            try
             {
-            _pageContentCategoryRepository.Merge(entity);
-         return true;
-        }
-        catch
-        {
-         return false;
-        }
+                _pageContentCategoryRepository.Merge(entity);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
 
@@ -117,35 +117,35 @@ namespace Project.Service.ContentManager
         /// <returns>获取当前页【内容分类】和总【内容分类】数</returns>
         public System.Tuple<IList<PageContentCategoryEntity>, int> Search(PageContentCategoryEntity where, int skipResults, int maxResults)
         {
-                var expr = PredicateBuilder.True<PageContentCategoryEntity>();
-                  #region
-              // if (!string.IsNullOrEmpty(where.PkId))
-              //  expr = expr.And(p => p.PkId == where.PkId);
-              // if (!string.IsNullOrEmpty(where.PageContentCategoryName))
-              //  expr = expr.And(p => p.PageContentCategoryName == where.PageContentCategoryName);
-              // if (!string.IsNullOrEmpty(where.ParentId))
-              //  expr = expr.And(p => p.ParentId == where.ParentId);
-              // if (!string.IsNullOrEmpty(where.Rank))
-              //  expr = expr.And(p => p.Rank == where.Rank);
-              // if (!string.IsNullOrEmpty(where.Sort))
-              //  expr = expr.And(p => p.Sort == where.Sort);
-              // if (!string.IsNullOrEmpty(where.Route))
-              //  expr = expr.And(p => p.Route == where.Route);
-              // if (!string.IsNullOrEmpty(where.CreatorUserCode))
-              //  expr = expr.And(p => p.CreatorUserCode == where.CreatorUserCode);
-              // if (!string.IsNullOrEmpty(where.CreationTime))
-              //  expr = expr.And(p => p.CreationTime == where.CreationTime);
-              // if (!string.IsNullOrEmpty(where.LastModifierUserCode))
-              //  expr = expr.And(p => p.LastModifierUserCode == where.LastModifierUserCode);
-              // if (!string.IsNullOrEmpty(where.LastModificationTime))
-              //  expr = expr.And(p => p.LastModificationTime == where.LastModificationTime);
-              // if (!string.IsNullOrEmpty(where.IsDeleted))
-              //  expr = expr.And(p => p.IsDeleted == where.IsDeleted);
-              // if (!string.IsNullOrEmpty(where.DeleterUserCode))
-              //  expr = expr.And(p => p.DeleterUserCode == where.DeleterUserCode);
-              // if (!string.IsNullOrEmpty(where.DeletionTime))
-              //  expr = expr.And(p => p.DeletionTime == where.DeletionTime);
- #endregion
+            var expr = PredicateBuilder.True<PageContentCategoryEntity>();
+            #region
+            // if (!string.IsNullOrEmpty(where.PkId))
+            //  expr = expr.And(p => p.PkId == where.PkId);
+            // if (!string.IsNullOrEmpty(where.PageContentCategoryName))
+            //  expr = expr.And(p => p.PageContentCategoryName == where.PageContentCategoryName);
+            // if (!string.IsNullOrEmpty(where.ParentId))
+            //  expr = expr.And(p => p.ParentId == where.ParentId);
+            // if (!string.IsNullOrEmpty(where.Rank))
+            //  expr = expr.And(p => p.Rank == where.Rank);
+            // if (!string.IsNullOrEmpty(where.Sort))
+            //  expr = expr.And(p => p.Sort == where.Sort);
+            // if (!string.IsNullOrEmpty(where.Route))
+            //  expr = expr.And(p => p.Route == where.Route);
+            // if (!string.IsNullOrEmpty(where.CreatorUserCode))
+            //  expr = expr.And(p => p.CreatorUserCode == where.CreatorUserCode);
+            // if (!string.IsNullOrEmpty(where.CreationTime))
+            //  expr = expr.And(p => p.CreationTime == where.CreationTime);
+            // if (!string.IsNullOrEmpty(where.LastModifierUserCode))
+            //  expr = expr.And(p => p.LastModifierUserCode == where.LastModifierUserCode);
+            // if (!string.IsNullOrEmpty(where.LastModificationTime))
+            //  expr = expr.And(p => p.LastModificationTime == where.LastModificationTime);
+            // if (!string.IsNullOrEmpty(where.IsDeleted))
+            //  expr = expr.And(p => p.IsDeleted == where.IsDeleted);
+            // if (!string.IsNullOrEmpty(where.DeleterUserCode))
+            //  expr = expr.And(p => p.DeleterUserCode == where.DeleterUserCode);
+            // if (!string.IsNullOrEmpty(where.DeletionTime))
+            //  expr = expr.And(p => p.DeletionTime == where.DeletionTime);
+            #endregion
             var list = _pageContentCategoryRepository.Query().Where(expr).OrderByDescending(p => p.PkId).Skip(skipResults).Take(maxResults).ToList();
             var count = _pageContentCategoryRepository.Query().Where(expr).Count();
             return new System.Tuple<IList<PageContentCategoryEntity>, int>(list, count);
@@ -158,35 +158,35 @@ namespace Project.Service.ContentManager
         /// <returns>返回列表</returns>
         public IList<PageContentCategoryEntity> GetList(PageContentCategoryEntity where)
         {
-               var expr = PredicateBuilder.True<PageContentCategoryEntity>();
-             #region
-              // if (!string.IsNullOrEmpty(where.PkId))
-              //  expr = expr.And(p => p.PkId == where.PkId);
-              // if (!string.IsNullOrEmpty(where.PageContentCategoryName))
-              //  expr = expr.And(p => p.PageContentCategoryName == where.PageContentCategoryName);
-              // if (!string.IsNullOrEmpty(where.ParentId))
-              //  expr = expr.And(p => p.ParentId == where.ParentId);
-              // if (!string.IsNullOrEmpty(where.Rank))
-              //  expr = expr.And(p => p.Rank == where.Rank);
-              // if (!string.IsNullOrEmpty(where.Sort))
-              //  expr = expr.And(p => p.Sort == where.Sort);
-              // if (!string.IsNullOrEmpty(where.Route))
-              //  expr = expr.And(p => p.Route == where.Route);
-              // if (!string.IsNullOrEmpty(where.CreatorUserCode))
-              //  expr = expr.And(p => p.CreatorUserCode == where.CreatorUserCode);
-              // if (!string.IsNullOrEmpty(where.CreationTime))
-              //  expr = expr.And(p => p.CreationTime == where.CreationTime);
-              // if (!string.IsNullOrEmpty(where.LastModifierUserCode))
-              //  expr = expr.And(p => p.LastModifierUserCode == where.LastModifierUserCode);
-              // if (!string.IsNullOrEmpty(where.LastModificationTime))
-              //  expr = expr.And(p => p.LastModificationTime == where.LastModificationTime);
-              // if (!string.IsNullOrEmpty(where.IsDeleted))
-              //  expr = expr.And(p => p.IsDeleted == where.IsDeleted);
-              // if (!string.IsNullOrEmpty(where.DeleterUserCode))
-              //  expr = expr.And(p => p.DeleterUserCode == where.DeleterUserCode);
-              // if (!string.IsNullOrEmpty(where.DeletionTime))
-              //  expr = expr.And(p => p.DeletionTime == where.DeletionTime);
- #endregion
+            var expr = PredicateBuilder.True<PageContentCategoryEntity>();
+            #region
+            // if (!string.IsNullOrEmpty(where.PkId))
+            //  expr = expr.And(p => p.PkId == where.PkId);
+            // if (!string.IsNullOrEmpty(where.PageContentCategoryName))
+            //  expr = expr.And(p => p.PageContentCategoryName == where.PageContentCategoryName);
+            // if (!string.IsNullOrEmpty(where.ParentId))
+            //  expr = expr.And(p => p.ParentId == where.ParentId);
+            // if (!string.IsNullOrEmpty(where.Rank))
+            //  expr = expr.And(p => p.Rank == where.Rank);
+            // if (!string.IsNullOrEmpty(where.Sort))
+            //  expr = expr.And(p => p.Sort == where.Sort);
+            // if (!string.IsNullOrEmpty(where.Route))
+            //  expr = expr.And(p => p.Route == where.Route);
+            // if (!string.IsNullOrEmpty(where.CreatorUserCode))
+            //  expr = expr.And(p => p.CreatorUserCode == where.CreatorUserCode);
+            // if (!string.IsNullOrEmpty(where.CreationTime))
+            //  expr = expr.And(p => p.CreationTime == where.CreationTime);
+            // if (!string.IsNullOrEmpty(where.LastModifierUserCode))
+            //  expr = expr.And(p => p.LastModifierUserCode == where.LastModifierUserCode);
+            // if (!string.IsNullOrEmpty(where.LastModificationTime))
+            //  expr = expr.And(p => p.LastModificationTime == where.LastModificationTime);
+            // if (!string.IsNullOrEmpty(where.IsDeleted))
+            //  expr = expr.And(p => p.IsDeleted == where.IsDeleted);
+            // if (!string.IsNullOrEmpty(where.DeleterUserCode))
+            //  expr = expr.And(p => p.DeleterUserCode == where.DeleterUserCode);
+            // if (!string.IsNullOrEmpty(where.DeletionTime))
+            //  expr = expr.And(p => p.DeletionTime == where.DeletionTime);
+            #endregion
             var list = _pageContentCategoryRepository.Query().Where(expr).OrderBy(p => p.PkId).ToList();
             return list;
         }
@@ -194,11 +194,20 @@ namespace Project.Service.ContentManager
 
 
         #region 新增方法
-        
+
+        /// <summary>
+        /// 获取顶级内容分类
+        /// </summary>
+        /// <returns></returns>
+        public IList<PageContentCategoryEntity> GetTopPageContentCategoryList()
+        {
+            return _pageContentCategoryRepository.Query().Where(p => p.ParentId == 0).ToList();
+        }
+
         #endregion
     }
 }
 
-    
- 
+
+
 

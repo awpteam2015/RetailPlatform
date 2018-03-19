@@ -4,7 +4,7 @@ var pro = pro || {};
     pro.PageContentCategory = pro.PageContentCategory || {};
     pro.PageContentCategory.ListPage = pro.PageContentCategory.ListPage || {};
     pro.PageContentCategory.ListPage = {
-      init: function () {
+        init: function () {
             return {
                 tabObj: new pro.TabBase(),
                 gridObj: new pro.GridBase("#datagrid", true)
@@ -16,16 +16,18 @@ var pro = pro || {};
             var gridObj = initObj.gridObj;
             gridObj.grid({
                 url: '/ContentManager/PageContentCategory/GetList',
+                idField: "PkId",
+                treeField: "PkId",
                 fitColumns: false,
                 nowrap: false,
                 rownumbers: true, //行号
                 singleSelect: true,
                 columns: [[
-         //{ field: 'PkId', title: '', width: 100 },
-         { field: 'PageContentCategoryName', title: '', width: 100 },
-         { field: 'ParentId', title: '', width: 100 },
+         { field: 'PkId', title: '分类Id', width: 100 },
+         { field: 'PageContentCategoryName', title: '内容分类名称', width: 100 },
+         { field: 'ParentId', title: '父级Id', width: 100 },
          { field: 'Rank', title: '层级', width: 100 },
-         { field: 'Sort', title: '', width: 100 }
+         { field: 'Sort', title: '排序', width: 100 }
          //{ field: 'Route', title: '路径', width: 100 },
          //{ field: 'CreatorUserCode', title: '创建人', width: 100 },
          //{ field: 'CreationTime', title: '创建时间', width: 100 },
@@ -34,15 +36,15 @@ var pro = pro || {};
          //{ field: 'IsDeleted', title: '是否删除', width: 100 },
          //{ field: 'DeleterUserCode', title: '删除人', width: 100 },
          //{ field: 'DeletionTime', title: '删除时间', width: 100 },
-                ]],
-                pagination: true,
-                pageSize: 20, //每页显示的记录条数，默认为10     
-                pageList: [20, 30, 40] //可以设置每页记录条数的列表    
+                ]]
+                //pagination: true,
+                //pageSize: 20, //每页显示的记录条数，默认为10     
+                //pageList: [20, 30, 40] //可以设置每页记录条数的列表    
             }
                );
 
             $("#btnAdd").click(function () {
-               tabObj.add("/ContentManager/PageContentCategory/Hd","新增");
+                tabObj.add("/ContentManager/PageContentCategory/Hd", "新增");
             });
 
             $("#btnEdit").click(function () {
@@ -61,7 +63,7 @@ var pro = pro || {};
 
             $("#btnDel").click(function () {
                 if (!gridObj.isSelected()) {
-                $.alertExtend.infoOp();
+                    $.alertExtend.infoOp();
                     return;
                 }
                 $.messager.confirm("确认操作", "是否确认删除", function (bl) {
@@ -85,7 +87,7 @@ var pro = pro || {};
                 gridObj.refresh();
             });
         },
-         closeTab: function () {
+        closeTab: function () {
             this.init().tabObj.closeTab();
         }
     };

@@ -4,7 +4,7 @@ var pro = pro || {};
     pro.PageContent = pro.PageContent || {};
     pro.PageContent.ListPage = pro.PageContent.ListPage || {};
     pro.PageContent.ListPage = {
-      init: function () {
+        init: function () {
             return {
                 tabObj: new pro.TabBase(),
                 gridObj: new pro.GridBase("#datagrid", false)
@@ -21,23 +21,15 @@ var pro = pro || {};
                 rownumbers: true, //行号
                 singleSelect: true,
                 columns: [[
-         { field: 'PkId', title: '', width: 100 },
-         { field: 'Title1', title: '', width: 100 },
-         { field: 'Title2', title: '', width: 100 },
-         { field: 'Title3', title: '', width: 100 },
-         { field: 'Description1', title: '', width: 100 },
-         { field: 'Description2', title: '', width: 100 },
-         { field: 'Description3', title: '', width: 100 },
-         { field: 'ImageUrl1', title: '', width: 100 },
-         { field: 'ImageUrl2', title: '', width: 100 },
-         { field: 'ImageUrl3', title: '', width: 100 },
-         { field: 'DeletionTime', title: '删除时间', width: 100 },
-         { field: 'DeleterUserCode', title: '删除人', width: 100 },
-         { field: 'IsDeleted', title: '是否删除', width: 100 },
-         { field: 'LastModificationTime', title: '修改时间', width: 100 },
-         { field: 'LastModifierUserCode', title: '修改人', width: 100 },
-         { field: 'CreationTime', title: '创建时间', width: 100 },
-         { field: 'CreatorUserCode', title: '创建人', width: 100 },
+
+         { field: 'Title1', title: '标题一', width: 100 },
+         { field: 'Title2', title: '标题二', width: 100 },
+         { field: 'Title3', title: '标题三', width: 100 },
+         { field: 'Description1', title: '描述一', width: 100 },
+         { field: 'Description2', title: '描述二', width: 100 },
+         { field: 'Description3', title: '描述三', width: 100 }
+
+
                 ]],
                 pagination: true,
                 pageSize: 20, //每页显示的记录条数，默认为10     
@@ -46,7 +38,7 @@ var pro = pro || {};
                );
 
             $("#btnAdd").click(function () {
-               tabObj.add("/ContentManager/PageContent/Hd","新增");
+                tabObj.add("/ContentManager/PageContent/Hd", "新增");
             });
 
             $("#btnEdit").click(function () {
@@ -65,7 +57,7 @@ var pro = pro || {};
 
             $("#btnDel").click(function () {
                 if (!gridObj.isSelected()) {
-                $.alertExtend.infoOp();
+                    $.alertExtend.infoOp();
                     return;
                 }
                 $.messager.confirm("确认操作", "是否确认删除", function (bl) {
@@ -89,7 +81,7 @@ var pro = pro || {};
                 gridObj.refresh();
             });
         },
-         closeTab: function () {
+        closeTab: function () {
             this.init().tabObj.closeTab();
         }
     };

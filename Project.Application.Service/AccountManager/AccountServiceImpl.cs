@@ -2,7 +2,7 @@
 {
    public class AccountServiceImpl
     {
-        public 
+         
     }
 
 }
