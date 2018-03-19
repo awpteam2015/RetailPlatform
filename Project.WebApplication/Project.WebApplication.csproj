@@ -1486,9 +1486,7 @@
     <Compile Include="Areas\ProductManager\Controllers\SpecController.cs" />
     <Compile Include="Areas\ProductManager\Controllers\SpecValueController.cs" />
     <Compile Include="Areas\ProductManager\Controllers\SystemCategoryAttributeController.cs" />
-    <Compile Include="Areas\ProductManager\Controllers\SystemCategoryBrandController.cs" />
     <Compile Include="Areas\ProductManager\Controllers\SystemCategoryController.cs" />
-    <Compile Include="Areas\ProductManager\Controllers\SystemCategorySpecController.cs" />
     <Compile Include="Areas\ProductManager\ProductManagerAreaRegistration.cs" />
     <Compile Include="Areas\ReportManager\Controllers\HrReportController.cs" />
     <Compile Include="Areas\ReportManager\ReportManagerAreaRegistration.cs" />

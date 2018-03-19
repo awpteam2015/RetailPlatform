@@ -5,8 +5,11 @@
 *       日期：     2018/3/18
 *       描述：     订单主表信息
 * *************************************************************************/
+
+using System;
 using System.Linq;
 using System.Collections.Generic;
+using Project.Infrastructure.FrameworkCore.DataNhibernate;
 using Project.Infrastructure.FrameworkCore.DataNhibernate.Helpers;
 using Project.Model.OrderManager;
 using Project.Repository.OrderManager;
@@ -38,11 +41,26 @@ namespace Project.Service.OrderManager
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
-        public System.String Add(OrderMainEntity entity)
+        public Tuple<bool, string> Add(OrderMainEntity entity)
         {
+            using (var tx = NhTransactionHelper.BeginTransaction())
+            {
+                try
+                {
+                    var pkId = _orderMainRepository.Save(entity);
 
 
-            return _orderMainRepository.Save(entity).ToString();
+
+
+                    tx.Commit();
+                    return new Tuple<bool, string>(true, pkId);
+                }
+                catch (Exception e)
+                {
+                    tx.Rollback();
+                    throw;
+                }
+            }
         }
 
 

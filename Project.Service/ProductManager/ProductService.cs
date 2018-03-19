@@ -14,6 +14,7 @@ using Project.Infrastructure.FrameworkCore.DataNhibernate.Helpers;
 using Project.Infrastructure.FrameworkCore.ToolKit.LinqExpansion;
 using Project.Model.ProductManager;
 using Project.Repository.ProductManager;
+using Project.Service.ProductManager.Help;
 
 namespace Project.Service.ProductManager
 {
@@ -57,7 +58,7 @@ namespace Project.Service.ProductManager
             {
                 return new Tuple<bool, string>(false,"请选择产品规格来生成组合商品。");
             }
-
+            ProductHelp.GetInstance().CombineProductInfo(entity);
 
             using (var tx = NhTransactionHelper.BeginTransaction())
             {
@@ -144,7 +145,10 @@ namespace Project.Service.ProductManager
             }
 
             var newInfo = entity;
+            ProductHelp.GetInstance().CombineProductInfo(newInfo);
+
             var orgInfo = ProductService.GetInstance().GetModelByPk(entity.PkId);
+           
             orgInfo.SellPrice = newInfo.SellPrice;
             orgInfo.StockNum = newInfo.StockNum;
             orgInfo.ProductCode = newInfo.ProductCode;
@@ -152,6 +156,8 @@ namespace Project.Service.ProductManager
             orgInfo.BriefDescription = newInfo.BriefDescription;
             orgInfo.Description = newInfo.Description;
             orgInfo.ProductCategoryId = newInfo.ProductCategoryId;
+            orgInfo.ProductCategoryName = newInfo.ProductCategoryName;
+            orgInfo.SystemCategoryName = newInfo.SystemCategoryName;
 
 
             #region 产品属性处理

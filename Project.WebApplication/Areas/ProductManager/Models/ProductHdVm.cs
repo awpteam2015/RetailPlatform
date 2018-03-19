@@ -89,6 +89,8 @@ namespace Project.WebApplication.Areas.ProductManager.Models
 
     public class AttributeVm
     {
+        public string AttributeId;
+
         public string AttributeName;
 
         public int ShowType;

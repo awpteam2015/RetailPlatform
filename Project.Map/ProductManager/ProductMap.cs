@@ -20,6 +20,8 @@ namespace Project.Map.ProductManager
             Map(p => p.ProductName);
             Map(p => p.SystemCategoryId);
             Map(p => p.ProductCategoryId);
+            Map(p => p.SystemCategoryName);
+            Map(p => p.ProductCategoryName);
             Map(p => p.ProductCategoryRoute);
             Map(p => p.BrandId);
             Map(p => p.ProductCode);

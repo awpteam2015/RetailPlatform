@@ -21,16 +21,10 @@ var pro = pro || {};
                 rownumbers: true, //行号
                 singleSelect: true,
                 columns: [[
-         { field: 'PkId', title: '', width: 100 },
+         { field: 'PkId', title: '分类Id', width: 100 },
          { field: 'SystemCategoryName', title: '分类名称', width: 100 },
-         { field: 'Sort', title: '排序', width: 100 },
-         { field: 'CreatorUserCode', title: '创建人', width: 100 },
-         { field: 'CreationTime', title: '创建时间', width: 100 },
-         { field: 'LastModifierUserCode', title: '修改人', width: 100 },
-         { field: 'LastModificationTime', title: '修改时间', width: 100 },
-         { field: 'IsDeleted', title: '是否删除', width: 100 },
-         { field: 'DeleterUserCode', title: '删除人', width: 100 },
-         { field: 'DeletionTime', title: '删除时间', width: 100 },
+         { field: 'Sort', title: '排序', width: 100 }
+        
                 ]],
                 pagination: true,
                 pageSize: 20, //每页显示的记录条数，默认为10     

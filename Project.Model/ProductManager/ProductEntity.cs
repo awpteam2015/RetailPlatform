@@ -31,10 +31,16 @@ namespace Project.Model.ProductManager
         /// 系统类型
         /// </summary>
         public virtual System.Int32 SystemCategoryId{get; set;}
+
+        public virtual System.String SystemCategoryName { get; set; }
+
         /// <summary>
         /// 商品分类
         /// </summary>
-        public virtual System.Int32? ProductCategoryId{get; set;}
+        public virtual System.Int32 ProductCategoryId{get; set;}
+
+        public virtual System.String ProductCategoryName { get; set; }
+
         /// <summary>
         /// 商品分类全路由
         /// </summary>
@@ -122,11 +128,11 @@ namespace Project.Model.ProductManager
         /// <summary>
         /// 是否上架
         /// </summary>
-        public virtual System.Byte? IsShow{get; set;}
+        public virtual System.Byte IsShow{get; set;}
         /// <summary>
         /// 是否推荐
         /// </summary>
-        public virtual System.Byte? IsCommand{get; set;}
+        public virtual System.Byte IsCommand{get; set;}
         /// <summary>
         /// Pdt_desc
         /// </summary>
@@ -227,7 +233,25 @@ namespace Project.Model.ProductManager
         /// 产品对应图片
         /// </summary>
         public virtual  ISet<ProductImageEntity> ProductImageEntityList { get; set; }
+
+
+
+        /// <summary>
+        /// 是否上架
+        /// </summary>
+        public virtual string Attr_IsShow {
+            get { return IsShow == 1 ? "是" : "否"; }
+        }
+        /// <summary>
+        /// 是否推荐
+        /// </summary>
+        public virtual string Attr_IsCommand {
+            get { return IsCommand == 1 ? "是" : "否"; }
+        }
         #endregion
+
+
+
     }
 }
 

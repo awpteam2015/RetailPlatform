@@ -97,6 +97,27 @@ namespace Project.WebApplication.Areas.ProductManager.Controllers
             return new AbpJsonResult(dataGridEntity, new NHibernateContractResolver());
         }
 
+        public AbpJsonResult GetList_Combobox()
+        {
+            //var pIndex = this.Request["page"].ConvertTo<int>();
+            //var pSize = this.Request["rows"].ConvertTo<int>();
+            //var where = new SystemCategoryEntity();
+            ////where.PkId = RequestHelper.GetFormString("PkId");
+            //where.SystemCategoryName = RequestHelper.GetFormString("SystemCategoryName");
+            //where.Sort = RequestHelper.GetFormString("Sort");
+            //where.CreatorUserCode = RequestHelper.GetFormString("CreatorUserCode");
+            //where.CreationTime = RequestHelper.GetFormString("CreationTime");
+            //where.LastModifierUserCode = RequestHelper.GetFormString("LastModifierUserCode");
+            //where.LastModificationTime = RequestHelper.GetFormString("LastModificationTime");
+            //where.IsDeleted = RequestHelper.GetFormString("IsDeleted");
+            //where.DeleterUserCode = RequestHelper.GetFormString("DeleterUserCode");
+            //where.DeletionTime = RequestHelper.GetFormString("DeletionTime");
+            var searchList = SystemCategoryService.GetInstance().GetList(new SystemCategoryEntity());
+
+            
+            return new AbpJsonResult(searchList, new NHibernateContractResolver());
+        }
+
 
         public AbpJsonResult GetListALL()
         {

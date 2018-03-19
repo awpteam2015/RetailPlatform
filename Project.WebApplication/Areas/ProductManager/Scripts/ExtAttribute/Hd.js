@@ -32,9 +32,9 @@
                         {
                             field: 'AttributeValueName',
                             title: '属性值',
-                            width: 100,
+                            width: 300,
                             formatter: function (value, row, index) {
-                                return pro.controlKit.getInputHtml("AttributeValueName_" + row.PkId, value);
+                                return pro.controlKit.getInputHtml("AttributeValueName_" + row.PkId, value,300);
                             }
                         },
                         {

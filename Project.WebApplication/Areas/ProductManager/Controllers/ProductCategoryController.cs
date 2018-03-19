@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web.Mvc;
 using AutoMapper;
 using Project.Infrastructure.FrameworkCore.DataNhibernate.Helpers;
+using Project.Infrastructure.FrameworkCore.ToolKit;
 using Project.Infrastructure.FrameworkCore.ToolKit.JsonHandler;
 using Project.Infrastructure.FrameworkCore.ToolKit.LinqExpansion;
 using Project.Infrastructure.FrameworkCore.WebMvc.Controllers.Results;
@@ -47,11 +48,17 @@ namespace Project.WebApplication.Areas.ProductManager.Controllers
 
         public AbpJsonResult GetList_Combotree()
         {
-            //var where = new ProductCategoryEntity();
-            //var searchList = ProductCategoryService.GetInstance().GetList(where);
+            var where = new ProductCategoryEntity();
+            where.ProductcategoryName = RequestHelper.GetString("ProductcategoryName");
 
-            var dataGridEntity = ProductCategoryService.GetInstance().GetModelByPk(1);
-            
+            var searchList = ProductCategoryService.GetInstance().GetList(where);
+
+            var dataGridEntity = new ProductCategoryEntity();
+            if (searchList.Any())
+            {
+                dataGridEntity = searchList.FirstOrDefault();
+            }
+
             return new AbpJsonResult(new List<ProductCategoryEntity>() { dataGridEntity }, new NHibernateContractResolver(new string[] { "children" }));
         }
         [HttpPost]

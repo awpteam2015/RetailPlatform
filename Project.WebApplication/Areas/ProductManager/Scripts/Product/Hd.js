@@ -48,18 +48,18 @@
 
             }
 
-            $('#BrandId').combobox({
-                required: true,
-                editable: false,
-                valueField: 'PkId',
-                textField: 'BrandName',
-                url: '/ProductManager/Brand/GetList_Combobox',
-                onLoadSuccess: function () {
-                    if (pro.commonKit.getUrlParam("PkId") > 0) {
-                        $("#BrandId").combobox('setValue', bindEntity['BrandId']);
-                    }
-                }
-            });
+            //$('#BrandId').combobox({
+            //    required: true,
+            //    editable: false,
+            //    valueField: 'PkId',
+            //    textField: 'BrandName',
+            //    url: '/ProductManager/Brand/GetList_Combobox',
+            //    onLoadSuccess: function () {
+            //        if (pro.commonKit.getUrlParam("PkId") > 0) {
+            //            $("#BrandId").combobox('setValue', bindEntity['BrandId']);
+            //        }
+            //    }
+            //});
 
         },
         submit: function (command) {
@@ -104,7 +104,7 @@
                 $("#form1").validate({
                     rules: {
                         //PkId: { required: true },
-                        //ProductName: { required: true },
+                        ProductName: { required: true },
                         //SystemCategoryId: { required: true },
                         //ProductCategoryId: { required: true },
                         //ProductCategoryRoute: { required: true },
@@ -128,8 +128,8 @@
                         //Title: { required: true },
                         //MetaKeywords: { required: true },
                         //MetaDescription: { required: true },
-                        //IsShow: { required: true },
-                        //IsCommand: { required: true },
+                        IsShow: { required: true },
+                        IsCommand: { required: true },
                         //PdtDesc: { required: true },
                         //SpecDesc: { required: true },
                         //ParamsDesc: { required: true },

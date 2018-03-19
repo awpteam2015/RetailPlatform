@@ -23,14 +23,14 @@ var pro = pro || {};
                 rownumbers: true, //行号
                 singleSelect: true,
                 columns: [[
-         { field: 'PkId', title: '', width: 100 },
-         { field: 'ProductcategoryName', title: '', width: 100 },
-         { field: 'ParentId', title: '', width: 100 },
+         { field: 'PkId', title: '分类Id', width: 100 },
+         { field: 'ProductcategoryName', title: '分类名称', width: 300 },
+         { field: 'ParentId', title: '父级Id', width: 100 },
          { field: 'Rank', title: '层级', width: 100 },
-         { field: 'Sort', title: '', width: 100 },
-         { field: 'SystemCategoryId', title: '', width: 100 },
-         { field: 'SystemCategoryName', title: '', width: 100 },
-         { field: 'Route', title: '路径', width: 100 }
+         { field: 'Sort', title: '排序', width: 100 },
+       //  { field: 'SystemCategoryId', title: '', width: 100 },
+         { field: 'SystemCategoryName', title: '类型名称', width: 200 }
+       //  { field: 'Route', title: '路径', width: 100 }
         
                 ]]
                 //pagination: true,

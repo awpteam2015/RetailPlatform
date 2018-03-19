@@ -19,7 +19,7 @@
     <div id="tb" style="padding:5px;height:auto">
         <div style="margin-bottom: 5px">
 
-            <input id="SystemCategoryId" name="SystemCategoryId" type="text" value="4"/>
+            发布商品所属商品类型 <input id="SystemCategoryId2" name="SystemCategoryId2" type="text"/>
 
             <a id="btnAdd" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true">发布商品</a>
 
@@ -28,6 +28,11 @@
             <a id="btnEdit" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true">编辑</a>
 
             <a id="btnDown" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true">下架</a>
+
+            <a id="btnDown" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true">上架</a>
+
+            <a id="btnDown" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true">推荐</a>
+            <a id="btnDown" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true">取消推荐</a>
 
             <a id="btnRefresh" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-reload',plain:true">刷新</a>
 
@@ -40,7 +45,7 @@
 
                     <tr>
                         <td>
-                            商品标题:
+                            商品名称:
                         </td>
                         <td>
                             <input id="ProductName" name="ProductName" type="text" />
@@ -51,18 +56,16 @@
                             商品分类:
                         </td>
                         <td>
-                            <input id="ProductCategoryId" name="ProductCategoryId" type="text" />
+                            <input id="ProductCategoryId" name="ProductCategoryId" type="text"/>
                         </td>
 
                         <td>
-                            品牌ID:
+                            商品类型:
                         </td>
                         <td>
-                            <input id="BrandId" name="BrandId" type="text" />
+                            <input id="SystemCategoryId" name="SystemCategoryId" type="text" />
                         </td>
-                    </tr>
 
-                    <tr>
                         <td colspan="2">
                             <a href="#" class="easyui-linkbutton" iconcls="icon-search" id="btnSearch">搜索</a>
                         </td>

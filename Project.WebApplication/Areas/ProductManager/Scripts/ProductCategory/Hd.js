@@ -20,15 +20,30 @@
                 parent.pro.ProductCategory.ListPage.closeTab("");
             });
 
+            var bindEntity = "";
             if ($("#BindEntity").val()) {
                 var bindField = pro.bindKit.getHeadJson();
-                var bindEntity = JSON.parse($("#BindEntity").val());
+                 bindEntity = JSON.parse($("#BindEntity").val());
                 for (var filedname in bindField) {
                     $("[name=" + filedname + "]").val(bindEntity[filedname]);
                 }
                 //行项目信息用json绑定控件
                 //alert(JSON.stringify(BindEntity.List));
             }
+
+            $('#SystemCategoryId').combobox({
+                required: false,
+                editable: false,
+                valueField: 'PkId',
+                textField: 'SystemCategoryName',
+                url: '/ProductManager/SystemCategory/GetList_Combobox',
+                onLoadSuccess: function () {
+                    if (pro.commonKit.getUrlParam("PkId") > 0) {
+                        $("#SystemCategoryId").combobox('setValue', bindEntity['SystemCategoryId']);
+                    }
+                }
+            });
+
         },
         submit: function (command) {
             var postData = {};

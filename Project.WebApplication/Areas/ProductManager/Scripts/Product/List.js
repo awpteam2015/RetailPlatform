@@ -4,7 +4,7 @@ var pro = pro || {};
     pro.Product = pro.Product || {};
     pro.Product.ListPage = pro.Product.ListPage || {};
     pro.Product.ListPage = {
-      init: function () {
+        init: function () {
             return {
                 tabObj: new pro.TabBase(),
                 gridObj: new pro.GridBase("#datagrid", false)
@@ -22,13 +22,14 @@ var pro = pro || {};
                 singleSelect: true,
                 columns: [[
          { field: 'PkId', title: '产品ID', width: 100 },
+         { field: 'ProductCode', title: '产品编码', width: 100 },
          { field: 'ProductName', title: '产品名称', width: 100 },
-         { field: 'ProductCode', title: '价格', width: 100 },
-         { field: 'Unit', title: '库存', width: 100 },
-         { field: 'Unit', title: '总销量', width: 100 },
-         { field: 'SystemCategoryId', title: '系统分类', width: 100 ,hidden:true}
-
-      
+         { field: 'SellPrice', title: '销售价', width: 100 },
+         { field: 'StockNum', title: '库存', width: 100 },
+          { field: 'Attr_IsCommand', title: '是否推荐', width: 100 },
+          { field: 'Attr_IsShow', title: '是否上架', width: 100 },
+         { field: 'SystemCategoryName', title: '商品类型', width: 150 },
+         { field: 'ProductCategoryName', title: '商品分类', width: 150 }
                 ]],
                 pagination: true,
                 pageSize: 20, //每页显示的记录条数，默认为10     
@@ -37,7 +38,13 @@ var pro = pro || {};
                );
 
             $("#btnAdd").click(function () {
-                tabObj.add("/ProductManager/Product/Hd?SystemCategoryId=" + $("#SystemCategoryId").val(), "发布商品");
+                var systemCategoryId = $("#SystemCategoryId2").combobox('getValue');
+                if (systemCategoryId == "") {
+                    $.alertExtend.infoOp("请选择商品所属商品类型进行发布！");
+                    return;
+                }
+
+                tabObj.add("/ProductManager/Product/Hd?SystemCategoryId=" + systemCategoryId, "发布商品");
             });
 
             $("#btnEdit").click(function () {
@@ -56,7 +63,7 @@ var pro = pro || {};
 
             $("#btnDel").click(function () {
                 if (!gridObj.isSelected()) {
-                $.alertExtend.infoOp();
+                    $.alertExtend.infoOp();
                     return;
                 }
                 $.messager.confirm("确认操作", "是否确认删除", function (bl) {
@@ -83,8 +90,31 @@ var pro = pro || {};
 
             pro.ProductcategoryControl.init({ controlId: "ProductCategoryId", required: false });
 
+
+            $('#SystemCategoryId').combobox({
+                required: false,
+                editable: false,
+                valueField: 'PkId',
+                textField: 'SystemCategoryName',
+                url: '/ProductManager/SystemCategory/GetList_Combobox',
+                onLoadSuccess: function () {
+
+                }
+            });
+
+            $('#SystemCategoryId2').combobox({
+                required: false,
+                editable: false,
+                valueField: 'PkId',
+                textField: 'SystemCategoryName',
+                url: '/ProductManager/SystemCategory/GetList_Combobox',
+                onLoadSuccess: function () {
+
+                }
+            });
+
         },
-         closeTab: function () {
+        closeTab: function () {
             this.init().tabObj.closeTab();
         }
     };

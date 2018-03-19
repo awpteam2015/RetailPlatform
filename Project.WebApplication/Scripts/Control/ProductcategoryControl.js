@@ -6,7 +6,7 @@
             var defaultParamter = {
                 controlId: "Productcategory",
                 editable: false,
-                width:300,
+                width:200,
                 valueField: 'PkId',
                 textField: 'ProductcategoryName',
                 url: '/ProductManager/ProductCategory/GetList_Combotree'
