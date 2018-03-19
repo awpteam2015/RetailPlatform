@@ -6,9 +6,9 @@ using System.Web.Mvc;
 
 namespace Project.WebSite.Controllers
 {
-    public class DefaultController : Controller
+    public class ProductController : Controller
     {
-        // GET: Default
+        // GET: Product
         public ActionResult Index()
         {
             return View();
