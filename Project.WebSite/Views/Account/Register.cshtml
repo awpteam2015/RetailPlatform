@@ -1,7 +1,40 @@
 ﻿
 @{
-    ViewBag.Title = "Login";
+    ViewBag.Title = "注册";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Login</h2>
+@section JavaScript{
+    <script src="~/Scripts/Account/Login.js"></script>
+}
 
+<table>
+    <tr>
+        新会员注册
+    </tr>
+    <tr>
+        <td>账号</td>
+        <td><input type="text" value="" id="AccountName" /><span for="AccountName">错误提示</span></td>
+    </tr>
+    <tr>
+        <td>密码</td>
+        <td><input type="password" value="" id="Password" /><span for="Password">错误提示</span></td>
+    </tr>
+    <tr>
+        <td>确认密码</td>
+        <td><input type="password" value="" id="Password" /><span for="Password">错误提示</span></td>
+    </tr>
+    <tr>
+        <td>验证码</td>
+        <td><input type="password" value="" id="Password" /><span for="Password">错误提示</span></td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" />同意注册条款</td>
+
+    </tr>
+    <tr>
+        <td>
+            <input type="button" value="登录" id="btn_Login" />
+        </td>
+    </tr>
+</table>

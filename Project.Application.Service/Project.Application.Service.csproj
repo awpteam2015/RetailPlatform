@@ -40,11 +40,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountManager\AccountServiceImpl.cs" />
     <Compile Include="OrderManager\OrderServiceImpl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="AccountManager\" />
+    <Folder Include="AccountManager\Request\" />
+    <Folder Include="AccountManager\Response\" />
     <Folder Include="ContentManager\" />
     <Folder Include="ProductManager\" />
   </ItemGroup>

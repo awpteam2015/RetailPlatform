@@ -1,25 +1,25 @@
 ﻿
 @{
-    Layout = null;
+    ViewBag.Title = "商品列表";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
+@section JavaScript{
+    <script src="~/Scripts/Account/Login.js"></script>
+}
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Detail</title>
-</head>
-<body>
-<div>
-    <table>
-        <tr>
-            <td>
-                
-            </td>
-        </tr>
-
-    </table>
-</div>
-</body>
-</html>
+<table>
+    <tr>
+        <td>账号</td>
+        <td><input type="text" value="" id="AccountName" /><span for="AccountName">错误提示</span></td>
+    </tr>
+    <tr>
+        <td>密码</td>
+        <td><input type="password" value="" id="Password" /><span for="Password">错误提示</span></td>
+    </tr>
+    <tr>
+        <td>
+            <input type="button" value="登录" id="btn_Login" />
+        </td>
+    </tr>
+</table>

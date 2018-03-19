@@ -87,7 +87,7 @@ namespace Project.WebApplication.Areas.CustomerManager.Controllers
             var result = new AjaxResponse<CustomerEntity>()
                {
                    success = addResult.Item1,
-                   result = postData.RequestEntity,
+                 
                    error = new ErrorInfo() { message = addResult.Item2 }
                };
             return new AbpJsonResult(result, new NHibernateContractResolver());
@@ -107,7 +107,7 @@ namespace Project.WebApplication.Areas.CustomerManager.Controllers
             var result = new AjaxResponse<CustomerEntity>()
             {
                 success = updateResult.Item1,
-                result = postData.RequestEntity
+                error = new ErrorInfo() { message = updateResult.Item2 }
             };
             return new AbpJsonResult(result, new NHibernateContractResolver(new string[] { "result" }));
         }
