@@ -21,19 +21,17 @@ namespace Project.WebSite.Controllers
             return View();
         }
 
-
         public ActionResult Login()
         {
             return View();
         }
 
 
-
         [HttpPost]
-        public ActionResult Login(string mobilephone, string password)
+        public ActionResult Login(string accountName, string password)
         {
             LoggerHelper.Info("登陆前：");
-            var userInfo =CustomerService.GetInstance().Login(mobilephone, password);
+            var userInfo =CustomerService.GetInstance().Login(accountName, password);
             if (!userInfo.Item1)
             {
                 return new AbpJsonResult
@@ -64,10 +62,43 @@ namespace Project.WebSite.Controllers
             };
         }
 
-        //public ActionResult Index()
-        //{
 
-        //}
+        [HttpPost]
+        public ActionResult Register(string mobilephone, string password)
+        {
+            LoggerHelper.Info("登陆前：");
+            var userInfo = CustomerService.GetInstance().Login(mobilephone, password);
+            if (!userInfo.Item1)
+            {
+                return new AbpJsonResult
+                {
+                    Data = new AjaxResponse<object>() { success = false, error = new ErrorInfo(userInfo.Item2) }
+                };
+            }
+
+            var ticket = new FormsAuthenticationTicket(
+            1 /*version*/,
+            Guid.NewGuid().ToString(),
+            DateTime.Now,
+            DateTime.Now.AddMinutes(30000),
+            true,//持久性
+            FormsAuthentication.FormsCookiePath);
+            var encryptedTicket = FormsAuthentication.Encrypt(ticket);
+            var cookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
+            cookie.Expires = DateTime.Now.AddMinutes(30000);
+            cookie.HttpOnly = true;
+            Response.Cookies.Add(cookie);
+
+            //  FormsAuthentication.SetAuthCookie(FormsAuthentication.FormsCookieName,false);
+
+            LoggerHelper.Info("登陆结束：");
+            return new AbpJsonResult
+            {
+                Data = new AjaxResponse<object>() { success = true }
+            };
+        }
+
+
 
     }
 }

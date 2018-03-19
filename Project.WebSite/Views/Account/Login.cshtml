@@ -1,7 +1,26 @@
-﻿
-@{
-    ViewBag.Title = "Login";
-}
+﻿<!DOCTYPE html>
 
-<h2>Login</h2>
+<html>
+<head>
+    @Html.Partial("_Head")
+    @RenderSection("JavaScript", false)
+</head>
+<body>
 
+    <table>
+        <tr>
+            <td>账号</td>
+            <td><input type="text" value="" id="AccountName" /><span for="AccountName"></span></td>
+        </tr>
+        <tr>
+            <td>密码</td>
+            <td><input type="password" value="" id="Password" /><span for="Password"></span></td>
+        </tr>
+        <tr>
+            <td>
+                <input type="button" value="登录" id="btn_Login" />
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
