@@ -391,12 +391,10 @@
     <Content Include="Scripts\pro\kindeditor\file_manager_json.ashx" />
     <Content Include="Scripts\pro\kindeditor\upload_json.ashx" />
     <Content Include="Views\Shared\_Head.cshtml" />
-    <Content Include="Views\Shared\_LayoutHandler.cshtml" />
-    <Content Include="Views\Shared\_LayoutList.cshtml" />
-    <Content Include="Views\Shared\_LayoutList2.cshtml" />
-    <Content Include="Views\Shared\InternalServer.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\InternalServer.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -417,6 +415,10 @@
     <ProjectReference Include="..\Project.Infrastructure.FrameworkCore\Project.Infrastructure.FrameworkCore.csproj">
       <Project>{1c2392ad-a0f8-4378-9c54-3dcd1fb5d1db}</Project>
       <Name>Project.Infrastructure.FrameworkCore</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Project.Map\Project.Map.csproj">
+      <Project>{21e524e2-cafe-4cbb-8141-e21dba15fc1f}</Project>
+      <Name>Project.Map</Name>
     </ProjectReference>
     <ProjectReference Include="..\Project.Model\Project.Model.csproj">
       <Project>{3d26782a-3308-430b-b58f-5f8aba1a50b3}</Project>

@@ -65,3 +65,6 @@ G:\云端备份\我设计的框架\Retail2\Project.WebSite\bin\FluentNHibernate.
 G:\云端备份\我设计的框架\Retail2\Project.WebSite\bin\AutoMapper.xml
 G:\云端备份\我设计的框架\Retail2\Project.WebSite\bin\Project.Repository.pdb
 G:\云端备份\我设计的框架\Retail2\Project.WebSite\bin\Iesi.Collections.xml
+G:\云端备份\我设计的框架\Retail2\Project.WebSite\bin\Config\hibernate.cfg.xml
+G:\云端备份\我设计的框架\Retail2\Project.WebSite\bin\Project.Map.dll
+G:\云端备份\我设计的框架\Retail2\Project.WebSite\bin\Project.Map.pdb

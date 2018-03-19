@@ -9,19 +9,23 @@ var pro = pro || {};
                 function () {
                     var postData = { AccountName: $("#AccountName").val(), Password: $("#Password").val() };
 
-                    abp.ajax({
+                    $.ajax({
+                        dataType: 'json',
+                        type: 'POST',
+                        contentType: 'application/json',
                         url: "/Account/Login",
-                        data: JSON.stringify(postData)
-                    }).done(
-                    function (data) {
+                        data: JSON.stringify(postData),
+                        cache: false,
+                        async: false,
+                        success: function (data) {
+                            alert(JSON.stringify(data));
 
-                        alert(JSON.stringify(data));
-                    }
-                    ).fail(
-                    function (errordetails) {
-                        alert(JSON.stringify(errordetails));
-                    }
-                    );
+                            if (data.success) {
+                                window.location.href = "/Home/Index";
+                            }
+
+                        }
+                    });
 
 
                 }

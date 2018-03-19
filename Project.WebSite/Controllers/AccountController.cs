@@ -13,7 +13,7 @@ using Project.Service.CustomerManager;
 
 namespace Project.WebSite.Controllers
 {
-    public class AccountController : BaseController
+    public class AccountController : Controller
     {
         // GET: Login
         public ActionResult Index()
