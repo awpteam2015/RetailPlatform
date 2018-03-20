@@ -13,6 +13,7 @@ using Project.Infrastructure.FrameworkCore.DataNhibernate;
 using Project.Infrastructure.FrameworkCore.DataNhibernate.Helpers;
 using Project.Infrastructure.FrameworkCore.ToolKit.LinqExpansion;
 using Project.Model.ProductManager;
+using Project.Model.ProductManager.Request;
 using Project.Repository.ProductManager;
 using Project.Service.ProductManager.Help;
 
@@ -52,11 +53,11 @@ namespace Project.Service.ProductManager
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
-        public Tuple<bool,string> Add(ProductEntity entity)
+        public Tuple<bool, string> Add(ProductEntity entity)
         {
             if (!entity.GoodsEntityList.Any())
             {
-                return new Tuple<bool, string>(false,"请选择产品规格来生成组合商品。");
+                return new Tuple<bool, string>(false, "请选择产品规格来生成组合商品。");
             }
             ProductHelp.GetInstance().CombineProductInfo(entity);
 
@@ -78,6 +79,11 @@ namespace Project.Service.ProductManager
                     });
 
                     entity.ProductAttributeValueEntityList.ToList().ForEach(p =>
+                    {
+                        p.ProductId = pkId;
+                    });
+
+                    entity.ProductImageEntityList.ToList().ForEach(p =>
                     {
                         p.ProductId = pkId;
                     });
@@ -148,7 +154,7 @@ namespace Project.Service.ProductManager
             ProductHelp.GetInstance().CombineProductInfo(newInfo);
 
             var orgInfo = ProductService.GetInstance().GetModelByPk(entity.PkId);
-           
+
             orgInfo.SellPrice = newInfo.SellPrice;
             orgInfo.StockNum = newInfo.StockNum;
             orgInfo.ProductCode = newInfo.ProductCode;
@@ -280,7 +286,7 @@ namespace Project.Service.ProductManager
                     #endregion
 
                     tx.Commit();
-                    return new Tuple<bool, string>(true,"");
+                    return new Tuple<bool, string>(true, "");
                 }
                 catch (Exception e)
                 {
@@ -315,11 +321,11 @@ namespace Project.Service.ProductManager
             #region
             // if (!string.IsNullOrEmpty(where.PkId))
             //  expr = expr.And(p => p.PkId == where.PkId);
-             if (!string.IsNullOrEmpty(where.ProductName))
-              expr = expr.And(p => p.ProductName == where.ProductName);
-            if (where.SystemCategoryId>0)
+            if (!string.IsNullOrEmpty(where.ProductName))
+                expr = expr.And(p => p.ProductName == where.ProductName);
+            if (where.SystemCategoryId > 0)
                 expr = expr.And(p => p.SystemCategoryId == where.SystemCategoryId);
-            if (where.ProductCategoryId>0)
+            if (where.ProductCategoryId > 0)
                 expr = expr.And(p => p.ProductCategoryId == where.ProductCategoryId);
             // if (!string.IsNullOrEmpty(where.ProductCategoryRoute))
             //  expr = expr.And(p => p.ProductCategoryRoute == where.ProductCategoryRoute);
@@ -412,6 +418,14 @@ namespace Project.Service.ProductManager
             var count = _productRepository.Query().Where(expr).Count();
             return new System.Tuple<IList<ProductEntity>, int>(list, count);
         }
+
+
+        public System.Tuple<IList<ProductEntity>, int> SearchFront(ProductSearch where)
+        {
+            var list = _productRepository.Search(where);
+            return new Tuple<IList<ProductEntity>, int>(list, 100);
+        }
+
 
         /// <summary>
         /// 取列表

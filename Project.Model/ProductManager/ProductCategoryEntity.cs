@@ -25,7 +25,7 @@ namespace Project.Model.ProductManager
         /// <summary>
         /// 
         /// </summary>
-        public virtual System.String ProductcategoryName{get; set;}
+        public virtual System.String ProductCategoryName{get; set;}
         /// <summary>
         /// 
         /// </summary>
@@ -104,7 +104,7 @@ namespace Project.Model.ProductManager
         /// </summary>
         public virtual System.String text
         {
-            get { return ProductcategoryName; }
+            get { return ProductCategoryName; }
         }
         #endregion
     }

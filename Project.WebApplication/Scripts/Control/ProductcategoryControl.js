@@ -8,7 +8,7 @@
                 editable: false,
                 width:200,
                 valueField: 'PkId',
-                textField: 'ProductcategoryName',
+                textField: 'ProductCategoryName',
                 url: '/ProductManager/ProductCategory/GetList_Combotree'
             };
 

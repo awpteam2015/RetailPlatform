@@ -123,8 +123,8 @@ namespace Project.Service.ProductManager
             #region
             // if (!string.IsNullOrEmpty(where.PkId))
             //  expr = expr.And(p => p.PkId == where.PkId);
-            // if (!string.IsNullOrEmpty(where.ProductcategoryName))
-            //  expr = expr.And(p => p.ProductcategoryName == where.ProductcategoryName);
+            // if (!string.IsNullOrEmpty(where.ProductCategoryName))
+            //  expr = expr.And(p => p.ProductCategoryName == where.ProductCategoryName);
             // if (!string.IsNullOrEmpty(where.ParentId))
             //  expr = expr.And(p => p.ParentId == where.ParentId);
             // if (!string.IsNullOrEmpty(where.Rank))
@@ -168,8 +168,8 @@ namespace Project.Service.ProductManager
             #region
             // if (!string.IsNullOrEmpty(where.PkId))
             //  expr = expr.And(p => p.PkId == where.PkId);
-            if (!string.IsNullOrEmpty(where.ProductcategoryName))
-                expr = expr.And(p => p.ProductcategoryName == where.ProductcategoryName);
+            if (!string.IsNullOrEmpty(where.ProductCategoryName))
+                expr = expr.And(p => p.ProductCategoryName == where.ProductCategoryName);
             // if (!string.IsNullOrEmpty(where.ParentId))
             //  expr = expr.And(p => p.ParentId == where.ParentId);
             // if (!string.IsNullOrEmpty(where.Rank))

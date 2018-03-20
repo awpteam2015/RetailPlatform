@@ -82,7 +82,7 @@
                 $("#form1").validate({
                     rules: {
           PkId: { required: true  },
-          ProductcategoryName: { required: true  },
+          ProductCategoryName: { required: true  },
           ParentId: { required: true  },
           Rank: { required: true  },
           Sort: { required: true  },
@@ -99,7 +99,7 @@
                     },
                     messages: {
           PkId:  "必填!",
-          ProductcategoryName:  "必填!",
+          ProductCategoryName:  "必填!",
           ParentId:  "必填!",
           Rank:  "层级必填!",
           Sort:  "必填!",

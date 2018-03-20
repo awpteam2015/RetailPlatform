@@ -248,6 +248,12 @@ namespace Project.Model.ProductManager
         public virtual string Attr_IsCommand {
             get { return IsCommand == 1 ? "是" : "否"; }
         }
+
+        /// <summary>
+        /// 给前台搜索列表用
+        /// </summary>
+        public virtual string ImageUrl { get; set; }
+
         #endregion
 
 

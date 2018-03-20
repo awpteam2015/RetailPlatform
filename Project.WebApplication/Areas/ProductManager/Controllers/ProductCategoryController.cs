@@ -49,7 +49,7 @@ namespace Project.WebApplication.Areas.ProductManager.Controllers
         public AbpJsonResult GetList_Combotree()
         {
             var where = new ProductCategoryEntity();
-            where.ProductcategoryName = RequestHelper.GetString("ProductcategoryName");
+            where.ProductCategoryName = RequestHelper.GetString("ProductCategoryName");
 
             var searchList = ProductCategoryService.GetInstance().GetList(where);
 

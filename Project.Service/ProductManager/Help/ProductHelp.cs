@@ -43,7 +43,7 @@ namespace Project.Service.ProductManager.Help
               var temp =  _productCategoryRepository.GetById(entity.ProductCategoryId);
                 if (temp != null)
                 {
-                    entity.ProductCategoryName = temp.ProductcategoryName;
+                    entity.ProductCategoryName = temp.ProductCategoryName;
                 }
             }
 

@@ -1,25 +1,51 @@
-﻿
+﻿@using NHibernate.Util
+@model Project.WebSite.Models.ProductListVm
 @{
     ViewBag.Title = "商品列表";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 @section JavaScript{
-    <script src="~/Scripts/Account/Login.js"></script>
+
 }
 
-<table>
+<table style="height: 500px">
+
     <tr>
-        <td>账号</td>
-        <td><input type="text" value="" id="AccountName" /><span for="AccountName">错误提示</span></td>
-    </tr>
-    <tr>
-        <td>密码</td>
-        <td><input type="password" value="" id="Password" /><span for="Password">错误提示</span></td>
-    </tr>
-    <tr>
+        <td style="width: 200px">
+            左侧分类导航<br/>
+            可以留一个广告位
+        </td>
         <td>
-            <input type="button" value="登录" id="btn_Login" />
+            <div>搜索条件</div>
+
+            @foreach (var attribute in Model.AttributList)
+            {
+                @attribute.AttributeName <span>:</span>
+
+                foreach (var attributevalue in attribute.AttributeValueList)
+                {
+                    <a href="">@attributevalue.AttributeValueName</a>
+
+                }
+                <br />
+            }
+            <br />
+            <span>
+                已选中的搜索条件
+            </span>
+
+            <br /><br /><br /><br /><br /><br /><br /><br />
+            <div>商品列表信息</div>
+
+            @foreach (var product in Model.ProductList)
+            {
+                <div style="width: 200px; float: left">
+                    @product.ProductName
+                </div>
+                    @product.ImageUrl
+            }
+
         </td>
     </tr>
 </table>

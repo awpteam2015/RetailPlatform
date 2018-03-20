@@ -1,0 +1,5 @@
+﻿1>------ 已启动生成: 项目: Project.WebApplication, 配置: Debug Any CPU ------
+2>------ 已启动生成: 项目: Project.WebSite, 配置: Debug Any CPU ------
+2>  Project.WebSite -> G:\云端备份\我设计的框架\Retail2\Project.WebSite\bin\Project.WebSite.dll
+1>  Project.WebApplication -> G:\云端备份\我设计的框架\Retail2\Project.WebApplication\bin\Project.WebApplication.dll
+========== 生成: 成功 2 个，失败 0 个，最新 7 个，跳过 0 个 ==========

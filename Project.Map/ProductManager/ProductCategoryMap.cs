@@ -17,7 +17,7 @@ namespace  Project.Map.ProductManager
         {
             this.MapPkidDefault<ProductCategoryEntity,int>();
  
-            Map(p => p.ProductcategoryName);    
+            Map(p => p.ProductCategoryName);    
             Map(p => p.ParentId);    
             Map(p => p.Rank);    
             Map(p => p.Sort);    
