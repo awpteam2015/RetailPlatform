@@ -5,7 +5,8 @@
 }
 
 @section JavaScript{
-    <script src="~/Scripts/Account/Login.js"></script>
+
+    <script src="~/Scripts/Account/Register.js?JsParamter=@SiteConfig.GetConfig().JsParamter"></script>
 }
 
 <table>
@@ -22,11 +23,14 @@
     </tr>
     <tr>
         <td>确认密码</td>
-        <td><input type="password" value="" id="Password" /><span for="Password">错误提示</span></td>
+        <td><input type="password" value="" id="ConfirmPassword" /><span for="Password">错误提示</span></td>
     </tr>
     <tr>
         <td>验证码</td>
-        <td><input type="password" value="" id="Password" /><span for="Password">错误提示</span></td>
+        <td>
+            <input type="text" value="" id="MobileCode" />
+            <input type="button" value="获取短信验证码" id="btn_SendMobileCode"/>
+        </td>
     </tr>
     <tr>
         <td><input type="checkbox" />同意注册条款</td>

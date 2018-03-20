@@ -150,6 +150,7 @@
     <Compile Include="RiverManager\RiverProblemDbService.cs" />
     <Compile Include="RiverManager\RiverService.cs" />
     <Compile Include="SystemSetManager\AreaService.cs" />
+    <Compile Include="SystemSetManager\AuthCodeService.cs" />
     <Compile Include="SystemSetManager\CityService.cs" />
     <Compile Include="SystemSetManager\HolidayDetailService.cs" />
     <Compile Include="HRManager\YearHholidayDefinitionService.cs" />

@@ -101,6 +101,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Global.asax" />
+    <Content Include="Scripts\Account\Register.js" />
     <Content Include="Scripts\Account\Login.js" />
     <Content Include="Scripts\Config\globalConfig.js" />
     <Content Include="Scripts\Control\ImageUploadDefaultControl.js" />
@@ -409,6 +410,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Scripts\pro\SelfValidate\" />
     <Folder Include="Views\ShopCat\" />
     <Folder Include="Views\UserCenter\" />
   </ItemGroup>

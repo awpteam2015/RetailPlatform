@@ -126,6 +126,7 @@
     <Compile Include="RiverManager\RiverProblemApplyMap.cs" />
     <Compile Include="RiverManager\RiverProblemDbMap.cs" />
     <Compile Include="SystemSetManager\AreaMap.cs" />
+    <Compile Include="SystemSetManager\AuthCodeMap.cs" />
     <Compile Include="SystemSetManager\CityMap.cs" />
     <Compile Include="SystemSetManager\HolidayDetailMap.cs" />
     <Compile Include="SystemSetManager\IndexPageSetMap.cs" />

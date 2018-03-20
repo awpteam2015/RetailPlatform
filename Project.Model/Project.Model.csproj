@@ -129,6 +129,7 @@
     <Compile Include="RiverManager\RiverProblemApplyEntity.cs" />
     <Compile Include="RiverManager\RiverProblemDbEntity.cs" />
     <Compile Include="SystemSetManager\AreaEntity.cs" />
+    <Compile Include="SystemSetManager\AuthCodeEntity.cs" />
     <Compile Include="SystemSetManager\CityEntity.cs" />
     <Compile Include="SystemSetManager\HolidayDetailEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
