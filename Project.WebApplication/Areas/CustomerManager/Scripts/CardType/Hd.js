@@ -62,9 +62,9 @@
             addRule: function () {
                 $("#form1").validate({
                     rules: {
-          PkId: { required: true  },
+          //PkId: { required: true  },
           CardtypeName: { required: true  },
-          Discount: { required: true  },
+          Discount: { required: true  }
                     },
                     messages: {
           PkId:  "自动增加得建立序列必填!",

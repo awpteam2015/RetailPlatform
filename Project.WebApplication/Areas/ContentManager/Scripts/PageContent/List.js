@@ -11,6 +11,10 @@ var pro = pro || {};
             };
         },
         initPage: function () {
+
+            pro.PageContentCategoryControl.init();
+
+
             var initObj = this.init();
             var tabObj = initObj.tabObj;
             var gridObj = initObj.gridObj;
@@ -22,12 +26,14 @@ var pro = pro || {};
                 singleSelect: true,
                 columns: [[
 
-         { field: 'Title1', title: '标题一', width: 100 },
-         { field: 'Title2', title: '标题二', width: 100 },
-         { field: 'Title3', title: '标题三', width: 100 },
-         { field: 'Description1', title: '描述一', width: 100 },
-         { field: 'Description2', title: '描述二', width: 100 },
-         { field: 'Description3', title: '描述三', width: 100 }
+         { field: 'Title1', title: '标题一', width: 200 },
+         { field: 'Title2', title: '标题二', width: 200 },
+         { field: 'Title3', title: '标题三', width: 200 },
+         { field: 'PageContentCategoryName', title: '分类名称', width: 100 }
+
+         //{ field: 'Description1', title: '描述一', width: 200 },
+         //{ field: 'Description2', title: '描述二', width: 200 },
+         //{ field: 'Description3', title: '描述三', width: 200 }
 
 
                 ]],

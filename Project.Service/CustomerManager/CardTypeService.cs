@@ -1,10 +1,10 @@
 ﻿
- /***************************************************************************
- *       功能：     CMCardType业务处理层
- *       作者：     李伟伟
- *       日期：     2018/3/17
- *       描述：     会员卡类型
- * *************************************************************************/
+/***************************************************************************
+*       功能：     CMCardType业务处理层
+*       作者：     李伟伟
+*       日期：     2018/3/17
+*       描述：     会员卡类型
+* *************************************************************************/
 using System.Linq;
 using System.Collections.Generic;
 using Project.Infrastructure.FrameworkCore.DataNhibernate.Helpers;
@@ -15,17 +15,17 @@ namespace Project.Service.CustomerManager
 {
     public class CardTypeService
     {
-       
-       #region 构造函数
-        private readonly CardTypeRepository  _cardTypeRepository;
-            private static readonly CardTypeService Instance = new CardTypeService();
+
+        #region 构造函数
+        private readonly CardTypeRepository _cardTypeRepository;
+        private static readonly CardTypeService Instance = new CardTypeService();
 
         public CardTypeService()
         {
-           this._cardTypeRepository =new CardTypeRepository();
+            this._cardTypeRepository = new CardTypeRepository();
         }
-        
-         public static  CardTypeService GetInstance()
+
+        public static CardTypeService GetInstance()
         {
             return Instance;
         }
@@ -33,7 +33,7 @@ namespace Project.Service.CustomerManager
 
 
         #region 基础方法 
-         /// <summary>
+        /// <summary>
         /// 新增
         /// </summary>
         /// <param name="entity"></param>
@@ -42,24 +42,24 @@ namespace Project.Service.CustomerManager
         {
             return _cardTypeRepository.Save(entity);
         }
-        
-        
-         /// <summary>
+
+
+        /// <summary>
         /// 删除
         /// </summary>
         /// <param name="pkId"></param>
         public bool DeleteByPkId(System.Int32 pkId)
         {
-         try
+            try
             {
-            var entity= _cardTypeRepository.GetById(pkId);
-            _cardTypeRepository.Delete(entity);
-             return true;
-        }
-        catch
-        {
-         return false;
-        }
+                var entity = _cardTypeRepository.GetById(pkId);
+                _cardTypeRepository.Delete(entity);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         /// <summary>
@@ -68,15 +68,15 @@ namespace Project.Service.CustomerManager
         /// <param name="entity"></param>
         public bool Delete(CardTypeEntity entity)
         {
-         try
+            try
             {
-            _cardTypeRepository.Delete(entity);
-             return true;
-        }
-        catch
-        {
-         return false;
-        }
+                _cardTypeRepository.Delete(entity);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         /// <summary>
@@ -85,15 +85,15 @@ namespace Project.Service.CustomerManager
         /// <param name="entity"></param>
         public bool Update(CardTypeEntity entity)
         {
-          try
+            try
             {
-            _cardTypeRepository.Update(entity);
-         return true;
-        }
-        catch
-        {
-         return false;
-        }
+                _cardTypeRepository.Merge(entity);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
 
@@ -117,15 +117,15 @@ namespace Project.Service.CustomerManager
         /// <returns>获取当前页【会员卡类型】和总【会员卡类型】数</returns>
         public System.Tuple<IList<CardTypeEntity>, int> Search(CardTypeEntity where, int skipResults, int maxResults)
         {
-                var expr = PredicateBuilder.True<CardTypeEntity>();
-                  #region
-              // if (!string.IsNullOrEmpty(where.PkId))
-              //  expr = expr.And(p => p.PkId == where.PkId);
-              // if (!string.IsNullOrEmpty(where.CardtypeName))
-              //  expr = expr.And(p => p.CardtypeName == where.CardtypeName);
-              // if (!string.IsNullOrEmpty(where.Discount))
-              //  expr = expr.And(p => p.Discount == where.Discount);
- #endregion
+            var expr = PredicateBuilder.True<CardTypeEntity>();
+            #region
+            // if (!string.IsNullOrEmpty(where.PkId))
+            //  expr = expr.And(p => p.PkId == where.PkId);
+            if (!string.IsNullOrEmpty(where.CardtypeName))
+                expr = expr.And(p => p.CardtypeName == where.CardtypeName);
+            // if (!string.IsNullOrEmpty(where.Discount))
+            //  expr = expr.And(p => p.Discount == where.Discount);
+            #endregion
             var list = _cardTypeRepository.Query().Where(expr).OrderByDescending(p => p.PkId).Skip(skipResults).Take(maxResults).ToList();
             var count = _cardTypeRepository.Query().Where(expr).Count();
             return new System.Tuple<IList<CardTypeEntity>, int>(list, count);
@@ -138,15 +138,15 @@ namespace Project.Service.CustomerManager
         /// <returns>返回列表</returns>
         public IList<CardTypeEntity> GetList(CardTypeEntity where)
         {
-               var expr = PredicateBuilder.True<CardTypeEntity>();
-             #region
-              // if (!string.IsNullOrEmpty(where.PkId))
-              //  expr = expr.And(p => p.PkId == where.PkId);
-              // if (!string.IsNullOrEmpty(where.CardtypeName))
-              //  expr = expr.And(p => p.CardtypeName == where.CardtypeName);
-              // if (!string.IsNullOrEmpty(where.Discount))
-              //  expr = expr.And(p => p.Discount == where.Discount);
- #endregion
+            var expr = PredicateBuilder.True<CardTypeEntity>();
+            #region
+            // if (!string.IsNullOrEmpty(where.PkId))
+            //  expr = expr.And(p => p.PkId == where.PkId);
+            // if (!string.IsNullOrEmpty(where.CardtypeName))
+            //  expr = expr.And(p => p.CardtypeName == where.CardtypeName);
+            // if (!string.IsNullOrEmpty(where.Discount))
+            //  expr = expr.And(p => p.Discount == where.Discount);
+            #endregion
             var list = _cardTypeRepository.Query().Where(expr).OrderBy(p => p.PkId).ToList();
             return list;
         }
@@ -154,11 +154,11 @@ namespace Project.Service.CustomerManager
 
 
         #region 新增方法
-        
+
         #endregion
     }
 }
 
-    
- 
+
+
 

@@ -10,6 +10,20 @@
 
 @section JavaScript{
     <script src="/Areas/ContentManager/Scripts/PageContent/Hd.js?JsParamter=@SiteConfig.GetConfig().JsParamter"></script>
+
+    <script src="/Scripts/Control/PageContentCategoryControl.js?JsParamter=@SiteConfig.GetConfig().JsParamter"></script>
+
+    <script src="/Scripts/Control/ImageUploadControl.js?JsParamter=@SiteConfig.GetConfig().JsParamter"></script>
+
+    <script src="/Scripts/jqueryPlugins/jquery_uploadify/jquery.uploadify.js"></script>
+    <link href="/Scripts/jqueryPlugins/jquery_uploadify/uploadify.css" rel="stylesheet" />
+
+    <!-- 配置文件 -->
+    <script type="text/javascript" src="/Scripts/Control/ueditor/ueditor.config.js"></script>
+    <!-- 编辑器源码文件 -->
+    <script type="text/javascript" src="/Scripts/Control/ueditor/ueditor.all.js"></script>
+    <!-- 语言包文件(建议手动加在语言，避免在ie下有时因为加载语言失败导致编辑器加载失败) -->
+    <script type="text/javascript" src="/Scripts/Control/ueditor/lang/zh-cn/zh-cn.js"></script>
 }
 <div style="display: none">
     <input id="BindEntity" type="text" value="@ViewBag.BindEntity" />
@@ -21,82 +35,91 @@
 
             <tr>
                 <td>
-                   标题1:
+                    内容分类:
                 </td>
                 <td>
-                    <input id="Title1" name="Title1" type="text" />
-                </td>
-            </tr>
-
-            <tr>
-                <td>
-                    标题2:
-                </td>
-                <td>
-                    <input id="Title2" name="Title2" type="text" />
+                    <input id="PageContentCategoryId" name="PageContentCategoryId" type="text" />
                 </td>
             </tr>
 
-            <tr>
+            <tr id="tr_Title1" style="display: none">
                 <td>
-                    标题3:
+                    <span id="span_Title1">标题1</span> :
                 </td>
                 <td>
-                    <input id="Title3" name="Title3" type="text" />
-                </td>
-            </tr>
-
-            <tr>
-                <td>
-                    描述1:
-                </td>
-                <td>
-                    <input id="Description1" name="Description1" type="text" />
+                    <input id="Title1" name="Title1" type="text" style="width: 200px" />
                 </td>
             </tr>
 
-            <tr>
+            <tr id="tr_Title2" style="display: none">
                 <td>
-                    描述2:
+                    <span id="span_Title2">标题2</span> :
                 </td>
                 <td>
-                    <input id="Description2" name="Description2" type="text" />
-                </td>
-            </tr>
-
-            <tr>
-                <td>
-                    描述3:
-                </td>
-                <td>
-                    <input id="Description3" name="Description3" type="text" />
+                    <input id="Title2" name="Title2" type="text" style="width: 200px" />
                 </td>
             </tr>
 
-            <tr>
+            <tr id="tr_Title3" style="display: none">
                 <td>
-                    图片1:
+                    <span id="span_Title3">标题3</span> :
                 </td>
                 <td>
-                    <input id="ImageUrl1" name="ImageUrl1" type="text" />
-                </td>
-            </tr>
-
-            <tr>
-                <td>
-                    图片2:
-                </td>
-                <td>
-                    <input id="ImageUrl2" name="ImageUrl2" type="text" />
+                    <input id="Title3" name="Title3" type="text" style="width: 200px" />
                 </td>
             </tr>
 
-            <tr>
+            <tr id="tr_Description1" style="display: none">
                 <td>
-                    图片3:
+                    <span id="span_Description1">描述1</span> :
                 </td>
                 <td>
-                    <input id="ImageUrl3" name="ImageUrl3" type="text" />
+                    <textarea id="Description1" name="Description1"></textarea>
+                </td>
+            </tr>
+
+            <tr id="tr_Description2" style="display: none">
+                <td>
+                    <span id="span_Description2">描述2</span> :
+                </td>
+                <td>
+                    <textarea id="Description2" name="Description2"></textarea>
+                </td>
+            </tr>
+
+            <tr id="tr_Description3" style="display: none">
+                <td>
+                    <span id="span_Description3">描述3</span> :
+                </td>
+                <td>
+                    <textarea id="Description3" name="Description3"></textarea>
+                </td>
+            </tr>
+
+            <tr id="tr_ImageUrl1" style="display: none">
+                <td>
+                    <span id="span_ImageUrl1">图片1</span> :
+                </td>
+                <td>
+                    <div id="div_ImageArea1"></div>
+                </td>
+            </tr>
+
+            <tr id="tr_ImageUrl2" style="display: none">
+                <td>
+                    <span id="span_ImageUrl2">图片2</span> :
+                </td>
+                <td>
+                    <div id="div_ImageArea2"></div>
+                </td>
+            </tr>
+
+            <tr id="tr_ImageUrl3" style="display: none">
+                <td>
+                    <span id="span_ImageUrl3">图片3</span> :
+                </td>
+                <td>
+                    <div id="div_ImageArea3"></div>
                 </td>
             </tr>
 

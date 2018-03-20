@@ -4,7 +4,7 @@
     pro.PageContentCategoryControl = {
         init: function (paramter) {
             var defaultParamter = {
-                controlId: "PageContentCategory",
+                controlId: "PageContentCategoryId",
                 editable: false,
                 width:200,
                 valueField: 'PkId',

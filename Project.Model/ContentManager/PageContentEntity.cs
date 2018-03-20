@@ -13,8 +13,13 @@ using Project.Infrastructure.FrameworkCore.Domain.Entities.Component;
 namespace Project.Model.ContentManager
 {
     public class PageContentEntity: Entity
-    { 
+    {
         #region 属性
+        public virtual System.Int32 PageContentCategoryId { get; set; }
+
+        public virtual System.String PageContentCategoryName { get; set; }
+
+
         /// <summary>
         /// 
         /// </summary>

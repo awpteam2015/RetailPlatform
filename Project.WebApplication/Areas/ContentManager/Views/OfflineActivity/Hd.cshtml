@@ -12,7 +12,7 @@
     <script src="/Areas/ContentManager/Scripts/OfflineActivity/Hd.js?JsParamter=@SiteConfig.GetConfig().JsParamter"></script>
 <script src="/Scripts/jqueryPlugins/jquery_uploadify/jquery.uploadify.js"></script>
 <link href="/Scripts/jqueryPlugins/jquery_uploadify/uploadify.css" rel="stylesheet" />
-<script src="/Scripts/Control/ImageUploadDefaultControl.js"></script>
+<script src="/Scripts/Control/ImageUploadControl.js"></script>
 }
 <div style="display: none">
     <input id="BindEntity" type="text" value="@ViewBag.BindEntity" />
@@ -55,17 +55,7 @@
                     图片:
                 </td>
                 <td>
-                    <div style="float: left; width: 150px; height: 200px">
-                        <div style="display: none">
-                            <input id="ImageUrl" name="ImageUrl" type="text" />
-                        </div>
-                        <div id="div_filename" style="height: 170px; width: 150px">
-
-                        </div>
-                        <div style="width: 150px;">
-                            <input id="file_upload" name="file_upload" type="file" />
-                        </div>
-                    </div>
+                    <div id="div_ImageArea"></div>
                 </td>
             </tr>
 

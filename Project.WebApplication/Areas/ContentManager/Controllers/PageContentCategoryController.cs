@@ -70,6 +70,12 @@ namespace Project.WebApplication.Areas.ContentManager.Controllers
         }
 
 
+        public AbpJsonResult GetPageContentCategoryEntity()
+        {
+            var pageContentCategoryEntity = PageContentCategoryService.GetInstance().GetModelByPk(RequestHelper.GetInt("PkId"));
+            return new AbpJsonResult(pageContentCategoryEntity,new NullToEmptyStringResolver());
+        }
+
 
         [HttpPost]
         public AbpJsonResult Add(AjaxRequest<PageContentCategoryEntity> postData)

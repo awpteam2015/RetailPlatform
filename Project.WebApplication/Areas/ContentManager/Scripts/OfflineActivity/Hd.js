@@ -5,7 +5,7 @@
     pro.OfflineActivity.HdPage = {
         initPage: function () {
 
-            pro.ImageUploadDefaultControl.init();
+            pro.ImageUploadControl.init();
 
             $("#btnAdd").click(function () {
                 pro.OfflineActivity.HdPage.submit("Add");
@@ -26,7 +26,7 @@
                     $("[name=" + filedname + "]").val(bindEntity[filedname]);
                 }
 
-                pro.ImageUploadDefaultControl.bindData(bindEntity["ImageUrl"]);
+                pro.ImageUploadControl.bindData(bindEntity["ImageUrl"]);
                 //行项目信息用json绑定控件
                 //alert(JSON.stringify(BindEntity.List));
             }

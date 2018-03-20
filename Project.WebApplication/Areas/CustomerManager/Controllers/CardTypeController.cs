@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web.Mvc;
 using AutoMapper;
 using Project.Infrastructure.FrameworkCore.DataNhibernate.Helpers;
+using Project.Infrastructure.FrameworkCore.ToolKit;
 using Project.Infrastructure.FrameworkCore.ToolKit.JsonHandler;
 using Project.Infrastructure.FrameworkCore.ToolKit.LinqExpansion;
 using Project.Infrastructure.FrameworkCore.WebMvc.Controllers.Results;
@@ -40,9 +41,9 @@ namespace Project.WebApplication.Areas.CustomerManager.Controllers
             var pIndex = this.Request["page"].ConvertTo<int>();
             var pSize = this.Request["rows"].ConvertTo<int>();
             var where = new CardTypeEntity();
-			//where.PkId = RequestHelper.GetFormString("PkId");
-			//where.CardtypeName = RequestHelper.GetFormString("CardtypeName");
-			//where.Discount = RequestHelper.GetFormString("Discount");
+            //where.PkId = RequestHelper.GetFormString("PkId");
+            where.CardtypeName = RequestHelper.GetString("CardtypeName");
+            //where.Discount = RequestHelper.GetFormString("Discount");
             var searchList = CardTypeService.GetInstance().Search(where, (pIndex - 1) * pSize, pSize);
 
             var dataGridEntity = new DataGridResponse()

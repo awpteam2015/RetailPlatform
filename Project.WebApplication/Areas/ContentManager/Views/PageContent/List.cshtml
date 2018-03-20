@@ -11,6 +11,7 @@
 
 @section JavaScript{
     <script src="/Areas/ContentManager/Scripts/PageContent/List.js?JsParamter=@SiteConfig.GetConfig().JsParamter" type="text/javascript"></script>
+<script src="/Scripts/Control/PageContentCategoryControl.js?JsParamter=@SiteConfig.GetConfig().JsParamter"></script>
 }
 
 <div title="资讯列表" style="padding:1px;">
@@ -36,13 +37,13 @@
                             标题
                         </td>
                         <td>
-                            <input />
+                            <input id="Title1" name="Title1" type="text" style="width: 200px" />
                         </td>
                         <td>
                             资讯分类
                         </td>
                         <td>
-                            <input />
+                            <input id="PageContentCategoryId" name="PageContentCategoryId" type="text" />
                         </td>
                         <td colspan="2">
                             <a href="#" class="easyui-linkbutton" iconcls="icon-search" id="btnSearch">搜索</a>

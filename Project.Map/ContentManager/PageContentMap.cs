@@ -16,7 +16,10 @@ namespace  Project.Map.ContentManager
         public PageContentMap():base("CNM_PageContent")
         {
             this.MapPkidDefault<PageContentEntity,int>();
- 
+
+            Map(p => p.PageContentCategoryId);
+            Map(p => p.PageContentCategoryName);
+
             Map(p => p.Title1);    
             Map(p => p.Title2);    
             Map(p => p.Title3);    

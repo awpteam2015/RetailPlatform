@@ -67,12 +67,9 @@
                 onLoadSuccess: function (data) {
 
                     $.each(data.rows, function (key, obj) {
-                        pro.ImageUploadControl.init(obj.PkId);
+                        pro.ImageUploadControl.init(obj.PkId,"_");
 
-                        $('#div_filename_' + obj.PkId).html("<span ><img id='img_" + obj.PkId + "' name=\"listP\" style=\"height:30px;width:30px;\" src=\"" + obj.ImageUrl + "\">" + "</img> <a href=\"javascript:void(0)\" onclick=\"pro.Product.ProductImageHd.delImage(" + obj.PkId + ")\">删除</a></span>");
-
-                        $("#ImageUrl_" + obj.PkId).val(obj.ImageUrl);
-
+                        pro.ImageUploadControl.bindData(obj.ImageUrl, obj.PkId, "_");
                     });
                 }
             }
