@@ -2,9 +2,11 @@
  /***************************************************************************
  *       功能：     OMOrderMainDetail业务处理层
  *       作者：     李伟伟
- *       日期：     2018/3/17
+ *       日期：     2018/3/21
  *       描述：     订单主表明细
  * *************************************************************************/
+
+using System;
 using System.Linq;
 using System.Collections.Generic;
 using Project.Infrastructure.FrameworkCore.DataNhibernate.Helpers;
@@ -56,7 +58,7 @@ namespace Project.Service.OrderManager
             _orderMainDetailRepository.Delete(entity);
              return true;
         }
-        catch
+        catch(Exception e)
         {
          return false;
         }
@@ -73,7 +75,7 @@ namespace Project.Service.OrderManager
             _orderMainDetailRepository.Delete(entity);
              return true;
         }
-        catch
+         catch(Exception e)
         {
          return false;
         }
@@ -90,7 +92,7 @@ namespace Project.Service.OrderManager
             _orderMainDetailRepository.Update(entity);
          return true;
         }
-        catch
+         catch(Exception e)
         {
          return false;
         }
@@ -125,12 +127,18 @@ namespace Project.Service.OrderManager
               //  expr = expr.And(p => p.OrderNo == where.OrderNo);
               // if (!string.IsNullOrEmpty(where.ProductCategoryId))
               //  expr = expr.And(p => p.ProductCategoryId == where.ProductCategoryId);
+              // if (!string.IsNullOrEmpty(where.ProductName))
+              //  expr = expr.And(p => p.ProductName == where.ProductName);
               // if (!string.IsNullOrEmpty(where.ProductId))
               //  expr = expr.And(p => p.ProductId == where.ProductId);
+              // if (!string.IsNullOrEmpty(where.ProductCode))
+              //  expr = expr.And(p => p.ProductCode == where.ProductCode);
               // if (!string.IsNullOrEmpty(where.GoodsCode))
               //  expr = expr.And(p => p.GoodsCode == where.GoodsCode);
               // if (!string.IsNullOrEmpty(where.GoodsId))
               //  expr = expr.And(p => p.GoodsId == where.GoodsId);
+              // if (!string.IsNullOrEmpty(where.ImageUrl))
+              //  expr = expr.And(p => p.ImageUrl == where.ImageUrl);
               // if (!string.IsNullOrEmpty(where.Price))
               //  expr = expr.And(p => p.Price == where.Price);
               // if (!string.IsNullOrEmpty(where.PriceSubDiscount))
@@ -162,12 +170,18 @@ namespace Project.Service.OrderManager
               //  expr = expr.And(p => p.OrderNo == where.OrderNo);
               // if (!string.IsNullOrEmpty(where.ProductCategoryId))
               //  expr = expr.And(p => p.ProductCategoryId == where.ProductCategoryId);
+              // if (!string.IsNullOrEmpty(where.ProductName))
+              //  expr = expr.And(p => p.ProductName == where.ProductName);
               // if (!string.IsNullOrEmpty(where.ProductId))
               //  expr = expr.And(p => p.ProductId == where.ProductId);
+              // if (!string.IsNullOrEmpty(where.ProductCode))
+              //  expr = expr.And(p => p.ProductCode == where.ProductCode);
               // if (!string.IsNullOrEmpty(where.GoodsCode))
               //  expr = expr.And(p => p.GoodsCode == where.GoodsCode);
               // if (!string.IsNullOrEmpty(where.GoodsId))
               //  expr = expr.And(p => p.GoodsId == where.GoodsId);
+              // if (!string.IsNullOrEmpty(where.ImageUrl))
+              //  expr = expr.And(p => p.ImageUrl == where.ImageUrl);
               // if (!string.IsNullOrEmpty(where.Price))
               //  expr = expr.And(p => p.Price == where.Price);
               // if (!string.IsNullOrEmpty(where.PriceSubDiscount))

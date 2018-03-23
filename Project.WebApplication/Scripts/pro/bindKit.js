@@ -49,18 +49,18 @@
             return jQuery.parseJSON("{" + json.substring(0, json.length - 1) + "}");
         },
         getRowJson: function() {
-            //var columns = this.config.columns;
-            //var json = "";
-            //$("[name=" + this.config.columnPkidName + "]").each(
-            //    function() {
-            //        var rowJson = "";
-            //        for (var i = 0, max = columns.length; i < max; i++) {
-            //            rowJson += '"' + columns[i] + '":"' + $("[name=" + columns[i] + "_" + $(this).val() + "]").val() + '",';
-            //        }
-            //        json += "{" + rowJson.substring(0, rowJson.length - 1) + "},";
-            //    }
-            //);
-            //return jQuery.parseJSON("[" + json.substring(0, json.length - 1) + "]");
+            var columns = this.config.columns;
+            var json = "";
+            $("[name=" + this.config.columnPkidName + "]").each(
+                function() {
+                    var rowJson = "";
+                    for (var i = 0, max = columns.length; i < max; i++) {
+                        rowJson += '"' + columns[i] + '":"' + $("[name=" + columns[i] + "_" + $(this).val() + "]").val() + '",';
+                    }
+                    json += "{" + rowJson.substring(0, rowJson.length - 1) + "},";
+                }
+            );
+            return jQuery.parseJSON("[" + json.substring(0, json.length - 1) + "]");
         }
     };
 })();

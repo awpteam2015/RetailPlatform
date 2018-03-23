@@ -2,15 +2,17 @@
 /***************************************************************************
 *       功能：     OMOrderMain业务处理层
 *       作者：     李伟伟
-*       日期：     2018/3/18
+*       日期：     2018/3/21
 *       描述：     订单主表信息
 * *************************************************************************/
-
 using System;
 using System.Linq;
 using System.Collections.Generic;
+using NHibernate.Util;
+using Project.Config.OrderEnum;
 using Project.Infrastructure.FrameworkCore.DataNhibernate;
 using Project.Infrastructure.FrameworkCore.DataNhibernate.Helpers;
+using Project.Infrastructure.FrameworkCore.Logging;
 using Project.Model.OrderManager;
 using Project.Repository.OrderManager;
 
@@ -21,11 +23,16 @@ namespace Project.Service.OrderManager
 
         #region 构造函数
         private readonly OrderMainRepository _orderMainRepository;
+        private readonly OrderMainDetailRepository _orderMainDetailRepository;
+        private readonly OrderInvoiceRepository _orderInvoiceRepository;
+
         private static readonly OrderMainService Instance = new OrderMainService();
 
         public OrderMainService()
         {
             this._orderMainRepository = new OrderMainRepository();
+            _orderMainDetailRepository = new OrderMainDetailRepository();
+            _orderInvoiceRepository = new OrderInvoiceRepository();
         }
 
         public static OrderMainService GetInstance()
@@ -41,19 +48,29 @@ namespace Project.Service.OrderManager
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
-        public Tuple<bool, string> Add(OrderMainEntity entity)
+        public System.String Add(OrderMainEntity entity)
         {
             using (var tx = NhTransactionHelper.BeginTransaction())
             {
                 try
                 {
+                    entity.OrderNo = DateTime.Now.ToString("yyyyMMddHHmmss") + entity.PkId;
                     var pkId = _orderMainRepository.Save(entity);
+                    entity.OrderNo = DateTime.Now.ToString("yyyyMMddHHmmss") + entity.PkId;
+                    _orderMainRepository.Update(entity);
 
+                    entity.OrderMainDetailEntityList.ForEach(p =>
+                    {
+                        p.OrderNo = entity.OrderNo;
+                        _orderMainDetailRepository.Save(p);
+                    });
 
-
+                    entity.OrderInvoiceEntity.OrderNo = entity.OrderNo;
+                    _orderInvoiceRepository.Save(entity.OrderInvoiceEntity);
 
                     tx.Commit();
-                    return new Tuple<bool, string>(true, pkId);
+
+                    return entity.OrderNo;
                 }
                 catch (Exception e)
                 {
@@ -65,39 +82,33 @@ namespace Project.Service.OrderManager
 
 
         /// <summary>
-        /// 删除
+        /// 确认支付
         /// </summary>
-        /// <param name="pkId"></param>
-        public bool DeleteByPkId(System.String pkId)
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        public System.String ConfirmPay(OrderMainEntity entity)
         {
-            try
+            using (var tx = NhTransactionHelper.BeginTransaction())
             {
-                var entity = _orderMainRepository.GetById(pkId);
-                _orderMainRepository.Delete(entity);
-                return true;
-            }
-            catch
-            {
-                return false;
+                try
+                {
+                    _orderMainRepository.Update(entity);
+
+
+                    tx.Commit();
+                    return entity.OrderNo;
+                }
+                catch (Exception e)
+                {
+                    tx.Rollback();
+                    throw;
+                }
             }
         }
 
-        /// <summary>
-        /// 删除
-        /// </summary>
-        /// <param name="entity"></param>
-        public bool Delete(OrderMainEntity entity)
-        {
-            try
-            {
-                _orderMainRepository.Delete(entity);
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }
+
+
+
 
         /// <summary>
         /// 更新
@@ -110,7 +121,59 @@ namespace Project.Service.OrderManager
                 _orderMainRepository.Update(entity);
                 return true;
             }
-            catch
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// 订单付款
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        public bool Pay(OrderMainEntity entity)
+        {
+            var orgInfo = OrderMainService.GetInstance().GetModelByPk(entity.PkId);
+            orgInfo.PayRemark = entity.PayRemark;
+            orgInfo.PayTime = DateTime.Now;
+            orgInfo.PayType = entity.PayType;
+            orgInfo.PaySerialNumber = entity.PaySerialNumber;
+            orgInfo.State = (int)OrderStateEnum.已付款;
+
+            try
+            {
+                _orderMainRepository.Update(orgInfo);
+                LoggerHelper.Info(LogType.OrderLogger, OrderOpEnum.付款成功.ToString() + "|" + entity.OrderNo);
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// 取消订单
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        public bool Cancel(OrderMainEntity entity)
+        {
+            var t = (OrderStateEnum)1;
+
+            var orgInfo = OrderMainService.GetInstance().GetModelByPk(entity.PkId);
+            orgInfo.CancelRemark = entity.CancelRemark;
+            orgInfo.CancelTime = DateTime.Now;
+            orgInfo.State = (int)OrderStateEnum.取消;
+
+            try
+            {
+                _orderMainRepository.Update(orgInfo);
+                LoggerHelper.Info(LogType.OrderLogger, OrderOpEnum.取消订单.ToString() + "|" + entity.OrderNo);
+                return true;
+            }
+            catch (Exception e)
             {
                 return false;
             }
@@ -118,11 +181,226 @@ namespace Project.Service.OrderManager
 
 
         /// <summary>
+        /// 订单发货
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        public bool Send(OrderMainEntity entity)
+        {
+            var orgInfo = OrderMainService.GetInstance().GetModelByPk(entity.PkId);
+            orgInfo.SendNo = entity.SendNo;
+            orgInfo.SendRemark = entity.SendRemark;
+            orgInfo.SendTime = entity.CreationTime;
+            orgInfo.State = (int)OrderStateEnum.已发货;
+            try
+            {
+                _orderMainRepository.Update(orgInfo);
+                LoggerHelper.Info(LogType.OrderLogger, OrderOpEnum.订单发货.ToString() + "|" + entity.OrderNo);
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+
+
+        #region 未发货订单
+        /// <summary>
+        /// 订单退款申请
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        public bool ReturnPayNoSend(OrderMainEntity entity)
+        {
+            var orgInfo = OrderMainService.GetInstance().GetModelByPk(entity.PkId);
+            orgInfo.ReturnPayNoSendReason = entity.ReturnPayNoSendReason;
+            orgInfo.ReturnState = (int)OrderReturnStateEnum.申请退款;
+            orgInfo.ReturnPayNoSendRemark = entity.ReturnPayNoSendRemark;
+            orgInfo.ReturnPayNoSendTime = DateTime.Now;
+            try
+            {
+                _orderMainRepository.Update(orgInfo);
+                LoggerHelper.Info(LogType.OrderLogger, OrderOpEnum.申请退款.ToString() + "|" + entity.OrderNo);
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+
+
+        /// <summary>
+        /// 订单退款确认
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        public bool ReturnPayNoSendConfirm(OrderMainEntity entity)
+        {
+            var orgInfo = OrderMainService.GetInstance().GetModelByPk(entity.PkId);
+            orgInfo.ReturnPayNoSendConfirmRemark = entity.ReturnPayNoSendConfirmRemark;
+            orgInfo.ReturnState = (int)OrderReturnStateEnum.确认退款;
+            orgInfo.ReturnPayNoSendSerialNumber = entity.ReturnPayNoSendSerialNumber;
+            orgInfo.ReturnPayNoSendPayType = entity.ReturnPayNoSendPayType;
+            orgInfo.ReturnPayNoSendConfirmTime = DateTime.Now;
+            try
+            {
+                _orderMainRepository.Update(orgInfo);
+                LoggerHelper.Info(LogType.OrderLogger, OrderOpEnum.确认退款.ToString() + "|" + entity.OrderNo);
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+        #endregion
+
+        #region 已发货订单相关操作
+        /// <summary>
+        /// 已发货订单 退货
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        public bool ReturnPrdAfterSend(OrderMainEntity entity)
+        {
+            var orgInfo = OrderMainService.GetInstance().GetModelByPk(entity.PkId);
+            orgInfo.ReturnPrdAfterSendReason = entity.ReturnPrdAfterSendReason;
+            orgInfo.ReturnPrdAfterSendRemark = entity.ReturnPrdAfterSendRemark;
+            orgInfo.ReturnState = (int)OrderReturnStateEnum.申请退货;
+            orgInfo.ReturnPrdAfterSendTime = DateTime.Now;
+
+            try
+            {
+                _orderMainRepository.Update(orgInfo);
+                LoggerHelper.Info(LogType.OrderLogger, "申请退货|" + entity.OrderNo);
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+
+
+        /// <summary>
+        /// 已发货订单 退货审核
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        public bool ReturnPrdAfterSendAudit(OrderMainEntity entity)
+        {
+            var orgInfo = OrderMainService.GetInstance().GetModelByPk(entity.PkId);
+            orgInfo.ReturnPrdAfterSendAuditRemark = entity.ReturnPrdAfterSendAuditRemark;
+            orgInfo.ReturnAuditState = entity.ReturnAuditState;
+            if (orgInfo.ReturnAuditState==1)
+            {
+                orgInfo.ReturnState= (int)OrderReturnStateEnum.退货审核通过;
+            }
+            else
+            {
+                orgInfo.ReturnState = (int)OrderReturnStateEnum.退货审核拒绝;
+            }
+            orgInfo.ReturnPrdAfterSendAuditTime = DateTime.Now;
+
+            try
+            {
+                _orderMainRepository.Update(orgInfo);
+                LoggerHelper.Info(LogType.OrderLogger, "退货审核|" + entity.OrderNo);
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// 已发货订单 客户退货
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        public bool ReturnPrdSend(OrderMainEntity entity)
+        {
+            var orgInfo = OrderMainService.GetInstance().GetModelByPk(entity.PkId);
+            orgInfo.ReturnPrdSendNo = entity.ReturnPrdSendNo;
+            orgInfo.ReturnPrdSendRemak = entity.ReturnPrdSendRemak;
+            orgInfo.ReturnState = (int)OrderReturnStateEnum.客户退货;
+            orgInfo.ReturnPrdSendTime = DateTime.Now;
+
+            try
+            {
+                _orderMainRepository.Update(orgInfo);
+                LoggerHelper.Info(LogType.OrderLogger, "客户退货|" + entity.OrderNo);
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+
+ /// <summary>
+        /// 已发货订单 商家确认收货
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        public bool ReturnPrdSendConfirm(OrderMainEntity entity)
+        {
+            var orgInfo = OrderMainService.GetInstance().GetModelByPk(entity.PkId);
+            orgInfo.ReturnPrdSendConfirmRemak = entity.ReturnPrdSendConfirmRemak;
+            orgInfo.ReturnState = (int)OrderReturnStateEnum.收货确认;
+            orgInfo.ReturnPrdSendConfirmTime = DateTime.Now;
+
+            try
+            {
+                _orderMainRepository.Update(orgInfo);
+                LoggerHelper.Info(LogType.OrderLogger, "收货确认|" + entity.OrderNo);
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+
+/// <summary>
+        /// 已发货订单 退款
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        public bool ReturnPayAfterSend(OrderMainEntity entity)
+        {
+            var orgInfo = OrderMainService.GetInstance().GetModelByPk(entity.PkId);
+            orgInfo.ReturnPayAfterSendPayType = entity.ReturnPayAfterSendPayType;
+            orgInfo.ReturnPayAfterSendSerialNumber = entity.ReturnPayAfterSendSerialNumber;
+            orgInfo.ReturnPayAfterSendRemark = entity.ReturnPayAfterSendRemark;
+            orgInfo.ReturnState = (int)OrderReturnStateEnum.确认退款;
+            orgInfo.ReturnPayAfterSendTime = DateTime.Now;
+
+            try
+            {
+                _orderMainRepository.Update(orgInfo);
+                LoggerHelper.Info(LogType.OrderLogger, "确认退款|" + entity.OrderNo);
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+        #endregion
+
+
+
+
+        /// <summary>
         /// 通过主键获取实体
         /// </summary>
         /// <param name="pkId">主键</param>
         /// <returns></returns>
-        public OrderMainEntity GetModelByPk(System.String pkId)
+        public OrderMainEntity GetModelByPk(System.Int32 pkId)
         {
             return _orderMainRepository.GetById(pkId);
         }
@@ -139,6 +417,8 @@ namespace Project.Service.OrderManager
         {
             var expr = PredicateBuilder.True<OrderMainEntity>();
             #region
+            // if (!string.IsNullOrEmpty(where.PkId))
+            //  expr = expr.And(p => p.PkId == where.PkId);
             // if (!string.IsNullOrEmpty(where.OrderNo))
             //  expr = expr.And(p => p.OrderNo == where.OrderNo);
             // if (!string.IsNullOrEmpty(where.State))
@@ -214,7 +494,7 @@ namespace Project.Service.OrderManager
             // if (!string.IsNullOrEmpty(where.DeletionTime))
             //  expr = expr.And(p => p.DeletionTime == where.DeletionTime);
             #endregion
-            var list = _orderMainRepository.Query().Where(expr).OrderByDescending(p => p.OrderNo).Skip(skipResults).Take(maxResults).ToList();
+            var list = _orderMainRepository.Query().Where(expr).OrderByDescending(p => p.PkId).Skip(skipResults).Take(maxResults).ToList();
             var count = _orderMainRepository.Query().Where(expr).Count();
             return new System.Tuple<IList<OrderMainEntity>, int>(list, count);
         }
@@ -228,6 +508,8 @@ namespace Project.Service.OrderManager
         {
             var expr = PredicateBuilder.True<OrderMainEntity>();
             #region
+            // if (!string.IsNullOrEmpty(where.PkId))
+            //  expr = expr.And(p => p.PkId == where.PkId);
             // if (!string.IsNullOrEmpty(where.OrderNo))
             //  expr = expr.And(p => p.OrderNo == where.OrderNo);
             // if (!string.IsNullOrEmpty(where.State))
@@ -303,13 +585,23 @@ namespace Project.Service.OrderManager
             // if (!string.IsNullOrEmpty(where.DeletionTime))
             //  expr = expr.And(p => p.DeletionTime == where.DeletionTime);
             #endregion
-            var list = _orderMainRepository.Query().Where(expr).OrderBy(p => p.OrderNo).ToList();
+            var list = _orderMainRepository.Query().Where(expr).OrderBy(p => p.PkId).ToList();
             return list;
         }
         #endregion
 
 
         #region 新增方法
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="orderNo"></param>
+        /// <returns></returns>
+        public OrderMainEntity GetOrderMainByOrderNo(string orderNo)
+        {
+            return _orderMainRepository.Query().Where(p => p.OrderNo == orderNo).FirstOrDefault();
+        }
 
         #endregion
     }

@@ -1,0 +1,217 @@
+﻿
+
+
+
+
+@{
+    ViewBag.Title = "Hd";
+    Layout = "~/Views/Shared/_LayoutHandler.cshtml";
+}
+
+@section JavaScript{
+    <script src="/Areas/OrderManager/Scripts/OrderMain/Detail.js?JsParamter=@SiteConfig.GetConfig().JsParamter"></script>
+}
+<div style="display: none">
+    <input id="BindEntity" type="text" value="@ViewBag.BindEntity" />
+    <input id="Command" type="hidden" />
+</div>
+<div class="mtable_div">
+    <form id="form1">
+
+        <div class="easyui-tabs" style="height: 0px;" border="false">
+            <div title="订单基本信息">
+            </div>
+        </div>
+        <table class="mtable">
+            <tr>
+                <td style="width: 100px">
+                    订单号:
+                </td>
+                <td>
+                    <input id="OrderNo" name="OrderNo" type="text" style="width: 150px" />
+                </td>
+
+                <td style="width: 100px">
+                    订单总价:
+                </td>
+                <td>
+                    <input id="Totalamount" name="Totalamount" type="text" />
+                </td>
+
+                <td style="width: 100px">
+                    会员姓名:
+                </td>
+                <td colspan="3">
+                    <input id="CustomerName" name="CustomerName" type="text" />
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    联系人:
+                </td>
+                <td>
+                    <input id="Linkman" name="Linkman" type="text" />
+                </td>
+
+                <td>
+                    联系人电话:
+                </td>
+                <td>
+                    <input id="LinkmanTel" name="LinkmanTel" type="text" />
+                </td>
+
+                <td>
+                    联系人手机:
+                </td>
+                <td>
+                    <input id="LinkmanMobilephone" name="LinkmanMobilephone" type="text" />
+                </td>
+
+                <td>
+                    联系人邮政编码:
+                </td>
+                <td>
+                    <input id="LinkmanPostcode" name="LinkmanPostcode" type="text" />
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    联系人配送地址:
+                </td>
+                <td>
+                    <input id="LinkmanAddressfull" name="LinkmanAddressfull" type="text" style="width: 300px" />
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    联系人送货备注:
+                </td>
+                <td>
+                    <input id="LinkmanRemark" name="LinkmanRemark" type="text" style="width: 300px" />
+                </td>
+            </tr>
+
+
+            <tr>
+
+                <td>
+                    支付方式:
+                </td>
+                <td>
+                    <input id="PayType" name="PayType" type="text" />
+                </td>
+
+                <td>
+                    支付时间:
+                </td>
+                <td>
+                    <input id="PayTime" name="PayTime" type="text"/>
+                </td>
+
+                <td>
+                    支付备注:
+                </td>
+                <td>
+                    <input id="PayRemark" name="PayRemark" type="text"/>
+                </td>
+
+                <td>
+                    支付备注:
+                </td>
+                <td>
+                    <input id="PayType" name="PayRemark" type="text"/>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    发货时间:
+                </td>
+                <td>
+                    <input id="SendTime" name="SendTime" type="text" />
+                </td>
+
+                <td>
+                    快递单号:
+                </td>
+                <td>
+                    <input id="SendNo" name="SendNo" type="text" />
+                </td>
+
+                <td>
+                    发货备注:
+                </td>
+                <td>
+                    <input id="SendRemark" name="SendRemark" type="text" />
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    退货原因:
+                </td>
+                <td>
+                    <input id="ReturnReason" name="ReturnReason" type="text"/>
+                </td>
+
+                <td>
+                    退单快递单号:
+                </td>
+                <td>
+                    <input id="ReturnNo" name="ReturnNo" type="text"/>
+                </td>
+
+                <td>
+                    退货状态:
+                </td>
+                <td>
+                    <input id="ReturnState" name="ReturnState" type="text"/>
+                </td>
+            </tr>
+         <tr>
+                <td>
+                    退货时间:
+                </td>
+                <td>
+                    <input id="ReturnTime" name="ReturnTime" type="text" />
+                </td>
+
+                <td>
+                    退货备注:
+                </td>
+                <td>
+                    <input id="ReturnRemark" name="ReturnRemark" type="text" />
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    客户确认时间:
+                </td>
+                <td>
+                    <input id="ConfirmTime" name="ConfirmTime" type="text" />
+                </td>
+            </tr>
+
+        </table>
+        <div title="订单商品信息" style="padding:1px;height: 500px">
+            <table id="datagrid" toolbar="#tb" fit="true"></table>
+        </div>
+
+        <table>
+            <tr><td></td></tr>
+        </table>
+        <div class="easyui-tabs" style="height: 0px;" border="false">
+            <div title="订单支付信息">
+            </div>
+        </div>
+        
+
+    </form>
+</div>
+
+
+

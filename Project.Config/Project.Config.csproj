@@ -40,6 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="OrderEnum\OrderOpEnum.cs" />
+    <Compile Include="OrderEnum\OrderReturnStateEnum.cs" />
+    <Compile Include="OrderEnum\OrderStateEnum.cs" />
     <Compile Include="SiteConfig.cs">
       <SubType>Code</SubType>
     </Compile>

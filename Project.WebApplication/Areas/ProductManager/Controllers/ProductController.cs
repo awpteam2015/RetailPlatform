@@ -160,6 +160,65 @@ namespace Project.WebApplication.Areas.ProductManager.Controllers
             };
             return new AbpJsonResult(result, new NHibernateContractResolver(new string[] { "result" }));
         }
+
+
+        [HttpPost]
+        public AbpJsonResult DownPrd(int PkId)
+        {
+            var addResult = ProductService.GetInstance().UpdateIsShow(PkId,2);
+
+            var result = new AjaxResponse<ProductEntity>()
+            {
+                success = addResult,
+                // result = postData.RequestEntity,
+                //error = new ErrorInfo() { message = addResult.Item2 }
+            };
+            return new AbpJsonResult(result, new NHibernateContractResolver());
+        }
+
+        [HttpPost]
+        public AbpJsonResult UpPrd(int PkId)
+        {
+            var addResult = ProductService.GetInstance().UpdateIsShow(PkId, 1);
+
+            var result = new AjaxResponse<ProductEntity>()
+            {
+                success = addResult,
+                // result = postData.RequestEntity,
+                //error = new ErrorInfo() { message = addResult.Item2 }
+            };
+            return new AbpJsonResult(result, new NHibernateContractResolver());
+        }
+
+
+        [HttpPost]
+        public AbpJsonResult CommandPrd(int PkId)
+        {
+            var addResult = ProductService.GetInstance().UpdateIsCommand(PkId, 1);
+
+            var result = new AjaxResponse<ProductEntity>()
+            {
+                success = addResult,
+                // result = postData.RequestEntity,
+                //error = new ErrorInfo() { message = addResult.Item2 }
+            };
+            return new AbpJsonResult(result, new NHibernateContractResolver());
+        }
+
+        [HttpPost]
+        public AbpJsonResult CancelCommandPrd(int PkId)
+        {
+            var addResult = ProductService.GetInstance().UpdateIsCommand(PkId, 2);
+
+            var result = new AjaxResponse<ProductEntity>()
+            {
+                success = addResult,
+                // result = postData.RequestEntity,
+                //error = new ErrorInfo() { message = addResult.Item2 }
+            };
+            return new AbpJsonResult(result, new NHibernateContractResolver());
+        }
+
     }
 }
 

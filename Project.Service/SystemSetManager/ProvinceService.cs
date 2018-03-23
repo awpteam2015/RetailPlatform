@@ -118,14 +118,14 @@ namespace Project.Service.SystemSetManager
         public System.Tuple<IList<ProvinceEntity>, int> Search(ProvinceEntity where, int skipResults, int maxResults)
         {
                 var expr = PredicateBuilder.True<ProvinceEntity>();
-                  #region
-              // if (!string.IsNullOrEmpty(where.PkId))
-              //  expr = expr.And(p => p.PkId == where.PkId);
-              // if (!string.IsNullOrEmpty(where.ProvinceId))
-              //  expr = expr.And(p => p.ProvinceId == where.ProvinceId);
-              // if (!string.IsNullOrEmpty(where.Province))
-              //  expr = expr.And(p => p.Province == where.Province);
- #endregion
+            #region
+            // if (!string.IsNullOrEmpty(where.PkId))
+            //  expr = expr.And(p => p.PkId == where.PkId);
+            if (!string.IsNullOrEmpty(where.ProvinceId))
+                expr = expr.And(p => p.ProvinceId == where.ProvinceId);
+            if (!string.IsNullOrEmpty(where.Province))
+                expr = expr.And(p => p.Province == where.Province);
+            #endregion
             var list = _provinceRepository.Query().Where(expr).OrderByDescending(p => p.PkId).Skip(skipResults).Take(maxResults).ToList();
             var count = _provinceRepository.Query().Where(expr).Count();
             return new System.Tuple<IList<ProvinceEntity>, int>(list, count);

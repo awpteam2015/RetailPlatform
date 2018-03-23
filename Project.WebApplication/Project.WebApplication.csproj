@@ -161,6 +161,20 @@
     <Content Include="Areas\OrderManager\Scripts\OrderInvoice\List.js" />
     <Content Include="Areas\OrderManager\Scripts\OrderMainDetail\Hd.js" />
     <Content Include="Areas\OrderManager\Scripts\OrderMainDetail\List.js" />
+    <Content Include="Areas\OrderManager\Scripts\OrderMain\Cancel.js" />
+    <Content Include="Areas\OrderManager\Scripts\OrderMain\Pay.js" />
+    <Content Include="Areas\OrderManager\Scripts\OrderMain\ReturnPayAfterSend.js" />
+    <Content Include="Areas\OrderManager\Scripts\OrderMain\ReturnPrdSendConfirm.js" />
+    <Content Include="Areas\OrderManager\Scripts\OrderMain\ReturnPrdAfterSendAudit.js" />
+    <Content Include="Areas\OrderManager\Scripts\OrderMain\ReturnPayNoSendConfirm.js" />
+    <Content Include="Areas\OrderManager\Scripts\OrderMain\ReturnPrdAfterSend.js" />
+    <Content Include="Areas\OrderManager\Scripts\OrderMain\ReturnPayNoSend.js" />
+    <Content Include="Areas\OrderManager\Scripts\OrderMain\ReturnNoSendPay.js" />
+    <Content Include="Areas\OrderManager\Scripts\OrderMain\ReturnPrdSend.js" />
+    <Content Include="Areas\OrderManager\Scripts\OrderMain\ReturnPay.js" />
+    <Content Include="Areas\OrderManager\Scripts\OrderMain\ReturnAudit.js" />
+    <Content Include="Areas\OrderManager\Scripts\OrderMain\Send.js" />
+    <Content Include="Areas\OrderManager\Scripts\OrderMain\Detail.js" />
     <Content Include="Areas\OrderManager\Scripts\OrderMain\Hd.js" />
     <Content Include="Areas\OrderManager\Scripts\OrderMain\List.js" />
     <Content Include="Areas\OrderManager\Scripts\ShopCart\Hd.js" />
@@ -168,6 +182,10 @@
     <Content Include="Areas\ProductManager\Scripts\Product\ProductAttributeHd.js" />
     <Content Include="Areas\ProductManager\Scripts\Product\ProductImageHd.js" />
     <Content Include="Areas\ProductManager\Scripts\Product\ProductSpecHd.js" />
+    <Content Include="Areas\SystemSetManager\Scripts\Area\Hd.js" />
+    <Content Include="Areas\SystemSetManager\Scripts\Area\List.js" />
+    <Content Include="Areas\SystemSetManager\Scripts\City\Hd.js" />
+    <Content Include="Areas\SystemSetManager\Scripts\City\List.js" />
     <Content Include="Areas\SystemSetManager\Scripts\Dictionary\Hd.js" />
     <Content Include="Areas\SystemSetManager\Scripts\Dictionary\List.js" />
     <Content Include="Areas\HRManager\Scripts\EmployeeChildren\Hd.js" />
@@ -298,6 +316,8 @@
     <Content Include="Areas\SystemSetManager\Scripts\HolidayDetail\List.js" />
     <Content Include="Areas\SystemSetManager\Scripts\IndexPageSet\Hd.js" />
     <Content Include="Areas\SystemSetManager\Scripts\IndexPageSet\List.js" />
+    <Content Include="Areas\SystemSetManager\Scripts\Province\Hd.js" />
+    <Content Include="Areas\SystemSetManager\Scripts\Province\List.js" />
     <Content Include="CodeRecord代码记录\JavaScript.js" />
     <Content Include="Config\hibernate.cfg.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -723,10 +743,6 @@
     <Content Include="Areas\PermissionManager\Views\ParameterGroup\Hd.cshtml" />
     <Content Include="Areas\PermissionManager\Views\ParameterGroup\List.cshtml" />
     <Content Include="Areas\SystemSetManager\Views\Upload\UploadImagePage.cshtml" />
-    <Content Include="Areas\OrderManager\Views\OrderInvoice\Hd.cshtml" />
-    <Content Include="Areas\OrderManager\Views\OrderInvoice\List.cshtml" />
-    <Content Include="Areas\OrderManager\Views\OrderMainDetail\Hd.cshtml" />
-    <Content Include="Areas\OrderManager\Views\OrderMainDetail\List.cshtml" />
     <Content Include="Areas\OrderManager\Views\OrderMain\Hd.cshtml" />
     <Content Include="Areas\OrderManager\Views\OrderMain\List.cshtml" />
     <Content Include="Areas\OrderManager\Views\ShopCart\Hd.cshtml" />
@@ -748,6 +764,23 @@
     <Content Include="Areas\OrderManager\Views\web.config" />
     <Content Include="Areas\CustomerManager\Views\web.config" />
     <Content Include="Areas\ContentManager\Views\web.config" />
+    <Content Include="Areas\OrderManager\Views\OrderMain\Detail.cshtml" />
+    <Content Include="Areas\OrderManager\Views\OrderMain\Send.cshtml" />
+    <Content Include="Areas\OrderManager\Views\OrderMain\ReturnPrdAfterSendAudit.cshtml" />
+    <Content Include="Areas\OrderManager\Views\OrderMain\ReturnPrdSendConfirm.cshtml" />
+    <Content Include="Areas\OrderManager\Views\OrderMain\Pay.cshtml" />
+    <Content Include="Areas\OrderManager\Views\OrderMain\Cancel.cshtml" />
+    <Content Include="Areas\OrderManager\Views\OrderMain\ReturnPayNoSend.cshtml" />
+    <Content Include="Areas\OrderManager\Views\OrderMain\ReturnPrdSend.cshtml" />
+    <Content Include="Areas\OrderManager\Views\OrderMain\ReturnPrdAfterSend.cshtml" />
+    <Content Include="Areas\OrderManager\Views\OrderMain\ReturnPayNoSendConfirm.cshtml" />
+    <Content Include="Areas\OrderManager\Views\OrderMain\ReturnPayAfterSend.cshtml" />
+    <Content Include="Areas\SystemSetManager\Views\Area\Hd.cshtml" />
+    <Content Include="Areas\SystemSetManager\Views\Area\List.cshtml" />
+    <Content Include="Areas\SystemSetManager\Views\City\Hd.cshtml" />
+    <Content Include="Areas\SystemSetManager\Views\City\List.cshtml" />
+    <Content Include="Areas\SystemSetManager\Views\Province\Hd.cshtml" />
+    <Content Include="Areas\SystemSetManager\Views\Province\List.cshtml" />
     <None Include="Properties\PublishProfiles\OA.pubxml" />
     <Content Include="Scripts\Control\ueditor\net\fileUp.ashx" />
     <Content Include="Scripts\Control\ueditor\net\getContent.ashx" />
@@ -1425,13 +1458,12 @@
     <Compile Include="Areas\HRManager\Controllers\AttendanceUploadRecordController.cs" />
     <Compile Include="Areas\HRManager\Controllers\ContinEducationController.cs" />
     <Compile Include="Areas\HRManager\Controllers\ContractController.cs" />
-    <Compile Include="Areas\OrderManager\Controllers\OrderInvoiceController.cs" />
     <Compile Include="Areas\OrderManager\Controllers\OrderMainController.cs" />
-    <Compile Include="Areas\OrderManager\Controllers\OrderMainDetailController.cs" />
     <Compile Include="Areas\OrderManager\Controllers\ShopCartController.cs" />
     <Compile Include="Areas\OrderManager\OrderManagerAreaRegistration.cs" />
     <Compile Include="Areas\ProductManager\Models\ProductHdVm.cs" />
     <Compile Include="Areas\SystemSetManager\Controllers\AreaController.cs" />
+    <Compile Include="Areas\SystemSetManager\Controllers\CityController.cs" />
     <Compile Include="Areas\SystemSetManager\Controllers\DictionaryController.cs" />
     <Compile Include="Areas\HRManager\Controllers\EmployeeChildrenController.cs" />
     <Compile Include="Areas\HRManager\Controllers\EmployeeFileController.cs" />
@@ -1497,6 +1529,7 @@
     <Compile Include="Areas\RiverManager\RiverManagerAreaRegistration.cs" />
     <Compile Include="Areas\SystemSetManager\Controllers\HolidayDetailController.cs" />
     <Compile Include="Areas\SystemSetManager\Controllers\IndexPageSetController.cs" />
+    <Compile Include="Areas\SystemSetManager\Controllers\ProvinceController.cs" />
     <Compile Include="Areas\SystemSetManager\Controllers\UploadController.cs" />
     <Compile Include="Areas\SystemSetManager\SystemSetManagerAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -1587,6 +1620,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\HRManager\Views\YearAssessment\" />
+    <Folder Include="Areas\OrderManager\Views\Shared\" />
     <Folder Include="Areas\PermissionManager\Models\" />
     <Folder Include="Areas\PermissionManager\Views\Permission\" />
     <Folder Include="Areas\PermissionManager\Views\Shared\" />

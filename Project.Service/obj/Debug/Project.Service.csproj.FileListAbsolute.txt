@@ -221,3 +221,5 @@ G:\云端备份\我设计的框架\Retail2\Project.Service\bin\Debug\zh-Hans\Sys
 G:\云端备份\我设计的框架\Retail2\Project.Service\obj\Debug\Project.Service.csprojResolveAssemblyReference.cache
 G:\云端备份\我设计的框架\Retail2\Project.Service\obj\Debug\Project.Service.dll
 G:\云端备份\我设计的框架\Retail2\Project.Service\obj\Debug\Project.Service.pdb
+G:\云端备份\我设计的框架\Retail2\Project.Service\bin\Debug\Project.Config.dll
+G:\云端备份\我设计的框架\Retail2\Project.Service\bin\Debug\Project.Config.pdb

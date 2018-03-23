@@ -1,0 +1,46 @@
+﻿
+
+
+
+
+@{
+    ViewBag.Title = "Hd";
+    Layout = "~/Views/Shared/_LayoutHandler.cshtml";
+}
+
+@section JavaScript{
+    <script src="/Areas/OrderManager/Scripts/OrderMain/Send.js?JsParamter=@SiteConfig.GetConfig().JsParamter"></script>
+}
+<div style="display: none">
+    <input id="BindEntity" type="text" value="@ViewBag.BindEntity" />
+    <input id="Command" type="hidden" />
+</div>
+<div class="mtable_div">
+
+    <form id="form1">
+        <table class="mtable">
+            <tr>
+                <td style="width: 150px">
+                    发货快递单号<span style="color: Red">*</span>：
+                </td>
+                <td>
+                    <input type="text" id="SendNo" name="SendNo" />
+                </td>
+            </tr>
+            <tr>
+                <td>发货备注
+                <td><input type="text" id="SendRemark" name="SendRemark"  style="width: 200px"/></td>
+            </tr>
+        </table>
+    </form>
+</div>
+<div style="padding: 10px 10px 0 10px; text-align: center;">
+
+    <a id="btnSend" class="easyui-linkbutton" iconcls="icon-ok" href="javascript:void(0)">确认发货</a>
+
+    <a id="btnClose" class="easyui-linkbutton" iconcls="icon-cancel" href="javascript:void(0)">关闭</a>
+</div>
+
+
+
+<iframe name="mainFrame" scrolling="no" frameborder="0" src="/OrderManager/OrderMain/Detail?PkId=@Request["PkId"]" style="width:100%;height:600px;"></iframe>

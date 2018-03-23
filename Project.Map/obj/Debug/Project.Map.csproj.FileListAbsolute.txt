@@ -208,3 +208,5 @@ G:\云端备份\我设计的框架\Retail2\Project.Map\bin\Debug\zh-Hans\System.
 G:\云端备份\我设计的框架\Retail2\Project.Map\obj\Debug\Project.Map.csprojResolveAssemblyReference.cache
 G:\云端备份\我设计的框架\Retail2\Project.Map\obj\Debug\Project.Map.dll
 G:\云端备份\我设计的框架\Retail2\Project.Map\obj\Debug\Project.Map.pdb
+G:\云端备份\我设计的框架\Retail2\Project.Map\bin\Debug\Project.Config.dll
+G:\云端备份\我设计的框架\Retail2\Project.Map\bin\Debug\Project.Config.pdb

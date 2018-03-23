@@ -17,12 +17,34 @@
     <table id="datagrid" style="height:auto;" iconcls=".icon-save" singleselect="true" toolbar="#tb" fit="true"></table>
     <div id="tb" style="padding:5px;height:auto">
         <div style="margin-bottom: 5px">
+            <a id="btnView" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true">查看订单详情</a>
 
-            <a id="btnAdd" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true">发货</a>
+            <a id="btnAdd" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true">新增订单（待删除）</a>
 
-            <a id="btnDel" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true">退货审核</a>
+            <a id="btnPay" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true">订单付款（待删除）</a>
 
-            <a id="btnEdit" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true">退款确认</a>
+            <a id="btnCancel" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true">取消订单</a>
+
+            <a id="btnSend" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true">发货</a>
+            <br/>
+
+            <a id="btnReturnPayNoSend" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true">退货申请_未发货（待删除）</a>
+
+            <a id="btnReturnPayNoSendConfirm" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true">确认退款_未发货</a>
+
+            <br/>
+
+            <a id="btnReturnPrdAfterSend" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true">退货申请_已发货（待删除）</a>
+
+            <a id="btnReturnPrdAfterSendAudit" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true">退货审核</a>
+
+            <a id="btnReturnPrdSend" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true">客户退货</a>
+
+            <a id="btnReturnPrdSendConfirm" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true">商家收货</a>
+
+
+            <a id="btnReturnPayAfterSend" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true">确认退款_已发货</a>
+
 
             <a id="btnRefresh" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-reload',plain:true">刷新</a>
 
@@ -53,6 +75,20 @@
                         </td>
 
                         <td>
+                            订单退货状态:
+                        </td>
+                        <td>
+                            <select id="ReturnState" name="State">
+                                <option value=""></option>
+                                <option value="1">完结</option>
+                                <option value="1">确认</option>
+                                <option value="2">退货</option>
+                                <option value="3">退款</option>
+                                <option value="4">作废</option>
+                            </select>
+                        </td>
+
+                        <td>
                             手机号:
                         </td>
                         <td>
@@ -72,7 +108,7 @@
                         <td>
                             <input id="SendNo" name="SendNo" type="text" />
                         </td>
-                  
+
                         <td colspan="2">
                             <a href="#" class="easyui-linkbutton" iconcls="icon-search" id="btnSearch">搜索</a>
                         </td>

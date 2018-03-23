@@ -14,6 +14,8 @@ namespace Project.Infrastructure.FrameworkCore.Logging
         ErrorLogger = 1,
         //ExceptionLogger = 2,
         SuccessLogger = 3,
+        OrderLogger = 4,
+        PaymentLogger = 5
     }
 
     public enum LogLevel

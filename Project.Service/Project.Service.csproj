@@ -158,6 +158,10 @@
     <Compile Include="SystemSetManager\ProvinceService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Project.Config\Project.Config.csproj">
+      <Project>{7e5cd828-d4ff-445e-9f1d-068102151681}</Project>
+      <Name>Project.Config</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Project.Infrastructure.FrameworkCore\Project.Infrastructure.FrameworkCore.csproj">
       <Project>{1c2392ad-a0f8-4378-9c54-3dcd1fb5d1db}</Project>
       <Name>Project.Infrastructure.FrameworkCore</Name>

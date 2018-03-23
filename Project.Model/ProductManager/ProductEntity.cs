@@ -128,11 +128,11 @@ namespace Project.Model.ProductManager
         /// <summary>
         /// 是否上架
         /// </summary>
-        public virtual System.Byte IsShow{get; set;}
+        public virtual System.Int32 IsShow{get; set;}
         /// <summary>
         /// 是否推荐
         /// </summary>
-        public virtual System.Byte IsCommand{get; set;}
+        public virtual System.Int32 IsCommand {get; set;}
         /// <summary>
         /// Pdt_desc
         /// </summary>

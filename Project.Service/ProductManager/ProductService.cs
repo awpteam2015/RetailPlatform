@@ -321,8 +321,10 @@ namespace Project.Service.ProductManager
             #region
             // if (!string.IsNullOrEmpty(where.PkId))
             //  expr = expr.And(p => p.PkId == where.PkId);
+            if (!string.IsNullOrEmpty(where.ProductCode))
+                expr = expr.And(p => p.ProductCode.Contains(where.ProductCode));
             if (!string.IsNullOrEmpty(where.ProductName))
-                expr = expr.And(p => p.ProductName == where.ProductName);
+                expr = expr.And(p => p.ProductName .Contains(where.ProductName) );
             if (where.SystemCategoryId > 0)
                 expr = expr.And(p => p.SystemCategoryId == where.SystemCategoryId);
             if (where.ProductCategoryId > 0)
@@ -538,6 +540,50 @@ namespace Project.Service.ProductManager
 
 
         #region 新增方法
+
+        /// <summary>
+        /// 是否上架
+        /// </summary>
+        /// <param name="pkid"></param>
+        /// <param name="isShow"></param>
+        /// <returns></returns>
+        public bool UpdateIsShow(int pkid,int isShow)
+        {
+            var orgInfo = ProductService.GetInstance().GetModelByPk(pkid);
+            orgInfo.IsShow = isShow;
+            try
+            {
+                _productRepository.Update(orgInfo);
+                return true;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        /// <summary>
+        /// 是否推荐
+        /// </summary>
+        /// <param name="pkid"></param>
+        /// <param name="isCommand"></param>
+        /// <returns></returns>
+        public bool UpdateIsCommand(int pkid, int isCommand)
+        {
+            var orgInfo = ProductService.GetInstance().GetModelByPk(pkid);
+            orgInfo.IsCommand = isCommand;
+            try
+            {
+                _productRepository.Update(orgInfo);
+                return true;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+
 
         #endregion
     }

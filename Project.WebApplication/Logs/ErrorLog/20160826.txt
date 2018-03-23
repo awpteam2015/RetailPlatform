@@ -1,9 +1,0 @@
-2016-08-26 12:35:26,357 [12] ERROR ErrorLogger [(null)] - Error getting value from 'DefaultValue' on 'NHibernate.Type.DateTimeOffsetType'.
-2016-08-26 12:35:50,740 [26] ERROR ErrorLogger [(null)] - Error getting value from 'DefaultValue' on 'NHibernate.Type.DateTimeOffsetType'.
-2016-08-26 12:36:37,443 [25] ERROR ErrorLogger [(null)] - Error getting value from 'DefaultValue' on 'NHibernate.Type.DateTimeOffsetType'.
-2016-08-26 12:36:42,468 [24] ERROR ErrorLogger [(null)] - Error getting value from 'DefaultValue' on 'NHibernate.Type.DateTimeOffsetType'.
-2016-08-26 12:39:53,109 [12] ERROR ErrorLogger [(null)] - Error getting value from 'DefaultValue' on 'NHibernate.Type.DateTimeOffsetType'.
-2016-08-26 12:40:24,147 [9] ERROR ErrorLogger [(null)] - Error getting value from 'DefaultValue' on 'NHibernate.Type.DateTimeOffsetType'.
-2016-08-26 12:40:31,616 [21] ERROR ErrorLogger [(null)] - Error getting value from 'DefaultValue' on 'NHibernate.Type.DateTimeOffsetType'.
-2016-08-26 12:44:33,227 [29] ERROR ErrorLogger [(null)] - Error getting value from 'DefaultValue' on 'NHibernate.Type.DateTimeOffsetType'.
-2016-08-26 12:44:45,362 [20] ERROR ErrorLogger [(null)] - Error getting value from 'DefaultValue' on 'NHibernate.Type.DateTimeOffsetType'.

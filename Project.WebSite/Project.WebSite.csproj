@@ -401,6 +401,7 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\InternalServer.cshtml" />
+    <Content Include="Views\ShopCat\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -411,7 +412,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Scripts\pro\SelfValidate\" />
-    <Folder Include="Views\ShopCat\" />
     <Folder Include="Views\UserCenter\" />
   </ItemGroup>
   <ItemGroup>

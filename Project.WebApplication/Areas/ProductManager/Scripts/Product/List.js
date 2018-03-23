@@ -113,6 +113,88 @@ var pro = pro || {};
                 }
             });
 
+
+            $("#btnDownPrd").click(function () {
+                if (!gridObj.isSelected()) {
+                    $.alertExtend.infoOp();
+                    return;
+                }
+
+                abp.ajax({
+                    url: "/ProductManager/Product/DownPrd?PkId=" + gridObj.getSelectedRow().PkId
+                    //contentType: abp.ajax.contentTypeForm
+                }).done(
+                   function (dataresult, data) {
+                       $.alertExtend.info();
+                       gridObj.search();
+                   }
+                   ).fail(
+                   function (errordetails, errormessage) {
+                       $.alertExtend.error();
+                   }
+                   );
+            });
+
+            $("#btnUpPrd").click(function () {
+                if (!gridObj.isSelected()) {
+                    $.alertExtend.infoOp();
+                    return;
+                }
+
+                abp.ajax({
+                    url: "/ProductManager/Product/UpPrd?PkId=" + gridObj.getSelectedRow().PkId
+                }).done(
+                   function (dataresult, data) {
+                       $.alertExtend.info();
+                       gridObj.search();
+                   }
+                   ).fail(
+                   function (errordetails, errormessage) {
+                       $.alertExtend.error();
+                   }
+                   );
+            });
+
+            $("#btnCommandPrd").click(function () {
+                if (!gridObj.isSelected()) {
+                    $.alertExtend.infoOp();
+                    return;
+                }
+
+                abp.ajax({
+                    url: "/ProductManager/Product/CommandPrd?PkId=" + gridObj.getSelectedRow().PkId
+                }).done(
+                   function (dataresult, data) {
+                       $.alertExtend.info();
+                       gridObj.search();
+                   }
+                   ).fail(
+                   function (errordetails, errormessage) {
+                       $.alertExtend.error();
+                   }
+                   );
+            });
+
+            $("#btnCancelCommandPrd").click(function () {
+                if (!gridObj.isSelected()) {
+                    $.alertExtend.infoOp();
+                    return;
+                }
+
+                abp.ajax({
+                    url: "/ProductManager/Product/CancelCommandPrd?PkId=" + gridObj.getSelectedRow().PkId
+                }).done(
+                   function (dataresult, data) {
+                       $.alertExtend.info();
+                       gridObj.search();
+                   }
+                   ).fail(
+                   function (errordetails, errormessage) {
+                       $.alertExtend.error();
+                   }
+                   );
+            });
+
         },
         closeTab: function () {
             this.init().tabObj.closeTab();

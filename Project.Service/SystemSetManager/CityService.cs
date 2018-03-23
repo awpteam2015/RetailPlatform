@@ -118,16 +118,16 @@ namespace Project.Service.SystemSetManager
         public System.Tuple<IList<CityEntity>, int> Search(CityEntity where, int skipResults, int maxResults)
         {
                 var expr = PredicateBuilder.True<CityEntity>();
-                  #region
-              // if (!string.IsNullOrEmpty(where.PkId))
-              //  expr = expr.And(p => p.PkId == where.PkId);
-              // if (!string.IsNullOrEmpty(where.CityId))
-              //  expr = expr.And(p => p.CityId == where.CityId);
-              // if (!string.IsNullOrEmpty(where.City))
-              //  expr = expr.And(p => p.City == where.City);
-              // if (!string.IsNullOrEmpty(where.ProvinceId))
-              //  expr = expr.And(p => p.ProvinceId == where.ProvinceId);
- #endregion
+            #region
+            // if (!string.IsNullOrEmpty(where.PkId))
+            //  expr = expr.And(p => p.PkId == where.PkId);
+            if (!string.IsNullOrEmpty(where.CityId))
+                expr = expr.And(p => p.CityId == where.CityId);
+            if (!string.IsNullOrEmpty(where.City))
+                expr = expr.And(p => p.City == where.City);
+            // if (!string.IsNullOrEmpty(where.ProvinceId))
+            //  expr = expr.And(p => p.ProvinceId == where.ProvinceId);
+            #endregion
             var list = _cityRepository.Query().Where(expr).OrderByDescending(p => p.PkId).Skip(skipResults).Take(maxResults).ToList();
             var count = _cityRepository.Query().Where(expr).Count();
             return new System.Tuple<IList<CityEntity>, int>(list, count);

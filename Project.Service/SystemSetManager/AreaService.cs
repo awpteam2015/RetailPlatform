@@ -1,10 +1,12 @@
 ﻿
- /***************************************************************************
- *       功能：     SMArea业务处理层
- *       作者：     李伟伟
- *       日期：     2018/3/17
- *       描述：     
- * *************************************************************************/
+/***************************************************************************
+*       功能：     SMArea业务处理层
+*       作者：     李伟伟
+*       日期：     2018/3/17
+*       描述：     
+* *************************************************************************/
+
+using System;
 using System.Linq;
 using System.Collections.Generic;
 using Project.Infrastructure.FrameworkCore.DataNhibernate.Helpers;
@@ -15,17 +17,17 @@ namespace Project.Service.SystemSetManager
 {
     public class AreaService
     {
-       
-       #region 构造函数
-        private readonly AreaRepository  _areaRepository;
-            private static readonly AreaService Instance = new AreaService();
+
+        #region 构造函数
+        private readonly AreaRepository _areaRepository;
+        private static readonly AreaService Instance = new AreaService();
 
         public AreaService()
         {
-           this._areaRepository =new AreaRepository();
+            this._areaRepository = new AreaRepository();
         }
-        
-         public static  AreaService GetInstance()
+
+        public static AreaService GetInstance()
         {
             return Instance;
         }
@@ -33,7 +35,7 @@ namespace Project.Service.SystemSetManager
 
 
         #region 基础方法 
-         /// <summary>
+        /// <summary>
         /// 新增
         /// </summary>
         /// <param name="entity"></param>
@@ -42,24 +44,24 @@ namespace Project.Service.SystemSetManager
         {
             return _areaRepository.Save(entity);
         }
-        
-        
-         /// <summary>
+
+
+        /// <summary>
         /// 删除
         /// </summary>
         /// <param name="pkId"></param>
         public bool DeleteByPkId(System.Int32 pkId)
         {
-         try
+            try
             {
-            var entity= _areaRepository.GetById(pkId);
-            _areaRepository.Delete(entity);
-             return true;
-        }
-        catch
-        {
-         return false;
-        }
+                var entity = _areaRepository.GetById(pkId);
+                _areaRepository.Delete(entity);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         /// <summary>
@@ -68,15 +70,15 @@ namespace Project.Service.SystemSetManager
         /// <param name="entity"></param>
         public bool Delete(AreaEntity entity)
         {
-         try
+            try
             {
-            _areaRepository.Delete(entity);
-             return true;
-        }
-        catch
-        {
-         return false;
-        }
+                _areaRepository.Delete(entity);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         /// <summary>
@@ -85,15 +87,15 @@ namespace Project.Service.SystemSetManager
         /// <param name="entity"></param>
         public bool Update(AreaEntity entity)
         {
-          try
+            try
             {
-            _areaRepository.Update(entity);
-         return true;
-        }
-        catch
-        {
-         return false;
-        }
+                _areaRepository.Merge(entity);
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
         }
 
 
@@ -117,21 +119,21 @@ namespace Project.Service.SystemSetManager
         /// <returns>获取当前页【】和总【】数</returns>
         public System.Tuple<IList<AreaEntity>, int> Search(AreaEntity where, int skipResults, int maxResults)
         {
-                var expr = PredicateBuilder.True<AreaEntity>();
-                  #region
-              // if (!string.IsNullOrEmpty(where.PkId))
-              //  expr = expr.And(p => p.PkId == where.PkId);
-              // if (!string.IsNullOrEmpty(where.AreaId))
-              //  expr = expr.And(p => p.AreaId == where.AreaId);
-              // if (!string.IsNullOrEmpty(where.Area))
-              //  expr = expr.And(p => p.Area == where.Area);
-              // if (!string.IsNullOrEmpty(where.CityId))
-              //  expr = expr.And(p => p.CityId == where.CityId);
-              // if (!string.IsNullOrEmpty(where.FirstWeightPrice))
-              //  expr = expr.And(p => p.FirstWeightPrice == where.FirstWeightPrice);
-              // if (!string.IsNullOrEmpty(where.SecondWeightPrice))
-              //  expr = expr.And(p => p.SecondWeightPrice == where.SecondWeightPrice);
- #endregion
+            var expr = PredicateBuilder.True<AreaEntity>();
+            #region
+            // if (!string.IsNullOrEmpty(where.PkId))
+            //  expr = expr.And(p => p.PkId == where.PkId);
+            // if (!string.IsNullOrEmpty(where.AreaId))
+            //  expr = expr.And(p => p.AreaId == where.AreaId);
+            if (!string.IsNullOrEmpty(where.Area))
+                expr = expr.And(p => p.Area == where.Area);
+            // if (!string.IsNullOrEmpty(where.CityId))
+            //  expr = expr.And(p => p.CityId == where.CityId);
+            // if (!string.IsNullOrEmpty(where.FirstWeightPrice))
+            //  expr = expr.And(p => p.FirstWeightPrice == where.FirstWeightPrice);
+            // if (!string.IsNullOrEmpty(where.SecondWeightPrice))
+            //  expr = expr.And(p => p.SecondWeightPrice == where.SecondWeightPrice);
+            #endregion
             var list = _areaRepository.Query().Where(expr).OrderByDescending(p => p.PkId).Skip(skipResults).Take(maxResults).ToList();
             var count = _areaRepository.Query().Where(expr).Count();
             return new System.Tuple<IList<AreaEntity>, int>(list, count);
@@ -144,7 +146,7 @@ namespace Project.Service.SystemSetManager
         /// <returns>返回列表</returns>
         public IList<AreaEntity> GetList(AreaEntity where)
         {
-               var expr = PredicateBuilder.True<AreaEntity>();
+            var expr = PredicateBuilder.True<AreaEntity>();
             #region
             // if (!string.IsNullOrEmpty(where.PkId))
             //  expr = expr.And(p => p.PkId == where.PkId);
@@ -166,11 +168,11 @@ namespace Project.Service.SystemSetManager
 
 
         #region 新增方法
-        
+
         #endregion
     }
 }
 
-    
- 
+
+
 

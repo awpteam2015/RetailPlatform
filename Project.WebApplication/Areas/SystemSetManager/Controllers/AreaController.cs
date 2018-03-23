@@ -30,7 +30,7 @@ namespace Project.WebApplication.Areas.SystemSetManager.Controllers
             return View();
         }
 
- 
+
         public ActionResult List()
         {
             return View();
@@ -41,12 +41,12 @@ namespace Project.WebApplication.Areas.SystemSetManager.Controllers
             var pIndex = this.Request["page"].ConvertTo<int>();
             var pSize = this.Request["rows"].ConvertTo<int>();
             var where = new AreaEntity();
-			//where.PkId = RequestHelper.GetFormString("PkId");
-			//where.AreaId = RequestHelper.GetFormString("AreaId");
-			//where.Area = RequestHelper.GetFormString("Area");
-			//where.CityId = RequestHelper.GetFormString("CityId");
-			//where.FirstWeightPrice = RequestHelper.GetFormString("FirstWeightPrice");
-			//where.SecondWeightPrice = RequestHelper.GetFormString("SecondWeightPrice");
+            //where.PkId = RequestHelper.GetFormString("PkId");
+            //where.AreaId = RequestHelper.GetFormString("AreaId");
+            where.Area = RequestHelper.GetFormString("Area");
+            where.CityId = RequestHelper.GetFormString("CityId");
+            //where.FirstWeightPrice = RequestHelper.GetFormString("FirstWeightPrice");
+            //where.SecondWeightPrice = RequestHelper.GetFormString("SecondWeightPrice");
             var searchList = AreaService.GetInstance().Search(where, (pIndex - 1) * pSize, pSize);
 
             var dataGridEntity = new DataGridResponse()
@@ -88,7 +88,7 @@ namespace Project.WebApplication.Areas.SystemSetManager.Controllers
         public AbpJsonResult GetList_Combobox_Area()
         {
             var where = new AreaEntity();
-            where.CityId= RequestHelper.GetString("CityId");
+            where.CityId = RequestHelper.GetString("CityId");
             var searchList = AreaService.GetInstance().GetList(where);
             return new AbpJsonResult(searchList, new NHibernateContractResolver());
         }
@@ -99,22 +99,22 @@ namespace Project.WebApplication.Areas.SystemSetManager.Controllers
         {
             var addResult = AreaService.GetInstance().Add(postData.RequestEntity);
             var result = new AjaxResponse<AreaEntity>()
-               {
-                   success = true,
-                   result = postData.RequestEntity
-               };
+            {
+                success = true,
+                result = postData.RequestEntity
+            };
             return new AbpJsonResult(result, new NHibernateContractResolver());
         }
 
 
         [HttpPost]
-        public AbpJsonResult Edit( AjaxRequest<AreaEntity> postData)
+        public AbpJsonResult Edit(AjaxRequest<AreaEntity> postData)
         {
             var newInfo = postData.RequestEntity;
             var orgInfo = AreaService.GetInstance().GetModelByPk(postData.RequestEntity.PkId);
             var mergInfo = Mapper.Map(newInfo, orgInfo);
             var updateResult = AreaService.GetInstance().Update(mergInfo);
-            
+
             var result = new AjaxResponse<AreaEntity>()
             {
                 success = updateResult,

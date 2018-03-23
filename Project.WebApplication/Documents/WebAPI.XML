@@ -68,6 +68,69 @@
             <param name="model"></param>
             <returns></returns>
         </member>
+        <member name="M:Project.WebApplication.Areas.OrderManager.Controllers.OrderMainController.ReturnPayNoSend(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="pkId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Project.WebApplication.Areas.OrderManager.Controllers.OrderMainController.ReturnPayNoSendConfirm(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="pkId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Project.WebApplication.Areas.OrderManager.Controllers.OrderMainController.ReturnPrdAfterSend(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="pkId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Project.WebApplication.Areas.OrderManager.Controllers.OrderMainController.ReturnPrdAfterSendAudit(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="pkId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Project.WebApplication.Areas.OrderManager.Controllers.OrderMainController.ReturnPrdSend(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="pkId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Project.WebApplication.Areas.OrderManager.Controllers.OrderMainController.ReturnPrdSendConfirm(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="pkId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Project.WebApplication.Areas.OrderManager.Controllers.OrderMainController.ReturnPayNoSend(Project.Infrastructure.FrameworkCore.WebMvc.Models.AjaxRequest{Project.Model.OrderManager.OrderMainEntity,System.Int32})">
+            <summary>
+            未发货退货申请
+            </summary>
+            <param name="postData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Project.WebApplication.Areas.OrderManager.Controllers.OrderMainController.ReturnPrdSendConfirm(Project.Infrastructure.FrameworkCore.WebMvc.Models.AjaxRequest{Project.Model.OrderManager.OrderMainEntity,System.Int32})">
+            <summary>
+            商品确认收货
+            </summary>
+            <param name="postData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Project.WebApplication.Areas.OrderManager.Controllers.OrderMainController.ReturnPayAfterSend(Project.Infrastructure.FrameworkCore.WebMvc.Models.AjaxRequest{Project.Model.OrderManager.OrderMainEntity,System.Int32})">
+            <summary>
+            退款
+            </summary>
+            <param name="postData"></param>
+            <returns></returns>
+        </member>
         <member name="P:Project.WebApplication.Areas.ProductManager.Models.SpecVm.SpecId">
              <summary>
             规格编号

@@ -1,0 +1,46 @@
+2018-03-21 15:48:49,064 [8] ERROR ErrorLogger [(null)] - “Project.Infrastructure.FrameworkCore.DataNhibernate.SessionFactoryManager”的类型初始值设定项引发异常。
+2018-03-21 15:49:06,702 [7] ERROR ErrorLogger [(null)] - “Project.Infrastructure.FrameworkCore.DataNhibernate.SessionFactoryManager”的类型初始值设定项引发异常。
+2018-03-21 15:49:32,871 [9] ERROR ErrorLogger [(null)] - “Project.Infrastructure.FrameworkCore.DataNhibernate.SessionFactoryManager”的类型初始值设定项引发异常。
+2018-03-21 15:50:14,378 [8] ERROR ErrorLogger [(null)] - “Project.Infrastructure.FrameworkCore.DataNhibernate.SessionFactoryManager”的类型初始值设定项引发异常。
+2018-03-21 15:51:25,655 [13] ERROR ErrorLogger [(null)] - could not insert: [Project.Model.OrderManager.OrderMainEntity][SQL: INSERT INTO OM_OrderMain (Linkman) VALUES (?); select SCOPE_IDENTITY()]
+2018-03-21 15:52:46,994 [8] ERROR ErrorLogger [(null)] - could not insert: [Project.Model.OrderManager.OrderInvoiceEntity][SQL: INSERT INTO OM_OrderInvoice DEFAULT VALUES; select SCOPE_IDENTITY()]
+2018-03-21 15:53:46,271 [6] ERROR ErrorLogger [(null)] - could not insert: [Project.Model.OrderManager.OrderInvoiceEntity][SQL: INSERT INTO OM_OrderInvoice DEFAULT VALUES; select SCOPE_IDENTITY()]
+2018-03-21 15:53:57,262 [21] ERROR ErrorLogger [(null)] - could not insert: [Project.Model.OrderManager.OrderInvoiceEntity][SQL: INSERT INTO OM_OrderInvoice DEFAULT VALUES; select SCOPE_IDENTITY()]
+2018-03-21 15:57:40,752 [20] ERROR ErrorLogger [(null)] - could not insert: [Project.Model.OrderManager.OrderMainEntity][SQL: INSERT INTO OM_OrderMain (Linkman) VALUES (?); select SCOPE_IDENTITY()]
+2018-03-21 16:09:39,386 [29] ERROR ErrorLogger [(null)] - could not insert: [Project.Model.OrderManager.OrderInvoiceEntity][SQL: INSERT INTO OM_OrderInvoice (OrderNo) VALUES (?); select SCOPE_IDENTITY()]
+2018-03-21 16:10:46,493 [29] ERROR ErrorLogger [(null)] - 未将对象引用设置到对象的实例。
+2018-03-21 16:10:49,363 [6] ERROR ErrorLogger [(null)] - 未将对象引用设置到对象的实例。
+2018-03-21 16:12:35,067 [30] ERROR ErrorLogger [(null)] - 未将对象引用设置到对象的实例。
+2018-03-21 16:21:28,172 [22] ERROR ErrorLogger [(null)] - 未将对象引用设置到对象的实例。
+2018-03-21 16:23:04,997 [14] ERROR ErrorLogger [(null)] - 未将对象引用设置到对象的实例。
+2018-03-21 16:28:08,020 [14] ERROR ErrorLogger [(null)] - 未将对象引用设置到对象的实例。
+2018-03-21 16:29:11,566 [23] ERROR ErrorLogger [(null)] - 未将对象引用设置到对象的实例。
+2018-03-21 16:31:12,665 [14] ERROR ErrorLogger [(null)] - 未将对象引用设置到对象的实例。
+2018-03-21 16:33:51,123 [5] ERROR ErrorLogger [(null)] - 未将对象引用设置到对象的实例。
+2018-03-21 16:35:12,493 [7] ERROR ErrorLogger [(null)] - 未将对象引用设置到对象的实例。
+2018-03-21 16:37:17,912 [26] ERROR ErrorLogger [(null)] - 未将对象引用设置到对象的实例。
+2018-03-21 16:38:15,213 [8] ERROR ErrorLogger [(null)] - 未将对象引用设置到对象的实例。
+2018-03-21 16:39:32,025 [8] ERROR ErrorLogger [(null)] - 未将对象引用设置到对象的实例。
+2018-03-21 16:39:42,223 [29] ERROR ErrorLogger [(null)] - 未将对象引用设置到对象的实例。
+2018-03-21 16:40:00,397 [24] ERROR ErrorLogger [(null)] - 未将对象引用设置到对象的实例。
+2018-03-21 16:51:44,656 [24] ERROR ErrorLogger [(null)] - 未将对象引用设置到对象的实例。
+2018-03-21 16:52:58,511 [24] ERROR ErrorLogger [(null)] - 未将对象引用设置到对象的实例。
+2018-03-21 16:53:53,969 [20] ERROR ErrorLogger [(null)] - 未将对象引用设置到对象的实例。
+2018-03-21 16:54:10,775 [24] ERROR ErrorLogger [(null)] - 未将对象引用设置到对象的实例。
+2018-03-21 16:54:14,292 [20] ERROR ErrorLogger [(null)] - 未将对象引用设置到对象的实例。
+2018-03-21 17:23:26,264 [13] ERROR ErrorLogger [(null)] - 未将对象引用设置到对象的实例。
+2018-03-21 17:32:14,564 [11] ERROR ErrorLogger [(null)] - 未将对象引用设置到对象的实例。
+2018-03-21 17:55:40,889 [47] ERROR ErrorLogger [(null)] - 未将对象引用设置到对象的实例。
+2018-03-21 17:56:14,215 [46] ERROR ErrorLogger [(null)] - 未将对象引用设置到对象的实例。
+2018-03-21 17:57:00,778 [46] ERROR ErrorLogger [(null)] - 未将对象引用设置到对象的实例。
+2018-03-21 18:01:55,365 [41] ERROR ErrorLogger [(null)] - 未将对象引用设置到对象的实例。
+2018-03-21 18:02:48,260 [16] ERROR ErrorLogger [(null)] - 未将对象引用设置到对象的实例。
+2018-03-21 18:03:42,084 [35] ERROR ErrorLogger [(null)] - 未将对象引用设置到对象的实例。
+2018-03-21 18:04:23,181 [39] ERROR ErrorLogger [(null)] - 未将对象引用设置到对象的实例。
+2018-03-21 18:04:26,358 [41] ERROR ErrorLogger [(null)] - 未将对象引用设置到对象的实例。
+2018-03-21 18:16:57,047 [6] ERROR ErrorLogger [(null)] - 未将对象引用设置到对象的实例。
+2018-03-21 18:16:57,100 [9] ERROR ErrorLogger [(null)] - 未将对象引用设置到对象的实例。
+2018-03-21 20:21:41,134 [7] ERROR ErrorLogger [(null)] - 未将对象引用设置到对象的实例。
+2018-03-21 20:45:49,364 [10] ERROR ErrorLogger [(null)] - 未将对象引用设置到对象的实例。
+2018-03-21 21:57:29,312 [69] ERROR ErrorLogger [(null)] - could not load an entity: [Project.Model.OrderManager.OrderMainEntity#49][SQL: SELECT ordermaine0_.PkId as PkId34_0_, ordermaine0_.OrderNo as OrderNo34_0_, ordermaine0_.State as State34_0_, ordermaine0_.Totalamount as Totalamo4_34_0_, ordermaine0_.PresentPoints as PresentP5_34_0_, ordermaine0_.CustomerId as CustomerId34_0_, ordermaine0_.CustomerName as Customer7_34_0_, ordermaine0_.Linkman as Linkman34_0_, ordermaine0_.LinkmanTel as LinkmanTel34_0_, ordermaine0_.LinkmanMobilephone as Linkman10_34_0_, ordermaine0_.LinkmanProvinceId as Linkman11_34_0_, ordermaine0_.LinkmanCityId as Linkman12_34_0_, ordermaine0_.LinkmanAreaId as Linkman13_34_0_, ordermaine0_.LinkmanAddress as Linkman14_34_0_, ordermaine0_.LinkmanAddressfull as Linkman15_34_0_, ordermaine0_.LinkmanPostcode as Linkman16_34_0_, ordermaine0_.LinkmanRemark as Linkman17_34_0_, ordermaine0_.CustomerAddressId as Custome18_34_0_, ordermaine0_.PayTime as PayTime34_0_, ordermaine0_.PayRemark as PayRemark34_0_, ordermaine0_.PayType as PayType34_0_, ordermaine0_.SendTime as SendTime34_0_, ordermaine0_.SendNo as SendNo34_0_, ordermaine0_.SendRemark as SendRemark34_0_, ordermaine0_.ReturnReason as ReturnR25_34_0_, ordermaine0_.ReturnNo as ReturnNo34_0_, ordermaine0_.ReturnState as ReturnS27_34_0_, ordermaine0_.ReturnTime as ReturnTime34_0_, ordermaine0_.ReturnRemark as ReturnR29_34_0_, ordermaine0_.ConfirmTime as Confirm30_34_0_, ordermaine0_.ConfirmRemark as Confirm31_34_0_, ordermaine0_.UserIp as UserIp34_0_, ordermaine0_.CreatorUserCode as Creator33_34_0_, ordermaine0_.CreationTime as Creatio34_34_0_, ordermaine0_.LastModifierUserCode as LastMod35_34_0_, ordermaine0_.LastModificationTime as LastMod36_34_0_, ordermaine0_.IsDeleted as IsDeleted34_0_, ordermaine0_.DeleterUserCode as Deleter38_34_0_, ordermaine0_.DeletionTime as Deletio39_34_0_ FROM OM_OrderMain ordermaine0_ WHERE ordermaine0_.PkId=?]
+2018-03-21 21:57:44,831 [69] ERROR ErrorLogger [(null)] - could not load an entity: [Project.Model.OrderManager.OrderMainEntity#49][SQL: SELECT ordermaine0_.PkId as PkId34_0_, ordermaine0_.OrderNo as OrderNo34_0_, ordermaine0_.State as State34_0_, ordermaine0_.Totalamount as Totalamo4_34_0_, ordermaine0_.PresentPoints as PresentP5_34_0_, ordermaine0_.CustomerId as CustomerId34_0_, ordermaine0_.CustomerName as Customer7_34_0_, ordermaine0_.Linkman as Linkman34_0_, ordermaine0_.LinkmanTel as LinkmanTel34_0_, ordermaine0_.LinkmanMobilephone as Linkman10_34_0_, ordermaine0_.LinkmanProvinceId as Linkman11_34_0_, ordermaine0_.LinkmanCityId as Linkman12_34_0_, ordermaine0_.LinkmanAreaId as Linkman13_34_0_, ordermaine0_.LinkmanAddress as Linkman14_34_0_, ordermaine0_.LinkmanAddressfull as Linkman15_34_0_, ordermaine0_.LinkmanPostcode as Linkman16_34_0_, ordermaine0_.LinkmanRemark as Linkman17_34_0_, ordermaine0_.CustomerAddressId as Custome18_34_0_, ordermaine0_.PayTime as PayTime34_0_, ordermaine0_.PayRemark as PayRemark34_0_, ordermaine0_.PayType as PayType34_0_, ordermaine0_.SendTime as SendTime34_0_, ordermaine0_.SendNo as SendNo34_0_, ordermaine0_.SendRemark as SendRemark34_0_, ordermaine0_.ReturnReason as ReturnR25_34_0_, ordermaine0_.ReturnNo as ReturnNo34_0_, ordermaine0_.ReturnState as ReturnS27_34_0_, ordermaine0_.ReturnTime as ReturnTime34_0_, ordermaine0_.ReturnRemark as ReturnR29_34_0_, ordermaine0_.ConfirmTime as Confirm30_34_0_, ordermaine0_.ConfirmRemark as Confirm31_34_0_, ordermaine0_.UserIp as UserIp34_0_, ordermaine0_.CreatorUserCode as Creator33_34_0_, ordermaine0_.CreationTime as Creatio34_34_0_, ordermaine0_.LastModifierUserCode as LastMod35_34_0_, ordermaine0_.LastModificationTime as LastMod36_34_0_, ordermaine0_.IsDeleted as IsDeleted34_0_, ordermaine0_.DeleterUserCode as Deleter38_34_0_, ordermaine0_.DeletionTime as Deletio39_34_0_ FROM OM_OrderMain ordermaine0_ WHERE ordermaine0_.PkId=?]

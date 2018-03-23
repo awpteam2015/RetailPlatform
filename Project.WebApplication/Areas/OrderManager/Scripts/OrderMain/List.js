@@ -4,7 +4,7 @@ var pro = pro || {};
     pro.OrderMain = pro.OrderMain || {};
     pro.OrderMain.ListPage = pro.OrderMain.ListPage || {};
     pro.OrderMain.ListPage = {
-      init: function () {
+        init: function () {
             return {
                 tabObj: new pro.TabBase(),
                 gridObj: new pro.GridBase("#datagrid", false)
@@ -21,23 +21,15 @@ var pro = pro || {};
                 rownumbers: true, //行号
                 singleSelect: true,
                 columns: [[
-         { field: 'OrderNo', title: '订单号', width: 100 },
-         { field: 'State', title: '订单状态(作废:-1;未确认:0;确认:1;先退货审核:T;子订单部分为确认:2)', width: 100 },
-         { field: 'Totalamount', title: '订单总价,包括赠品_decimal_', width: 100 },
-         { field: 'PresentPoints', title: '赠送积分', width: 100 },
-         { field: 'CustomerId', title: '会员Id', width: 100 },
+         { field: 'OrderNo', title: '订单号', width: 140 },
+         { field: 'Attr_State', title: '订单状态', width: 100 },
+          { field: 'Attr_ReturnState', title: '退货状态', width: 100 },
+         { field: 'Totalamount', title: '订单总价', width: 100 },
          { field: 'CustomerName', title: '会员姓名', width: 100 },
-         { field: 'Linkman', title: '联系人（改）', width: 100 },
+         { field: 'Linkman', title: '联系人', width: 100 },
          { field: 'LinkmanTel', title: '联系人电话', width: 100 },
-         { field: 'LinkmanMobilephone', title: '联系人手机', width: 100 },
-         { field: 'LinkmanProvinceId', title: '联系人省份', width: 100 },
-         { field: 'LinkmanCityId', title: '联系人城市', width: 100 },
-         { field: 'LinkmanAreaId', title: '联系人区域(新增)', width: 100 },
-         { field: 'LinkmanAddress', title: '联系人配送地址（改）', width: 100 },
-         { field: 'LinkmanAddressfull', title: '联系人配送地址全（改2012.11.2）', width: 100 },
-         { field: 'LinkmanPostcode', title: '联系人邮政编码（改）', width: 100 },
-         { field: 'LinkmanRemark', title: '联系人送货备注（改）', width: 100 },
-         { field: 'CustomerAddressId', title: '送货地址id（改2012.11.20）', width: 100 },
+         { field: 'LinkmanAddressfull', title: '联系人配送地址全', width: 100 },
+         { field: 'LinkmanRemark', title: '联系人送货备注', width: 100 },
          { field: 'PayTime', title: '支付时间', width: 100 },
          { field: 'PayRemark', title: '支付备注', width: 100 },
          { field: 'SendTime', title: '发货时间', width: 100 },
@@ -54,10 +46,7 @@ var pro = pro || {};
          { field: 'CreatorUserCode', title: '创建人', width: 100 },
          { field: 'CreationTime', title: '创建时间', width: 100 },
          { field: 'LastModifierUserCode', title: '修改人', width: 100 },
-         { field: 'LastModificationTime', title: '修改时间', width: 100 },
-         { field: 'IsDeleted', title: '是否删除', width: 100 },
-         { field: 'DeleterUserCode', title: '删除人', width: 100 },
-         { field: 'DeletionTime', title: '删除时间', width: 100 },
+         { field: 'LastModificationTime', title: '修改时间', width: 100 }
                 ]],
                 pagination: true,
                 pageSize: 20, //每页显示的记录条数，默认为10     
@@ -65,19 +54,25 @@ var pro = pro || {};
             }
                );
 
-            $("#btnAdd").click(function () {
-               tabObj.add("/OrderManager/OrderMain/Hd","新增");
-            });
 
-            $("#btnEdit").click(function () {
+            this.initSaleOderOp(tabObj, gridObj);
+
+            this.initReturnOpNoSend(tabObj, gridObj);
+
+            this.initReturnOpAfterSend(tabObj, gridObj);
+
+           
+
+
+
+            $("#btnView").click(function () {
                 if (!gridObj.isSelected()) {
                     $.alertExtend.infoOp();
                     return;
                 }
                 var PkId = gridObj.getSelectedRow().PkId;
-                tabObj.add("/OrderManager/OrderMain/Hd?PkId=" + PkId, "编辑" + PkId);
+                tabObj.add("/OrderManager/OrderMain/Detail?OrderNo=" + gridObj.getSelectedRow().OrderNo + "&PkId=" + PkId, "查看" + PkId);
             });
-
 
             $("#btnSearch").click(function () {
                 gridObj.search();
@@ -85,7 +80,7 @@ var pro = pro || {};
 
             $("#btnDel").click(function () {
                 if (!gridObj.isSelected()) {
-                $.alertExtend.infoOp();
+                    $.alertExtend.infoOp();
                     return;
                 }
                 $.messager.confirm("确认操作", "是否确认删除", function (bl) {
@@ -109,7 +104,139 @@ var pro = pro || {};
                 gridObj.refresh();
             });
         },
-         closeTab: function () {
+        //正单相关按钮的初始化
+        initSaleOderOp: function (tabObj, gridObj) {
+            $("#btnAdd").click(function () {
+                tabObj.add("/OrderManager/OrderMain/Hd", "新增");
+            });
+
+            $("#btnPay").click(function () {
+                if (!gridObj.isSelected()) {
+                    $.alertExtend.infoOp();
+                    return;
+                }
+                if (gridObj.getSelectedRow().State != 1) {
+                    $.alertExtend.infoOp("请选择待付款订单！");
+                    return;
+                }
+
+                var PkId = gridObj.getSelectedRow().PkId;
+                var OrderNo = gridObj.getSelectedRow().OrderNo;
+                tabObj.add("/OrderManager/OrderMain/Pay?OrderNo=" + OrderNo + "&PkId=" + PkId, "订单付款" + OrderNo);
+            });
+
+            $("#btnCancel").click(function () {
+                if (!gridObj.isSelected()) {
+                    $.alertExtend.infoOp();
+                    return;
+                }
+
+                if (gridObj.getSelectedRow().State != 1) {
+                    $.alertExtend.infoOp("请选择待付款订单！");
+                    return;
+                }
+                var PkId = gridObj.getSelectedRow().PkId;
+                var OrderNo = gridObj.getSelectedRow().OrderNo;
+                tabObj.add("/OrderManager/OrderMain/Cancel?OrderNo=" + OrderNo + "&PkId=" + PkId, "取消订单" + OrderNo);
+            });
+
+            $("#btnSend").click(function () {
+                if (!gridObj.isSelected()) {
+                    $.alertExtend.infoOp();
+                    return;
+                }
+                var PkId = gridObj.getSelectedRow().PkId;
+                var OrderNo = gridObj.getSelectedRow().OrderNo;
+                tabObj.add("/OrderManager/OrderMain/Send?OrderNo=" + OrderNo + "&PkId=" + PkId, "发货" + OrderNo);
+            });
+        },
+        //未发货相关按钮的初始化
+        initReturnOpNoSend: function (tabObj, gridObj) {
+            //未发货退货申请
+            $("#btnReturnPayNoSend").click(function () {
+                if (!gridObj.isSelected()) {
+                    $.alertExtend.infoOp();
+                    return;
+                }
+
+                if (gridObj.getSelectedRow().State != 2) {
+                    $.alertExtend.infoOp("请选择已付款订单！");
+                    return;
+                }
+
+                var PkId = gridObj.getSelectedRow().PkId;
+                var OrderNo = gridObj.getSelectedRow().OrderNo;
+                tabObj.add("/OrderManager/OrderMain/ReturnPayNoSend?OrderNo=" + OrderNo + "&PkId=" + PkId, "退款申请" + OrderNo);
+            });
+
+
+            $("#btnReturnPayNoSendConfirm").click(function () {
+                if (!gridObj.isSelected()) {
+                    $.alertExtend.infoOp();
+                    return;
+                }
+                var PkId = gridObj.getSelectedRow().PkId;
+                var OrderNo = gridObj.getSelectedRow().OrderNo;
+                tabObj.add("/OrderManager/OrderMain/ReturnPayNoSendConfirm?OrderNo=" + OrderNo + "&PkId=" + PkId, "确认退款" + OrderNo);
+            });
+        },
+        //已发货相关按钮的初始化
+        initReturnOpAfterSend: function (tabObj, gridObj) {
+
+            $("#btnReturnPrdAfterSend").click(function () {
+                if (!gridObj.isSelected()) {
+                    $.alertExtend.infoOp();
+                    return;
+                }
+                var PkId = gridObj.getSelectedRow().PkId;
+                var OrderNo = gridObj.getSelectedRow().OrderNo;
+                tabObj.add("/OrderManager/OrderMain/ReturnPrdAfterSend?OrderNo=" + OrderNo + "&PkId=" + PkId, "退货申请" + OrderNo);
+            });
+
+            $("#btnReturnPrdAfterSendAudit").click(function () {
+                if (!gridObj.isSelected()) {
+                    $.alertExtend.infoOp();
+                    return;
+                }
+                var PkId = gridObj.getSelectedRow().PkId;
+                var OrderNo = gridObj.getSelectedRow().OrderNo;
+                tabObj.add("/OrderManager/OrderMain/ReturnPrdAfterSendAudit?OrderNo=" + OrderNo + "&PkId=" + PkId, "退货审核" + OrderNo);
+            });
+
+            $("#btnReturnPrdSend").click(function () {
+                if (!gridObj.isSelected()) {
+                    $.alertExtend.infoOp();
+                    return;
+                }
+                var PkId = gridObj.getSelectedRow().PkId;
+                var OrderNo = gridObj.getSelectedRow().OrderNo;
+                tabObj.add("/OrderManager/OrderMain/ReturnPrdSend?OrderNo=" + OrderNo + "&PkId=" + PkId, "客户退货" + OrderNo);
+            });
+
+
+            $("#btnReturnPrdSendConfirm").click(function () {
+                if (!gridObj.isSelected()) {
+                    $.alertExtend.infoOp();
+                    return;
+                }
+                var PkId = gridObj.getSelectedRow().PkId;
+                var OrderNo = gridObj.getSelectedRow().OrderNo;
+                tabObj.add("/OrderManager/OrderMain/ReturnPrdSendConfirm?OrderNo=" + OrderNo + "&PkId=" + PkId, "商家确认收货" + OrderNo);
+            });
+
+
+            $("#btnReturnPayAfterSend").click(function () {
+                if (!gridObj.isSelected()) {
+                    $.alertExtend.infoOp();
+                    return;
+                }
+                var PkId = gridObj.getSelectedRow().PkId;
+                var OrderNo = gridObj.getSelectedRow().OrderNo;
+                tabObj.add("/OrderManager/OrderMain/ReturnPayAfterSend?OrderNo=" + OrderNo + "&PkId=" + PkId, "退款" + OrderNo);
+            });
+
+        },
+        closeTab: function () {
             this.init().tabObj.closeTab();
         }
     };

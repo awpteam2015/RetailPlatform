@@ -1,0 +1,50 @@
+﻿
+
+
+
+
+@{
+    ViewBag.Title = "Hd";
+    Layout = "~/Views/Shared/_LayoutHandler.cshtml";
+}
+
+@section JavaScript{
+    <script src="/Areas/OrderManager/Scripts/OrderMain/ReturnPrdAfterSendAudit.js?JsParamter=@SiteConfig.GetConfig().JsParamter"></script>
+}
+<div style="display: none">
+    <input id="BindEntity" type="text" value="@ViewBag.BindEntity" />
+    <input id="Command" type="hidden" />
+</div>
+<div class="mtable_div">
+
+    <form id="form1">
+        <table class="mtable">
+            <tr>
+                <td style="width: 150px">
+                    退货申请状态<span style="color: Red">*</span>：
+                </td>
+                <td>
+                    <select id="ReturnAuditState" name="ReturnAuditState">
+                        <option value=""></option>
+                        <option value="1">同意退货</option>
+                        <option value="2">拒绝退货</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>审核原因：</td>
+                <td><input type="text" id="ReturnPrdAfterSendAuditRemark" name="ReturnPrdAfterSendAuditRemark" style="width: 300px" /></td>
+            </tr>
+        </table>
+    </form>
+</div>
+<div style="padding: 10px 10px 0 10px; text-align: center;">
+
+    <a id="btnReturnPrdAfterSendAudit" class="easyui-linkbutton" iconcls="icon-ok" href="javascript:void(0)">保存</a>
+
+    <a id="btnClose" class="easyui-linkbutton" iconcls="icon-cancel" href="javascript:void(0)">关闭</a>
+</div>
+
+
+
+<iframe name="mainFrame" scrolling="no" frameborder="0" src="/OrderManager/OrderMain/Detail?PkId=@Request["PkId"]" style="width:100%;height:600px;"></iframe>

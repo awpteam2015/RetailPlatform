@@ -23,28 +23,17 @@
                 idField: "PkId",
                 columns: [
                     [
-                        {
-                            field: 'PkId', title: '', hidden: true, width: 100,
-                            formatter: function (value, row, index) {
-                                return pro.controlKit.getInputHtml("PkId", value);
-                            }
-                        },
-                        {
-                            field: 'AttributeValueName',
-                            title: '属性值',
-                            width: 300,
-                            formatter: function (value, row, index) {
-                                return pro.controlKit.getInputHtml("AttributeValueName_" + row.PkId, value,300);
-                            }
-                        },
-                        {
-                            field: 'Sort',
-                            title: '排序',
-                            width: 100,
-                            formatter: function (value, row, index) {
-                                return pro.controlKit.getInputHtml("Sort_" + row.PkId, value);
-                            }
-                        }
+                        { field: 'PkId', title: '', width: 100 },
+         { field: 'OrderNo', title: '订单号', width: 100 },
+         { field: 'ProductCategoryId', title: '商品分类', width: 100 },
+         { field: 'ProductId', title: '产品主键', width: 100 },
+         { field: 'GoodsCode', title: '商品代码', width: 100 },
+         { field: 'GoodsId', title: '商品主键', width: 100 },
+         { field: 'Price', title: '商品原价_decimal_', width: 100 },
+         { field: 'PriceSubDiscount', title: '购买价_decimal_', width: 100 },
+         { field: 'TotalAmount', title: '单项小计_decimal_', width: 100 },
+         { field: 'ProductWeight', title: '商品重量', width: 100 },
+         { field: 'SpecName', title: '规格汇总', width: 100 }
 
                     ]
                 ],

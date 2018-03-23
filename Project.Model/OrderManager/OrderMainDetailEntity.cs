@@ -3,7 +3,7 @@
  /***************************************************************************
  *       功能：     OMOrderMainDetail实体类
  *       作者：     李伟伟
- *       日期：     2018/3/17
+ *       日期：     2018/3/21
  *       描述：     订单主表明细
  * *************************************************************************/
 using System;
@@ -24,9 +24,17 @@ namespace Project.Model.OrderManager
         /// </summary>
         public virtual System.Int32? ProductCategoryId{get; set;}
         /// <summary>
+        /// 商品名称
+        /// </summary>
+        public virtual System.String ProductName{get; set;}
+        /// <summary>
         /// 产品主键
         /// </summary>
         public virtual System.Int32? ProductId{get; set;}
+        /// <summary>
+        /// 产品编码
+        /// </summary>
+        public virtual System.String ProductCode{get; set;}
         /// <summary>
         /// 商品代码
         /// </summary>
@@ -35,6 +43,10 @@ namespace Project.Model.OrderManager
         /// 商品主键
         /// </summary>
         public virtual System.String GoodsId{get; set;}
+        /// <summary>
+        /// 图片地址
+        /// </summary>
+        public virtual System.String ImageUrl{get; set;}
         /// <summary>
         /// 商品原价_decimal_
         /// </summary>
