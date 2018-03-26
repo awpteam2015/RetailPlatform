@@ -1,6 +1,0 @@
-2018-03-21 17:01:46,404 [7] INFO  OrderLogger [(null)] - 生成订单
-2018-03-21 17:23:59,387 [8] INFO  OrderLogger [(null)] - 生成订单
-2018-03-21 17:52:11,106 [9] INFO  OrderLogger [(null)] - 生成订单
-2018-03-21 17:52:11,106 [23] INFO  OrderLogger [(null)] - 生成订单
-2018-03-21 20:46:28,898 [7] INFO  OrderLogger [(null)] - 生成订单
-2018-03-21 20:49:40,148 [7] INFO  OrderLogger [(null)] - 生成订单
