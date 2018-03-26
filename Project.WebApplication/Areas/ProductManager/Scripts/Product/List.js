@@ -38,6 +38,7 @@ var pro = pro || {};
                );
 
             $("#btnAdd").click(function () {
+            $("#btnAdd").click(function () {
                 var systemCategoryId = $("#SystemCategoryId2").combobox('getValue');
                 if (systemCategoryId == "") {
                     $.alertExtend.infoOp("请选择商品所属商品类型进行发布！");

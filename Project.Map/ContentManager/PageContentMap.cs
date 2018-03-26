@@ -35,7 +35,7 @@ namespace  Project.Map.ContentManager
             Map(p => p.LastModificationTime);    
             Map(p => p.LastModifierUserCode);    
             Map(p => p.CreationTime);    
-            Map(p => p.CreatorUserCode);    
+            Map(p => p.CreatorUserCode);      Map(p => p.BrowseCount);    
         }
     }
 }

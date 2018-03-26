@@ -191,10 +191,10 @@ namespace Project.WebApplication.Areas.OrderManager.Controllers
             //where.Totalamount = RequestHelper.GetFormString("Totalamount");
             //where.PresentPoints = RequestHelper.GetFormString("PresentPoints");
             //where.CustomerId = RequestHelper.GetFormString("CustomerId");
-            //where.CustomerName = RequestHelper.GetFormString("CustomerName");
+            where.CustomerName = RequestHelper.GetFormString("CustomerName");
             //where.Linkman = RequestHelper.GetFormString("Linkman");
             //where.LinkmanTel = RequestHelper.GetFormString("LinkmanTel");
-            //where.LinkmanMobilephone = RequestHelper.GetFormString("LinkmanMobilephone");
+            where.LinkmanMobilephone = RequestHelper.GetFormString("LinkmanMobilephone");
             //where.LinkmanProvinceId = RequestHelper.GetFormString("LinkmanProvinceId");
             //where.LinkmanCityId = RequestHelper.GetFormString("LinkmanCityId");
             //where.LinkmanAreaId = RequestHelper.GetFormString("LinkmanAreaId");
@@ -206,7 +206,7 @@ namespace Project.WebApplication.Areas.OrderManager.Controllers
             //where.PayTime = RequestHelper.GetFormString("PayTime");
             //where.PayRemark = RequestHelper.GetFormString("PayRemark");
             //where.SendTime = RequestHelper.GetFormString("SendTime");
-            //where.SendNo = RequestHelper.GetFormString("SendNo");
+            where.SendNo = RequestHelper.GetFormString("SendNo");
             //where.SendRemark = RequestHelper.GetFormString("SendRemark");
             //where.ReturnReason = RequestHelper.GetFormString("ReturnReason");
             //where.ReturnNo = RequestHelper.GetFormString("ReturnNo");

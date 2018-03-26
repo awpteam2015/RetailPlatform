@@ -7,6 +7,12 @@
 
             pro.ImageUploadControl.init();
 
+            UE.getEditor('Description', {
+                initialFrameHeight: 320,
+                autoHeightEnabled: false,
+                initialFrameWidth: 800
+            });
+
             $("#btnAdd").click(function () {
                 pro.OfflineActivity.HdPage.submit("Add");
             });

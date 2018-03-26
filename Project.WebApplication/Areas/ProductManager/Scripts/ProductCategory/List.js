@@ -23,7 +23,7 @@ var pro = pro || {};
                 rownumbers: true, //行号
                 singleSelect: true,
                 columns: [[
-         { field: 'PkId', title: '分类Id', width: 100 },
+         { field: 'PkId', title: '分类Id', width: 200 },
          { field: 'ProductCategoryName', title: '分类名称', width: 300 },
          { field: 'ParentId', title: '父级Id', width: 100 },
          { field: 'Rank', title: '层级', width: 100 },
@@ -40,7 +40,13 @@ var pro = pro || {};
                );
 
             $("#btnAdd").click(function () {
-               tabObj.add("/ProductManager/ProductCategory/Hd","新增");
+                var ParentId = "";
+                var SystemCategoryId = "";
+                if (gridObj.isSelected()) {
+                    ParentId = gridObj.getSelectedRow().PkId;
+                    SystemCategoryId = gridObj.getSelectedRow().SystemCategoryId;
+                }
+                tabObj.add("/ProductManager/ProductCategory/Hd?SystemCategoryId=" + SystemCategoryId + "&ParentId=" + ParentId, "新增");
             });
 
             $("#btnEdit").click(function () {

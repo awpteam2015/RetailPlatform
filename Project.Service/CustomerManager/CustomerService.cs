@@ -24,6 +24,7 @@ namespace Project.Service.CustomerManager
 
         #region 构造函数
         private readonly CustomerRepository _customerRepository;
+        private readonly CardTypeRepository _cardTypeRepository;
         private readonly ProvinceRepository _provinceRepository;
         private readonly CityRepository _cityRepository;
         private readonly AreaRepository _areaRepository;
@@ -39,6 +40,7 @@ namespace Project.Service.CustomerManager
             this._cityRepository = new CityRepository();
             this._areaRepository = new AreaRepository();
             _customerAddressRepository = new CustomerAddressRepository();
+            _cardTypeRepository=new CardTypeRepository();
         }
 
         public static CustomerService GetInstance()
@@ -85,7 +87,14 @@ namespace Project.Service.CustomerManager
             entity.AddressFull = CustomerHelp.GetInstance()
                 .CombineCustomerAddress(entity.ProvinceId, entity.CityId, entity.AreaId, entity.Address);
 
-            return new Tuple<bool, string>(_customerRepository.Save(entity) > 0, ""); ;
+            var cardType = _cardTypeRepository.GetById(entity.CardTypeId);
+            if (cardType!=null)
+            {
+                entity.CardTypeName = cardType.CardtypeName;
+                entity.Discount = cardType.Discount;
+            }
+            var result = _customerRepository.Save(entity);
+            return new Tuple<bool, string>(result > 0, ""); ;
         }
 
 
@@ -138,6 +147,12 @@ namespace Project.Service.CustomerManager
 
             entity.AddressFull = CustomerHelp.GetInstance()
                .CombineCustomerAddress(entity.ProvinceId, entity.CityId, entity.AreaId, entity.Address);
+            var cardType = _cardTypeRepository.GetById(entity.CardTypeId);
+            if (cardType != null)
+            {
+                entity.CardTypeName = cardType.CardtypeName;
+                entity.Discount = cardType.Discount;
+            }
 
             var oldEntity = _customerRepository.GetById(entity.PkId);
             if (entity.Password != oldEntity.Password)

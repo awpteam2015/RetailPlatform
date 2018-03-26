@@ -39,6 +39,8 @@ namespace Project.Model.ContentManager
         /// 简介
         /// </summary>
         public virtual System.String BriefDescription{get; set;}
+
+        public virtual System.String Description { get; set;}
         /// <summary>
         /// 活动状态
         /// </summary>
@@ -71,6 +73,7 @@ namespace Project.Model.ContentManager
         /// 创建人
         /// </summary>
         public virtual System.String CreatorUserCode{get; set;}
+        public virtual System.String BindGoodsCode { get; set;}
 		#endregion
         
 

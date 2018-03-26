@@ -79,6 +79,9 @@ namespace Project.WebApplication.Areas.ContentManager.Controllers
         public AbpJsonResult Add(AjaxRequest<OfflineActivityEntity> postData)
         {
             postData.RequestEntity.BriefDescription= Base64Helper.DecodeBase64(postData.RequestEntity.BriefDescription);
+
+            postData.RequestEntity.Description = Base64Helper.DecodeBase64(postData.RequestEntity.Description);
+
             var addResult = OfflineActivityService.GetInstance().Add(postData.RequestEntity);
             var result = new AjaxResponse<OfflineActivityEntity>()
                {
@@ -93,6 +96,7 @@ namespace Project.WebApplication.Areas.ContentManager.Controllers
         public AbpJsonResult Edit( AjaxRequest<OfflineActivityEntity> postData)
         {
             postData.RequestEntity.BriefDescription = Base64Helper.DecodeBase64(postData.RequestEntity.BriefDescription);
+            postData.RequestEntity.Description = Base64Helper.DecodeBase64(postData.RequestEntity.Description);
             var newInfo = postData.RequestEntity;
             var orgInfo = OfflineActivityService.GetInstance().GetModelByPk(postData.RequestEntity.PkId);
             var mergInfo = Mapper.Map(newInfo, orgInfo);

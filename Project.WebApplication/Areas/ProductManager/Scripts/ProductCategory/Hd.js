@@ -7,6 +7,10 @@
 
             pro.ProductcategoryControl.init({ controlId: "ParentId", required: true });
 
+            var parentId = pro.commonKit.getUrlParam("ParentId");
+            if (parentId>0) {
+                $("input[name=ParentId]").val(parentId);
+            }
 
             $("#btnAdd").click(function () {
                 pro.ProductCategory.HdPage.submit("Add");
@@ -41,6 +45,11 @@
                     if (pro.commonKit.getUrlParam("PkId") > 0) {
                         $("#SystemCategoryId").combobox('setValue', bindEntity['SystemCategoryId']);
                     }
+                    
+                    if (pro.commonKit.getUrlParam("SystemCategoryId") > 0) {
+                        $("#SystemCategoryId").combobox('setValue', pro.commonKit.getUrlParam("SystemCategoryId"));
+                    }
+
                 }
             });
 
@@ -81,21 +90,21 @@
             addRule: function () {
                 $("#form1").validate({
                     rules: {
-          PkId: { required: true  },
+          //PkId: { required: true  },
           ProductCategoryName: { required: true  },
           ParentId: { required: true  },
-          Rank: { required: true  },
-          Sort: { required: true  },
+          //Rank: { required: true  },
+          //Sort: { required: true  },
           SystemCategoryId: { required: true  },
-          SystemCategoryName: { required: true  },
-          Route: { required: true  },
-          CreatorUserCode: { required: true  },
-          CreationTime: { required: true  },
-          LastModifierUserCode: { required: true  },
-          LastModificationTime: { required: true  },
-          IsDeleted: { required: true  },
-          DeleterUserCode: { required: true  },
-          DeletionTime: { required: true  },
+          SystemCategoryName: { required: true  }
+          //Route: { required: true  },
+          //CreatorUserCode: { required: true  },
+          //CreationTime: { required: true  },
+          //LastModifierUserCode: { required: true  },
+          //LastModificationTime: { required: true  },
+          //IsDeleted: { required: true  },
+          //DeleterUserCode: { required: true  },
+          //DeletionTime: { required: true  },
                     },
                     messages: {
           PkId:  "必填!",

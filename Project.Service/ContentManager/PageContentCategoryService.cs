@@ -53,7 +53,8 @@ namespace Project.Service.ContentManager
             try
             {
                 var entity = _pageContentCategoryRepository.GetById(pkId);
-                _pageContentCategoryRepository.Delete(entity);
+                entity.IsDeleted = 1;
+                _pageContentCategoryRepository.Update(entity);
                 return true;
             }
             catch
@@ -159,11 +160,12 @@ namespace Project.Service.ContentManager
         public IList<PageContentCategoryEntity> GetList(PageContentCategoryEntity where)
         {
             var expr = PredicateBuilder.True<PageContentCategoryEntity>();
+            expr = expr.And(p =>  p.IsDeleted != 1);
             #region
             // if (!string.IsNullOrEmpty(where.PkId))
             //  expr = expr.And(p => p.PkId == where.PkId);
-            // if (!string.IsNullOrEmpty(where.PageContentCategoryName))
-            //  expr = expr.And(p => p.PageContentCategoryName == where.PageContentCategoryName);
+            if (!string.IsNullOrEmpty(where.PageContentCategoryName))
+                expr = expr.And(p => p.PageContentCategoryName == where.PageContentCategoryName);
             // if (!string.IsNullOrEmpty(where.ParentId))
             //  expr = expr.And(p => p.ParentId == where.ParentId);
             // if (!string.IsNullOrEmpty(where.Rank))
@@ -201,7 +203,7 @@ namespace Project.Service.ContentManager
         /// <returns></returns>
         public IList<PageContentCategoryEntity> GetTopPageContentCategoryList()
         {
-            return _pageContentCategoryRepository.Query().Where(p => p.ParentId == 0).ToList();
+            return _pageContentCategoryRepository.Query().Where(p => p.ParentId == 0&&p.IsDeleted!=1).ToList();
         }
 
         #endregion

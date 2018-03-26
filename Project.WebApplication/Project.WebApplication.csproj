@@ -318,6 +318,12 @@
     <Content Include="Areas\SystemSetManager\Scripts\IndexPageSet\List.js" />
     <Content Include="Areas\SystemSetManager\Scripts\Province\Hd.js" />
     <Content Include="Areas\SystemSetManager\Scripts\Province\List.js" />
+    <Content Include="Areas\SystemSetManager\Views\Area\Hd.cshtml" />
+    <Content Include="Areas\SystemSetManager\Views\Area\List.cshtml" />
+    <Content Include="Areas\SystemSetManager\Views\City\Hd.cshtml" />
+    <Content Include="Areas\SystemSetManager\Views\City\List.cshtml" />
+    <Content Include="Areas\SystemSetManager\Views\Province\Hd.cshtml" />
+    <Content Include="Areas\SystemSetManager\Views\Province\List.cshtml" />
     <Content Include="CodeRecord代码记录\JavaScript.js" />
     <Content Include="Config\hibernate.cfg.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -335,6 +341,7 @@
     <Content Include="Global.asax" />
     <Content Include="HtmlPage1.html" />
     <Content Include="HtmlPage12.html" />
+    <Content Include="HtmlPage2.html" />
     <Content Include="Login\css\reset.css" />
     <Content Include="Login\css\style.css" />
     <Content Include="Login\images\logo.png" />
@@ -775,12 +782,6 @@
     <Content Include="Areas\OrderManager\Views\OrderMain\ReturnPrdAfterSend.cshtml" />
     <Content Include="Areas\OrderManager\Views\OrderMain\ReturnPayNoSendConfirm.cshtml" />
     <Content Include="Areas\OrderManager\Views\OrderMain\ReturnPayAfterSend.cshtml" />
-    <Content Include="Areas\SystemSetManager\Views\Area\Hd.cshtml" />
-    <Content Include="Areas\SystemSetManager\Views\Area\List.cshtml" />
-    <Content Include="Areas\SystemSetManager\Views\City\Hd.cshtml" />
-    <Content Include="Areas\SystemSetManager\Views\City\List.cshtml" />
-    <Content Include="Areas\SystemSetManager\Views\Province\Hd.cshtml" />
-    <Content Include="Areas\SystemSetManager\Views\Province\List.cshtml" />
     <None Include="Properties\PublishProfiles\OA.pubxml" />
     <Content Include="Scripts\Control\ueditor\net\fileUp.ashx" />
     <Content Include="Scripts\Control\ueditor\net\getContent.ashx" />
@@ -1529,7 +1530,6 @@
     <Compile Include="Areas\RiverManager\RiverManagerAreaRegistration.cs" />
     <Compile Include="Areas\SystemSetManager\Controllers\HolidayDetailController.cs" />
     <Compile Include="Areas\SystemSetManager\Controllers\IndexPageSetController.cs" />
-    <Compile Include="Areas\SystemSetManager\Controllers\ProvinceController.cs" />
     <Compile Include="Areas\SystemSetManager\Controllers\UploadController.cs" />
     <Compile Include="Areas\SystemSetManager\SystemSetManagerAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />

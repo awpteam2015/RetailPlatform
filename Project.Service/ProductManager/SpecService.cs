@@ -171,9 +171,9 @@ namespace Project.Service.ProductManager
             // if (!string.IsNullOrEmpty(where.PkId))
             //  expr = expr.And(p => p.PkId == where.PkId);
             if (!string.IsNullOrEmpty(where.SpecName))
-                expr = expr.And(p => p.SpecName == where.SpecName);
+                expr = expr.And(p => p.SpecName.Contains(where.SpecName));
             if (!string.IsNullOrEmpty(where.Remark))
-                expr = expr.And(p => p.Remark == where.Remark);
+                expr = expr.And(p => p.Remark.Contains(where.Remark));
             if (where.SpecType!=0)
                 expr = expr.And(p => p.SpecType == where.SpecType);
             if (where.ShowType!=0)

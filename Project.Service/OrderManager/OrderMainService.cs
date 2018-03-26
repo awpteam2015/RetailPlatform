@@ -419,24 +419,24 @@ namespace Project.Service.OrderManager
             #region
             // if (!string.IsNullOrEmpty(where.PkId))
             //  expr = expr.And(p => p.PkId == where.PkId);
-            // if (!string.IsNullOrEmpty(where.OrderNo))
-            //  expr = expr.And(p => p.OrderNo == where.OrderNo);
-            // if (!string.IsNullOrEmpty(where.State))
-            //  expr = expr.And(p => p.State == where.State);
+            if (!string.IsNullOrEmpty(where.OrderNo))
+                expr = expr.And(p => p.OrderNo == where.OrderNo);
+            if (where.State>0)
+                expr = expr.And(p => p.State == where.State);
             // if (!string.IsNullOrEmpty(where.Totalamount))
             //  expr = expr.And(p => p.Totalamount == where.Totalamount);
             // if (!string.IsNullOrEmpty(where.PresentPoints))
             //  expr = expr.And(p => p.PresentPoints == where.PresentPoints);
             // if (!string.IsNullOrEmpty(where.CustomerId))
             //  expr = expr.And(p => p.CustomerId == where.CustomerId);
-            // if (!string.IsNullOrEmpty(where.CustomerName))
-            //  expr = expr.And(p => p.CustomerName == where.CustomerName);
+            if (!string.IsNullOrEmpty(where.CustomerName))
+                expr = expr.And(p => p.CustomerName == where.CustomerName);
             // if (!string.IsNullOrEmpty(where.Linkman))
             //  expr = expr.And(p => p.Linkman == where.Linkman);
             // if (!string.IsNullOrEmpty(where.LinkmanTel))
             //  expr = expr.And(p => p.LinkmanTel == where.LinkmanTel);
-            // if (!string.IsNullOrEmpty(where.LinkmanMobilephone))
-            //  expr = expr.And(p => p.LinkmanMobilephone == where.LinkmanMobilephone);
+            if (!string.IsNullOrEmpty(where.LinkmanMobilephone))
+                expr = expr.And(p => p.LinkmanMobilephone == where.LinkmanMobilephone);
             // if (!string.IsNullOrEmpty(where.LinkmanProvinceId))
             //  expr = expr.And(p => p.LinkmanProvinceId == where.LinkmanProvinceId);
             // if (!string.IsNullOrEmpty(where.LinkmanCityId))
@@ -459,8 +459,8 @@ namespace Project.Service.OrderManager
             //  expr = expr.And(p => p.PayRemark == where.PayRemark);
             // if (!string.IsNullOrEmpty(where.SendTime))
             //  expr = expr.And(p => p.SendTime == where.SendTime);
-            // if (!string.IsNullOrEmpty(where.SendNo))
-            //  expr = expr.And(p => p.SendNo == where.SendNo);
+            if (!string.IsNullOrEmpty(where.SendNo))
+                expr = expr.And(p => p.SendNo == where.SendNo);
             // if (!string.IsNullOrEmpty(where.SendRemark))
             //  expr = expr.And(p => p.SendRemark == where.SendRemark);
             // if (!string.IsNullOrEmpty(where.ReturnReason))

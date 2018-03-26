@@ -39,19 +39,19 @@
                                 return pro.controlKit.getInputHtml("SpecValueName_" + row.PkId, value);
                             }
                         },
-                         {
-                             field: 'ImageUrl',
-                             title: '图片地址',
-                             width: 200,
-                             formatter: function (value, row, index) {
-                                 var html = '<div style="display:none"> <input id="ImageUrl_' + row.PkId + '" name="ImageUrl_' + row.PkId + '" type="text" /></div>\
-                        <div  id="div_filename_' + row.PkId + '" style="height: 30px; width: 30px">\
-                        </div>\
-                            <input id="file_upload_' + row.PkId + '" name="file_upload" type="file" />\
-                       </div>';
-                                 return html;
-                             }
-                         },
+                       //  {
+                       //      field: 'ImageUrl',
+                       //      title: '图片地址',
+                       //      width: 200,
+                       //      formatter: function (value, row, index) {
+                       //          var html = '<div style="display:none"> <input id="ImageUrl_' + row.PkId + '" name="ImageUrl_' + row.PkId + '" type="text" /></div>\
+                       // <div  id="div_filename_' + row.PkId + '" style="height: 30px; width: 30px">\
+                       // </div>\
+                       //     <input id="file_upload_' + row.PkId + '" name="file_upload" type="file" />\
+                       //</div>';
+                       //          return html;
+                       //      }
+                       //  },
                         {
                             field: 'Sort',
                             title: '排序',
@@ -190,9 +190,9 @@
             addRule: function () {
                 $("#form1").validate({
                     rules: {
-                        PkId: { required: true },
+                        //PkId: { required: true },
                         SpecName: { required: true },
-                        Remark: { required: true },
+                        //Remark: { required: true },
                         SpecType: { required: true },
                         ShowType: { required: true }
                     },

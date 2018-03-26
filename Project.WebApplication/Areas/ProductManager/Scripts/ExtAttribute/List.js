@@ -23,7 +23,7 @@ var pro = pro || {};
                 columns: [[
          { field: 'PkId', title: '序号', width: 100 },
          { field: 'AttributeName', title: '属性名', width: 100 },
-         { field: 'ShowType', title: '表现方式', width: 100 }
+         { field: 'ShowTypeName', title: '表现方式', width: 100 }
                 ]],
                 pagination: true,
                 pageSize: 20, //每页显示的记录条数，默认为10     

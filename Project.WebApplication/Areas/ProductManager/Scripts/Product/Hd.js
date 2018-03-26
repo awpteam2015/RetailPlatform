@@ -111,15 +111,15 @@
                         //BrandId: { required: true },
                         //ProductCode: { required: true },
                         //Unit: { required: true },
-                        //BriefDescription: { required: true },
-                        //Description: { required: true },
+                        BriefDescription: { required: true },
+                        Description: { required: true },
                         //Weight: { required: true },
                         //WeightUnit: { required: true },
                         //MarketPrice: { required: true },
-                        //SellPrice: { required: true },
+                        SellPrice: { required: true },
                         //Cost: { required: true },
                         //PriceUnit: { required: true },
-                        //StockNum: { required: true },
+                        StockNum: { required: true },
                         //BuyMaxNum: { required: true },
                         //BuyMinNum: { required: true },
                         //ViewNum: { required: true },
@@ -198,7 +198,7 @@
                         P6: "扩展属性2必填!",
                         P7: "扩展属性1必填!",
                         P8: "扩展属性2必填!",
-                        P9: "扩展属性1必填!",
+                        P9: "扩展属性1必填!"
                     },
                     errorPlacement: function (error, element) {
                         pro.commonKit.errorPlacementHd(error, element);

@@ -16,6 +16,7 @@ using Project.Model.ProductManager;
 using Project.Model.ProductManager.Request;
 using Project.Repository.ProductManager;
 using Project.Service.ProductManager.Help;
+using Project.Service.ProductManager.Validate;
 
 namespace Project.Service.ProductManager
 {
@@ -55,10 +56,12 @@ namespace Project.Service.ProductManager
         /// <returns></returns>
         public Tuple<bool, string> Add(ProductEntity entity)
         {
-            if (!entity.GoodsEntityList.Any())
+            var validateResult = new ProductValidate().ProductPublishValidate(entity);
+            if (!validateResult.Item1)
             {
-                return new Tuple<bool, string>(false, "请选择产品规格来生成组合商品。");
+                return validateResult;
             }
+
             ProductHelp.GetInstance().CombineProductInfo(entity);
 
             using (var tx = NhTransactionHelper.BeginTransaction())
@@ -99,45 +102,8 @@ namespace Project.Service.ProductManager
                 }
             }
 
-
-
         }
 
-
-        /// <summary>
-        /// 删除
-        /// </summary>
-        /// <param name="pkId"></param>
-        public bool DeleteByPkId(System.Int32 pkId)
-        {
-            try
-            {
-                var entity = _productRepository.GetById(pkId);
-                _productRepository.Delete(entity);
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }
-
-        /// <summary>
-        /// 删除
-        /// </summary>
-        /// <param name="entity"></param>
-        public bool Delete(ProductEntity entity)
-        {
-            try
-            {
-                _productRepository.Delete(entity);
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }
 
         /// <summary>
         /// 更新
@@ -145,10 +111,12 @@ namespace Project.Service.ProductManager
         /// <param name="entity"></param>
         public Tuple<bool, string> Update(ProductEntity entity)
         {
-            if (!entity.GoodsEntityList.Any())
+            var validateResult = new ProductValidate().ProductPublishValidate(entity);
+            if (!validateResult.Item1)
             {
-                return new Tuple<bool, string>(false, "请选择产品规格来生成组合商品。");
+                return validateResult;
             }
+
 
             var newInfo = entity;
             ProductHelp.GetInstance().CombineProductInfo(newInfo);
@@ -164,6 +132,7 @@ namespace Project.Service.ProductManager
             orgInfo.ProductCategoryId = newInfo.ProductCategoryId;
             orgInfo.ProductCategoryName = newInfo.ProductCategoryName;
             orgInfo.SystemCategoryName = newInfo.SystemCategoryName;
+            orgInfo.Unit = newInfo.Unit;
 
 
             #region 产品属性处理
@@ -298,6 +267,42 @@ namespace Project.Service.ProductManager
 
 
         /// <summary>
+        /// 删除
+        /// </summary>
+        /// <param name="pkId"></param>
+        public bool DeleteByPkId(System.Int32 pkId)
+        {
+            try
+            {
+                var entity = _productRepository.GetById(pkId);
+                _productRepository.Delete(entity);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// 删除
+        /// </summary>
+        /// <param name="entity"></param>
+        public bool Delete(ProductEntity entity)
+        {
+            try
+            {
+                _productRepository.Delete(entity);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+
+        /// <summary>
         /// 通过主键获取实体
         /// </summary>
         /// <param name="pkId">主键</param>
@@ -324,11 +329,18 @@ namespace Project.Service.ProductManager
             if (!string.IsNullOrEmpty(where.ProductCode))
                 expr = expr.And(p => p.ProductCode.Contains(where.ProductCode));
             if (!string.IsNullOrEmpty(where.ProductName))
-                expr = expr.And(p => p.ProductName .Contains(where.ProductName) );
+                expr = expr.And(p => p.ProductName.Contains(where.ProductName));
             if (where.SystemCategoryId > 0)
                 expr = expr.And(p => p.SystemCategoryId == where.SystemCategoryId);
             if (where.ProductCategoryId > 0)
                 expr = expr.And(p => p.ProductCategoryId == where.ProductCategoryId);
+
+
+            if (where.IsCommand > 0)
+                expr = expr.And(p => p.IsCommand == where.IsCommand);
+            if (where.IsShow > 0)
+                expr = expr.And(p => p.IsShow == where.IsShow);
+
             // if (!string.IsNullOrEmpty(where.ProductCategoryRoute))
             //  expr = expr.And(p => p.ProductCategoryRoute == where.ProductCategoryRoute);
             // if (!string.IsNullOrEmpty(where.BrandId))
@@ -547,7 +559,7 @@ namespace Project.Service.ProductManager
         /// <param name="pkid"></param>
         /// <param name="isShow"></param>
         /// <returns></returns>
-        public bool UpdateIsShow(int pkid,int isShow)
+        public bool UpdateIsShow(int pkid, int isShow)
         {
             var orgInfo = ProductService.GetInstance().GetModelByPk(pkid);
             orgInfo.IsShow = isShow;

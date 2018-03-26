@@ -11,7 +11,7 @@
 
 @section JavaScript{
     <script src="/Areas/ProductManager/Scripts/Product/List.js?JsParamter=@SiteConfig.GetConfig().JsParamter" type="text/javascript"></script>
-<script src="/Scripts/Control/ProductcategoryControl.js"></script>
+    <script src="/Scripts/Control/ProductcategoryControl.js"></script>
 }
 
 <div title="产品列表" style="padding:1px;">
@@ -19,7 +19,7 @@
     <div id="tb" style="padding:5px;height:auto">
         <div style="margin-bottom: 5px">
 
-            发布商品所属商品类型 <input id="SystemCategoryId2" name="SystemCategoryId2" type="text"/>
+            发布商品所属商品类型 <input id="SystemCategoryId2" name="SystemCategoryId2" type="text" />
 
             <a id="btnAdd" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true">发布商品</a>
 
@@ -45,14 +45,14 @@
 
                     <tr>
                         <td>
-                            商品名称:
+                            产品名称:
                         </td>
                         <td>
                             <input id="ProductName" name="ProductName" type="text" />
                         </td>
 
                         <td>
-                            商品编码:
+                            产品编码:
                         </td>
                         <td>
                             <input id="ProductCode" name="ProductCode" type="text" />
@@ -61,7 +61,7 @@
                             商品分类:
                         </td>
                         <td>
-                            <input id="ProductCategoryId" name="ProductCategoryId" type="text"/>
+                            <input id="ProductCategoryId" name="ProductCategoryId" type="text" />
                         </td>
 
                         <td>
@@ -70,7 +70,27 @@
                         <td>
                             <input id="SystemCategoryId" name="SystemCategoryId" type="text" />
                         </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            是否推荐：
+                        </td>
+                        <td>
+                            <select id="IsCommand" name="IsCommand">
+                                <option value=""></option>
+                                <option value="1">是</option>
+                                <option value="2">否</option>
+                            </select>
 
+                        </td>
+                        <td>是否上架</td>
+                        <td>
+                            <select id="IsShow" name="IsShow">
+                                <option value=""></option>
+                                <option value="1">是</option>
+                                <option value="2">否</option>
+                            </select>
+                        </td>
                         <td colspan="2">
                             <a href="#" class="easyui-linkbutton" iconcls="icon-search" id="btnSearch">搜索</a>
                         </td>

@@ -4,7 +4,7 @@ var pro = pro || {};
     pro.CardType = pro.CardType || {};
     pro.CardType.ListPage = pro.CardType.ListPage || {};
     pro.CardType.ListPage = {
-      init: function () {
+        init: function () {
             return {
                 tabObj: new pro.TabBase(),
                 gridObj: new pro.GridBase("#datagrid", false)
@@ -21,9 +21,10 @@ var pro = pro || {};
                 rownumbers: true, //行号
                 singleSelect: true,
                 columns: [[
-         { field: 'PkId', title: '自动增加得建立序列', width: 100 },
+         //{ field: 'PkId', title: '自动增加得建立序列', width: 100 },
          { field: 'CardtypeName', title: '名称', width: 100 },
          { field: 'Discount', title: '折扣', width: 100 },
+         { field: 'NeedTotalAmount', title: '所需消费金额', width: 100 }
                 ]],
                 pagination: true,
                 pageSize: 20, //每页显示的记录条数，默认为10     
@@ -32,7 +33,7 @@ var pro = pro || {};
                );
 
             $("#btnAdd").click(function () {
-               tabObj.add("/CustomerManager/CardType/Hd","新增");
+                tabObj.add("/CustomerManager/CardType/Hd", "新增");
             });
 
             $("#btnEdit").click(function () {
@@ -51,7 +52,7 @@ var pro = pro || {};
 
             $("#btnDel").click(function () {
                 if (!gridObj.isSelected()) {
-                $.alertExtend.infoOp();
+                    $.alertExtend.infoOp();
                     return;
                 }
                 $.messager.confirm("确认操作", "是否确认删除", function (bl) {
@@ -75,7 +76,7 @@ var pro = pro || {};
                 gridObj.refresh();
             });
         },
-         closeTab: function () {
+        closeTab: function () {
             this.init().tabObj.closeTab();
         }
     };

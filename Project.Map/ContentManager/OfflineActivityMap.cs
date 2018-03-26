@@ -22,7 +22,7 @@ namespace  Project.Map.ContentManager
             Map(p => p.StartDate);    
             Map(p => p.EndDate);    
             Map(p => p.ImageUrl);    
-            Map(p => p.BriefDescription);    
+            Map(p => p.BriefDescription);       Map(p => p.Description);       Map(p => p.BindGoodsCode);    
             Map(p => p.State);    
             Map(p => p.DeletionTime);    
             Map(p => p.DeleterUserCode);    

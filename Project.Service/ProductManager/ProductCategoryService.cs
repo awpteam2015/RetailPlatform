@@ -210,9 +210,19 @@ namespace Project.Service.ProductManager
         /// 
         /// </summary>
         /// <returns></returns>
-        public ProductCategoryEntity GetToProductCategoryEntity()
+        public IList<ProductCategoryEntity> GetTopProductCategoryList()
         {
-            return _productCategoryRepository.Query().Where(p => p.ParentId == 0).FirstOrDefault();
+            return _productCategoryRepository.Query().Where(p => p.ParentId == 0).ToList();
+        }
+
+        /// <summary>
+        /// 查询第二级分类
+        /// </summary>
+        /// <param name="systemCategoryId"></param>
+        /// <returns></returns>
+        public IList<ProductCategoryEntity> GetTopProductCategoryList(int systemCategoryId)
+        {
+            return _productCategoryRepository.Query().Where(p => p.ParentId == 1&&p.SystemCategoryId== systemCategoryId).ToList();
         }
 
 

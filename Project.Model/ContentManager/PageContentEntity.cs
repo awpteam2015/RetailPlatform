@@ -84,11 +84,16 @@ namespace Project.Model.ContentManager
         /// 创建人
         /// </summary>
         public virtual System.String CreatorUserCode{get; set;}
-		#endregion
-        
+
+        /// <summary>
+        /// 浏览量
+        /// </summary>
+        public virtual System.String BrowseCount { get; set; }
+        #endregion
+
 
         #region 新增属性
-        
+
         #endregion
     }
 }

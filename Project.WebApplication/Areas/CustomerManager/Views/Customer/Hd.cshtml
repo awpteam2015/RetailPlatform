@@ -42,6 +42,27 @@
                 <td>
                     <input id="CustomerName" name="CustomerName" type="text" />
                 </td>
+               
+            </tr>
+            <tr>
+                <td>
+                    会员卡类型<span style="color: Red">*</span>:
+                </td>
+                <td>
+                    <input id="CardTypeId" name="CardTypeId" type="text" />
+                </td>
+                <td>
+                    会员卡状态：
+                </td>
+                <td>
+                    <select id="State" name="State">
+                        <option value="1">正常</option>
+                        <option value="2">注销</option>
+                    </select>
+                </td>
+                <td>
+                    
+                </td><td></td>
             </tr>
 
             <tr>
@@ -49,7 +70,7 @@
                     性别：
                 </td>
                 <td>
-                  <select id="Gender"  name="Gender"> <option value="男">男</option><option value="女">女</option></select>
+                    <select id="Gender" name="Gender"> <option value="男">男</option><option value="女">女</option></select>
                 </td>
 
                 <td>
@@ -65,25 +86,28 @@
                 <td>
                     <input id="Familytelephone" name="Familytelephone" type="text" />
                 </td>
+                <td colspan="2"></td>
             </tr>
 
             <tr>
                 <td>
                     省市区
                 </td>
-                <td>
+                <td colspan="7">
                     <input id="ProvinceId" name="ProvinceId" type="text" class="easyui-combobox" />
 
                     <input id="CityId" name="CityId" type="text" class="easyui-combobox" />
 
                     <input id="AreaId" name="AreaId" type="text" class="easyui-combobox" />
                 </td>
-
+               
+            </tr>
+            <tr>
                 <td>
-                     详细地址:
+                    详细地址:
                 </td>
                 <td>
-                    <input id="Address" name="Address" type="text" />
+                    <input id="Address" name="Address" type="text" style="width: 300px" />
                 </td>
 
                 <td>
@@ -92,6 +116,7 @@
                 <td>
                     <input id="Postcode" name="Postcode" type="text" />
                 </td>
+                <td colspan="4"></td>
             </tr>
 
 

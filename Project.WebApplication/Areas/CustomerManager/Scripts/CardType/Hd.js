@@ -11,8 +11,8 @@
             $("#btnEdit").click(function () {
                 pro.CardType.HdPage.submit("Edit");
             });
-            
-             $("#btnClose").click(function () {
+
+            $("#btnClose").click(function () {
                 parent.pro.CardType.ListPage.closeTab("");
             });
 
@@ -35,7 +35,7 @@
             }
 
             this.submitExtend.addRule();
-          if (!$("#form1").valid() || !this.submitExtend.logicValidate()) {
+            if (!$("#form1").valid() || !this.submitExtend.logicValidate()) {
                 $.alertExtend.error();
                 return false;
             }
@@ -45,7 +45,7 @@
                 data: JSON.stringify(postData)
             }).done(
                 function (dataresult, data) {
-                   function afterSuccess() {
+                    function afterSuccess() {
                         parent.$("#btnSearch").trigger("click");
                         parent.pro.CardType.ListPage.closeTab();
                     }
@@ -53,7 +53,7 @@
                 }
             ).fail(
              function (errordetails, errormessage) {
-               //  $.alertExtend.error();
+                 //  $.alertExtend.error();
              }
             );
 
@@ -62,14 +62,16 @@
             addRule: function () {
                 $("#form1").validate({
                     rules: {
-          //PkId: { required: true  },
-          CardtypeName: { required: true  },
-          Discount: { required: true  }
+                        //PkId: { required: true  },
+                        CardtypeName: { required: true },
+                        Discount: { required: true },
+                        NeedTotalAmount: { required: true }
                     },
                     messages: {
-          PkId:  "自动增加得建立序列必填!",
-          CardtypeName:  "名称必填!",
-          Discount:  "折扣必填!",
+
+                        CardtypeName: "名称必填!",
+                        Discount: "折扣必填!",
+                        NeedTotalAmount: "所需消费金额必填"
                     },
                     errorPlacement: function (error, element) {
                         pro.commonKit.errorPlacementHd(error, element);

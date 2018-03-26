@@ -95,7 +95,9 @@ namespace Project.WebApplication.Areas.ProductManager.Controllers
             var pIndex = this.Request["page"].ConvertTo<int>();
             var pSize = this.Request["rows"].ConvertTo<int>();
             var where = new ProductEntity();
-            //where.PkId = RequestHelper.GetFormString("PkId");
+            where.IsCommand = RequestHelper.GetInt("IsCommand");
+            where.IsShow = RequestHelper.GetInt("IsShow");
+
             where.ProductName = RequestHelper.GetFormString("ProductName");
             where.SystemCategoryId = RequestHelper.GetInt("SystemCategoryId");
             where.ProductCategoryId = RequestHelper.GetInt("ProductCategoryId");

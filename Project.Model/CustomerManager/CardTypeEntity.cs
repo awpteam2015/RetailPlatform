@@ -23,11 +23,13 @@ namespace Project.Model.CustomerManager
         /// 折扣
         /// </summary>
         public virtual System.Int32? Discount{get; set;}
-		#endregion
-        
+
+        public virtual decimal NeedTotalAmount { get; set; }
+        #endregion
+
 
         #region 新增属性
-        
+
         #endregion
     }
 }

@@ -28,6 +28,12 @@
                 //行项目信息用json绑定控件
                 //alert(JSON.stringify(BindEntity.List));
             }
+
+            var parentId = pro.commonKit.getUrlParam("ParentId");
+            if (parentId > 0) {
+                $("input[name=ParentId]").val(parentId);
+            }
+
         },
         submit: function (command) {
             var postData = {};

@@ -1,0 +1,13 @@
+/Project.WebApplication/bin
+/Project.WebApplication/*.user
+/Project.Application.Service/bin
+/Project.Infrastructure.FrameworkCore/bin
+/Project.WebApplication.Tests/bin
+/WindowsFormsApplicationTest/bin
+/Project.WebApplication/obj/Release/Package/PackageTmp/bin
+/Project.Service/bin
+/Project.Repository/bin
+/Project.Model/bin
+/Project.Map/bin
+/Project.Config/bin
+/Project.WebSite/bin

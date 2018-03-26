@@ -87,7 +87,7 @@ namespace Project.Model.ContentManager
         /// <summary>
         /// 是否删除
         /// </summary>
-        public virtual System.Int32? IsDeleted { get; set; }
+        public virtual System.Int32 IsDeleted { get; set; }
         /// <summary>
         /// 删除人
         /// </summary>
@@ -96,6 +96,8 @@ namespace Project.Model.ContentManager
         /// 删除时间
         /// </summary>
         public virtual System.DateTime? DeletionTime { get; set; }
+
+public virtual System.String Tags { get; set; }
         #endregion
 
 

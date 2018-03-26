@@ -9,7 +9,7 @@
                 width:200,
                 valueField: 'PkId',
                 textField: 'ProductCategoryName',
-                url: '/ProductManager/ProductCategory/GetList_Combotree'
+                url: '/ProductManager/ProductCategory/GetList_Combotree?SystemCategoryId=' + pro.commonKit.getUrlParam("SystemCategoryId")
             };
 
             var options = $.extend({}, defaultParamter, paramter);

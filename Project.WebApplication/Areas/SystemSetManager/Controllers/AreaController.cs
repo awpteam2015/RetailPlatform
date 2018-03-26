@@ -38,6 +38,7 @@ namespace Project.WebApplication.Areas.SystemSetManager.Controllers
 
         public AbpJsonResult GetList()
         {
+
             var pIndex = this.Request["page"].ConvertTo<int>();
             var pSize = this.Request["rows"].ConvertTo<int>();
             var where = new AreaEntity();

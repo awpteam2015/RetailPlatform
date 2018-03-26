@@ -23,6 +23,13 @@ namespace Project.Model.CustomerManager
         public virtual System.Int32 CardTypeId { get; set; }
 
         /// <summary>
+        /// 会员卡状态
+        /// </summary>
+        public virtual System.Int32 State { get; set; }
+
+        public virtual System.String CardTypeName { get; set; }
+
+        /// <summary>
         /// 密码
         /// </summary>
         public virtual System.String Password{get; set;}
@@ -122,7 +129,22 @@ namespace Project.Model.CustomerManager
         
 
         #region 新增属性
-        
+
+        public virtual string Attr_State
+        {
+            get
+            {
+                if (State==1)
+                {
+                    return "正常";
+                }
+                else
+                {
+                    return "注销";
+                }
+            }
+        }
+
         #endregion
     }
 }

@@ -87,7 +87,14 @@
                     商品数量<span style="color: Red">*</span>：
                 </td>
                 <td>
-                    <input id="StockNum" name="StockNum" type="text" />  件
+                    <input id="StockNum" name="StockNum" type="text" />
+                    <select id="Unit" name="Unit">
+                        <option value="件">件</option>
+                        <option value="个">个</option>
+                        <option value="本">本</option>
+                        <option value="只">只</option>
+                        <option value="支">支</option>
+                    </select>
                 </td>
             </tr>
             <tr>
@@ -134,7 +141,7 @@
 
             <tr>
                 <td style="width: 150px">
-                    商品分类<span style="color: Red">*</span>:
+                    商品分类:
                 </td>
                 <td>
                     <input id="ProductCategoryId" name="ProductCategoryId" type="text" />
@@ -156,7 +163,7 @@
                     商品标题<span style="color: Red">*</span>:
                 </td>
                 <td>
-                    <input id="ProductName" name="ProductName" type="text" />
+                    <input id="ProductName" name="ProductName" type="text" style="width: 300px" />
                 </td>
             </tr>
 
@@ -272,9 +279,8 @@
                 <td style="width: 150px">是否推荐</td>
                 <td>
                     <select id="IsCommand" name="IsCommand">
-                        <option value=""></option>
-                        <option value="1">是</option>
                         <option value="2">否</option>
+                        <option value="1">是</option>
                     </select>
                 </td>
             </tr>
@@ -282,7 +288,6 @@
                 <td>是否上架</td>
                 <td>
                     <select id="IsShow" name="IsShow">
-                        <option value=""></option>
                         <option value="1">是</option>
                         <option value="2">否</option>
                     </select>

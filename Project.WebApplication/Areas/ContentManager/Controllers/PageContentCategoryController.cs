@@ -42,7 +42,7 @@ namespace Project.WebApplication.Areas.ContentManager.Controllers
             var pSize = this.Request["rows"].ConvertTo<int>();
             var where = new PageContentCategoryEntity();
             //where.PkId = RequestHelper.GetFormString("PkId");
-            // where.PageContentCategoryName = RequestHelper.GetString("PageContentCategoryName");
+            where.PageContentCategoryName = RequestHelper.GetString("PageContentCategoryName");
             //where.ParentId = RequestHelper.GetFormString("ParentId");
             //where.Rank = RequestHelper.GetFormString("Rank");
             //where.Sort = RequestHelper.GetFormString("Sort");
@@ -54,8 +54,17 @@ namespace Project.WebApplication.Areas.ContentManager.Controllers
             //where.IsDeleted = RequestHelper.GetFormString("IsDeleted");
             //where.DeleterUserCode = RequestHelper.GetFormString("DeleterUserCode");
             //where.DeletionTime = RequestHelper.GetFormString("DeletionTime");
-            var searchList = PageContentCategoryService.GetInstance().GetTopPageContentCategoryList();
 
+            var searchList = new List<PageContentCategoryEntity>();
+            if (!string.IsNullOrWhiteSpace(where.PageContentCategoryName))
+            {
+                searchList= PageContentCategoryService.GetInstance().GetList(where).ToList();
+            }
+            else
+            {
+                searchList = PageContentCategoryService.GetInstance().GetTopPageContentCategoryList().ToList();
+            }
+            
             var dataGridEntity = new DataGridTreeResponse<PageContentCategoryEntity>(searchList.Count, searchList);
             return new AbpJsonResult(dataGridEntity, new NHibernateContractResolver(new string[] { "children" }));
         }

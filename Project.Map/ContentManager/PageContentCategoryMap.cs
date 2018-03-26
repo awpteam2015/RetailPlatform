@@ -21,7 +21,7 @@ namespace  Project.Map.ContentManager
             Map(p => p.ParentId);    
             Map(p => p.Rank);    
             Map(p => p.Sort);    
-            Map(p => p.Route);
+            Map(p => p.Route);   Map(p => p.Tags);
 
             Map(p => p.TitleOtherName1);
             Map(p => p.TitleOtherName2);
@@ -55,7 +55,7 @@ namespace  Project.Map.ContentManager
 .AsSet()
 .LazyLoad()
 .Cascade.All().Inverse()
-.KeyColumn("ParentId");
+.KeyColumn("ParentId").OrderBy("Sort");
         }
     }
 }

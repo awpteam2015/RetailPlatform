@@ -19,6 +19,7 @@ namespace  Project.Map.CustomerManager
  
             Map(p => p.CardNo);
             Map(p => p.CardTypeId);
+            Map(p => p.CardTypeName);
             Map(p => p.Password);    
             Map(p => p.CustomerName);    
             Map(p => p.Gender);    
@@ -42,7 +43,7 @@ namespace  Project.Map.CustomerManager
             Map(p => p.CreatorUserCode);    
             Map(p => p.IsDeleted);    
             Map(p => p.DeleterUserCode);    
-            Map(p => p.DeletionTime);    
+            Map(p => p.DeletionTime);     Map(p => p.State);    
         }
     }
 }

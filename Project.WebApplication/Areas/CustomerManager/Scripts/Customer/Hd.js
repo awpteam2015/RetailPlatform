@@ -14,10 +14,13 @@
             $("#btnEdit").click(function () {
                 pro.Customer.HdPage.submit("Edit");
             });
-            
-             $("#btnClose").click(function () {
+
+            $("#btnClose").click(function () {
                 parent.pro.Customer.ListPage.closeTab("");
             });
+
+            $("#Password").val("");
+            $("#Mobilephone").val("");
 
             if ($("#BindEntity").val()) {
                 var bindField = pro.bindKit.getHeadJson();
@@ -28,6 +31,22 @@
                 //行项目信息用json绑定控件
                 //alert(JSON.stringify(BindEntity.List));
             }
+
+
+            $('#CardTypeId').combobox({
+                required: true,
+                editable: false,
+                valueField: 'PkId',
+                textField: 'CardtypeName',
+                url: '/CustomerManager/CardType/GetList_Combobox',
+                onLoadSuccess: function () {
+                    if (pro.commonKit.getUrlParam("PkId") > 0) {
+                        $("#CardTypeId").combobox('setValue', bindEntity['CardTypeId']);
+                    }
+                }
+            });
+
+
         },
         submit: function (command) {
             var postData = {};
@@ -39,7 +58,7 @@
             }
 
             this.submitExtend.addRule();
-          if (!$("#form1").valid() || !this.submitExtend.logicValidate()) {
+            if (!$("#form1").valid() || !this.submitExtend.logicValidate()) {
                 $.alertExtend.error();
                 return false;
             }
@@ -49,7 +68,7 @@
                 data: JSON.stringify(postData)
             }).done(
                 function (dataresult, data) {
-                   function afterSuccess() {
+                    function afterSuccess() {
                         parent.$("#btnSearch").trigger("click");
                         parent.pro.Customer.ListPage.closeTab();
                     }
@@ -57,7 +76,7 @@
                 }
             ).fail(
              function (errordetails, errormessage) {
-               //  $.alertExtend.error();
+                 //  $.alertExtend.error();
              }
             );
 
@@ -66,60 +85,60 @@
             addRule: function () {
                 $("#form1").validate({
                     rules: {
-          //PkId: { required: true  },
-          //CardNo: { required: true  },
-          Password: { required: true  },
-          CustomerName: { required: true  },
-          //Gender: { required: true  },
-          //Birthday: { required: true  },
-          //Email: { required: true  },
-          //Familytelephone: { required: true  },
-          //Postcode: { required: true  },
-          Mobilephone: { required: true  },
-          //ProvinceId: { required: true  },
-          //CityId: { required: true  },
-          //CountryId: { required: true  },
-          //Address: { required: true  },
-          //Memo: { required: true  },
-          //Discount: { required: true  },
-          //Totalamount: { required: true  },
-          //Totalpoints: { required: true  },
-          //Availablepoints: { required: true  },
-          //LastModificationTime: { required: true  },
-          //LastModifierUserCode: { required: true  },
-          //CreationTime: { required: true  },
-          //CreatorUserCode: { required: true  },
-          //IsDeleted: { required: true  },
-          //DeleterUserCode: { required: true  },
-          //DeletionTime: { required: true  },
+                        //PkId: { required: true  },
+                        //CardNo: { required: true  },
+                        Password: { required: true },
+                        CustomerName: { required: true },
+                        CardTypeId: { required: true },
+                        //Birthday: { required: true  },
+                        //Email: { required: true  },
+                        //Familytelephone: { required: true  },
+                        //Postcode: { required: true  },
+                        Mobilephone: { required: true },
+                        //ProvinceId: { required: true  },
+                        //CityId: { required: true  },
+                        //CountryId: { required: true  },
+                        //Address: { required: true  },
+                        //Memo: { required: true  },
+                        //Discount: { required: true  },
+                        //Totalamount: { required: true  },
+                        //Totalpoints: { required: true  },
+                        //Availablepoints: { required: true  },
+                        //LastModificationTime: { required: true  },
+                        //LastModifierUserCode: { required: true  },
+                        //CreationTime: { required: true  },
+                        //CreatorUserCode: { required: true  },
+                        //IsDeleted: { required: true  },
+                        //DeleterUserCode: { required: true  },
+                        //DeletionTime: { required: true  },
                     },
                     messages: {
-          PkId:  "必填!",
-          CardNo:  "必填!",
-          Password:  "密码必填!",
-          CustomerName:  "会员名称必填!",
-          Gender:  "性别必填!",
-          Birthday:  "生日必填!",
-          Email:  "邮件必填!",
-          Familytelephone:  "家庭电话必填!",
-          Postcode:  "邮编必填!",
-          Mobilephone:  "手机必填!",
-          ProvinceId:  "居住地址   省必填!",
-          CityId:  "居住地址   市必填!",
-          CountryId:  "居住地址   区（新增）必填!",
-          Address:  "居住地址   详细地址必填!",
-          Memo:  "备注必填!",
-          Discount:  "折扣率必填!",
-          Totalamount:  "消费总金额必填!",
-          Totalpoints:  "总积分必填!",
-          Availablepoints:  "可用积分必填!",
-          LastModificationTime:  "修改时间必填!",
-          LastModifierUserCode:  "修改人必填!",
-          CreationTime:  "创建时间必填!",
-          CreatorUserCode:  "创建人必填!",
-          IsDeleted:  "是否删除必填!",
-          DeleterUserCode:  "删除人必填!",
-          DeletionTime:  "删除时间必填!",
+                        CardTypeId: "请选择会员卡类型!",
+                        CardNo: "必填!",
+                        Password: "密码必填!",
+                        CustomerName: "会员名称必填!",
+                        Gender: "性别必填!",
+                        Birthday: "生日必填!",
+                        Email: "邮件必填!",
+                        Familytelephone: "家庭电话必填!",
+                        Postcode: "邮编必填!",
+                        Mobilephone: "手机必填!",
+                        ProvinceId: "居住地址   省必填!",
+                        CityId: "居住地址   市必填!",
+                        CountryId: "居住地址   区（新增）必填!",
+                        Address: "居住地址   详细地址必填!",
+                        Memo: "备注必填!",
+                        Discount: "折扣率必填!",
+                        Totalamount: "消费总金额必填!",
+                        Totalpoints: "总积分必填!",
+                        Availablepoints: "可用积分必填!",
+                        LastModificationTime: "修改时间必填!",
+                        LastModifierUserCode: "修改人必填!",
+                        CreationTime: "创建时间必填!",
+                        CreatorUserCode: "创建人必填!",
+                        IsDeleted: "是否删除必填!",
+                        DeleterUserCode: "删除人必填!",
+                        DeletionTime: "删除时间必填!",
                     },
                     errorPlacement: function (error, element) {
                         pro.commonKit.errorPlacementHd(error, element);

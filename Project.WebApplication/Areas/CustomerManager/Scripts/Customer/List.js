@@ -4,7 +4,7 @@ var pro = pro || {};
     pro.Customer = pro.Customer || {};
     pro.Customer.ListPage = pro.Customer.ListPage || {};
     pro.Customer.ListPage = {
-      init: function () {
+        init: function () {
             return {
                 tabObj: new pro.TabBase(),
                 gridObj: new pro.GridBase("#datagrid", false)
@@ -25,18 +25,22 @@ var pro = pro || {};
          //{ field: 'CardNo', title: '', width: 100 },
          //{ field: 'Password', title: '密码', width: 100 },
          { field: 'CustomerName', title: '会员名称', width: 100 },
+          { field: 'Mobilephone', title: '手机', width: 100 },
+          { field: 'CardTypeName', title: '会员卡类型名称', width: 100 },
+          { field: 'Attr_State', title: '会员卡状态', width: 100 },
+          { field: 'Discount', title: '折扣率', width: 100 },
          { field: 'Gender', title: '性别', width: 100 },
          { field: 'Birthday', title: '生日', width: 100 },
          //{ field: 'Email', title: '邮件', width: 100 },
          { field: 'Familytelephone', title: '家庭电话', width: 100 },
-         { field: 'Postcode', title: '邮编', width: 100 },
-         { field: 'Mobilephone', title: '手机', width: 100 }
+         { field: 'Postcode', title: '邮编', width: 100 }
+        
          //{ field: 'ProvinceId', title: '居住地址   省', width: 100 },
          //{ field: 'CityId', title: '居住地址   市', width: 100 },
          //{ field: 'CountryId', title: '居住地址   区（新增）', width: 100 },
          //{ field: 'Address', title: '居住地址   详细地址', width: 100 },
          //{ field: 'Memo', title: '备注', width: 100 },
-         //{ field: 'Discount', title: '折扣率', width: 100 },
+
          //{ field: 'Totalamount', title: '消费总金额', width: 100 },
          //{ field: 'Totalpoints', title: '总积分', width: 100 },
          //{ field: 'Availablepoints', title: '可用积分', width: 100 },
@@ -55,7 +59,7 @@ var pro = pro || {};
                );
 
             $("#btnAdd").click(function () {
-               tabObj.add("/CustomerManager/Customer/Hd","新增");
+                tabObj.add("/CustomerManager/Customer/Hd", "新增");
             });
 
             $("#btnEdit").click(function () {
@@ -83,7 +87,7 @@ var pro = pro || {};
 
             $("#btnDel").click(function () {
                 if (!gridObj.isSelected()) {
-                $.alertExtend.infoOp();
+                    $.alertExtend.infoOp();
                     return;
                 }
                 $.messager.confirm("确认操作", "是否确认删除", function (bl) {
@@ -102,13 +106,25 @@ var pro = pro || {};
                     );
                 });
             });
-            
+
 
             $("#btnRefresh").click(function () {
                 gridObj.refresh();
             });
+
+            $('#CardTypeId').combobox({
+                required: false,
+                editable: false,
+                valueField: 'PkId',
+                textField: 'CardtypeName',
+                url: '/CustomerManager/CardType/GetList_Combobox',
+                onLoadSuccess: function () {
+                  
+                }
+            });
+
         },
-         closeTab: function () {
+        closeTab: function () {
             this.init().tabObj.closeTab();
         }
     };

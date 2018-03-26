@@ -82,8 +82,9 @@ namespace Project.WebApplication.Areas.CustomerManager.Controllers
         public AbpJsonResult Add(AjaxRequest<CustomerEntity> postData)
         {
             postData.RequestEntity.Password = Encrypt.MD5Encrypt(postData.RequestEntity.Password);
+            postData.RequestEntity.CardTypeId = 1;
 
-            var addResult = CustomerService.GetInstance().Add(postData.RequestEntity);
+           var addResult = CustomerService.GetInstance().Add(postData.RequestEntity);
             var result = new AjaxResponse<CustomerEntity>()
                {
                    success = addResult.Item1,

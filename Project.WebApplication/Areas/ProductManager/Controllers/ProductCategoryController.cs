@@ -39,8 +39,8 @@ namespace Project.WebApplication.Areas.ProductManager.Controllers
         public AbpJsonResult GetList()
         {
             var where = new ProductCategoryEntity();
+            where.ProductCategoryName = RequestHelper.GetString("ProductCategoryName");
             var searchList = ProductCategoryService.GetInstance().GetList(where);
-
             var dataGridEntity = new DataGridTreeResponse<ProductCategoryEntity>(searchList.Count, searchList);
             return new AbpJsonResult(dataGridEntity, new NHibernateContractResolver(null, new string[] { "children" }));
         }
@@ -49,17 +49,18 @@ namespace Project.WebApplication.Areas.ProductManager.Controllers
         public AbpJsonResult GetList_Combotree()
         {
             var where = new ProductCategoryEntity();
-            where.ProductCategoryName = RequestHelper.GetString("ProductCategoryName");
 
-            var searchList = ProductCategoryService.GetInstance().GetList(where);
-
-            var dataGridEntity = new ProductCategoryEntity();
-            if (searchList.Any())
+            var list =new List<ProductCategoryEntity>();
+            if (RequestHelper.GetInt("SystemCategoryId")>0)
             {
-                dataGridEntity = searchList.FirstOrDefault();
+                list =  ProductCategoryService.GetInstance() .GetTopProductCategoryList(RequestHelper.GetInt("SystemCategoryId")).ToList();
+            }
+            else
+            {
+                list = ProductCategoryService.GetInstance().GetTopProductCategoryList().ToList();
             }
 
-            return new AbpJsonResult(new List<ProductCategoryEntity>() { dataGridEntity }, new NHibernateContractResolver(new string[] { "children" }));
+            return new AbpJsonResult(list, new NHibernateContractResolver(new string[] { "children" }));
         }
         [HttpPost]
         public AbpJsonResult Add(AjaxRequest<ProductCategoryEntity> postData)

@@ -44,9 +44,9 @@ var pro = pro || {};
          { field: 'ConfirmRemark', title: '客户确认备注', width: 100 },
          { field: 'UserIp', title: '创建人ip', width: 100 },
          { field: 'CreatorUserCode', title: '创建人', width: 100 },
-         { field: 'CreationTime', title: '创建时间', width: 100 },
-         { field: 'LastModifierUserCode', title: '修改人', width: 100 },
-         { field: 'LastModificationTime', title: '修改时间', width: 100 }
+         { field: 'CreationTime', title: '创建时间', width: 100 }
+         //{ field: 'LastModifierUserCode', title: '修改人', width: 100 },
+         //{ field: 'LastModificationTime', title: '修改时间', width: 100 }
                 ]],
                 pagination: true,
                 pageSize: 20, //每页显示的记录条数，默认为10     
