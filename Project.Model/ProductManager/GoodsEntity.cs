@@ -55,8 +55,13 @@ namespace Project.Model.ProductManager
         /// 是否是默认商品
         /// </summary>
         public virtual System.Int32 IsDefault{get; set;}
-		#endregion
-        
+
+        /// <summary>
+        /// 规格值明细
+        /// </summary>
+        public virtual System.String SpecDetail { get; set; }
+        #endregion
+
 
         #region 新增属性
 

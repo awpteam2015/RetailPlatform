@@ -150,6 +150,12 @@
     <Compile Include="RiverManager\RiverProblemApplyService.cs" />
     <Compile Include="RiverManager\RiverProblemDbService.cs" />
     <Compile Include="RiverManager\RiverService.cs" />
+    <Compile Include="SalePromotionManager\ActivityService.cs" />
+    <Compile Include="SalePromotionManager\RuleDiscountMoneyService.cs" />
+    <Compile Include="SalePromotionManager\RulePromotionGoodsService.cs" />
+    <Compile Include="SalePromotionManager\RuleSendTicketService.cs" />
+    <Compile Include="SalePromotionManager\RuleService.cs" />
+    <Compile Include="SalePromotionManager\TicketService.cs" />
     <Compile Include="SystemSetManager\AreaService.cs" />
     <Compile Include="SystemSetManager\AuthCodeService.cs" />
     <Compile Include="SystemSetManager\CityService.cs" />

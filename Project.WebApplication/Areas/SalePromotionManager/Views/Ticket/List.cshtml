@@ -1,0 +1,146 @@
+﻿
+
+  
+
+
+
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_LayoutList.cshtml";
+}
+
+@section JavaScript{
+    <script src="/Areas/SalePromotionManager/Scripts/Ticket/List.js?JsParamter=@SiteConfig.GetConfig().JsParamter" type="text/javascript"></script>
+}
+
+<div title="券" style="padding:1px;">
+    <table id="datagrid" style="height:auto;" iconcls=".icon-save" singleselect="true"  toolbar="#tb" fit="true"></table>
+    <div id="tb" style="padding:5px;height:auto">
+        <div  style="margin-bottom: 5px">
+            <a id="btnAdd" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true" >添加</a>
+  
+            <a id="btnDel" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true" >删除</a>
+           
+            <a id="btnEdit" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true" >编辑</a>
+          
+            <a id="btnRefresh" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-reload',plain:true" >刷新</a>
+           
+        </div>
+      
+        <div id="divSearch">
+            <form>
+            
+             <table class="mtable">
+            
+              <tr>
+            <td >
+                :
+            </td>
+            <td >
+                <input id="PkId" name="PkId"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td >
+                :
+            </td>
+            <td >
+                <input id="TicketCode" name="TicketCode"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td >
+                券类型编码:
+            </td>
+            <td >
+                <input id="TickettypeId" name="TickettypeId"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td >
+                激活 作废 已使用:
+            </td>
+            <td >
+                <input id="Status" name="Status"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td >
+                有效时间开始:
+            </td>
+            <td >
+                <input id="AvaildateStart" name="AvaildateStart"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td >
+                有效时间结束:
+            </td>
+            <td >
+                <input id="AvaildateEnd" name="AvaildateEnd"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td >
+                使用订单号（2012.5.30新增）:
+            </td>
+            <td >
+                <input id="OrderNo" name="OrderNo"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td >
+                使用日期（2012.5.30新增）:
+            </td>
+            <td >
+                <input id="UseDate" name="UseDate"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td >
+                归属会员:
+            </td>
+            <td >
+                <input id="CustomerId" name="CustomerId"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td >
+                活动规则Id:
+            </td>
+            <td >
+                <input id="RuleId" name="RuleId"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td >
+                活动Id:
+            </td>
+            <td >
+                <input id="ActivityId" name="ActivityId"  type="text"  />
+            </td>
+        </tr>
+          <tr>
+        <td colspan="2">   <a href="#" class="easyui-linkbutton" iconcls="icon-search" id="btnSearch">搜索</a>
+        </td>
+        </tr>
+        </table>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+

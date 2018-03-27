@@ -123,6 +123,12 @@
     <Compile Include="RiverManager\RiverProblemApplyRepository.cs" />
     <Compile Include="RiverManager\RiverProblemDbRepository.cs" />
     <Compile Include="RiverManager\RiverRepository.cs" />
+    <Compile Include="SalePromotionManager\ActivityRepository.cs" />
+    <Compile Include="SalePromotionManager\RuleDiscountMoneyRepository.cs" />
+    <Compile Include="SalePromotionManager\RulePromotionGoodsRepository.cs" />
+    <Compile Include="SalePromotionManager\RuleRepository.cs" />
+    <Compile Include="SalePromotionManager\RuleSendTicketRepository.cs" />
+    <Compile Include="SalePromotionManager\TicketRepository.cs" />
     <Compile Include="SystemSetManager\AreaRepository.cs" />
     <Compile Include="SystemSetManager\AuthCodeRepository.cs" />
     <Compile Include="SystemSetManager\CityRepository.cs" />

@@ -125,6 +125,12 @@
     <Compile Include="RiverManager\RiverOwerMap.cs" />
     <Compile Include="RiverManager\RiverProblemApplyMap.cs" />
     <Compile Include="RiverManager\RiverProblemDbMap.cs" />
+    <Compile Include="SalePromotionManager\ActivityMap.cs" />
+    <Compile Include="SalePromotionManager\RuleDiscountMoneyMap.cs" />
+    <Compile Include="SalePromotionManager\RuleMap.cs" />
+    <Compile Include="SalePromotionManager\RulePromotionGoodsMap.cs" />
+    <Compile Include="SalePromotionManager\RuleSendTicketMap.cs" />
+    <Compile Include="SalePromotionManager\TicketMap.cs" />
     <Compile Include="SystemSetManager\AreaMap.cs" />
     <Compile Include="SystemSetManager\AuthCodeMap.cs" />
     <Compile Include="SystemSetManager\CityMap.cs" />

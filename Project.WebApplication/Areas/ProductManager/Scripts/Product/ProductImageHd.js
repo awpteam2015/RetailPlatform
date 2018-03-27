@@ -28,7 +28,7 @@
         initImageArea: function () {
             for (var i = 1; i <= 5; i++) {
                 $('#file_upload' + i).uploadify({
-                    'formData': { "path": "ImgFile" },
+                    'formData': { "path": "ProductImgFile", "isGenerateOtherSize": "1" },
                     'swf': '/Scripts/jqueryPlugins/jquery_uploadify/uploadify.swf',
                     'uploader': '/SystemSetManager/Upload/UploadImage',
                     'buttonText': '选择图片',

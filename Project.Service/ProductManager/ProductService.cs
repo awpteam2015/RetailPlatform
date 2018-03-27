@@ -72,13 +72,14 @@ namespace Project.Service.ProductManager
                     entity.GoodsEntityList.ToList().ForEach(p =>
                     {
                         p.ProductId = pkId;
+                       
 
                         p.GoodsSpecValueList.ToList().ForEach(x =>
                         {
                             x.GoodsId = p.PkId;
                             x.ProductId = p.ProductId;
+                            p.SpecDetail += x.SpecValueOtherName + "  ";//详情
                         });
-
                     });
 
                     entity.ProductAttributeValueEntityList.ToList().ForEach(p =>
@@ -231,6 +232,7 @@ namespace Project.Service.ProductManager
                         {
                             x.GoodsId = p.PkId;
                             x.ProductId = p.ProductId;
+                            p.SpecDetail += x.SpecValueOtherName + "  ";//详情
                         });
                     });
 

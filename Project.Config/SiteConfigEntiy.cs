@@ -9,6 +9,15 @@ namespace Project.Config
 {
     public class SiteConfigEntiy
     {
+        public SiteConfigEntiy()
+        {
+            PicSizeConfig = new PicSizeConfig();
+        }
+
+
+        public PicSizeConfig PicSizeConfig { get; set; }
+
+
         public string JsParamter {
             get { return ConfigurationManager.AppSettings["JsParamter"]; }
         }
@@ -24,6 +33,22 @@ namespace Project.Config
             get
             {
                 return new List<string>() { "I", "II", "III", "IV", "V" };
+            }
+        }
+
+
+    }
+
+
+    public class PicSizeConfig
+    {
+        /// <summary>
+        /// 商品图片配置
+        /// </summary>
+        public string GoodsPicSize {
+            get
+            {
+                return ConfigurationManager.AppSettings["GoodsPicSize"];
             }
         }
     }

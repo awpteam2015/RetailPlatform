@@ -109,7 +109,7 @@
                         //ProductCategoryId: { required: true },
                         //ProductCategoryRoute: { required: true },
                         //BrandId: { required: true },
-                        //ProductCode: { required: true },
+                        ProductCode: { required: true },
                         //Unit: { required: true },
                         BriefDescription: { required: true },
                         Description: { required: true },

@@ -5,7 +5,9 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Project.Config;
 using Project.Infrastructure.FrameworkCore.ToolKit;
+using Project.Infrastructure.FrameworkCore.ToolKit.ImageHandler;
 using Project.Infrastructure.FrameworkCore.ToolKit.JsonHandler;
 using Project.WebApplication.Controllers;
 
@@ -41,7 +43,13 @@ namespace Project.WebApplication.Areas.SystemSetManager.Controllers
             }
 
             var filename = string.Format("{0}-{1}-{2}", DateTime.Now.ToString("yyyyMMddHHmmss"), Guid.NewGuid(), file.FileName);
-            file.SaveAs(serverPath + "/" + filename);
+            var fileFullPath = serverPath + "/" + filename;
+            file.SaveAs(fileFullPath);
+
+            if (Request["isGenerateOtherSize"] !=null)
+            {
+                ImageHelper.GenerateThumbImg(fileFullPath, SiteConfig.GetConfig().PicSizeConfig.GoodsPicSize);
+            }
 
             return Content(JsonHelper.ReturnMsg(true, "",
                 new

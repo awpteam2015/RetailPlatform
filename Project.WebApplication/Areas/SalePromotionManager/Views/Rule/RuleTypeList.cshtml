@@ -1,0 +1,72 @@
+﻿
+
+
+
+
+@{
+    ViewBag.Title = "Hd";
+    Layout = "~/Views/Shared/_LayoutHandler.cshtml";
+}
+
+@section JavaScript{
+
+}
+<div style="display: none">
+
+</div>
+<div class="mtable_div">
+    <form id="form1">
+        <table class="mtable">
+            <tr>
+                <td style="width: 100px">
+                    <input type="radio" name="Ruletype" value="Ra" />
+                </td>
+                <td>
+                    1.单品促销(RA)
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <input type="radio" name="Ruletype" value="Rb" />
+                </td>
+                <td>
+                    2.满足金额发券(RB)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="radio" name="Ruletype" value="Rc" />
+                </td>
+                <td>
+                    3.满足金额减免(RC)
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+<div style="padding: 10px 10px 0 10px; text-align: center;">
+
+    <a id="btnEdit" class="easyui-linkbutton" iconcls="icon-ok" href="javascript:void(0)" onclick="chooseRuleType()">下一步</a>
+
+</div>
+
+<script type="text/javascript">
+    function chooseRuleType() {
+        var Ruletype = $("input[name=Ruletype]:checked").val();
+        if (!Ruletype) {
+            $.messager.alert('提示', "请选择促销规则！");
+            return false;
+        }
+
+        //        if ($("#Ruletypes").val().indexOf(Ruletype) > -1) {
+        //            $.messager.alert('提示', "同种类型的促销规则只能添加一个！");
+        //            return false;
+        //        }
+        window.location.href = "/SalePromotionManager/Rule/Rule" + Ruletype + "Hd?RuleType=" + Ruletype + "&Activityid=" + pro.commonKit.getUrlParam('ActivityId');
+    }
+
+</script>
+
+
+

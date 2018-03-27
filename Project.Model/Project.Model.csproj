@@ -128,6 +128,12 @@
     <Compile Include="RiverManager\RiverOwerEntity.cs" />
     <Compile Include="RiverManager\RiverProblemApplyEntity.cs" />
     <Compile Include="RiverManager\RiverProblemDbEntity.cs" />
+    <Compile Include="SalePromotionManager\ActivityEntity.cs" />
+    <Compile Include="SalePromotionManager\RuleDiscountMoneyEntity.cs" />
+    <Compile Include="SalePromotionManager\RuleEntity.cs" />
+    <Compile Include="SalePromotionManager\RulePromotionGoodsEntity.cs" />
+    <Compile Include="SalePromotionManager\RuleSendTicketEntity.cs" />
+    <Compile Include="SalePromotionManager\TicketEntity.cs" />
     <Compile Include="SystemSetManager\AreaEntity.cs" />
     <Compile Include="SystemSetManager\AuthCodeEntity.cs" />
     <Compile Include="SystemSetManager\CityEntity.cs" />

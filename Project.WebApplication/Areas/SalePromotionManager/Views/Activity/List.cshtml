@@ -1,0 +1,89 @@
+﻿
+
+
+
+
+
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_LayoutList.cshtml";
+}
+
+@section JavaScript{
+<script src="/Scripts/jqueryPlugins/jquery-easyui/extend/datagrid-detailview.js"></script>
+    <script src="/Areas/SalePromotionManager/Scripts/Activity/List.js?JsParamter=@SiteConfig.GetConfig().JsParamter" type="text/javascript"></script>
+<script src="/Scripts/pro/listKit.js"></script>
+
+}
+
+<div title="促销活动列表" style="padding:1px;">
+    <table id="datagrid" style="height:auto;" iconcls=".icon-save" singleselect="true" toolbar="#tb" fit="true"></table>
+    <div id="tb" style="padding:5px;height:auto">
+        <div style="margin-bottom: 5px">
+            <a id="btnAddActivity" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true">添加活动</a>
+
+            <a id="btnDelActivity" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true">删除活动</a>
+
+            <a id="btnEditActivity" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true">编辑活动</a>
+
+
+            <a id="btnAddRule" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true">添加规则</a>
+
+            <a id="btnDelRule" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true">删除规则</a>
+
+            <a id="btnEditRule" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true">编辑规则</a>
+
+
+
+            <a id="btnRefresh" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-reload',plain:true">刷新</a>
+
+        </div>
+
+        <div id="divSearch">
+            <form>
+
+                <table class="mtable">
+
+                    <tr>
+                        <td style="width: 120px">
+                            促销主题:
+                        </td>
+                        <td style="width: 120px">
+                            <input id="Title" name="Title" type="text"  style="width: 300px"/>
+                        </td>
+
+                        @*<td>
+                            活动时间 :
+                        </td>
+                        <td>
+                            <input id="StartDate" name="StartDate" type="text" />-
+
+                            <input id="EndDate" name="EndDate" type="text" />
+                        </td>*@
+
+                        <td style="width: 120px">
+                            活动状态:
+                        </td>
+                        <td style="width: 120px">
+
+                            <select id="State" name="State">
+                                <option value="0"></option>
+                                <option value="1">启用</option>
+                                <option value="2">关闭</option>
+                            </select>
+                        </td>
+
+                        <td colspan="2">
+                            <a href="#" class="easyui-linkbutton" iconcls="icon-search" id="btnSearch">搜索</a>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+

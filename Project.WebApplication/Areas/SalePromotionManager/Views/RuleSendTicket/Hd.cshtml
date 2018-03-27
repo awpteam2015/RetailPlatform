@@ -1,0 +1,121 @@
+﻿
+
+  
+
+
+@{
+    ViewBag.Title = "Hd";
+    Layout = "~/Views/Shared/_LayoutHandler.cshtml";
+}
+
+@section JavaScript{
+    <script src="/Areas/SalePromotionManager/Scripts/RuleSendTicket/Hd.js?JsParamter=@SiteConfig.GetConfig().JsParamter"></script>
+}
+<div style="display: none">
+<input id="BindEntity" type="text" value="@ViewBag.BindEntity" />
+<input id="Command" type="hidden" />
+</div>
+<div class="mtable_div">
+    <form id="form1">
+        <table class="mtable">
+            
+              <tr>
+            <td  >
+                <span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="PkId" name="PkId"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                活动规则Id<span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="RuleId" name="RuleId"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                活动Id<span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="ActivityId" name="ActivityId"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                订单金额范围<span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="StartMoney" name="StartMoney"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                订单金额范围<span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="EndMoney" name="EndMoney"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                券张数<span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="TicketNum" name="TicketNum"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                会员可类型范围<span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="CardTypeIds" name="CardTypeIds"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                有效时间结束<span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="TicketAvaildateEnd" name="TicketAvaildateEnd"  type="text"  />
+            </td>
+        </tr>
+            
+              <tr>
+            <td  >
+                有效时间开始<span style="color: Red">*</span>:
+            </td>
+            <td >
+                <input id="TicketAvaildateStart" name="TicketAvaildateStart"  type="text"  />
+            </td>
+        </tr>
+          
+        </table>
+    </form>
+</div>
+<div style="padding: 10px 10px 0 10px; text-align: center;">
+    @if (Request["PkId"]==null||int.Parse(Request["PkId"]) == 0)
+    {
+        <a id="btnAdd" class="easyui-linkbutton" iconcls="icon-add" href="javascript:void(0)">新增</a>
+    }
+    else
+    {
+        <a id="btnEdit" class="easyui-linkbutton" iconcls="icon-ok" href="javascript:void(0)">编辑</a>
+    }
+    <a id="btnClose" class="easyui-linkbutton" iconcls="icon-cancel" href="javascript:void(0)">关闭</a>
+</div>
+
+
+
+
+

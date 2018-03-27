@@ -31,7 +31,12 @@ namespace Project.Service.ProductManager.Validate
                 return new Tuple<bool, string>(false, "商品第一张图片必须上传。");
             }
 
-           return new Tuple<bool, string>(true, "");
+            if (entity.GoodsEntityList.Any(p =>string.IsNullOrWhiteSpace(p.GoodsCode) ))
+            {
+                return new Tuple<bool, string>(false, "SKU表的商品编码必填。");
+            }
+
+            return new Tuple<bool, string>(true, "");
         }
     }
 }

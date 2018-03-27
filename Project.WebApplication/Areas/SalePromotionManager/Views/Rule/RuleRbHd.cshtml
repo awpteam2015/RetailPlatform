@@ -1,0 +1,83 @@
+﻿
+
+
+
+
+@{
+    ViewBag.Title = "Hd";
+    Layout = "~/Views/Shared/_LayoutHandler.cshtml";
+}
+
+@section JavaScript{
+    <script src="/Areas/SalePromotionManager/Scripts/Rule/RuleRbHd.js?JsParamter=@SiteConfig.GetConfig().JsParamter"></script>
+}
+<div style="display: none">
+    <input id="BindEntity" type="text" value="@ViewBag.BindEntity" />
+    <input id="Command" type="hidden" />
+</div>
+<div class="mtable_div">
+    <form id="form1">
+        <table class="mtable">
+            <tr>
+                <td>
+                    规则标题 <span style="color: Red">*</span>:
+                </td>
+                <td>
+                    <input id="Title" name="Title" type="text" style="width: 300px" />
+                </td>
+            </tr>
+
+            <tr style="display: none">
+                <td>
+                    规则类型A B C:
+                </td>
+                <td>
+                    <input id="RuleType" name="RuleType" type="text" value="Rb" />
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    订单金额范围:
+                </td>
+                <td>
+                    <input id="StartMoney" name="StartMoney" type="text" />-<input id="EndMoney" name="EndMoney" type="text" />
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    券张数:
+                </td>
+                <td>
+                    <input id="TicketNum" name="TicketNum" type="text"  value="1"/>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    券有效期:
+                </td>
+                <td>
+                    <input id="TicketAvaildateStart" name="TicketAvaildateStart" type="text"  onclick="WdatePicker({dateFmt:'yyyy-MM-dd'});"/>-<input id="TicketAvaildateEnd" name="TicketAvaildateEnd" type="text" onclick="WdatePicker({dateFmt:'yyyy-MM-dd'});" />
+                </td>
+            </tr>
+
+
+        </table>
+    </form>
+</div>
+<div style="padding: 10px 10px 0 10px; text-align: center;">
+    @if (Request["PkId"] == null || int.Parse(Request["PkId"]) == 0)
+    {
+        <a id="btnAdd" class="easyui-linkbutton" iconcls="icon-add" href="javascript:void(0)">新增</a>
+    }
+    else
+    {
+        <a id="btnEdit" class="easyui-linkbutton" iconcls="icon-ok" href="javascript:void(0)">编辑</a>
+    }
+    <a id="btnClose" class="easyui-linkbutton" iconcls="icon-cancel" href="javascript:void(0)">关闭</a>
+</div>
+
+
+

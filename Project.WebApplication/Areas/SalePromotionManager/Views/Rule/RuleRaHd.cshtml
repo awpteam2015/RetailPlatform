@@ -1,0 +1,69 @@
+﻿
+
+
+
+
+@{
+    ViewBag.Title = "Hd";
+    Layout = "~/Views/Shared/_LayoutHandler.cshtml";
+}
+
+@section JavaScript{
+    <script src="/Areas/SalePromotionManager/Scripts/Rule/RuleRaHd.js?JsParamter=@SiteConfig.GetConfig().JsParamter"></script>
+}
+<div style="display: none">
+    <input id="BindEntity" type="text" value="@ViewBag.BindEntity" />
+    <input id="Command" type="hidden" />
+</div>
+<div class="mtable_div">
+    <form id="form1">
+        <table class="mtable">
+            <tr>
+                <td style="width: 120px">
+                    规则标题 <span style="color: Red">*</span>:
+                </td>
+                <td>
+                    <input id="Title" name="Title" type="text" style="width: 300px"/>
+                </td>
+            </tr>
+
+            <tr style="display: none">
+                <td>
+                    规则类型A B C:
+                </td>
+                <td>
+                    <input id="RuleType" name="RuleType" type="text" value="Rc"/>
+                </td>
+            </tr>
+
+        </table>
+
+        <div title="促销商品列表" style="padding:1px;height: 600px;">
+            <table id="datagrid" toolbar="#tb" fit="true"></table>
+            <div id="tb" style="padding: 5px; height: auto">
+                <div style="margin-bottom: 5px">
+                    <a id="btnAdd_ToolBar" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true">添加</a>
+                    <a id="btnDel_ToolBar" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true">删除</a>
+                </div>
+                <div id="divSearch">
+                </div>
+            </div>
+        </div>
+
+
+    </form>
+</div>
+<div style="padding: 10px 10px 0 10px; text-align: center;">
+    @if (Request["PkId"] == null || int.Parse(Request["PkId"]) == 0)
+    {
+        <a id="btnAdd" class="easyui-linkbutton" iconcls="icon-add" href="javascript:void(0)">新增</a>
+    }
+    else
+    {
+        <a id="btnEdit" class="easyui-linkbutton" iconcls="icon-ok" href="javascript:void(0)">编辑</a>
+    }
+    <a id="btnClose" class="easyui-linkbutton" iconcls="icon-cancel" href="javascript:void(0)">关闭</a>
+</div>
+
+
+

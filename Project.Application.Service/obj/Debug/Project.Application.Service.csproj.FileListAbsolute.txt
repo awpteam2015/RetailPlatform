@@ -1,5 +1,0 @@
-G:\云端备份\我设计的框架\Retail2\Project.Application.Service\bin\Debug\Project.Application.Service.dll
-G:\云端备份\我设计的框架\Retail2\Project.Application.Service\bin\Debug\Project.Application.Service.pdb
-G:\云端备份\我设计的框架\Retail2\Project.Application.Service\obj\Debug\Project.Application.Service.csprojResolveAssemblyReference.cache
-G:\云端备份\我设计的框架\Retail2\Project.Application.Service\obj\Debug\Project.Application.Service.dll
-G:\云端备份\我设计的框架\Retail2\Project.Application.Service\obj\Debug\Project.Application.Service.pdb
