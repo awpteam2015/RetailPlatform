@@ -21,17 +21,18 @@ var pro = pro || {};
                 rownumbers: true, //行号
                 singleSelect: true,
                 columns: [[
-         { field: 'PkId', title: '', width: 100 },
-         { field: 'TicketCode', title: '', width: 100 },
-         { field: 'TickettypeId', title: '券类型编码', width: 100 },
+         //{ field: 'PkId', title: '', width: 100 },
+         { field: 'TicketCode', title: '券号', width: 100 },
+         //{ field: 'TickettypeId', title: '券类型编码', width: 100 },
          { field: 'Status', title: '激活 作废 已使用', width: 100 },
          { field: 'AvaildateStart', title: '有效时间开始', width: 100 },
          { field: 'AvaildateEnd', title: '有效时间结束', width: 100 },
-         { field: 'OrderNo', title: '使用订单号（2012.5.30新增）', width: 100 },
-         { field: 'UseDate', title: '使用日期（2012.5.30新增）', width: 100 },
+          { field: 'IsUse', title: '使用已使用', width: 100 },
+         { field: 'OrderNo', title: '使用订单号', width: 100 },
+         { field: 'UseDate', title: '使用日期', width: 100 },
          { field: 'CustomerId', title: '归属会员', width: 100 },
          { field: 'RuleId', title: '活动规则Id', width: 100 },
-         { field: 'ActivityId', title: '活动Id', width: 100 },
+         { field: 'ActivityId', title: '活动Id', width: 100 }
                 ]],
                 pagination: true,
                 pageSize: 20, //每页显示的记录条数，默认为10     

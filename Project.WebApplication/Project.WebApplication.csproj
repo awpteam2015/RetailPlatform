@@ -795,8 +795,6 @@
     <Content Include="Areas\OrderManager\Views\OrderMain\ReturnPayAfterSend.cshtml" />
     <Content Include="Areas\SalePromotionManager\Views\Activity\Hd.cshtml" />
     <Content Include="Areas\SalePromotionManager\Views\Activity\List.cshtml" />
-    <Content Include="Areas\SalePromotionManager\Views\RulePromotionGoods\Hd.cshtml" />
-    <Content Include="Areas\SalePromotionManager\Views\RulePromotionGoods\List.cshtml" />
     <Content Include="Areas\SalePromotionManager\Views\Rule\Hd.cshtml" />
     <Content Include="Areas\SalePromotionManager\Views\Rule\List.cshtml" />
     <Content Include="Areas\SalePromotionManager\Views\Ticket\Hd.cshtml" />

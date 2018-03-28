@@ -55,11 +55,17 @@ namespace Project.Model.SalePromotionManager
         /// 活动Id
         /// </summary>
         public virtual System.Int32 ActivityId{get; set;}
-		#endregion
-        
+
+        /// <summary>
+        /// 是否使用
+        /// </summary>
+
+        public virtual System.Int32 IsUse { get; set; }
+        #endregion
+
 
         #region 新增属性
-        
+
         #endregion
     }
 }

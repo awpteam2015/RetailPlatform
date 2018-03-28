@@ -6,11 +6,13 @@ using System.Linq;
 using System.Web.Mvc;
 using AutoMapper;
 using Project.Infrastructure.FrameworkCore.DataNhibernate.Helpers;
+using Project.Infrastructure.FrameworkCore.ToolKit;
 using Project.Infrastructure.FrameworkCore.ToolKit.JsonHandler;
 using Project.Infrastructure.FrameworkCore.ToolKit.LinqExpansion;
 using Project.Infrastructure.FrameworkCore.WebMvc.Controllers.Results;
 using Project.Infrastructure.FrameworkCore.WebMvc.Models;
 using Project.Model.ProductManager;
+using Project.Model.ProductManager.Request;
 using Project.Service.ProductManager;
 using Project.WebApplication.Controllers;
 
@@ -39,19 +41,22 @@ namespace Project.WebApplication.Areas.ProductManager.Controllers
         {
             var pIndex = this.Request["page"].ConvertTo<int>();
             var pSize = this.Request["rows"].ConvertTo<int>();
-            var where = new GoodsEntity();
-			//where.PkId = RequestHelper.GetFormString("PkId");
-			//where.ProductId = RequestHelper.GetFormString("ProductId");
-			//where.GoodsCode = RequestHelper.GetFormString("GoodsCode");
-			//where.GoodsStock = RequestHelper.GetFormString("GoodsStock");
-			//where.GoodsPrice = RequestHelper.GetFormString("GoodsPrice");
-			//where.GoodsCost = RequestHelper.GetFormString("GoodsCost");
-			//where.GoodsWeight = RequestHelper.GetFormString("GoodsWeight");
-			//where.GoodsWeightUnit = RequestHelper.GetFormString("GoodsWeightUnit");
-			//where.Unit = RequestHelper.GetFormString("Unit");
-			//where.Title = RequestHelper.GetFormString("Title");
-			//where.IsDefault = RequestHelper.GetFormString("IsDefault");
-            var searchList = GoodsService.GetInstance().Search(where, (pIndex - 1) * pSize, pSize);
+            var where = new GoodsSearchCondition();
+            //where.PkId = RequestHelper.GetFormString("PkId");
+            //where.ProductId = RequestHelper.GetFormString("ProductId");
+            where.GoodsCode = RequestHelper.GetString("GoodsCode");
+            where.ProductCode = RequestHelper.GetString("ProductCode");
+            where.ProductName = RequestHelper.GetString("ProductName");
+            where.skipResults = (pIndex - 1) * pSize;
+            where.maxResults = pSize;
+            //where.GoodsPrice = RequestHelper.GetFormString("GoodsPrice");
+            //where.GoodsCost = RequestHelper.GetFormString("GoodsCost");
+            //where.GoodsWeight = RequestHelper.GetFormString("GoodsWeight");
+            //where.GoodsWeightUnit = RequestHelper.GetFormString("GoodsWeightUnit");
+            //where.Unit = RequestHelper.GetFormString("Unit");
+            //where.Title = RequestHelper.GetFormString("Title");
+            //where.IsDefault = RequestHelper.GetFormString("IsDefault");
+            var searchList = GoodsService.GetInstance().Search(where);
 
             var dataGridEntity = new DataGridResponse()
             {
@@ -62,45 +67,18 @@ namespace Project.WebApplication.Areas.ProductManager.Controllers
         }
 
 
-        [HttpPost]
-        public AbpJsonResult Add(AjaxRequest<GoodsEntity> postData)
+        public AbpJsonResult GetGoodsInfo()
         {
-            var addResult = GoodsService.GetInstance().Add(postData.RequestEntity);
-            var result = new AjaxResponse<GoodsEntity>()
-               {
-                   success = true,
-                   result = postData.RequestEntity
-               };
-            return new AbpJsonResult(result, new NHibernateContractResolver());
-        }
+            var entity = GoodsService.GetInstance().GetModelByGoodsCode(RequestHelper.GetString("GoodsCode"));
 
-
-        [HttpPost]
-        public AbpJsonResult Edit( AjaxRequest<GoodsEntity> postData)
-        {
-            var newInfo = postData.RequestEntity;
-            var orgInfo = GoodsService.GetInstance().GetModelByPk(postData.RequestEntity.PkId);
-            var mergInfo = Mapper.Map(newInfo, orgInfo);
-            var updateResult = GoodsService.GetInstance().Update(mergInfo);
-            
             var result = new AjaxResponse<GoodsEntity>()
             {
-                success = updateResult,
-                result = postData.RequestEntity
+                success = entity!=null,
+                result = entity
             };
-            return new AbpJsonResult(result, new NHibernateContractResolver(new string[] { "result" }));
+            return new AbpJsonResult(result, new NHibernateContractResolver(new string[] { "result" ,"ProductInfo"}));
         }
 
-        [HttpPost]
-        public AbpJsonResult Delete(int pkid)
-        {
-            var deleteResult = GoodsService.GetInstance().DeleteByPkId(pkid);
-            var result = new AjaxResponse<GoodsEntity>()
-            {
-                success = deleteResult
-            };
-            return new AbpJsonResult(result, new NHibernateContractResolver(new string[] { "result" }));
-        }
     }
 }
 

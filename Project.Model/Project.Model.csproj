@@ -107,7 +107,9 @@
     <Compile Include="ProductManager\ProductEntity.cs" />
     <Compile Include="ProductManager\ProductImageEntity.cs" />
     <Compile Include="ProductManager\ProductSpecEntity.cs" />
-    <Compile Include="ProductManager\Request\ProductSearch.cs" />
+    <Compile Include="ProductManager\Request\GoodsSearchCondition.cs" />
+    <Compile Include="ProductManager\Request\ProductSearchCondition.cs" />
+    <Compile Include="ProductManager\Response\GoodsSearchView.cs" />
     <Compile Include="ProductManager\SpecEntity.cs" />
     <Compile Include="ProductManager\SpecValueEntity.cs" />
     <Compile Include="ProductManager\SystemCategoryAttributeEntity.cs" />
@@ -144,7 +146,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Enum\PermissionManager\" />
-    <Folder Include="Project.Model\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Project.Config\Project.Config.csproj">

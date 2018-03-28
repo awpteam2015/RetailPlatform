@@ -76,11 +76,11 @@ namespace Project.Model.ProductManager
         /// <summary>
         /// 市场价
         /// </summary>
-        public virtual System.Decimal? MarketPrice{get; set;}
+        public virtual System.Decimal MarketPrice{get; set;}
         /// <summary>
         /// 销售价
         /// </summary>
-        public virtual System.Decimal? SellPrice{get; set;}
+        public virtual System.Decimal SellPrice{get; set;}
         /// <summary>
         /// 成本价
         /// </summary>

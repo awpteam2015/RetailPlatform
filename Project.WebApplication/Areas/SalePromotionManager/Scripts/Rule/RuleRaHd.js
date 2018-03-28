@@ -10,6 +10,32 @@
                 gridObj: new pro.GridBase("#datagrid", false)
             };
         },
+        gridMethod:{
+            changeGoodsCode: function (i) {
+
+                var goodsCode = $("input[name=GoodsCode_" + i + "]").val();
+
+                abp.ajax({
+                    url: "/ProductManager/Goods/GetGoodsInfo?GoodsCode=" + goodsCode
+                }).done(
+                    function(dataresult, data) {
+
+                        $("[name=ProductName_span_" + i + "]").html(dataresult.ProductInfo.ProductName);
+                        $("[name=Price_span_" + i + "]").html(dataresult.ProductInfo.SellPrice);
+                        $("[name=SpecDetail_span_" + i + "]").html(dataresult.SpecDetail);
+                        $("[name=ProductId_" + i + "]").val(dataresult.ProductId);
+
+                    }
+                ).fail(
+                    function (errordetails, errormessage) {
+
+                        $("input[name=GoodsCode_" + i + "]").val("");
+                    }
+                );
+
+
+            }
+        },
         initPage: function () {
             var initObj = this.init();
             var tabObj = initObj.tabObj;
@@ -34,7 +60,7 @@
                             title: '商品编码',
                             width: 100,
                             formatter: function (value, row, index) {
-                                return pro.controlKit.getInputHtml("GoodsCode_" + row.PkId, value);
+                                return '<input onchange="pro.Rule.RuleRaHdPage.gridMethod.changeGoodsCode('+row.PkId+')" name="GoodsCode_' + row.PkId + '" value="' + value + '"  type="text" style="width:200px" />';
                             }
                         },
                         {
@@ -45,6 +71,15 @@
                                 return pro.controlKit.getSpanHtml("ProductName_" + row.PkId, value);
                             }
                         },
+                         {
+                             field: 'ProductId',
+                             title: '产品系统编号',
+                             hidden:true,
+                             width: 200,
+                             formatter: function (value, row, index) {
+                                 return pro.controlKit.getInputHtml("ProductId_" + row.PkId, value);
+                             }
+                         },
                         {
                             field: 'Price', title: '单价', width: 100,
                             formatter: function (value, row, index) {
@@ -74,7 +109,7 @@
             $("#btnAdd_ToolBar").click(function () {
                 gridObj.insertRow({
                     PkId: gridObj.PkId,
-                    FunctionDetailCode: ""
+                    GoodsCode: ""
                 });
 
                 //console.log(JSON.stringify($("#datagrid").datagrid('getRows')));
@@ -122,7 +157,11 @@
         submit: function (command) {
             var postData = {};
             postData.RequestEntity = pro.submitKit.getHeadJson();
-            postData.RequestEntity.RuleSendTicketEntity = pro.submitKit.getHeadJson();
+
+            pro.submitKit.config.columnPkidName = "PkId";
+            pro.submitKit.config.columns = ["GoodsCode", "PromotionPrice", "ProductId"];
+            postData.RequestEntity.RulePromotionGoodsEntityList = pro.submitKit.getRowJson();
+
 
             if (pro.commonKit.getUrlParam("PkId") != "") {
                 postData.RequestEntity.PkId = pro.commonKit.getUrlParam("PkId");

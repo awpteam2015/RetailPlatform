@@ -9,6 +9,8 @@ using System.Linq;
 using System.Collections.Generic;
 using Project.Infrastructure.FrameworkCore.DataNhibernate.Helpers;
 using Project.Model.ProductManager;
+using Project.Model.ProductManager.Request;
+using Project.Model.ProductManager.Response;
 using Project.Repository.ProductManager;
 
 namespace Project.Service.ProductManager
@@ -18,11 +20,13 @@ namespace Project.Service.ProductManager
        
        #region 构造函数
         private readonly GoodsRepository  _goodsRepository;
-            private static readonly GoodsService Instance = new GoodsService();
+        private readonly ProductRepository _productRepository;
+        private static readonly GoodsService Instance = new GoodsService();
 
         public GoodsService()
         {
            this._goodsRepository =new GoodsRepository();
+            _productRepository=new ProductRepository();
         }
         
          public static  GoodsService GetInstance()
@@ -96,6 +100,21 @@ namespace Project.Service.ProductManager
         }
         }
 
+        /// <summary>
+        /// 通过主键获取实体
+        /// </summary>
+        /// <param name="pkId">主键</param>
+        /// <returns></returns>
+        public GoodsEntity GetModelByGoodsCode(string goodsCode)
+        {
+            var goodsInfo= _goodsRepository.Query().FirstOrDefault(p => p.GoodsCode == goodsCode);
+            if (goodsInfo!=null)
+            {
+                goodsInfo.ProductInfo = _productRepository.Query().FirstOrDefault(p => p.PkId == goodsInfo.ProductId);
+            }
+            return goodsInfo;
+        }
+
 
         /// <summary>
         /// 通过主键获取实体
@@ -105,6 +124,16 @@ namespace Project.Service.ProductManager
         public GoodsEntity GetModelByPk(System.Int32 pkId)
         {
             return _goodsRepository.GetById(pkId);
+        }
+
+
+        /// <summary>
+        /// 分页
+        /// </summary>
+        /// <returns>获取当前页【商品表】和总【商品表】数</returns>
+        public System.Tuple<IList<GoodsSearchView>, int> Search(GoodsSearchCondition where)
+        {
+            return _goodsRepository.Search(where); 
         }
 
 

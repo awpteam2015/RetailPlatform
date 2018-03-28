@@ -436,7 +436,7 @@ namespace Project.Service.ProductManager
         }
 
 
-        public System.Tuple<IList<ProductEntity>, int> SearchFront(ProductSearch where)
+        public System.Tuple<IList<ProductEntity>, int> SearchFront(ProductSearchCondition where)
         {
             var list = _productRepository.Search(where);
             return new Tuple<IList<ProductEntity>, int>(list, 100);

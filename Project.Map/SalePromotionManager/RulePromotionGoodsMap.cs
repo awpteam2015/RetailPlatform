@@ -24,7 +24,9 @@ namespace  Project.Map.SalePromotionManager
             Map(p => p.GoodsCode);    
             Map(p => p.GoodsId);    
             Map(p => p.Price);    
-            Map(p => p.PromotionPrice);    
+            Map(p => p.PromotionPrice);
+            Map(p => p.ProductName);
+            Map(p => p.SpecDetail);
         }
     }
 }

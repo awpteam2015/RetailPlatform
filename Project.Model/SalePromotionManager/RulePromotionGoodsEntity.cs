@@ -47,11 +47,15 @@ namespace Project.Model.SalePromotionManager
         /// 促销价
         /// </summary>
         public virtual System.Decimal PromotionPrice{get; set;}
-		#endregion
-        
+
+
+        public virtual System.String ProductName { get; set; }
+        public virtual System.String SpecDetail { get; set; }
+        #endregion
+
 
         #region 新增属性
-        
+
         #endregion
     }
 }

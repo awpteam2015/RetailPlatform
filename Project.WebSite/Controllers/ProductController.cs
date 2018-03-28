@@ -35,7 +35,7 @@ namespace Project.WebSite.Controllers
             model.AttributList = Mapper.Map<List<AttributeVm>>(attributeEntityList);
 
             //商品列表
-            var where = new ProductSearch();
+            var where = new ProductSearchCondition();
             where.AttributeValue1 = RequestHelper.GetInt("Attr1");
             where.AttributeValue2 = RequestHelper.GetInt("Attr2");
             where.AttributeValue3 = RequestHelper.GetInt("Attr3");

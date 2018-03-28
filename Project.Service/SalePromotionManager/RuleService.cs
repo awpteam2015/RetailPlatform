@@ -8,9 +8,11 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
+using NHibernate.Util;
 using Project.Infrastructure.FrameworkCore.DataNhibernate;
 using Project.Infrastructure.FrameworkCore.DataNhibernate.Helpers;
 using Project.Model.SalePromotionManager;
+using Project.Repository.ProductManager;
 using Project.Repository.SalePromotionManager;
 
 namespace Project.Service.SalePromotionManager
@@ -24,6 +26,8 @@ namespace Project.Service.SalePromotionManager
         private readonly RuleSendTicketRepository _ruleSendTicketRepository;
         private readonly RulePromotionGoodsRepository _rulePromotionGoodsRepository;
         private readonly TicketRepository _ticketRepository;
+        private readonly ProductRepository _productRepository;
+        private readonly GoodsRepository _goodsRepository;
 
         private static readonly RuleService Instance = new RuleService();
 
@@ -36,6 +40,8 @@ namespace Project.Service.SalePromotionManager
             _ruleSendTicketRepository = new RuleSendTicketRepository();
             _rulePromotionGoodsRepository = new RulePromotionGoodsRepository();
             _ticketRepository = new TicketRepository();
+            _productRepository=new ProductRepository();
+            _goodsRepository=new GoodsRepository();
         }
 
         public static RuleService GetInstance()
@@ -60,10 +66,29 @@ namespace Project.Service.SalePromotionManager
                 {
                     var pkId = _ruleRepository.Save(entity);
 
-                    entity.RuleDiscountMoneyEntity.RuleId = pkId;
-                    entity.RuleDiscountMoneyEntity.ActivityId = entity.ActivityId;
+                    entity.RulePromotionGoodsEntityList.ForEach(p =>
+                    {
+                        p.RuleId = pkId;
+                        p.ActivityId = entity.ActivityId;
 
-                    _ruleDiscountMoneyRepository.Save(entity.RuleDiscountMoneyEntity);
+                        var productInfo = _productRepository.GetById(p.ProductId);
+                        if (productInfo!=null)
+                        {
+                            p.ProductName = productInfo.ProductName;
+                            p.ProductCode = productInfo.ProductCode;
+                        }
+
+                        var goodsInfo = _goodsRepository.Query().FirstOrDefault(x => x.GoodsCode == p.GoodsCode);
+                        if (goodsInfo!=null)
+                        {
+                            p.GoodsId = goodsInfo.PkId;
+                            p.Price = goodsInfo.GoodsPrice;
+                            p.SpecDetail = goodsInfo.SpecDetail;
+                        }
+
+                        _rulePromotionGoodsRepository.Save(p);
+                    });
+
                     tx.Commit();
                     return pkId;
                 }
@@ -84,16 +109,61 @@ namespace Project.Service.SalePromotionManager
         {
             var orgInfo = _ruleRepository.GetById(entity.PkId);
             orgInfo.Title = entity.Title;
-            orgInfo.RuleDiscountMoneyEntity.StartMoney = entity.RuleDiscountMoneyEntity.StartMoney;
-            orgInfo.RuleDiscountMoneyEntity.EndMoney = entity.RuleDiscountMoneyEntity.EndMoney;
-            orgInfo.RuleDiscountMoneyEntity.DiscountMoney = entity.RuleDiscountMoneyEntity.DiscountMoney;
+
+
+            #region 
+            var addEntityList = entity.RulePromotionGoodsEntityList.Where(p => orgInfo.RulePromotionGoodsEntityList.All(x => x.PkId != p.PkId)).ToList();
+            var updateEntityList = orgInfo.RulePromotionGoodsEntityList.Where(p => entity.RulePromotionGoodsEntityList.Any(x => x.PkId == p.PkId)).ToList();
+            var deleteEntityList = orgInfo.RulePromotionGoodsEntityList.Where(p => entity.RulePromotionGoodsEntityList.All(x => x.PkId != p.PkId)).ToList();
+
+            addEntityList.ForEach(p =>
+            {
+                orgInfo.RulePromotionGoodsEntityList.Add(p);
+            });
+
+            updateEntityList.ForEach(p =>
+            {
+                var newEntity = entity.RulePromotionGoodsEntityList.SingleOrDefault(x => x.PkId == p.PkId );
+                p.GoodsCode = newEntity.GoodsCode;
+                p.PromotionPrice = newEntity.PromotionPrice;
+            });
+            #endregion
 
             using (var tx = NhTransactionHelper.BeginTransaction())
             {
                 try
                 {
                     _ruleRepository.Update(orgInfo);
-                    _ruleDiscountMoneyRepository.Update(orgInfo.RuleDiscountMoneyEntity);
+
+                    orgInfo.RulePromotionGoodsEntityList = new HashSet<RulePromotionGoodsEntity>(orgInfo.RulePromotionGoodsEntityList.Where(p => deleteEntityList.All(x => x.PkId != p.PkId)).ToList());
+
+                    orgInfo.RulePromotionGoodsEntityList.ForEach(p =>
+                    {
+                        p.RuleId = orgInfo.PkId;
+                        p.ActivityId = entity.ActivityId;
+
+                        var productInfo = _productRepository.GetById(p.ProductId);
+                        if (productInfo != null)
+                        {
+                            p.ProductName = productInfo.ProductName;
+                            p.ProductCode = productInfo.ProductCode;
+                        }
+
+                        var goodsInfo = _goodsRepository.Query().FirstOrDefault(x => x.GoodsCode == p.GoodsCode);
+                        if (goodsInfo != null)
+                        {
+                            p.GoodsId = goodsInfo.PkId;
+                            p.Price = goodsInfo.GoodsPrice;
+                            p.SpecDetail = goodsInfo.SpecDetail;
+                        }
+                        _rulePromotionGoodsRepository.SaveOrUpdate(p);
+                    });
+
+                    deleteEntityList.ForEach(p =>
+                    {
+                        _rulePromotionGoodsRepository.Delete(p);
+                    });
+
                     tx.Commit();
                     return true;
                 }
@@ -243,12 +313,12 @@ namespace Project.Service.SalePromotionManager
                     var entity = _ruleRepository.GetById(pkId);
                     _ruleRepository.Delete(entity);
 
-                    if (entity.RuleDiscountMoneyEntity!=null)
+                    if (entity.RuleDiscountMoneyEntity != null)
                     {
                         _ruleDiscountMoneyRepository.Delete(entity.RuleDiscountMoneyEntity);
                     }
 
-                    if (entity.RuleSendTicketEntity!=null)
+                    if (entity.RuleSendTicketEntity != null)
                     {
                         _ruleSendTicketRepository.Delete(entity.RuleSendTicketEntity);
                     }

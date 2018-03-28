@@ -64,6 +64,10 @@ namespace Project.Model.ProductManager
 
 
         #region 新增属性
+        /// <summary>
+        /// 没做map映射 自己读取赋值
+        /// </summary>
+        public virtual ProductEntity ProductInfo { get; set; }
 
         public virtual ISet<GoodsSpecValueEntity> GoodsSpecValueList{ get; set;}
 

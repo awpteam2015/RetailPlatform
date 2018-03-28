@@ -26,7 +26,7 @@ namespace  Project.Map.SalePromotionManager
             Map(p => p.UseDate);    
             Map(p => p.CustomerId);    
             Map(p => p.RuleId);    
-            Map(p => p.ActivityId);    
+            Map(p => p.ActivityId);      Map(p => p.IsUse);   
         }
     }
 }

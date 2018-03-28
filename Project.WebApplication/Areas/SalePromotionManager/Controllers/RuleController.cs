@@ -128,8 +128,7 @@ namespace Project.WebApplication.Areas.SalePromotionManager.Controllers
             var addResult = RuleService.GetInstance().RuleRaAdd(postData.RequestEntity);
             var result = new AjaxResponse<RuleEntity>()
             {
-                success = true,
-                result = postData.RequestEntity
+                success = addResult>0
             };
             return new AbpJsonResult(result, new NHibernateContractResolver());
         }
@@ -138,15 +137,12 @@ namespace Project.WebApplication.Areas.SalePromotionManager.Controllers
         [HttpPost]
         public AbpJsonResult RuleRaEdit(AjaxRequest<RuleEntity> postData)
         {
-            var newInfo = postData.RequestEntity;
-            var orgInfo = RuleService.GetInstance().GetModelByPk(postData.RequestEntity.PkId);
-            var mergInfo = Mapper.Map(newInfo, orgInfo);
-            var updateResult = RuleService.GetInstance().RuleRaEdit(mergInfo);
+
+            var updateResult = RuleService.GetInstance().RuleRaEdit(postData.RequestEntity);
 
             var result = new AjaxResponse<RuleEntity>()
             {
-                success = updateResult,
-                result = postData.RequestEntity
+                success = updateResult
             };
             return new AbpJsonResult(result, new NHibernateContractResolver(new string[] { "result" }));
         }

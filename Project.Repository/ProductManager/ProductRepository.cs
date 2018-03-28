@@ -28,7 +28,7 @@ namespace Project.Repository.ProductManager
         /// </summary>
         /// <param name="where"></param>
         /// <returns></returns>
-        public IList<ProductEntity> Search(ProductSearch where)
+        public IList<ProductEntity> Search(ProductSearchCondition where)
         {
 
             var sqlStr = "select a.*,b.ImageUrl as ImageUrl  from PRM_Product a " +
