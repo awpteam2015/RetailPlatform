@@ -1,0 +1,25 @@
+2016-08-30 10:52:18,384 [DefaultQuartzScheduler_Worker-1] INFO  InfoLogger [(null)] - 
+2701获取文件并上传开始时间:2016-08-30 10:52:00
+20160830.txt
+
+结束时间:2016-08-30 10:52:18
+
+
+2016-08-30 12:32:12,570 [DefaultQuartzScheduler_Worker-1] INFO  InfoLogger [(null)] - 
+2701获取文件并上传开始时间:2016-08-30 12:32:00
+结束时间:2016-08-30 12:32:12
+
+
+2016-08-30 12:33:10,460 [DefaultQuartzScheduler_Worker-2] INFO  InfoLogger [(null)] - 
+2701获取文件并上传开始时间:2016-08-30 12:33:00
+XSJL.DB
+结束时间:2016-08-30 12:33:10
+
+
+2016-08-30 13:40:31,540 [DefaultQuartzScheduler_Worker-1] INFO  InfoLogger [(null)] - 
+2701重庆星光时代获取文件并上传开始时间:2016-08-30 13:40:03
+XSJL.DB
+
+结束时间:2016-08-30 13:40:31
+
+

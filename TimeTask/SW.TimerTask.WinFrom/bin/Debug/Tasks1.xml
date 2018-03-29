@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <Task Id="100" Name="快递发送短信">
+    <JobName>Job100</JobName>
+    <JobGroup>JobGroup100</JobGroup>
+    <TriggerName>Trigger100</TriggerName>
+    <TriggerGroup>TriggerGroup100</TriggerGroup>
+    <Cron>0 18/5 17 * * ?</Cron>
+    <State>启动</State>
+    <InterfaceUrl></InterfaceUrl>
+    <Method>POST</Method>
+    <Param>SiteCode=HH</Param>
+  </Task>
+</root>

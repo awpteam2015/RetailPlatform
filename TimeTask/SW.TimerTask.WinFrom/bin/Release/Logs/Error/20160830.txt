@@ -1,0 +1,18 @@
+2016-08-30 10:19:00,092 [DefaultQuartzScheduler_Worker-1] ERROR ErrorLogger [(null)] - 
+任务:TestWebAPI 
+ 接口:192.168.20.12
+
+开始时间:2016-08-30 10:19:00
+定时任务异常信息:无效的 URI: 未能确定 URI 的格式。
+结束时间:2016-08-30 10:19:00
+
+
+2016-08-30 10:20:00,023 [DefaultQuartzScheduler_Worker-2] ERROR ErrorLogger [(null)] - 
+任务:TestWebAPI 
+ 接口:192.168.20.12
+
+开始时间:2016-08-30 10:20:00
+定时任务异常信息:无效的 URI: 未能确定 URI 的格式。
+结束时间:2016-08-30 10:20:00
+
+

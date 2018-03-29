@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using System.Web.Http.Results;
+using System.Web.Mvc;
 using AutoMapper;
 using Castle.Core.Internal;
 using Newtonsoft.Json;
@@ -133,7 +134,7 @@ namespace Project.WebApplication.Controllers
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        [HttpPost]
+        [System.Web.Http.HttpPost]
         public JsonResult<WebAPIResponse<IList<RiverEntity>>> GetRiverList(GetRiverListRequest request)
         {
             var result = RiverService.GetInstance().Search(new RiverEntity()
@@ -168,7 +169,7 @@ namespace Project.WebApplication.Controllers
         //var t = client.PostAsync("http://localhost:8655//api/WeiXin/PostFile", content).Result.Content.ReadAsStringAsync().Result;
         /// </summary>
         /// <returns></returns>
-        [HttpPost]
+        [System.Web.Http.HttpPost]
         public async Task<JsonResult<WebAPIResponse<FileInfoDTO>>> PostFile()
         {
             //var result = new HttpResponseMessage(HttpStatusCode.OK);
@@ -384,7 +385,7 @@ namespace Project.WebApplication.Controllers
         /// <param name="request">上传实体 上传精度/纬度 lngNTU/latNTU
         /// </param>
         /// <returns>新生成的主键</returns>
-        [HttpPost]
+        [System.Web.Http.HttpPost]
         public JsonResult<WebAPIResponse<int>> ProblemReport(ProblemReportRequest request)
         {
             var entity = new RiverProblemApplyEntity();
@@ -510,7 +511,7 @@ namespace Project.WebApplication.Controllers
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        [HttpPost]
+        [System.Web.Http.HttpPost]
         public JsonResult<WebAPIResponse<IList<UserRoleEntity>>> GetUserInfoList(GetUserInfoListRequest request)
         {
 
@@ -625,7 +626,7 @@ namespace Project.WebApplication.Controllers
         /// 详细查看112.11.105.171 桌面 请求实体（会及时调整更新）
         /// </param>
         /// <returns></returns>
-        [HttpPost]
+        [System.Web.Http.HttpPost]
         public JsonResult<WebAPIResponse<IList<ProblemResponse>>> GetProblemList(GetProblemListRequest request)
         {
             string role = "";
@@ -777,7 +778,7 @@ namespace Project.WebApplication.Controllers
         /// </summary>
         /// <param name="request">序列化请求实体GetMsgNoticeRequest</param>
         /// <returns></returns>
-        [HttpPost]
+        [System.Web.Http.HttpPost]
         public JsonResult<WebAPIResponse<IList<MsgNoticeEntity>>> GetMsgNotice(GetMsgNoticeRequest request)
         {
             var userInfo = UserInfoService.GetInstance().GetUserInfo(request.UserCode);
@@ -800,7 +801,7 @@ namespace Project.WebApplication.Controllers
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        [HttpPost]
+        [System.Web.Http.HttpPost]
         public JsonResult<WebAPIResponse<bool>> TagMessageState(TagMessageStateRequest request)
         {
             var result = MessageTagService.GetInstance().Add(new MessageTagEntity()
@@ -820,7 +821,7 @@ namespace Project.WebApplication.Controllers
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        [HttpPost]
+        [System.Web.Http.HttpPost]
         public JsonResult<WebAPIResponse<IList<UserInfoResponse>>> GetAddressList(GetAddressListRequest request)
         {
             var list = UserInfoReportService.GetInstance()
@@ -842,7 +843,7 @@ namespace Project.WebApplication.Controllers
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        [HttpPost]
+        [System.Web.Http.HttpPost]
         public JsonResult<WebAPIResponse<IList<RiverProblemDbEntity>>> GetDbHistoryList(GetDbHistoryListRequest request)
         {
             var list = RiverProblemDbService.GetInstance()
@@ -861,7 +862,7 @@ namespace Project.WebApplication.Controllers
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        [HttpPost]
+        [System.Web.Http.HttpPost]
         public JsonResult<WebAPIResponse<IList<GetRiverAttachListResponse>>> GetRiverAttachList(GetRiverAttachListRequest request)
         {
             var list = RiverAttachService.GetInstance()
@@ -871,6 +872,12 @@ namespace Project.WebApplication.Controllers
             var mergInfo = Mapper.Map<IList<GetRiverAttachListResponse>>(list.Item1);
 
             return Json(new WebAPIResponse<IList<GetRiverAttachListResponse>>(mergInfo));
+        }
+
+        [System.Web.Http.HttpPost]
+        public JsonResult PostTest([FromBody]string name)
+        {
+            return new JsonResult() {};
         }
 
     }

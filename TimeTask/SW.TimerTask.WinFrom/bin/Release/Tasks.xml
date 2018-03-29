@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+
+
+  <Task Id="1" Name="销售单发货过账状态同步">
+    <JobName>Job1</JobName>
+    <JobGroup>JobGroup1</JobGroup>
+    <TriggerName>Trigger1</TriggerName>
+    <TriggerGroup>TriggerGroup1</TriggerGroup>
+    <Cron>0 0/1 * * * ?</Cron>
+    <State>启动</State>
+    <InterfaceUrl>http://192.168.85.51:8088/WebService/OrderWebService.asmx/OrderSync</InterfaceUrl>
+    <Method>POST</Method>
+    <Param>startDate=&amp;endDate=&amp;maxSize=0&amp;method=Edit</Param>
+  </Task>
+
+
+
+
+
+</root>

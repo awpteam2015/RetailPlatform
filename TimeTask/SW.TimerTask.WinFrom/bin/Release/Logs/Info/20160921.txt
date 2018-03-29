@@ -1,0 +1,110 @@
+2016-09-21 16:28:15,077 [DefaultQuartzScheduler_Worker-1] INFO  InfoLogger [(null)] - 
+2701重庆星光时代获取文件并上传开始时间:2016-09-21 16:28:02
+配置不上传
+结束时间:2016-09-21 16:28:08
+
+
+2016-09-21 16:29:29,198 [DefaultQuartzScheduler_Worker-2] INFO  InfoLogger [(null)] - 
+2701重庆星光时代获取文件并上传开始时间:2016-09-21 16:29:01
+XSJL.DB
+
+结束时间:2016-09-21 16:29:29
+
+
+2016-09-21 16:30:02,230 [DefaultQuartzScheduler_Worker-3] INFO  InfoLogger [(null)] - 
+2701重庆星光时代获取文件并上传开始时间:2016-09-21 16:30:02
+配置不上传
+结束时间:2016-09-21 16:30:02
+
+
+2016-09-21 16:31:04,281 [DefaultQuartzScheduler_Worker-4] INFO  InfoLogger [(null)] - 
+2701重庆星光时代获取文件并上传开始时间:2016-09-21 16:31:04
+配置不上传
+结束时间:2016-09-21 16:31:04
+
+
+2016-09-21 17:11:12,749 [DefaultQuartzScheduler_Worker-1] INFO  InfoLogger [(null)] - 
+2701重庆星光时代获取文件并上传开始时间:2016-09-21 17:11:02
+XSJL测试.DB
+
+结束时间:2016-09-21 17:11:12
+
+
+2016-09-21 17:12:00,001 [DefaultQuartzScheduler_Worker-2] INFO  InfoLogger [(null)] - 
+2701重庆星光时代获取文件并上传开始时间:2016-09-21 17:12:00
+配置不上传
+结束时间:2016-09-21 17:12:00
+
+
+2016-09-21 17:13:00,002 [DefaultQuartzScheduler_Worker-3] INFO  InfoLogger [(null)] - 
+2701重庆星光时代获取文件并上传开始时间:2016-09-21 17:13:00
+配置不上传
+结束时间:2016-09-21 17:13:00
+
+
+2016-09-21 17:14:00,000 [DefaultQuartzScheduler_Worker-4] INFO  InfoLogger [(null)] - 
+2701重庆星光时代获取文件并上传开始时间:2016-09-21 17:14:00
+配置不上传
+结束时间:2016-09-21 17:14:00
+
+
+2016-09-21 17:15:00,000 [DefaultQuartzScheduler_Worker-5] INFO  InfoLogger [(null)] - 
+2701重庆星光时代获取文件并上传开始时间:2016-09-21 17:15:00
+配置不上传
+结束时间:2016-09-21 17:15:00
+
+
+2016-09-21 17:16:00,000 [DefaultQuartzScheduler_Worker-6] INFO  InfoLogger [(null)] - 
+2701重庆星光时代获取文件并上传开始时间:2016-09-21 17:16:00
+配置不上传
+结束时间:2016-09-21 17:16:00
+
+
+2016-09-21 17:17:00,000 [DefaultQuartzScheduler_Worker-7] INFO  InfoLogger [(null)] - 
+2701重庆星光时代获取文件并上传开始时间:2016-09-21 17:17:00
+配置不上传
+结束时间:2016-09-21 17:17:00
+
+
+2016-09-21 17:18:00,000 [DefaultQuartzScheduler_Worker-8] INFO  InfoLogger [(null)] - 
+2701重庆星光时代获取文件并上传开始时间:2016-09-21 17:18:00
+配置不上传
+结束时间:2016-09-21 17:18:00
+
+
+2016-09-21 17:19:00,000 [DefaultQuartzScheduler_Worker-9] INFO  InfoLogger [(null)] - 
+2701重庆星光时代获取文件并上传开始时间:2016-09-21 17:19:00
+配置不上传
+结束时间:2016-09-21 17:19:00
+
+
+2016-09-21 17:20:00,000 [DefaultQuartzScheduler_Worker-10] INFO  InfoLogger [(null)] - 
+2701重庆星光时代获取文件并上传开始时间:2016-09-21 17:20:00
+配置不上传
+结束时间:2016-09-21 17:20:00
+
+
+2016-09-21 17:21:00,001 [DefaultQuartzScheduler_Worker-1] INFO  InfoLogger [(null)] - 
+2701重庆星光时代获取文件并上传开始时间:2016-09-21 17:21:00
+配置不上传
+结束时间:2016-09-21 17:21:00
+
+
+2016-09-21 17:22:00,000 [DefaultQuartzScheduler_Worker-2] INFO  InfoLogger [(null)] - 
+2701重庆星光时代获取文件并上传开始时间:2016-09-21 17:22:00
+配置不上传
+结束时间:2016-09-21 17:22:00
+
+
+2016-09-21 17:23:00,000 [DefaultQuartzScheduler_Worker-3] INFO  InfoLogger [(null)] - 
+2701重庆星光时代获取文件并上传开始时间:2016-09-21 17:23:00
+配置不上传
+结束时间:2016-09-21 17:23:00
+
+
+2016-09-21 17:24:00,000 [DefaultQuartzScheduler_Worker-4] INFO  InfoLogger [(null)] - 
+2701重庆星光时代获取文件并上传开始时间:2016-09-21 17:24:00
+配置不上传
+结束时间:2016-09-21 17:24:00
+
+
