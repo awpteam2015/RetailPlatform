@@ -21,7 +21,8 @@ namespace  Project.Map.SystemSetManager
             Map(p => p.SendType);    
             Map(p => p.ReciviceUser);    
             Map(p => p.AuthCode);    
-            Map(p => p.CreateDate);    
+            Map(p => p.CreateDate);
+            Map(p => p.EndDate);    
         }
     }
 }

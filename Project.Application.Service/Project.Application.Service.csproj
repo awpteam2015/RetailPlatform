@@ -41,15 +41,48 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountManager\AccountServiceImpl.cs" />
+    <Compile Include="ContentManager\ContentServiceImpl.cs" />
     <Compile Include="OrderManager\OrderServiceImpl.cs" />
+    <Compile Include="ProductManager\ProductServiceImpl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SalePromotionManager\SalePromotionServiceImpl.cs" />
+    <Compile Include="SystemSetManager\SystemSetServiceImpl.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AccountManager\Request\" />
     <Folder Include="AccountManager\Response\" />
-    <Folder Include="ContentManager\" />
-    <Folder Include="ProductManager\" />
-    <Folder Include="SystemSetManager\" />
+    <Folder Include="ContentManager\Request\" />
+    <Folder Include="ContentManager\Response\" />
+    <Folder Include="OrderManager\Request\" />
+    <Folder Include="OrderManager\Response\" />
+    <Folder Include="ProductManager\Request\" />
+    <Folder Include="ProductManager\Response\" />
+    <Folder Include="SalePromotionManager\Request\" />
+    <Folder Include="SalePromotionManager\Response\" />
+    <Folder Include="SystemSetManager\Request\" />
+    <Folder Include="SystemSetManager\Response\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Project.Config\Project.Config.csproj">
+      <Project>{7e5cd828-d4ff-445e-9f1d-068102151681}</Project>
+      <Name>Project.Config</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Project.Infrastructure.FrameworkCore\Project.Infrastructure.FrameworkCore.csproj">
+      <Project>{1c2392ad-a0f8-4378-9c54-3dcd1fb5d1db}</Project>
+      <Name>Project.Infrastructure.FrameworkCore</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Project.Model\Project.Model.csproj">
+      <Project>{3d26782a-3308-430b-b58f-5f8aba1a50b3}</Project>
+      <Name>Project.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Project.Repository\Project.Repository.csproj">
+      <Project>{ab16ea24-3296-4dac-a2d8-203158eeab6f}</Project>
+      <Name>Project.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Project.Service\Project.Service.csproj">
+      <Project>{cc818705-0142-46d9-a858-1575069c0abe}</Project>
+      <Name>Project.Service</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

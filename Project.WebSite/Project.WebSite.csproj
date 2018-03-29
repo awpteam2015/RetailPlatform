@@ -101,6 +101,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Global.asax" />
+    <Content Include="Scripts\Account\ForgetPassword.js" />
     <Content Include="Scripts\Account\Register.js" />
     <Content Include="Scripts\Account\Login.js" />
     <Content Include="Scripts\Config\globalConfig.js" />
@@ -376,12 +377,14 @@
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ShopCatController.cs" />
+    <Compile Include="Controllers\SystemSetController.cs" />
     <Compile Include="Controllers\UserCenterController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\LoginVm.cs" />
     <Compile Include="Models\ProductListVm.cs" />
+    <Compile Include="Models\RegisterVm.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -401,7 +404,18 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\InternalServer.cshtml" />
-    <Content Include="Views\ShopCat\Index.cshtml" />
+    <Content Include="Views\ShopCat\List.cshtml" />
+    <Content Include="Views\UserCenter\OrderList.cshtml" />
+    <Content Include="Views\UserCenter\TicketList.cshtml" />
+    <Content Include="Views\UserCenter\CollectionList.cshtml" />
+    <Content Include="Views\UserCenter\UserInfoDetail.cshtml" />
+    <Content Include="Views\UserCenter\AddressList.cshtml" />
+    <Content Include="Views\UserCenter\ChangePassword.cshtml" />
+    <Content Include="Views\Account\ForgetPassword1.cshtml" />
+    <Content Include="Views\UserCenter\MessageList.cshtml" />
+    <Content Include="Views\Account\ForgetPassword3.cshtml" />
+    <Content Include="Views\Account\ForgetPassword2.cshtml" />
+    <Content Include="Views\Account\ForgetPassword4.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -412,9 +426,13 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Scripts\pro\SelfValidate\" />
-    <Folder Include="Views\UserCenter\" />
+    <Folder Include="Views\SystemSet\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Project.Application.Service\Project.Application.Service.csproj">
+      <Project>{e04420a1-b017-498b-8a49-10dd5aa573a4}</Project>
+      <Name>Project.Application.Service</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Project.Config\Project.Config.csproj">
       <Project>{7e5cd828-d4ff-445e-9f1d-068102151681}</Project>
       <Name>Project.Config</Name>

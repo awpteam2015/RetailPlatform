@@ -96,7 +96,6 @@
     <Compile Include="HRManager\WorkExperienceService.cs" />
     <Compile Include="HRManager\YGWageService.cs" />
     <Compile Include="OrderManager\OrderInvoiceService.cs" />
-    <Compile Include="OrderManager\OrderMainDetailService.cs" />
     <Compile Include="OrderManager\OrderMainService.cs" />
     <Compile Include="OrderManager\ShopCartService.cs" />
     <Compile Include="PermissionManager\DepartmentService.cs" />

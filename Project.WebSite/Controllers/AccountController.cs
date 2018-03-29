@@ -6,6 +6,8 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using Newtonsoft.Json;
+using Project.Application.Service.AccountManager;
+using Project.Infrastructure.FrameworkCore.DataNhibernate.Helpers;
 using Project.Infrastructure.FrameworkCore.Logging;
 using Project.Infrastructure.FrameworkCore.ToolKit;
 using Project.Infrastructure.FrameworkCore.ToolKit.ImageHandler;
@@ -33,14 +35,67 @@ namespace Project.WebSite.Controllers
         {
             return View();
         }
+
+        public ActionResult ForgetPassword1()
+        {
+            return View();
+        }
+
+        /// <summary>
+        /// 忘记密码第二页
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public ActionResult ForgetPassword2(string key)
+        {
+            var result = new AccountServiceImpl().ForgetPassword2Validate(key);
+
+            if (result.Item1)
+            {
+                ViewBag.MobilePhone = result.Item2;
+                ViewBag.Key = key;
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            return View();
+        }
+        public ActionResult ForgetPassword3(string key)
+        {
+            var result = new AccountServiceImpl().ForgetPassword3Validate(key);
+
+            if (result.Item1)
+            {
+                ViewBag.MobilePhone = result.Item2;
+                ViewBag.Key = key;
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            return View();
+        }
+
+
+        public ActionResult ForgetPassword4(string key)
+        {
+           
+            return View();
+        }
         #endregion
 
 
-
+        #region 登录注册 
+        /// <summary>
+        /// 登录
+        /// </summary>
+        /// <param name="accountName"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult Login(string accountName, string password)
         {
-            LoggerHelper.Info("登陆前：");
             var userInfo = CustomerService.GetInstance().Login(accountName, password);
             if (!userInfo.Item1)
             {
@@ -63,9 +118,8 @@ namespace Project.WebSite.Controllers
             cookie.HttpOnly = true;
             Response.Cookies.Add(cookie);
 
-            //  FormsAuthentication.SetAuthCookie(FormsAuthentication.FormsCookieName,false);
+            LoggerHelper.Info("用户登录：" + accountName + " 时间：" + DateTime.Now);
 
-            LoggerHelper.Info("登陆结束：");
             return new AbpJsonResult
             {
                 Data = new AjaxResponse<object>() { success = true }
@@ -73,39 +127,101 @@ namespace Project.WebSite.Controllers
         }
 
 
+        /// <summary>
+        /// 注册
+        /// </summary>
+        /// <param name="accountName"></param>
+        /// <param name="password"></param>
+        /// <param name="authCode"></param>
+        /// <returns></returns>
         [HttpPost]
-        public ActionResult Register(string mobilephone, string password)
+        public ActionResult Register(string accountName, string password, string authCode)
         {
+            password = Encrypt.MD5Encrypt(password);
+            var registResult = new AccountServiceImpl().Regist(accountName, password, authCode);
 
-            return new AbpJsonResult();
+            var result = new AjaxResponse<object>()
+            {
+                success = registResult.Item1,
+                error = new ErrorInfo(registResult.Item2)
+            };
+
+            LoggerHelper.Info("用户注册：" + accountName + " 时间：" + DateTime.Now);
+            return new AbpJsonResult(result);
+        }
+        #endregion
+
+
+        #region 忘记密码步骤
+        /// <summary>
+        /// 忘记密码1
+        /// </summary>
+        /// <param name="accountName"></param>
+        /// <param name="authCode"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult ForgetPasswordStep1(string accountName, string authCode)
+        {
+            var stepResult = new AccountServiceImpl().ForgetPasswordStep1(accountName, authCode, CookieHelper.GetValue("SSSSverifycode"));
+
+            var result = new AjaxResponse<object>()
+            {
+                success = stepResult.Item1,
+                result = stepResult.Item1 ? Server.UrlEncode(Encrypt.AESEncrypt(stepResult.Item2, Encrypt.GetKeyAES16())) : "",
+                error = new ErrorInfo(stepResult.Item2)
+            };
+
+            return new AbpJsonResult(result);
+
         }
 
 
-        public ActionResult VerifyCode(int height = 0)
-        {
-            var image = new VerificationImage();
-            var authCode = StringHelper.GetRnd(4, true, true, true, false, "");
-            image.Width = 70;
-            if (height > 0 && height <= 30)
-            {
-                image.Height = height;
-            }
-            else
-            {
-                image.Height = 30;
-            }
-            image.BorderWidth = 1;
-            image.BadPiont = 200;
-            image.StrukLineCount = 8;
-            image.PatternCount = 6;
-            image.BorderInsetColor = System.Drawing.Color.LightGray;
-            image.BorderOutsetColor = System.Drawing.Color.Empty;
-            image.Text = authCode;
-            image.CreateImage();
 
-            CookieHelper.Set("xsjverifycode", 1, authCode);
-            return File(image.Stream.ToArray(), @"image/jpeg");
+        /// <summary>
+        /// 忘记密码2
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="authCode"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult ForgetPasswordStep2(string key, string authCode)
+        {
+            var stepResult = new AccountServiceImpl().ForgetPasswordStep2(key, authCode);
+            var result = new AjaxResponse<object>()
+            {
+                success = stepResult.Item1,
+                result = stepResult.Item1 ? Server.UrlEncode(Encrypt.AESEncrypt(stepResult.Item2, Encrypt.GetKeyAES16())) : "",
+                error = new ErrorInfo(stepResult.Item2)
+            };
+            return new AbpJsonResult(result);
+
         }
+
+        /// <summary>
+        /// 忘记密码3
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="authCode"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult ForgetPasswordStep3(string key, string newPassword)
+        {
+            newPassword  = Encrypt.MD5Encrypt(newPassword);
+            var stepResult = new AccountServiceImpl().ForgetPasswordStep3(key, newPassword);
+            var result = new AjaxResponse<object>()
+            {
+                success = stepResult.Item1,
+                result = stepResult.Item1 ? Server.UrlEncode(Encrypt.AESEncrypt(stepResult.Item2, Encrypt.GetKeyAES16())) : "",
+                error = new ErrorInfo(stepResult.Item2)
+            };
+            return new AbpJsonResult(result);
+
+        }
+
+        #endregion
+
+
+
 
 
 

@@ -58,12 +58,17 @@ namespace Project.Model.OrderManager
         /// <summary>
         /// 
         /// </summary>
-        public virtual System.Int32? CustomerId{get; set;}
-		#endregion
-        
+        public virtual System.Int32 CustomerId{get; set;}
+
+
+        public virtual System.Int32 IsCheck { get; set; }
+
+        public virtual System.Decimal PromotionPrice { get; set; }
+        #endregion
+
 
         #region 新增属性
-        
+
         #endregion
     }
 }

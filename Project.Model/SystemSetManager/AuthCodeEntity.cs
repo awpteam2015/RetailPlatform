@@ -35,11 +35,16 @@ namespace Project.Model.SystemSetManager
         /// 创建日期
         /// </summary>
         public virtual System.DateTime? CreateDate{get; set;}
-		#endregion
-        
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public virtual System.DateTime? EndDate { get; set; }
+        #endregion
+
 
         #region 新增属性
-        
+
         #endregion
     }
 }
