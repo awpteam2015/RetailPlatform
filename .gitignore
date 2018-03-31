@@ -26,3 +26,5 @@
 /Project.Service/obj
 /Project.Repository/obj
 /.vs
+/DB/NewB2C_1.ldf
+/DB/NewB2C.mdf

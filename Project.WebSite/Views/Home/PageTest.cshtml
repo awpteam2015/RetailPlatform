@@ -1,0 +1,26 @@
+﻿
+@{
+    Layout = null;
+}
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+@using PagedList
+@using PagedList.Mvc
+
+@model Project.WebSite.Controllers.ViewModel
+
+
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+<table>
+    @foreach (var item in Model.list)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.IPAddress</td>
+        </tr>
+    }
+</table>
+@Html.PagedListPager((IPagedList)Model.PagetInfo, page => Url.Action("PageTest", new { page,kk=Request["kk"] }))  

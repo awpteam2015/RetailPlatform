@@ -1,0 +1,24 @@
+﻿
+@{
+    var tag = this.Model;
+    Func<string, object> getHtmlAttribute = s => s == tag ? new { @class = "active" } : null;
+
+}
+
+
+
+
+<ul>
+
+    <li>@Html.ActionLink("我的订单", "OrderList", "Order", null, getHtmlAttribute("我的订单"))</li>
+
+    <li> @Html.ActionLink("我的收藏", "CollectionList", "UserCenter", null, getHtmlAttribute("我的收藏"))</li>
+
+    <li> @Html.ActionLink("我的优惠券", "TicketList", "UserCenter", null, getHtmlAttribute("我的优惠券"))</li>
+
+    <li>  @Html.ActionLink("收货地址", "AddressList", "UserCenter", null, getHtmlAttribute("收货地址"))</li>
+
+    <li> @Html.ActionLink("账户信息", "AccountInfo", "UserCenter", null, getHtmlAttribute("账户信息"))</li>
+
+    <li>@Html.ActionLink("消息通知", "MessageList", "UserCenter", null, getHtmlAttribute("消息通知"))</li>
+</ul>
