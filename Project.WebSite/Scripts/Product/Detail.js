@@ -3,16 +3,30 @@
     pro.DetailPage = pro.DetailPage || {};
     pro.DetailPage = {
         initPage: function () {
-            $("#btn_OrderSearch").click(function () {
-                pro.DetailPage.Detail();
+            $("#btn_AddCart").click(function () {
+                pro.DetailPage.AddCart();
             });
         },
-        Detail: function () {
-            var CreateStart = $("#CreateStart").val();
-            var CreateEnd = $("#CreateEnd").val();
-            var OrderNo = $("#OrderNo").val();
-
-            window.location.href = (window.location.pathname + "?CreateStart=" + CreateStart + "&CreateEnd=" + CreateEnd + "&OrderNo=" + OrderNo);
+        AddCart: function () {
+           
+            var postData = {goodsId: $("#AccountName").val() };
+            $.ajax({
+                dataType: 'json',
+                type: 'POST',
+                contentType: 'application/json',
+                url: "/Account/Register",
+                data: JSON.stringify(postData),
+                cache: false,
+                async: false,
+                success: function (data) {
+                    alert(JSON.stringify(data));
+                    if (data.success) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+            });
 
         }
     };

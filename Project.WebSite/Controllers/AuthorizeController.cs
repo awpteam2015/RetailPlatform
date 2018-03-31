@@ -27,6 +27,7 @@ namespace Project.WebSite.Controllers
         {
             CustomerDto=new CustomerDto()
             {
+                CustomerId = 1,
                 CustomerName = "Test",
                 Mobilephone = "电话"
             };

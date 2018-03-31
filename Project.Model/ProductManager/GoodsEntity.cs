@@ -60,6 +60,16 @@ namespace Project.Model.ProductManager
         /// 规格值明细
         /// </summary>
         public virtual System.String SpecDetail { get; set; }
+
+        /// <summary>
+        /// 促销价
+        /// </summary>
+        public virtual System.Decimal PromotionPrice { get; set; }
+
+        /// <summary>
+        /// 促销规则
+        /// </summary>
+        public virtual System.Int32 RuleId { get; set; }
         #endregion
 
 

@@ -84,7 +84,7 @@ namespace Project.Model.CustomerManager
         /// <summary>
         /// 折扣率
         /// </summary>
-        public virtual System.Int32? Discount{get; set;}
+        public virtual System.Int32 Discount{get; set;}
         /// <summary>
         /// 消费总金额
         /// </summary>
