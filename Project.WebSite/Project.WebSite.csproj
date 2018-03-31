@@ -56,6 +56,14 @@
       <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -100,6 +108,12 @@
     <Content Include="Config\hibernate.cfg.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\Account\ForgetPassword.js" />
     <Content Include="Scripts\Account\Register.js" />
@@ -385,6 +399,7 @@
     <Compile Include="Models\LoginVm.cs" />
     <Compile Include="Models\ProductListVm.cs" />
     <Compile Include="Models\RegisterVm.cs" />
+    <Compile Include="Models\UserCenter\OrderListView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -405,7 +420,6 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\InternalServer.cshtml" />
     <Content Include="Views\ShopCat\List.cshtml" />
-    <Content Include="Views\UserCenter\OrderList.cshtml" />
     <Content Include="Views\UserCenter\TicketList.cshtml" />
     <Content Include="Views\UserCenter\CollectionList.cshtml" />
     <Content Include="Views\UserCenter\UserInfoDetail.cshtml" />
@@ -416,6 +430,9 @@
     <Content Include="Views\Account\ForgetPassword3.cshtml" />
     <Content Include="Views\Account\ForgetPassword2.cshtml" />
     <Content Include="Views\Account\ForgetPassword4.cshtml" />
+    <Content Include="Views\Shared\_MenuBar.cshtml" />
+    <Content Include="Views\Shared\_UserCenterLayout.cshtml" />
+    <Content Include="Views\Home\PageTest.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -426,6 +443,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Scripts\pro\SelfValidate\" />
+    <Folder Include="Views\SiteMap\" />
     <Folder Include="Views\SystemSet\" />
   </ItemGroup>
   <ItemGroup>

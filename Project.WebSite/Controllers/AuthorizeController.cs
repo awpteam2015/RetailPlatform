@@ -18,8 +18,39 @@ using Project.Service.PermissionManager.DTO;
 
 namespace Project.WebSite.Controllers
 {
-    public class AuthorizeController : Controller
+    /// <summary>
+    /// 已登录页
+    /// </summary>
+    public class AuthorizeController : BaseController
     {
+
+        /// <summary>
+        /// 用户信息
+        /// </summary>
+        public CustomerDto CustomerDto { get; set; }
+
+
+
+        /// <summary>
+        /// 在调用操作方法前调用。
+        /// </summary>
+        /// <param name="filterContext">有关当前请求和操作的信息。</param>
+        protected override void OnActionExecuting(ActionExecutingContext filterContext)
+        {
+            if (filterContext == null)
+            {
+                throw new ArgumentNullException("filterContext");
+            }
+
+            var userData = ((FormsIdentity)User.Identity).Ticket.UserData;
+            if (userData != "")
+            {
+                CustomerDto = JsonConvert.DeserializeObject<CustomerDto>(userData);
+            }
+
+            base.OnActionExecuting(filterContext);
+        }
+
 
         /// <summary>
         /// 在进行授权时调用。

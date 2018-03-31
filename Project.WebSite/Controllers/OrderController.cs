@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
+using Project.Application.Service.OrderManager;
+using Project.Application.Service.OrderManager.Request;
+using Project.Infrastructure.FrameworkCore.ToolKit;
+using Project.WebSite.Models.UserCenter;
 
 namespace Project.WebSite.Controllers
 {
@@ -12,6 +17,30 @@ namespace Project.WebSite.Controllers
         public ActionResult Index()
         {
             return View();
+        }
+
+
+        public ActionResult List()
+        {
+            var request = new SearchOrderListRequest();
+            //request.
+            //request.CreateEnd = RequestHelper.GetDateTime("CreateEnd");
+            //request.CreateStart = RequestHelper.GetDateTime("CreateStart");
+            //request.State = RequestHelper.GetInt("State");
+
+
+            //var data = CloudResourceDatasource.GetAll()
+            // .OrderBy(p => p.Id).ToPagedList(page, pagesize);
+
+
+            var searchList = new OrderServiceImpl().SearchOrderList(request);
+
+
+            var viewModel = new OrderListView();
+            viewModel.OrderList = searchList.Item1;
+
+
+            return View(viewModel);
         }
 
 

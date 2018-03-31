@@ -1,17 +1,24 @@
 ﻿
+@using PagedList
+@using PagedList.Mvc
+  
 @{
-    Layout = null;
+    ViewBag.Title = "我的账户-我的订单";
+    Layout = "~/Views/Shared/_UserCenterLayout.cshtml";
 }
 
-<!DOCTYPE html>
+@section Head
+{
+    
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+}
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Detail</title>
-</head>
-<body>
-    <div> 
-    </div>
-</body>
-</html>
+<div>
+
+
+
+    @Html.PagedListPager((IPagedList) Model, page => Url.Action("Index", new {page=1,type=2}))
+
+
+
+</div>

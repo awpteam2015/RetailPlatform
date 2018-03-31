@@ -170,6 +170,7 @@
     <Compile Include="ToolKit\AsposeWordsHelper.cs" />
     <Compile Include="ToolKit\Base64Helper.cs" />
     <Compile Include="ToolKit\CacheHelper.cs" />
+    <Compile Include="ToolKit\Class1.cs" />
     <Compile Include="ToolKit\ConfigHelper.cs" />
     <Compile Include="ToolKit\ConvertHelper.cs" />
     <Compile Include="ToolKit\CookieHelper.cs" />
