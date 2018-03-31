@@ -150,6 +150,7 @@
     <Content Include="Scripts\linq\JSLINQextend.js" />
     <Content Include="Scripts\linq\Samples.js" />
     <Content Include="Scripts\Login\Login.js" />
+    <Content Include="Scripts\Order\List.js" />
     <Content Include="Scripts\pro\abp.jquery.ajax.js" />
     <Content Include="Scripts\pro\base64.js" />
     <Content Include="Scripts\pro\bindKit.js" />
@@ -393,9 +394,11 @@
     <Compile Include="Controllers\ShopCatController.cs" />
     <Compile Include="Controllers\SystemSetController.cs" />
     <Compile Include="Controllers\UserCenterController.cs" />
+    <Compile Include="Models\Component\MyPagedList.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Component\SearchVm.cs" />
     <Compile Include="Models\LoginVm.cs" />
     <Compile Include="Models\ProductListVm.cs" />
     <Compile Include="Models\RegisterVm.cs" />
@@ -414,7 +417,6 @@
     <Content Include="Views\Order\Pay.cshtml" />
     <Content Include="Scripts\pro\kindeditor\file_manager_json.ashx" />
     <Content Include="Scripts\pro\kindeditor\upload_json.ashx" />
-    <Content Include="Views\Shared\_Head.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -431,7 +433,6 @@
     <Content Include="Views\Account\ForgetPassword2.cshtml" />
     <Content Include="Views\Account\ForgetPassword4.cshtml" />
     <Content Include="Views\Shared\_MenuBar.cshtml" />
-    <Content Include="Views\Shared\_UserCenterLayout.cshtml" />
     <Content Include="Views\Home\PageTest.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -442,6 +443,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Extend\" />
     <Folder Include="Scripts\pro\SelfValidate\" />
     <Folder Include="Views\SiteMap\" />
     <Folder Include="Views\SystemSet\" />

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using PagedList;
+using Project.WebSite.Extend;
 
 namespace Project.WebSite.Controllers
 {
@@ -21,11 +22,24 @@ namespace Project.WebSite.Controllers
             var kk = Request["kk"];
 
             const int pagesize = 3;
-            var data = CloudResourceDatasource.GetAll()
-                .OrderBy(p => p.Id).ToPagedList(page, pagesize);
-            return View(data);
+            var data = CloudResourceDatasource.GetAll().Skip((page-1)* pagesize).Take(pagesize)
+                .OrderBy(p => p.Id);
+
+            var result = new MyPagedList( page, 3,14);
+
+            var ViewModel=new ViewModel();
+            ViewModel.PagetInfo = result;
+            ViewModel.list = data.ToList();
+
+            return View(ViewModel);
         }
 
+    }
+
+    public class ViewModel
+    {
+        public List<VirtualMachine> list { get; set; }
+        public MyPagedList PagetInfo { get; set; }
     }
 
     public class VirtualMachine

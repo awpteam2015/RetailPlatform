@@ -1,24 +1,47 @@
 ﻿
 @using PagedList
 @using PagedList.Mvc
-  
+@model Project.WebSite.Models.UserCenter.OrderListView
+
 @{
     ViewBag.Title = "我的账户-我的订单";
-    Layout = "~/Views/Shared/_UserCenterLayout.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 @section Head
 {
-    
-<link href="~/Content/PagedList.css" rel="stylesheet" />
-}
 
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
+    <script src="~/Scripts/Order/List.js"></script>
+
+}
+@Html.Partial("_MenuBar", "我的订单")
 <div>
 
+    <table>
+        <tr>
+            <td>时间</td>
+            <td><input id="StartDate" /></td>
+            <td><input id="EndDate" /></td>
+            <td>订单号</td>
+            <td><input id="OrderNo" /></td>
+            <td><input type="button" id="btn_OrderSearch"  value="搜索" onclick="xxx()"/></td>
+        </tr>
+    </table>
+
+    <table>
+        @foreach (var item in Model.OrderList)
+        {
+            <tr>
+                <td>@item.OrderNo</td>
+                <td>@item.OrderNo</td>
+            </tr>
+        }
+    </table>
 
 
-    @Html.PagedListPager((IPagedList) Model, page => Url.Action("Index", new {page=1,type=2}))
-
+    @Html.PagedListPager((IPagedList)Model.PageInfo, page => Url.Action("Index", new { page, type = 2 }))
 
 
 </div>
+
