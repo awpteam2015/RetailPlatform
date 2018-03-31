@@ -6,7 +6,15 @@ using System.Threading.Tasks;
 
 namespace Project.Application.Service.SalePromotionManager
 {
-    class SalePromotionServiceImpl
+    public class SalePromotionServiceImpl
     {
+        #region
+
+        public SalePromotionServiceImpl()
+        {
+        }
+        #endregion
+
+
     }
 }

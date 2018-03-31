@@ -28,8 +28,8 @@ namespace Project.WebSite.Controllers
 
             var request = new SearchOrderListRequest();
             request.OrderNo = RequestHelper.GetString("OrderNo");
-            request.CreateEnd = RequestHelper.GetDateTime("CreateEnd");
-            request.CreateStart = RequestHelper.GetDateTime("CreateStart");
+            request.CreateEnd = RequestHelper.GetString("CreateEnd");
+            request.CreateStart = RequestHelper.GetString("CreateStart");
             request.State = RequestHelper.GetInt("State");
             request.maxResults = 2;
             request.CustomerId ="1";
@@ -44,7 +44,9 @@ namespace Project.WebSite.Controllers
 
             var viewModel = new OrderListView();
             viewModel.OrderList = searchList.Item1;
-            viewModel.PageInfo=new MyPagedList(pageIndex,20, searchList.Item2);
+            viewModel.PageInfo=new MyPagedList(pageIndex, request.maxResults, searchList.Item2);
+            viewModel.SearchOrderListRequest = request;
+          
 
             return View(viewModel);
         }

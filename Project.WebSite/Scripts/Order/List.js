@@ -3,9 +3,9 @@
     pro.ListPage = pro.ListPage || {};
     pro.ListPage = {
         initPage: function () {
-            //$("#btn_OrderSearch").click(function () {
-            //    pro.ListPage.List();
-            //});
+            $("#btn_OrderSearch").click(function () {
+                pro.ListPage.List();
+            });
         },
         List: function () {
             var CreateStart = $("#CreateStart").val();

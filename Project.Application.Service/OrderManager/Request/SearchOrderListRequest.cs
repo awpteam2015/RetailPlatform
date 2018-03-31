@@ -18,12 +18,12 @@ namespace Project.Application.Service.OrderManager.Request
         /// <summary>
         /// 
         /// </summary>
-        public DateTime? CreateStart { get; set; }
+        public string CreateStart { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public DateTime? CreateEnd { get; set; }
+        public string CreateEnd { get; set; }
 
         /// <summary>
         /// 

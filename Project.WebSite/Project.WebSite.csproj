@@ -403,6 +403,7 @@
     <Compile Include="Models\ProductListVm.cs" />
     <Compile Include="Models\RegisterVm.cs" />
     <Compile Include="Models\UserCenter\OrderListView.cs" />
+    <Compile Include="Models\UserCenter\TicketListView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

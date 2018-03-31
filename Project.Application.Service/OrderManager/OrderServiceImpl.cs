@@ -72,11 +72,15 @@ namespace Project.Application.Service.OrderManager
             if (!string.IsNullOrEmpty(request.OrderNo))
                 expr = expr.And(p => p.OrderNo == request.OrderNo);
 
-            if (request.CreateStart != null)
-                expr = expr.And(p => p.CreationTime >= request.CreateStart);
+            if (!string.IsNullOrEmpty(request.CreateStart))
+            {
+                expr = expr.And(p => p.CreationTime >=DateTime.Parse(request.CreateStart) );
+            }
 
-            if (request.CreateEnd != null)
-                expr = expr.And(p => p.CreationTime <= request.CreateEnd);
+            if (!string.IsNullOrEmpty(request.CreateEnd))
+            {
+                expr = expr.And(p => p.CreationTime <= DateTime.Parse(request.CreateEnd));
+            }
 
             var list = _orderMainRepository.Query().Where(expr).OrderByDescending(p => p.PkId).Skip(request.skipResults).Take(request.maxResults).ToList();
             var count = _orderMainRepository.Query().Where(expr).Count();

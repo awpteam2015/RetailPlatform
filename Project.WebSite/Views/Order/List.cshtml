@@ -14,6 +14,7 @@
     <link href="~/Content/PagedList.css" rel="stylesheet" />
     <script src="~/Scripts/Order/List.js"></script>
 
+
 }
 @Html.Partial("_MenuBar", "我的订单")
 <div>
@@ -21,11 +22,11 @@
     <table>
         <tr>
             <td>时间</td>
-            <td><input id="CreateStart" /></td>
-            <td><input id="CreateEnd" /></td>
+            <td><input id="CreateStart" onclick="WdatePicker({dateFmt:'yyyy-MM-dd'});" value="@Model.SearchOrderListRequest.CreateStart"/></td>
+            <td><input id="CreateEnd" onclick="WdatePicker({dateFmt:'yyyy-MM-dd'});"  value="@Model.SearchOrderListRequest.CreateEnd"/></td>
             <td>订单号</td>
-            <td><input id="OrderNo" /></td>
-            <td><input type="button" id="btn_OrderSearch"  value="搜索" onclick="xxx()"/></td>
+            <td><input id="OrderNo"  value="@Model.SearchOrderListRequest.OrderNo" /></td>
+            <td><input type="button" id="btn_OrderSearch"  value="搜索" /></td>
         </tr>
     </table>
 
@@ -40,7 +41,7 @@
     </table>
 
 
-    @Html.PagedListPager((IPagedList)Model.PageInfo, page => Url.Action("Index", new { page, type = 2 }))
+    @Html.PagedListPager((IPagedList)Model.PageInfo, page => Url.Action("List", new { page, type = 2 }))
 
 
 </div>

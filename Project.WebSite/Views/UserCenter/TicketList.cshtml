@@ -8,18 +8,42 @@
     <script src="~/Scripts/Account/Login.js?JsParamter=@SiteConfig.GetConfig().JsParamter"></script>
 }
 
-<table>
-    <tr>
-        <td>账号</td>
-        <td><input type="text" value="" id="AccountName" /><span for="AccountName">错误提示</span></td>
-    </tr>
-    <tr>
-        <td>密码</td>
-        <td><input type="password" value="" id="Password" /><span for="Password">错误提示</span></td>
-    </tr>
-    <tr>
-        <td>
-            <input type="button" value="登录" id="btn_Login" />
-        </td>
-    </tr>
-</table>
+
+@using PagedList
+@using PagedList.Mvc
+@model Project.WebSite.Models.UserCenter.OrderListView
+
+@{
+    ViewBag.Title = "我的账户-我的优惠券";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Head
+{
+
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
+    <script src="~/Scripts/Order/List.js"></script>
+
+
+}
+@Html.Partial("_MenuBar", "我的优惠券")
+<div>
+
+    
+
+    <table>
+        @foreach (var item in Model.OrderList)
+        {
+            <tr>
+                <td>@item.OrderNo</td>
+                <td>@item.OrderNo</td>
+            </tr>
+        }
+    </table>
+
+
+    @Html.PagedListPager((IPagedList)Model.PageInfo, page => Url.Action("List", new { page, type = 2 }))
+
+
+</div>
+
