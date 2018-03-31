@@ -96,12 +96,12 @@ namespace Project.WebSite.Controllers
         [HttpPost]
         public ActionResult Login(string accountName, string password)
         {
-            var userInfo = CustomerService.GetInstance().Login(accountName, password);
+            var userInfo = new AccountServiceImpl().Login(accountName, password);
             if (!userInfo.Item1)
             {
                 return new AbpJsonResult
                 {
-                    Data = new AjaxResponse<object>() { success = false, error = new ErrorInfo(userInfo.Item2) }
+                    Data = new AjaxResponse<object>() { success = false, error = new ErrorInfo("用户名或密码错误") }
                 };
             }
 
@@ -111,7 +111,9 @@ namespace Project.WebSite.Controllers
             DateTime.Now,
             DateTime.Now.AddMinutes(30000),
             true,//持久性
-            FormsAuthentication.FormsCookiePath);
+            JsonConvert.SerializeObject(userInfo.Item2),
+            FormsAuthentication.FormsCookiePath
+            );
             var encryptedTicket = FormsAuthentication.Encrypt(ticket);
             var cookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
             cookie.Expires = DateTime.Now.AddMinutes(30000);

@@ -12,7 +12,7 @@ using Project.WebSite.Models.UserCenter;
 
 namespace Project.WebSite.Controllers
 {
-    public class OrderController : BaseController
+    public class OrderController : AuthorizeController
     {
         // GET: Order
         public ActionResult Index()

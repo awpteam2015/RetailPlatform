@@ -6,6 +6,7 @@ using Project.Model.CustomerManager;
 using Project.Repository.CustomerManager;
 using Project.Repository.SystemSetManager;
 using Project.Service.CustomerManager;
+using Project.Service.CustomerManager.Dto;
 
 namespace Project.Application.Service.AccountManager
 {
@@ -63,8 +64,23 @@ namespace Project.Application.Service.AccountManager
         /// <summary>
         /// 会员登录
         /// </summary>
-        public void Login()
+        public Tuple<bool, CustomerDto> Login(string mobilephone, string password)
         {
+            var customerInfo =_customerRepository.Query().Where(p => p.Mobilephone == mobilephone && p.Password == Encrypt.MD5Encrypt(password)).FirstOrDefault();
+              
+            if (customerInfo != null)
+            {
+                return new Tuple<bool, CustomerDto>(true, new CustomerDto()
+                {
+                    CustomerId = customerInfo.PkId,
+                    CustomerName = customerInfo.CustomerName,
+                    Mobilephone = customerInfo.Mobilephone
+                });
+            }
+            else
+            {
+                return new Tuple<bool, CustomerDto>(false, null);
+            }
 
         }
 

@@ -23,6 +23,15 @@ namespace Project.WebSite.Controllers
     /// </summary>
     public class AuthorizeController : BaseController
     {
+        public AuthorizeController()
+        {
+            CustomerDto=new CustomerDto()
+            {
+                CustomerName = "Test",
+                Mobilephone = "电话"
+            };
+
+        }
 
         /// <summary>
         /// 用户信息
@@ -31,44 +40,44 @@ namespace Project.WebSite.Controllers
 
 
 
-        /// <summary>
-        /// 在调用操作方法前调用。
-        /// </summary>
-        /// <param name="filterContext">有关当前请求和操作的信息。</param>
-        protected override void OnActionExecuting(ActionExecutingContext filterContext)
-        {
-            if (filterContext == null)
-            {
-                throw new ArgumentNullException("filterContext");
-            }
+        ///// <summary>
+        ///// 在调用操作方法前调用。
+        ///// </summary>
+        ///// <param name="filterContext">有关当前请求和操作的信息。</param>
+        //protected override void OnActionExecuting(ActionExecutingContext filterContext)
+        //{
+        //    if (filterContext == null)
+        //    {
+        //        throw new ArgumentNullException("filterContext");
+        //    }
 
-            var userData = ((FormsIdentity)User.Identity).Ticket.UserData;
-            if (userData != "")
-            {
-                CustomerDto = JsonConvert.DeserializeObject<CustomerDto>(userData);
-            }
+        //    var userData = ((FormsIdentity)User.Identity).Ticket.UserData;
+        //    if (userData != "")
+        //    {
+        //        CustomerDto = JsonConvert.DeserializeObject<CustomerDto>(userData);
+        //    }
 
-            base.OnActionExecuting(filterContext);
-        }
+        //    base.OnActionExecuting(filterContext);
+        //}
 
 
-        /// <summary>
-        /// 在进行授权时调用。
-        /// </summary>
-        /// <param name="filterContext">有关当前请求和操作的信息。</param>
-        protected override void OnAuthentication(AuthenticationContext filterContext)
-        {
-            if (!HttpContext.User.Identity.IsAuthenticated)
-            {
-                filterContext.Result = new ContentResult { Content = @"<script>window.top.location='/Login/Index3'</script>" };
-                base.OnAuthentication(filterContext);
-                return;
-            }
+        ///// <summary>
+        ///// 在进行授权时调用。
+        ///// </summary>
+        ///// <param name="filterContext">有关当前请求和操作的信息。</param>
+        //protected override void OnAuthentication(AuthenticationContext filterContext)
+        //{
+        //    if (!HttpContext.User.Identity.IsAuthenticated)
+        //    {
+        //        filterContext.Result = new ContentResult { Content = @"<script>window.top.location='/Login/Index3'</script>" };
+        //        base.OnAuthentication(filterContext);
+        //        return;
+        //    }
 
-            //身份验证
-            ViewBag.ShowInfo += "OnAuthentication<br/>";
-            base.OnAuthentication(filterContext);
-        }
+        //    //身份验证
+        //    ViewBag.ShowInfo += "OnAuthentication<br/>";
+        //    base.OnAuthentication(filterContext);
+        //}
 
 
     }

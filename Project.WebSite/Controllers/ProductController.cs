@@ -15,7 +15,7 @@ namespace Project.WebSite.Controllers
 {
     public class ProductController : Controller
     {
-        // GET: Product
+        #region 视图展示
         public ActionResult Index()
         {
             return View();
@@ -42,7 +42,7 @@ namespace Project.WebSite.Controllers
             where.ProductCode = RequestHelper.GetString("ProductCode");
             var pIndex = 0;
             var pSize = 100;
-            where.skipResults = (pIndex - 1)*pSize;
+            where.skipResults = (pIndex - 1) * pSize;
             where.maxResults = pSize;
             var result = ProductService.GetInstance().SearchFront(where);
             model.ProductList = Mapper.Map<List<ProductVm>>(result.Item1);
@@ -51,6 +51,20 @@ namespace Project.WebSite.Controllers
 
             return View(model);
         }
+
+
+
+        public ActionResult Detail()
+        {
+
+
+
+            ViewBag.Title = "";
+
+            return View();
+        }
+
+        #endregion
 
 
     }

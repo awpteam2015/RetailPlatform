@@ -1,11 +1,26 @@
 ﻿
+@using PagedList
+@using PagedList.Mvc
+@model Project.WebSite.Models.UserCenter.OrderListView
+
 @{
-    ViewBag.Title = "登录";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@section JavaScript{
-    <script src="~/Scripts/Account/Login.js"></script>
+@section Head
+{
+
+
+
 }
 
+<div>
+
+    <input type="text" id="ProductId" />
+
+    <input type="button" value="加入购物车" id="btn_AddCart"/>
+
+    <input type="button" value="直接购买" id="btn_AddOrder"/>
+
+</div>
 

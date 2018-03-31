@@ -51,26 +51,7 @@ namespace Project.Service.CustomerManager
 
 
         #region 基础方法
-        public Tuple<bool, string> Login(string mobilephone, string password)
-        {
-            var userInfoEntity = this.GetList(
-                new CustomerEntity()
-                {
-                    Mobilephone = mobilephone, Password = Encrypt.MD5Encrypt(password) 
-                
-                }).FirstOrDefault();
-            if (userInfoEntity != null)
-            {
-                return new Tuple<bool, string>(true, "");
-            }
-            else
-            {
-                return new Tuple<bool, string>(false, "用户名或者密码错误！");
-            }
-        }
-
-
-
+ 
         /// <summary>
         /// 新增
         /// </summary>
