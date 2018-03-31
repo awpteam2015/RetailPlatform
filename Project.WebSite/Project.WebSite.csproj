@@ -150,7 +150,6 @@
     <Content Include="Scripts\linq\JSLINQextend.js" />
     <Content Include="Scripts\linq\Samples.js" />
     <Content Include="Scripts\Login\Login.js" />
-    <Content Include="Scripts\Order\List - 复制.js" />
     <Content Include="Scripts\Order\List.js" />
     <Content Include="Scripts\pro\abp.jquery.ajax.js" />
     <Content Include="Scripts\pro\base64.js" />
