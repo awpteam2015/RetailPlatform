@@ -80,7 +80,7 @@ namespace Project.WebSite.Controllers
 
         public ActionResult ForgetPassword4(string key)
         {
-           
+
             return View();
         }
         #endregion
@@ -151,6 +151,24 @@ namespace Project.WebSite.Controllers
             LoggerHelper.Info("用户注册：" + accountName + " 时间：" + DateTime.Now);
             return new AbpJsonResult(result);
         }
+
+        /// <summary>
+        /// 注销
+        /// </summary>
+        /// <param name="accountName"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult LoginOut(string accountName)
+        {
+            FormsAuthentication.SignOut();
+
+            LoggerHelper.Info("用户登录：" + accountName + " 时间：" + DateTime.Now);
+
+            return new AbpJsonResult
+            {
+                Data = new AjaxResponse<object>() { success = true }
+            };
+        }
         #endregion
 
 
@@ -208,7 +226,7 @@ namespace Project.WebSite.Controllers
         [HttpPost]
         public ActionResult ForgetPasswordStep3(string key, string newPassword)
         {
-            newPassword  = Encrypt.MD5Encrypt(newPassword);
+            newPassword = Encrypt.MD5Encrypt(newPassword);
             var stepResult = new AccountServiceImpl().ForgetPasswordStep3(key, newPassword);
             var result = new AjaxResponse<object>()
             {

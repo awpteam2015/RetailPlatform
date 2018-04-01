@@ -22,7 +22,7 @@ namespace Project.Model.CustomerManager
         /// <summary>
         /// 折扣
         /// </summary>
-        public virtual System.Int32? Discount{get; set;}
+        public virtual System.Int32 Discount{get; set;}
 
         public virtual decimal NeedTotalAmount { get; set; }
         #endregion
