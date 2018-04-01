@@ -9,12 +9,12 @@
         },
         AddCart: function () {
            
-            var postData = {goodsId: $("#AccountName").val() };
+            var postData = { goodsId: $("#GoodsId").val(), num: $("#Num").val() };
             $.ajax({
                 dataType: 'json',
                 type: 'POST',
                 contentType: 'application/json',
-                url: "/Account/Register",
+                url: "/ShopCat/AddCart",
                 data: JSON.stringify(postData),
                 cache: false,
                 async: false,

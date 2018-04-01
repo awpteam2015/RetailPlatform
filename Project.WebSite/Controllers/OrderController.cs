@@ -34,7 +34,7 @@ namespace Project.WebSite.Controllers
             request.CreateStart = RequestHelper.GetString("CreateStart");
             request.State = RequestHelper.GetInt("State");
             request.maxResults = 2;
-            request.CustomerId = "1";
+            request.CustomerId = 1;
             request.skipResults = (pageIndex - 1) * request.maxResults;
 
             //var data = CloudResourceDatasource.GetAll()

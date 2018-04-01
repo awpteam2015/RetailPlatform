@@ -68,6 +68,8 @@ namespace Project.Service.ProductManager
             {
                 try
                 {
+                    entity.ImageUrl = entity.ProductImageEntityList.FirstOrDefault(p => p.IsDefault == 1).ImageUrl;
+
                     var pkId = _productRepository.Save(entity);
                     entity.GoodsEntityList.ToList().ForEach(p =>
                     {
@@ -204,6 +206,8 @@ namespace Project.Service.ProductManager
             {
                 try
                 {
+                    orgInfo.ImageUrl = entity.ProductImageEntityList.FirstOrDefault(p => p.IsDefault == 1).ImageUrl;
+
                     _productRepository.Update(orgInfo);
 
                     #region 产品属性处理

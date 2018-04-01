@@ -1,0 +1,4 @@
+2018-04-01 12:57:07,587 [16] ERROR ErrorLogger [(null)] - 对于“Project.WebSite.Controllers.ShopCatController”中方法“System.Web.Mvc.ActionResult AddCart(Int32, Int32)”的不可以为 null 的类型“System.Int32”的参数“goodsId”，参数字典包含一个 null 项。可选参数必须为引用类型、可以为 null 的类型或声明为可选参数。
+参数名: parameters
+2018-04-01 12:57:12,181 [5] ERROR ErrorLogger [(null)] - 对于“Project.WebSite.Controllers.ShopCatController”中方法“System.Web.Mvc.ActionResult AddCart(Int32, Int32)”的不可以为 null 的类型“System.Int32”的参数“num”，参数字典包含一个 null 项。可选参数必须为引用类型、可以为 null 的类型或声明为可选参数。
+参数名: parameters

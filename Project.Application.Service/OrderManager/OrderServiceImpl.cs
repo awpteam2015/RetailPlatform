@@ -68,8 +68,8 @@ namespace Project.Application.Service.OrderManager
             shopCartInfo.Price = goodsInfo.GoodsPrice;
             shopCartInfo.PromotionPrice = goodsInfo.PromotionPrice;
             shopCartInfo.RuleId = goodsInfo.RuleId;
-            shopCartInfo.DiscountMember = goodsInfo.RuleId > 0 ? shopCartInfo.PromotionPrice * customerInfo.Discount / 100 : shopCartInfo.Price * customerInfo.Discount / 100;
-            shopCartInfo.DiscountPromotion = goodsInfo.GoodsPrice - goodsInfo.PromotionPrice;
+            shopCartInfo.DiscountMember = goodsInfo.RuleId > 0 ? shopCartInfo.PromotionPrice * (100-customerInfo.Discount) / 100 : shopCartInfo.Price *(100- customerInfo.Discount)  / 100;
+            shopCartInfo.DiscountPromotion = goodsInfo.RuleId > 0 ?goodsInfo.GoodsPrice - goodsInfo.PromotionPrice:0;
             shopCartInfo.DiscountAll = shopCartInfo.DiscountMember + shopCartInfo.DiscountPromotion;
             shopCartInfo.LastPrice = shopCartInfo.Price - shopCartInfo.DiscountAll;
             shopCartInfo.TotalAmount = shopCartInfo.LastPrice * shopCartInfo.Num;
