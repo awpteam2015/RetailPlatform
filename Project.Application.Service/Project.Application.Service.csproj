@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=4.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.4.1.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -41,9 +45,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountManager\AccountServiceImpl.cs" />
+    <Compile Include="BootstrapperService.cs" />
     <Compile Include="Common\RequestBase.cs" />
     <Compile Include="ContentManager\ContentServiceImpl.cs" />
     <Compile Include="OrderManager\OrderServiceImpl.cs" />
+    <Compile Include="OrderManager\Request\AddOrderRequest.cs" />
+    <Compile Include="OrderManager\Request\ConfirmOrderPayRequest.cs" />
     <Compile Include="OrderManager\Request\SearchOrderListRequest.cs" />
     <Compile Include="OrderManager\Response\SearchOrderListResponse.cs" />
     <Compile Include="ProductManager\ProductServiceImpl.cs" />
@@ -84,6 +91,10 @@
       <Project>{cc818705-0142-46d9-a858-1575069c0abe}</Project>
       <Name>Project.Service</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

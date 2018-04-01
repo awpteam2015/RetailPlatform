@@ -11,6 +11,6 @@ namespace Project.Application.Service.Common
         /// <summary>
         ///登录人Id
         /// </summary>
-       public string CustomerId { get; set; }
+       public int CustomerId { get; set; }
     }
 }

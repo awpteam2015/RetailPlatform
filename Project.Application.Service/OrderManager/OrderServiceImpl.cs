@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using AutoMapper;
 using Project.Application.Service.OrderManager.Request;
 using Project.Application.Service.OrderManager.Response;
 using Project.Infrastructure.FrameworkCore.DataNhibernate.Helpers;
@@ -9,6 +10,7 @@ using Project.Model.OrderManager;
 using Project.Repository.CustomerManager;
 using Project.Repository.OrderManager;
 using Project.Repository.ProductManager;
+using Project.Service.OrderManager;
 
 namespace Project.Application.Service.OrderManager
 {
@@ -172,19 +174,42 @@ namespace Project.Application.Service.OrderManager
         #endregion
 
         #region 订单相关
-        public void AddOrder()
+        /// <summary>
+        /// 新增订单
+        /// </summary>
+        /// <param name="request"></param>
+        public void AddOrder(AddOrderRequest request)
         {
+            var customerInfo = _customerRepository.GetById(request.CustomerId);
 
+            var orderMainInfo = new OrderMainEntity();
+            Mapper.Map(request, orderMainInfo);
+
+            orderMainInfo.CustomerName = orderMainInfo.CustomerName;
+            // orderMainInfo.
+
+            var result = OrderMainService.GetInstance().Add(orderMainInfo);
         }
 
-        public void ConfirmOrder()
+        /// <summary>
+        /// 开始订单支付
+        /// </summary>
+        public void UpdateOrderPay(ConfirmOrderPayRequest request)
         {
+            //var orderInfo = _orderMainRepository.Query().FirstOrDefault(p => p.OrderNo == orderNo && p.CustomerId == customerId);
 
+           // var result = OrderMainService.GetInstance().ConfirmPay(orderInfo);
         }
 
-        public void ConfirmOrderPay()
-        {
 
+        /// <summary>
+        /// 确认订单支付 支付返回
+        /// </summary>
+        public void ConfirmOrderPay(ConfirmOrderPayRequest request)
+        {
+            //var orderInfo = _orderMainRepository.Query().FirstOrDefault(p => p.OrderNo == orderNo && p.CustomerId == customerId);
+
+            //var result = OrderMainService.GetInstance().ConfirmPay(orderInfo);
         }
 
         /// <summary>
@@ -217,7 +242,9 @@ namespace Project.Application.Service.OrderManager
         }
 
 
-
+        /// <summary>
+        /// 
+        /// </summary>
         public void Cancel()
         {
 

@@ -39,6 +39,7 @@ namespace Project.Map.OrderManager
             Map(p => p.PayType);
             Map(p => p.PaySerialNumber);
             Map(p => p.PayTime);
+            Map(p => p.BeginPayTime);
             Map(p => p.PayRemark);
             Map(p => p.SendTime);
             Map(p => p.SendRemark);

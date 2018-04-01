@@ -31,19 +31,19 @@ namespace Project.Model.OrderManager
         /// <summary>
         /// 订单状态(作废:-1;未确认:0;确认:1;先退货审核:T;子订单部分为确认:2)
         /// </summary>
-        public virtual System.Int32? State { get; set; }
+        public virtual System.Int32 State { get; set; }
         /// <summary>
         /// 订单总价,包括赠品_decimal_
         /// </summary>
-        public virtual System.Decimal? Totalamount { get; set; }
+        public virtual System.Decimal Totalamount { get; set; }
         /// <summary>
         /// 赠送积分
         /// </summary>
-        public virtual System.Int32? PresentPoints { get; set; }
+        public virtual System.Int32 PresentPoints { get; set; }
         /// <summary>
         /// 会员Id
         /// </summary>
-        public virtual System.String CustomerId { get; set; }
+        public virtual System.Int32 CustomerId { get; set; }
         /// <summary>
         /// 会员姓名
         /// </summary>
@@ -104,6 +104,12 @@ namespace Project.Model.OrderManager
         /// 支付时间
         /// </summary>
         public virtual System.DateTime? PayTime { get; set; }
+
+        /// <summary>
+        /// 开始支付时间
+        /// </summary>
+        public virtual System.DateTime? BeginPayTime { get; set; }
+
         /// <summary>
         /// 支付备注
         /// </summary>
