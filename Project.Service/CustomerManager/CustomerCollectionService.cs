@@ -118,38 +118,38 @@ namespace Project.Service.CustomerManager
         public System.Tuple<IList<CustomerCollectionEntity>, int> Search(CustomerCollectionEntity where, int skipResults, int maxResults)
         {
                 var expr = PredicateBuilder.True<CustomerCollectionEntity>();
-                  #region
-              // if (!string.IsNullOrEmpty(where.PkId))
-              //  expr = expr.And(p => p.PkId == where.PkId);
-              // if (!string.IsNullOrEmpty(where.CustomerId))
-              //  expr = expr.And(p => p.CustomerId == where.CustomerId);
-              // if (!string.IsNullOrEmpty(where.ProductId))
-              //  expr = expr.And(p => p.ProductId == where.ProductId);
-              // if (!string.IsNullOrEmpty(where.ProductName))
-              //  expr = expr.And(p => p.ProductName == where.ProductName);
-              // if (!string.IsNullOrEmpty(where.GoodsId))
-              //  expr = expr.And(p => p.GoodsId == where.GoodsId);
-              // if (!string.IsNullOrEmpty(where.GoodsCode))
-              //  expr = expr.And(p => p.GoodsCode == where.GoodsCode);
-              // if (!string.IsNullOrEmpty(where.ProductCode))
-              //  expr = expr.And(p => p.ProductCode == where.ProductCode);
-              // if (!string.IsNullOrEmpty(where.ImageUrl))
-              //  expr = expr.And(p => p.ImageUrl == where.ImageUrl);
-              // if (!string.IsNullOrEmpty(where.CreatorUserCode))
-              //  expr = expr.And(p => p.CreatorUserCode == where.CreatorUserCode);
-              // if (!string.IsNullOrEmpty(where.CreationTime))
-              //  expr = expr.And(p => p.CreationTime == where.CreationTime);
-              // if (!string.IsNullOrEmpty(where.LastModifierUserCode))
-              //  expr = expr.And(p => p.LastModifierUserCode == where.LastModifierUserCode);
-              // if (!string.IsNullOrEmpty(where.LastModificationTime))
-              //  expr = expr.And(p => p.LastModificationTime == where.LastModificationTime);
-              // if (!string.IsNullOrEmpty(where.IsDeleted))
-              //  expr = expr.And(p => p.IsDeleted == where.IsDeleted);
-              // if (!string.IsNullOrEmpty(where.DeleterUserCode))
-              //  expr = expr.And(p => p.DeleterUserCode == where.DeleterUserCode);
-              // if (!string.IsNullOrEmpty(where.DeletionTime))
-              //  expr = expr.And(p => p.DeletionTime == where.DeletionTime);
- #endregion
+            #region
+            // if (!string.IsNullOrEmpty(where.PkId))
+            //  expr = expr.And(p => p.PkId == where.PkId);
+            if (where.CustomerId>0)
+                expr = expr.And(p => p.CustomerId == where.CustomerId);
+            // if (!string.IsNullOrEmpty(where.ProductId))
+            //  expr = expr.And(p => p.ProductId == where.ProductId);
+            // if (!string.IsNullOrEmpty(where.ProductName))
+            //  expr = expr.And(p => p.ProductName == where.ProductName);
+            // if (!string.IsNullOrEmpty(where.GoodsId))
+            //  expr = expr.And(p => p.GoodsId == where.GoodsId);
+            // if (!string.IsNullOrEmpty(where.GoodsCode))
+            //  expr = expr.And(p => p.GoodsCode == where.GoodsCode);
+            // if (!string.IsNullOrEmpty(where.ProductCode))
+            //  expr = expr.And(p => p.ProductCode == where.ProductCode);
+            // if (!string.IsNullOrEmpty(where.ImageUrl))
+            //  expr = expr.And(p => p.ImageUrl == where.ImageUrl);
+            // if (!string.IsNullOrEmpty(where.CreatorUserCode))
+            //  expr = expr.And(p => p.CreatorUserCode == where.CreatorUserCode);
+            // if (!string.IsNullOrEmpty(where.CreationTime))
+            //  expr = expr.And(p => p.CreationTime == where.CreationTime);
+            // if (!string.IsNullOrEmpty(where.LastModifierUserCode))
+            //  expr = expr.And(p => p.LastModifierUserCode == where.LastModifierUserCode);
+            // if (!string.IsNullOrEmpty(where.LastModificationTime))
+            //  expr = expr.And(p => p.LastModificationTime == where.LastModificationTime);
+            // if (!string.IsNullOrEmpty(where.IsDeleted))
+            //  expr = expr.And(p => p.IsDeleted == where.IsDeleted);
+            // if (!string.IsNullOrEmpty(where.DeleterUserCode))
+            //  expr = expr.And(p => p.DeleterUserCode == where.DeleterUserCode);
+            // if (!string.IsNullOrEmpty(where.DeletionTime))
+            //  expr = expr.And(p => p.DeletionTime == where.DeletionTime);
+            #endregion
             var list = _customerCollectionRepository.Query().Where(expr).OrderByDescending(p => p.PkId).Skip(skipResults).Take(maxResults).ToList();
             var count = _customerCollectionRepository.Query().Where(expr).Count();
             return new System.Tuple<IList<CustomerCollectionEntity>, int>(list, count);

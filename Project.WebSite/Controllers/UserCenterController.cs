@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Project.Infrastructure.FrameworkCore.WebMvc.Models;
+using Project.Model.CustomerManager;
 
 namespace Project.WebSite.Controllers
 {
@@ -29,6 +31,8 @@ namespace Project.WebSite.Controllers
 
         public ActionResult AddressList()
         {
+
+
             return View();
         }
 
@@ -44,6 +48,15 @@ namespace Project.WebSite.Controllers
         {
             return View();
         }
+
+        #region 收货地址
+        public ActionResult AddAddress(AjaxRequest<CustomerAddressEntity> postData)
+        {
+
+
+            return View();
+        }
+        #endregion
 
 
 

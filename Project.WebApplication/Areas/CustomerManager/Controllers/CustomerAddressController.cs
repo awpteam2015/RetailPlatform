@@ -70,7 +70,7 @@ namespace Project.WebApplication.Areas.CustomerManager.Controllers
             var addResult = CustomerAddressService.GetInstance().Add(postData.RequestEntity);
             var result = new AjaxResponse<CustomerAddressEntity>()
                {
-                   success = addResult>0,
+                   success = addResult.Item1,
                    result = postData.RequestEntity
                };
             return new AbpJsonResult(result, new NHibernateContractResolver());
@@ -87,7 +87,7 @@ namespace Project.WebApplication.Areas.CustomerManager.Controllers
             
             var result = new AjaxResponse<CustomerAddressEntity>()
             {
-                success = updateResult,
+                success = updateResult.Item1,
                 result = postData.RequestEntity
             };
             return new AbpJsonResult(result, new NHibernateContractResolver(new string[] { "result" }));

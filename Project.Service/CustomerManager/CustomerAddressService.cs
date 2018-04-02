@@ -42,7 +42,7 @@ namespace Project.Service.CustomerManager
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
-        public System.Int32 Add(CustomerAddressEntity entity)
+        public Tuple<bool, string> Add(CustomerAddressEntity entity)
         {
             entity.AddressFull = CustomerHelp.GetInstance()
                  .CombineCustomerAddress(entity.ProvinceId, entity.CityId, entity.AreaId, entity.Address);
@@ -56,8 +56,9 @@ namespace Project.Service.CustomerManager
                     _customerAddressRepository.Update(p);
                 });
             }
+            var pkId = _customerAddressRepository.Save(entity);
 
-            return _customerAddressRepository.Save(entity);
+            return new Tuple<bool, string>(pkId > 0, "");
         }
 
 
@@ -100,7 +101,7 @@ namespace Project.Service.CustomerManager
         /// 更新
         /// </summary>
         /// <param name="entity"></param>
-        public bool Update(CustomerAddressEntity entity)
+        public Tuple<bool, string> Update(CustomerAddressEntity entity)
         {
             try
             {
@@ -110,7 +111,7 @@ namespace Project.Service.CustomerManager
 
                 if (entity.IsDefault == 1)
                 {
-                    var list = this._customerAddressRepository.Query().Where(p => p.CustomerId == entity.CustomerId&&p.PkId!=entity.PkId);
+                    var list = this._customerAddressRepository.Query().Where(p => p.CustomerId == entity.CustomerId && p.PkId != entity.PkId);
                     list.ForEach(p =>
                     {
                         p.IsDefault = 2;
@@ -118,11 +119,11 @@ namespace Project.Service.CustomerManager
                     });
                 }
 
-                return true;
+                return new Tuple<bool, string>(true,"");
             }
-            catch(Exception e)
+            catch (Exception e)
             {
-                return false;
+                throw e;
             }
         }
 

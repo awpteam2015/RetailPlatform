@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using Project.Infrastructure.FrameworkCore.ToolKit;
+using Project.Infrastructure.FrameworkCore.ToolKit.LinqExpansion;
 using Project.Model.CustomerManager;
 using Project.Repository.CustomerManager;
+using Project.Repository.ProductManager;
 using Project.Repository.SystemSetManager;
 using Project.Service.CustomerManager;
 using Project.Service.CustomerManager.Dto;
@@ -18,7 +21,9 @@ namespace Project.Application.Service.AccountManager
         private readonly CityRepository _cityRepository;
         private readonly AreaRepository _areaRepository;
         private readonly CustomerAddressRepository _customerAddressRepository;
+        private readonly CustomerCollectionRepository _customerCollectionRepository;
         private readonly AuthCodeRepository _authCodeRepository;
+        private readonly ProductRepository _productRepository;
 
         public AccountServiceImpl()
         {
@@ -30,6 +35,8 @@ namespace Project.Application.Service.AccountManager
             _customerAddressRepository = new CustomerAddressRepository();
             _cardTypeRepository = new CardTypeRepository();
             _authCodeRepository = new AuthCodeRepository();
+            _customerCollectionRepository = new CustomerCollectionRepository();
+            _productRepository = new ProductRepository();
 
         }
 
@@ -66,8 +73,8 @@ namespace Project.Application.Service.AccountManager
         /// </summary>
         public Tuple<bool, CustomerDto> Login(string mobilephone, string password)
         {
-            var customerInfo =_customerRepository.Query().Where(p => p.Mobilephone == mobilephone && p.Password == Encrypt.MD5Encrypt(password)).FirstOrDefault();
-              
+            var customerInfo = _customerRepository.Query().Where(p => p.Mobilephone == mobilephone && p.Password == Encrypt.MD5Encrypt(password)).FirstOrDefault();
+
             if (customerInfo != null)
             {
                 return new Tuple<bool, CustomerDto>(true, new CustomerDto()
@@ -223,7 +230,7 @@ namespace Project.Application.Service.AccountManager
         /// <param name="newPassword"></param>
         /// <returns></returns>
 
-        public Tuple<bool, string> ForgetPasswordStep3(string key,string newPassword)
+        public Tuple<bool, string> ForgetPasswordStep3(string key, string newPassword)
         {
             if (string.IsNullOrEmpty(key))
                 return new Tuple<bool, string>(false, "");
@@ -254,14 +261,48 @@ namespace Project.Application.Service.AccountManager
 
         #region 收藏夹
 
-        public void SearchCollectionList()
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="skipResults"></param>
+        /// <param name="maxResults"></param>
+        /// <param name="customerId"></param>
+        /// <returns></returns>
+        public Tuple<IList<CustomerCollectionEntity>, int> GetCollectionList(int skipResults, int maxResults, int customerId)
         {
-
+            return CustomerCollectionService.GetInstance()
+                   .Search(new CustomerCollectionEntity() { CustomerId = customerId }, skipResults, maxResults);
         }
 
-        public void CancelCollection()
+        /// <summary>
+        /// 取消收藏
+        /// </summary>
+        /// <param name="pkId"></param>
+        /// <param name="customerId"></param>
+        public Tuple<bool, string> CancelCollection(int pkId, int customerId)
         {
+            var collectionInfo = _customerCollectionRepository.Query().SingleOrDefault(p => p.CustomerId == customerId && p.PkId == pkId);
+            var result = CustomerCollectionService.GetInstance().Delete(collectionInfo);
+            return new Tuple<bool, string>(result, "");
+        }
 
+        /// <summary>
+        /// 新增收藏
+        /// </summary>
+        /// <param name="productId"></param>
+        /// <param name="customerId"></param>
+        public Tuple<bool, string> AddCollection(int productId, int customerId)
+        {
+            var productInfo = _productRepository.GetById(productId);
+
+            var collectionInfo = new CustomerCollectionEntity();
+            collectionInfo.ProductCode = productInfo.ProductCode;
+            collectionInfo.ProductName = productInfo.ProductName;
+            collectionInfo.ImageUrl = productInfo.ImageUrl;
+
+            var result = _customerCollectionRepository.Save(collectionInfo);
+
+            return new Tuple<bool, string>(result > 0, "");
         }
 
         #endregion
@@ -269,10 +310,84 @@ namespace Project.Application.Service.AccountManager
 
         #region 收货地址
 
-        public void ChangeAddress()
+        /// <summary>
+        /// 获取收货地址列表
+        /// </summary>
+        /// <param name="customerId"></param>
+        /// <returns></returns>
+        public IList<CustomerAddressEntity> GetCustomerAddressList(int customerId)
         {
-
+            return _customerAddressRepository.Query().Where(p => p.CustomerId == customerId).ToList();
         }
+
+        /// <summary>
+        /// 新增送货地址
+        /// </summary>
+        /// <param name="entity"></param>
+        public Tuple<bool, string> AddAddress(CustomerAddressEntity entity)
+        {
+            return CustomerAddressService.GetInstance().Add(entity);
+        }
+
+
+        /// <summary>
+        /// 编辑送货地址
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+
+        public Tuple<bool, string> UpdateAddress(CustomerAddressEntity entity)
+        {
+            return CustomerAddressService.GetInstance().Update(entity);
+        }
+
+
+        /// <summary>
+        /// 设置默认地址
+        /// </summary>
+        /// <param name="pkId"></param>
+        /// <param name="customerId"></param>
+        /// <returns></returns>
+        public Tuple<bool, string> SetDefaultAddress(int pkId, int customerId)
+        {
+            var addressInfo = _customerAddressRepository.Query().FirstOrDefault(p => p.CustomerId == customerId && p.PkId == pkId);
+
+            try
+            {
+                addressInfo.IsDefault = 1;
+                _customerAddressRepository.Update(addressInfo);
+
+                var list = this._customerAddressRepository.Query().Where(p => p.CustomerId == customerId && p.PkId != pkId);
+                list.ForEach(p =>
+                {
+                    p.IsDefault = 2;
+                    _customerAddressRepository.Update(p);
+                });
+                return new Tuple<bool, string>(true, "");
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        /// <summary>
+        /// 删除收货地址
+        /// </summary>
+        /// <param name="pkId"></param>
+        /// <param name="customerId"></param>
+        /// <returns></returns>
+        public Tuple<bool, string> DelAddress(int pkId, int customerId)
+        {
+            var addressInfo = _customerAddressRepository.Query().FirstOrDefault(p => p.CustomerId == customerId && p.PkId == pkId);
+            if (addressInfo != null)
+            {
+                var result = CustomerAddressService.GetInstance().Delete(addressInfo);
+                return new Tuple<bool, string>(result, "");
+            }
+            return new Tuple<bool, string>(false, "");
+        }
+
 
         #endregion
 
