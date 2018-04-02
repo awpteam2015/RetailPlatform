@@ -2,17 +2,17 @@
 @using Aspose.Cells.Charts
 @using PagedList
 @using PagedList.Mvc
-@model IList<Project.Model.OrderManager.ShopCartEntity>
+@model IList<Project.Model.OrderManager.ShopCartEntity>   
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    ViewBag.Title = "确认订单";
+    ViewBag.Title = "购物车列表";
 }
 
 @section Head
 {
 
-    <script src="~/Scripts/Order/Confirm.js"></script>
+<script src="~/Scripts/ShopCart/List.js"></script>
 }
 
 <div>
@@ -42,9 +42,7 @@
 
         }
     </table>
-
-    <input type="button" value="返回购物车" />
-    <input type="button" value="提交订单" />
+   <input type="button" value="下一步"/>
 
 </div>
 

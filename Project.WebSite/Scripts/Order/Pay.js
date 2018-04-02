@@ -1,20 +1,19 @@
 ﻿var pro = pro || {};
 (function () {
-    pro.DetailPage = pro.DetailPage || {};
-    pro.DetailPage = {
+    pro.PayPage = pro.PayPage || {};
+    pro.PayPage = {
         initPage: function () {
-            $("#btn_AddCart").click(function () {
-                pro.DetailPage.AddCart();
+            $("#btn_ConfirmPay").click(function () {
+                pro.PayPage.ConfirmPay();
             });
         },
-        AddCart: function () {
-           
-            var postData = { goodsId: $("#GoodsId").val(), num: $("#Num").val() };
+        CheckPay: function () {
+            var postData = { pkId: i };
             $.ajax({
                 dataType: 'json',
                 type: 'POST',
                 contentType: 'application/json',
-                url: "/ShopCart/AddCart",
+                url: "/Order/CheckPay",
                 data: JSON.stringify(postData),
                 cache: false,
                 async: false,
@@ -27,6 +26,13 @@
                     }
                 }
             });
+       
+        },
+        ConfirmPay: function() {
+
+            if (pro.PayPage.CheckPay()) {
+                $("#btn_ConfirmPay").submit();
+            }
 
         }
     };
@@ -34,6 +40,6 @@
 
 
 $(function () {
-    pro.DetailPage.initPage();
+    pro.PayPage.initPage();
 });
 

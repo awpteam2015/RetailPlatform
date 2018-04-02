@@ -41,12 +41,24 @@ namespace Project.Application.Service.OrderManager
         #region 购物车相关
 
         /// <summary>
+        /// 获取购物车列表信息
+        /// </summary>
+        /// <param name="customerId"></param>
+        /// <returns></returns>
+        public IList<ShopCartEntity> GetShopCartList(int customerId)
+        {
+            var shopCartList = _shopCartRepository.Query().Where(p => p.CustomerId == customerId).ToList();
+            return shopCartList;
+        }
+
+
+        /// <summary>
         /// 购物车新增商品
         /// </summary>
         /// <param name="goodsId"></param>
         /// <param name="num"></param>
         /// <param name="customerId"></param>
-        public Tuple<bool, string> AddCat(int goodsId, int num, int customerId)
+        public Tuple<bool, string> AddCart(int goodsId, int num, int customerId)
         {
             var customerInfo = _customerRepository.GetById(customerId);
             var goodsInfo = _goodsRepository.GetById(goodsId);
@@ -68,8 +80,8 @@ namespace Project.Application.Service.OrderManager
             shopCartInfo.Price = goodsInfo.GoodsPrice;
             shopCartInfo.PromotionPrice = goodsInfo.PromotionPrice;
             shopCartInfo.RuleId = goodsInfo.RuleId;
-            shopCartInfo.DiscountMember = goodsInfo.RuleId > 0 ? shopCartInfo.PromotionPrice * (100-customerInfo.Discount) / 100 : shopCartInfo.Price *(100- customerInfo.Discount)  / 100;
-            shopCartInfo.DiscountPromotion = goodsInfo.RuleId > 0 ?goodsInfo.GoodsPrice - goodsInfo.PromotionPrice:0;
+            shopCartInfo.DiscountMember = goodsInfo.RuleId > 0 ? shopCartInfo.PromotionPrice * (100 - customerInfo.Discount) / 100 : shopCartInfo.Price * (100 - customerInfo.Discount) / 100;
+            shopCartInfo.DiscountPromotion = goodsInfo.RuleId > 0 ? goodsInfo.GoodsPrice - goodsInfo.PromotionPrice : 0;
             shopCartInfo.DiscountAll = shopCartInfo.DiscountMember + shopCartInfo.DiscountPromotion;
             shopCartInfo.LastPrice = shopCartInfo.Price - shopCartInfo.DiscountAll;
             shopCartInfo.TotalAmount = shopCartInfo.LastPrice * shopCartInfo.Num;
@@ -89,7 +101,7 @@ namespace Project.Application.Service.OrderManager
         /// <summary>
         /// 删除商品行项目
         /// </summary>
-        public Tuple<bool, string> DelCat(int customerId, int pkId)
+        public Tuple<bool, string> DelCart( int pkId, int customerId)
         {
             var shopCartInfo = _shopCartRepository.Query().FirstOrDefault(p => p.PkId == pkId && p.CustomerId == customerId);
             try
@@ -114,7 +126,7 @@ namespace Project.Application.Service.OrderManager
         /// <summary>
         /// 更新购物车中的商品数量
         /// </summary>
-        public Tuple<bool, string> UpdateCatNum(int pkId, int num, int customerId)
+        public Tuple<bool, string> UpdateCartNum(int pkId, int num, int customerId)
         {
             var shopCartInfo = _shopCartRepository.Query().FirstOrDefault(p => p.PkId == pkId && p.CustomerId == customerId);
             try
@@ -143,7 +155,7 @@ namespace Project.Application.Service.OrderManager
         /// <summary>
         /// 更新购物车中的商品行项目信息  有些促销过期的情况
         /// </summary>
-        public Tuple<bool, string> UpdateCatState(int customerId)
+        public Tuple<bool, string> UpdateCartState(int customerId)
         {
             var list = _shopCartRepository.Query().Where(p => p.CustomerId == customerId);
 
@@ -156,6 +168,7 @@ namespace Project.Application.Service.OrderManager
                 if (p.Price != goodInfo.GoodsPrice || p.RuleId != goodInfo.RuleId || p.PromotionPrice != goodInfo.PromotionPrice)
                 {
                     p.IsExpire = 1;
+                    p.IsCheck = 2;
                 }
                 _shopCartRepository.Update(p);
 
@@ -170,15 +183,52 @@ namespace Project.Application.Service.OrderManager
 
         }
 
-
+        /// <summary>
+        /// 更新购物车中的是否勾选
+        /// </summary>
+        public Tuple<bool, string> UpdateCartCheck(int pkId, int isCheck, int customerId)
+        {
+            var shopCartInfo = _shopCartRepository.Query().FirstOrDefault(p => p.PkId == pkId && p.CustomerId == customerId);
+            try
+            {
+                if (shopCartInfo != null)
+                {
+                    shopCartInfo.IsCheck = isCheck;
+                    _shopCartRepository.Update(shopCartInfo);
+                    return new Tuple<bool, string>(true, "");
+                }
+                else
+                {
+                    return new Tuple<bool, string>(false, "");
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
         #endregion
 
         #region 订单相关
+
+        /// <summary>
+        /// 获取订单信息
+        /// </summary>
+        /// <param name="orderNo"></param>
+        /// <param name="customerId"></param>
+        /// <returns></returns>
+        public OrderMainEntity  GetOrderInfo(string orderNo,int customerId)
+        {
+            var orderInfo = _orderMainRepository.Query().FirstOrDefault(p => p.OrderNo == orderNo && p.CustomerId == customerId);
+            return orderInfo;
+        }
+
+
         /// <summary>
         /// 新增订单
         /// </summary>
         /// <param name="request"></param>
-        public void AddOrder(AddOrderRequest request)
+        public Tuple<bool,string> AddOrder(AddOrderRequest request)
         {
             var customerInfo = _customerRepository.GetById(request.CustomerId);
 
@@ -189,27 +239,34 @@ namespace Project.Application.Service.OrderManager
             // orderMainInfo.
 
             var result = OrderMainService.GetInstance().Add(orderMainInfo);
+            return  new Tuple<bool, string>(true,"");
         }
 
         /// <summary>
         /// 开始订单支付
         /// </summary>
-        public void UpdateOrderPay(ConfirmOrderPayRequest request)
+        public void UpdateOrderPay(string orderNo,string payType,int customerId)
         {
-            //var orderInfo = _orderMainRepository.Query().FirstOrDefault(p => p.OrderNo == orderNo && p.CustomerId == customerId);
-
-           // var result = OrderMainService.GetInstance().ConfirmPay(orderInfo);
+            var orderInfo = _orderMainRepository.Query().FirstOrDefault(p => p.OrderNo == orderNo && p.CustomerId == customerId);
+            orderInfo.BeginPayTime=DateTime.Now;
+            orderInfo.PayType = payType;
+            _orderMainRepository.Update(orderInfo);
         }
 
 
         /// <summary>
         /// 确认订单支付 支付返回
         /// </summary>
-        public void ConfirmOrderPay(ConfirmOrderPayRequest request)
+        /// <param name="orderNo"></param>
+        /// <param name="paySerialNumber"></param>
+        /// <param name="payRemark"></param>
+        /// <param name="customerId"></param>
+        public void ConfirmOrderPay(string orderNo, string paySerialNumber,string payRemark, int customerId)
         {
-            //var orderInfo = _orderMainRepository.Query().FirstOrDefault(p => p.OrderNo == orderNo && p.CustomerId == customerId);
-
-            //var result = OrderMainService.GetInstance().ConfirmPay(orderInfo);
+            var orderInfo = _orderMainRepository.Query().FirstOrDefault(p => p.OrderNo == orderNo && p.CustomerId == customerId);
+            orderInfo.PaySerialNumber = paySerialNumber;
+            orderInfo.PayRemark = payRemark;
+            _orderMainRepository.Update(orderInfo);
         }
 
         /// <summary>
@@ -268,6 +325,40 @@ namespace Project.Application.Service.OrderManager
         public void OrderReturnInfoWrite()
         {
 
+        }
+
+
+        /// <summary>
+        /// 订单支付检查并修改支付方式
+        /// </summary>
+        /// <param name="customerId"></param>
+        /// <param name="orderNo"></param>
+        /// <param name="payCode"></param>ConfirmPay
+        /// <returns></returns>
+        public Tuple<bool, string> CheckPay( string orderNo, string payCode,int customerId)
+        {
+
+            var orderMain = _orderMainRepository.Query().FirstOrDefault(p => p.OrderNo == orderNo && p.CustomerId == customerId);
+            if (orderMain == null)
+                return new Tuple<bool, string>(false, "该订单不存在");
+
+            //if (orderMain.State == "-1")
+            //    return new Tuple<bool, bool, string>(false, false, "该订单已作废");
+            //if (orderMain.State == "1")
+            //    return new Tuple<bool, bool, string>(false, false, "该订单已付款");
+            //if (orderMain.State == "T")
+            //    return new Tuple<bool, bool, string>(false, false, "该订单已退货");
+
+           //库存检查
+            var stockCheck = new StockService().StockCheck(orderMain);
+            if (!stockCheck.Item1)
+                return new Tuple<bool, string>(false, "库存不足，请您联系客服。");
+
+            if (orderMain.Totalamount == 0)
+            {
+                return new Tuple<bool, string>(true, "noneedpay");
+            }
+            return new Tuple<bool, string>(true, string.Empty);
         }
 
         #endregion

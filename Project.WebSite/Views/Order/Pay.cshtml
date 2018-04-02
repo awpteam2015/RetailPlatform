@@ -1,17 +1,49 @@
 ﻿
+@using Aspose.Cells.Charts
+@using PagedList
+@using PagedList.Mvc
+@model  Project.WebSite.Models.OrderProcess.PayVm
+
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "选择支付方式";
 }
 
-<!DOCTYPE html>
+@section Head
+{
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Detail</title>
-</head>
-<body>
-    <div> 
-    </div>
-</body>
-</html>
+    <script src="~/Scripts/Order/Pay.js"></script>
+}
+
+<div>
+    @using (Html.BeginForm("ConfirmPay", "Order", FormMethod.Post, new { @id = "payconfirm", @name = "payconfirm", target = "_blank" }))
+    {
+        <div class="payment_text">
+            <input id="orderNo" name="orderNo" type="hidden" value="@Model.OrderNo"/>
+            <p>
+                应付合计金额 : <strong>￥@Model.Totalamount</strong> 元
+                @if (Model.Totalamount == 0)
+                {
+                    @:（请直接确认订单）
+                }
+            </p>
+
+        </div>
+
+        <table>
+            <tr>
+                <td>
+                    <input type="radio" name="paycode" value="Alipa" />支付宝
+
+                    <input type="radio" name="paycode" value="Tenpay" />财付通
+                </td>
+            </tr>
+        </table>
+
+
+        <input type="button" value="确认并支付" id="btn_ConfirmPay" />
+    }
+
+
+</div>
+

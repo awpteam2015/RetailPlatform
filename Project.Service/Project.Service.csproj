@@ -98,6 +98,7 @@
     <Compile Include="OrderManager\OrderInvoiceService.cs" />
     <Compile Include="OrderManager\OrderMainService.cs" />
     <Compile Include="OrderManager\ShopCartService.cs" />
+    <Compile Include="OrderManager\StockService.cs" />
     <Compile Include="PermissionManager\DepartmentService.cs" />
     <Compile Include="PermissionManager\DTO\MenuDTO.cs" />
     <Compile Include="PermissionManager\DTO\LoginUserInfoDTO.cs" />

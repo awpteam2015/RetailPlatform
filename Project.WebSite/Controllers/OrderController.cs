@@ -7,7 +7,11 @@ using PagedList;
 using Project.Application.Service.OrderManager;
 using Project.Application.Service.OrderManager.Request;
 using Project.Infrastructure.FrameworkCore.ToolKit;
+using Project.Infrastructure.FrameworkCore.ToolKit.JsonHandler;
+using Project.Infrastructure.FrameworkCore.WebMvc.Controllers.Results;
+using Project.Infrastructure.FrameworkCore.WebMvc.Models;
 using Project.WebSite.Extend;
+using Project.WebSite.Models.OrderProcess;
 using Project.WebSite.Models.UserCenter;
 
 namespace Project.WebSite.Controllers
@@ -15,7 +19,7 @@ namespace Project.WebSite.Controllers
     public class OrderController : AuthorizeController
     {
 
-        #region
+        #region 视图
         // GET: Order
         public ActionResult Index()
         {
@@ -53,12 +57,149 @@ namespace Project.WebSite.Controllers
             return View(viewModel);
         }
 
+
+        public ActionResult Pay(string orderNo)
+        {
+            if (string.IsNullOrEmpty(orderNo))
+                return RedirectToAction("List", "Order");
+
+            var dto = new OrderServiceImpl().GetOrderInfo(orderNo, CustomerDto.CustomerId);
+
+            if (dto == null)
+                return RedirectToAction("List", "Order");
+
+            var model = new PayVm()
+            {
+                OrderNo = dto.OrderNo,
+                Totalamount = dto.Totalamount
+            };
+
+            //var json = JsonConvert.SerializeObject(temp);
+            //ViewBag.Json = json;
+            return View(model);
+        }
         #endregion
 
 
-        #region
+        #region 操作
 
-#endregion
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult AddOrder(AddOrderRequest request)
+        {
+            var registResult = new OrderServiceImpl().AddOrder(request);
+
+            var result = new AjaxResponse<object>()
+            {
+                success = registResult.Item1,
+                error = new ErrorInfo(registResult.Item2)
+            };
+            return new AbpJsonResult(result);
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult UpdateOrder()
+        {
+            return new AbpJsonResult();
+        }
+
+
+        [HttpPost]
+        public ActionResult UpdateOrderPay()
+        {
+            return new AbpJsonResult();
+        }
+
+
+        [HttpPost]
+        public ActionResult ConfirmPay()
+        {
+            return new AbpJsonResult();
+        }
+
+
+        /// <summary>
+        /// 检查支付
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult CheckPay(string orderNo, string payCode)
+        {
+            var registResult = new OrderServiceImpl().CheckPay(orderNo,payCode,CustomerDto.CustomerId);
+
+            var result = new AjaxResponse<object>()
+            {
+                success = registResult.Item1,
+                result = registResult.Item1? registResult.Item2:"",
+                error = new ErrorInfo(registResult.Item2)
+            };
+            return new AbpJsonResult(result);
+        }
+
+
+        /// <summary>
+        /// 确认支付
+        /// </summary>
+        /// <param name="orderNo"></param>
+        /// <param name="payCode"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult ConfirmPay(string orderNo, string payCode)
+        {
+            if (string.IsNullOrEmpty(orderNo) || string.IsNullOrEmpty(payCode))
+                return RedirectToAction("List", "Order");
+
+            //无效的请求
+            if (Request.HttpMethod.ToUpper() == "GET")
+                return RedirectToAction("List", "Order");
+
+            var order = _orderWcfService.GetOrderMainInfo(orderNo, LoginUser.Customerid);
+            if (order == null)
+                return RedirectToAction("orderlist", "orderaudit");
+
+            if (order.State != "0")
+                return RedirectToAction("orderlist", "orderaudit");
+
+#if DEBUG
+            order.Totalamount = 0.01m;
+#endif
+
+            var payment = new OrderPay
+            {
+                OrderNo = orderNo,
+                TotalAmount = order.Totalamount.GetValueOrDefault(),
+                PayCode = payCode,
+                ReceiveName = order.Linkman,
+                ReceivePhone = order.Linkmantel,
+                ReceiveMobile = order.Linkmanmobilephone,
+                ReceiveZip = order.Linkmanpostcode,
+                ReceiveAddress = order.LinkManAddressFull
+            };
+
+            var requestFrom = _payFactory.SubmitRequest(payment);
+            if (string.IsNullOrEmpty(requestFrom))
+            {
+                //无效的支付方式
+                return RedirectToAction("error", "payment");
+            }
+            if (payCode == NetPayConfig.TenpayCode)
+            {
+                return Redirect(requestFrom);
+            }
+            return Content(requestFrom);
+        }
+
+
+        #endregion
 
 
 

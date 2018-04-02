@@ -95,7 +95,7 @@ namespace Project.Model.OrderManager
         /// <summary>
         /// 支付方式
         /// </summary>
-        public virtual System.Int32? PayType { get; set; }
+        public virtual string PayType { get; set; }
         /// <summary>
         /// 支付流水号
         /// </summary>

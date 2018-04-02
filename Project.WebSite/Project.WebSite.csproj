@@ -150,6 +150,8 @@
     <Content Include="Scripts\linq\JSLINQextend.js" />
     <Content Include="Scripts\linq\Samples.js" />
     <Content Include="Scripts\Login\Login.js" />
+    <Content Include="Scripts\Order\Pay.js" />
+    <Content Include="Scripts\Order\Confirm.js" />
     <Content Include="Scripts\Order\List.js" />
     <Content Include="Scripts\Product\Detail.js" />
     <Content Include="Scripts\pro\abp.jquery.ajax.js" />
@@ -382,6 +384,7 @@
     <Content Include="Scripts\pro\My97DatePicker\开发包\skin\whyGreen\datepicker.css" />
     <Content Include="Scripts\pro\My97DatePicker\开发包\skin\whyGreen\img.gif" />
     <Content Include="Scripts\pro\submitKit.js" />
+    <Content Include="Scripts\ShopCart\List.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -392,7 +395,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
-    <Compile Include="Controllers\ShopCatController.cs" />
+    <Compile Include="Controllers\ShopCartController.cs" />
     <Compile Include="Controllers\SystemSetController.cs" />
     <Compile Include="Controllers\UserCenterController.cs" />
     <Compile Include="Models\Component\MyPagedList.cs" />
@@ -401,6 +404,7 @@
     </Compile>
     <Compile Include="Models\Component\SearchVm.cs" />
     <Compile Include="Models\LoginVm.cs" />
+    <Compile Include="Models\OrderProcess\PayVm.cs" />
     <Compile Include="Models\ProductListVm.cs" />
     <Compile Include="Models\RegisterVm.cs" />
     <Compile Include="Models\UserCenter\OrderListView.cs" />
@@ -423,7 +427,7 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\InternalServer.cshtml" />
-    <Content Include="Views\ShopCat\List.cshtml" />
+    <Content Include="Views\ShopCart\List.cshtml" />
     <Content Include="Views\UserCenter\TicketList.cshtml" />
     <Content Include="Views\UserCenter\CollectionList.cshtml" />
     <Content Include="Views\UserCenter\UserInfoDetail.cshtml" />

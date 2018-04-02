@@ -38,7 +38,7 @@ namespace  Project.Map.OrderManager
             Map(p => p.Num);    
             Map(p => p.IsCheck);    
             Map(p => p.CustomerId);    
-            Map(p => p.RuleId);    
+            Map(p => p.RuleId);       Map(p => p.IsExpire);   
         }
     }
 }

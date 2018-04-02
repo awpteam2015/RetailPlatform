@@ -1,20 +1,19 @@
 ﻿var pro = pro || {};
 (function () {
-    pro.DetailPage = pro.DetailPage || {};
-    pro.DetailPage = {
+    pro.ConfirmPage = pro.ConfirmPage || {};
+    pro.ConfirmPage = {
         initPage: function () {
-            $("#btn_AddCart").click(function () {
-                pro.DetailPage.AddCart();
+            $("#btn_OrderSearch").click(function () {
+                pro.ConfirmPage.Confirm();
             });
         },
-        AddCart: function () {
-           
-            var postData = { goodsId: $("#GoodsId").val(), num: $("#Num").val() };
+        Confirm: function () {
+            var postData = { pkId: i };
             $.ajax({
                 dataType: 'json',
                 type: 'POST',
                 contentType: 'application/json',
-                url: "/ShopCart/AddCart",
+                url: "/ShopCart/DelCart",
                 data: JSON.stringify(postData),
                 cache: false,
                 async: false,
@@ -27,13 +26,13 @@
                     }
                 }
             });
-
+       
         }
     };
 })();
 
 
 $(function () {
-    pro.DetailPage.initPage();
+    pro.ConfirmPage.initPage();
 });
 
