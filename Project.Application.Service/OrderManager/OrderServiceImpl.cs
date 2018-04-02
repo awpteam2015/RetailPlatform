@@ -260,13 +260,22 @@ namespace Project.Application.Service.OrderManager
         /// <param name="orderNo"></param>
         /// <param name="paySerialNumber"></param>
         /// <param name="payRemark"></param>
-        /// <param name="customerId"></param>
-        public void ConfirmOrderPay(string orderNo, string paySerialNumber,string payRemark, int customerId)
+        public Tuple<bool,string> ConfirmOrderPay(string orderNo,string payType, string paySerialNumber,string payRemark)
         {
-            var orderInfo = _orderMainRepository.Query().FirstOrDefault(p => p.OrderNo == orderNo && p.CustomerId == customerId);
+            var orderInfo = _orderMainRepository.Query().FirstOrDefault(p => p.OrderNo == orderNo );
             orderInfo.PaySerialNumber = paySerialNumber;
             orderInfo.PayRemark = payRemark;
-            _orderMainRepository.Update(orderInfo);
+            orderInfo.PayType = payType;
+            orderInfo.PayTime=DateTime.Now;
+            try
+            {
+                _orderMainRepository.Update(orderInfo);
+                return new Tuple<bool, string>(true,"");
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         /// <summary>
@@ -350,9 +359,9 @@ namespace Project.Application.Service.OrderManager
             //    return new Tuple<bool, bool, string>(false, false, "该订单已退货");
 
            //库存检查
-            var stockCheck = new StockService().StockCheck(orderMain);
-            if (!stockCheck.Item1)
-                return new Tuple<bool, string>(false, "库存不足，请您联系客服。");
+            //var stockCheck = new StockService().StockCheck(orderMain);
+            //if (!stockCheck.Item1)
+            //    return new Tuple<bool, string>(false, "库存不足，请您联系客服。");
 
             if (orderMain.Totalamount == 0)
             {

@@ -6,6 +6,9 @@ using System.Web.Mvc;
 using PagedList;
 using Project.Application.Service.OrderManager;
 using Project.Application.Service.OrderManager.Request;
+using Project.Infrastructure.FrameworkCore.Payment.Configs;
+using Project.Infrastructure.FrameworkCore.Payment.Factory;
+using Project.Infrastructure.FrameworkCore.Payment.Model;
 using Project.Infrastructure.FrameworkCore.ToolKit;
 using Project.Infrastructure.FrameworkCore.ToolKit.JsonHandler;
 using Project.Infrastructure.FrameworkCore.WebMvc.Controllers.Results;
@@ -55,6 +58,12 @@ namespace Project.WebSite.Controllers
 
 
             return View(viewModel);
+        }
+
+
+        public ActionResult Error()
+        {
+            return View();
         }
 
 
@@ -120,11 +129,11 @@ namespace Project.WebSite.Controllers
         }
 
 
-        [HttpPost]
-        public ActionResult ConfirmPay()
-        {
-            return new AbpJsonResult();
-        }
+        //[HttpPost]
+        //public ActionResult ConfirmPay()
+        //{
+        //    return new AbpJsonResult();
+        //}
 
 
         /// <summary>
@@ -162,12 +171,12 @@ namespace Project.WebSite.Controllers
             if (Request.HttpMethod.ToUpper() == "GET")
                 return RedirectToAction("List", "Order");
 
-            var order = _orderWcfService.GetOrderMainInfo(orderNo, LoginUser.Customerid);
+            var order = new OrderServiceImpl().GetOrderInfo(orderNo, CustomerDto.CustomerId);
             if (order == null)
-                return RedirectToAction("orderlist", "orderaudit");
+                return RedirectToAction("List", "Order");
 
-            if (order.State != "0")
-                return RedirectToAction("orderlist", "orderaudit");
+            if (order.State != 1)
+                return RedirectToAction("List", "Order");
 
 #if DEBUG
             order.Totalamount = 0.01m;
@@ -176,20 +185,20 @@ namespace Project.WebSite.Controllers
             var payment = new OrderPay
             {
                 OrderNo = orderNo,
-                TotalAmount = order.Totalamount.GetValueOrDefault(),
+                TotalAmount = order.Totalamount,
                 PayCode = payCode,
                 ReceiveName = order.Linkman,
-                ReceivePhone = order.Linkmantel,
-                ReceiveMobile = order.Linkmanmobilephone,
-                ReceiveZip = order.Linkmanpostcode,
-                ReceiveAddress = order.LinkManAddressFull
+                ReceivePhone = order.LinkmanTel,
+                ReceiveMobile = order.LinkmanMobilephone,
+                ReceiveZip = order.LinkmanPostcode,
+                ReceiveAddress = order.LinkmanAddressfull
             };
 
-            var requestFrom = _payFactory.SubmitRequest(payment);
+            var requestFrom = new PayFactory().SubmitRequest(payment);
             if (string.IsNullOrEmpty(requestFrom))
             {
                 //无效的支付方式
-                return RedirectToAction("error", "payment");
+                return RedirectToAction("Error", "Order");
             }
             if (payCode == NetPayConfig.TenpayCode)
             {

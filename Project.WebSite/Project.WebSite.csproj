@@ -394,6 +394,7 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
+    <Compile Include="Controllers\PaymentController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ShopCartController.cs" />
     <Compile Include="Controllers\SystemSetController.cs" />
@@ -440,6 +441,8 @@
     <Content Include="Views\Account\ForgetPassword4.cshtml" />
     <Content Include="Views\Shared\_MenuBar.cshtml" />
     <Content Include="Views\Home\PageTest.cshtml" />
+    <Content Include="Views\Order\Error.cshtml" />
+    <Content Include="Views\Order\Success.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -451,6 +454,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Extend\" />
     <Folder Include="Scripts\pro\SelfValidate\" />
+    <Folder Include="Views\Payment\" />
     <Folder Include="Views\SiteMap\" />
     <Folder Include="Views\SystemSet\" />
   </ItemGroup>
@@ -462,6 +466,10 @@
     <ProjectReference Include="..\Project.Config\Project.Config.csproj">
       <Project>{7e5cd828-d4ff-445e-9f1d-068102151681}</Project>
       <Name>Project.Config</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Project.Infrastructure.FrameworkCore.Payment\Project.Infrastructure.FrameworkCore.Payment.csproj">
+      <Project>{b49873c5-880a-475b-bf35-302d8d6d2019}</Project>
+      <Name>Project.Infrastructure.FrameworkCore.Payment</Name>
     </ProjectReference>
     <ProjectReference Include="..\Project.Infrastructure.FrameworkCore\Project.Infrastructure.FrameworkCore.csproj">
       <Project>{1c2392ad-a0f8-4378-9c54-3dcd1fb5d1db}</Project>

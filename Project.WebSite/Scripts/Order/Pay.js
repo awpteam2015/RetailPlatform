@@ -8,7 +8,12 @@
             });
         },
         CheckPay: function () {
-            var postData = { pkId: i };
+            var orderNo = $("#OrderNo").val();
+            var payCode = $("input[name='Paycode']:checked").val();
+
+
+            var postData = { orderNo: orderNo, payCode: payCode };
+            var flag = true;
             $.ajax({
                 dataType: 'json',
                 type: 'POST',
@@ -20,17 +25,19 @@
                 success: function (data) {
                     alert(JSON.stringify(data));
                     if (data.success) {
-                        return true;
+                        flag= true;
                     } else {
-                        return false;
+                        flag= false;
                     }
                 }
             });
-       
+
+            return flag;
         },
         ConfirmPay: function() {
-
-            if (pro.PayPage.CheckPay()) {
+            var result = pro.PayPage.CheckPay(); alert(result);
+            if (result) {
+                
                 $("#btn_ConfirmPay").submit();
             }
 

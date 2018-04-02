@@ -1,0 +1,23 @@
+﻿
+
+@model  Project.WebSite.Models.OrderProcess.PayVm
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "支付提示页面";
+}
+
+@section Head
+{
+
+    
+}
+
+<div>
+    <p>您的订单已成功付款！</p>
+    <p class="pa">
+        <a href="/Order/List">[查看我的订单]</a>
+        <a href="/Home/Index">[继续购物]</a>
+    </p>
+</div>
+
